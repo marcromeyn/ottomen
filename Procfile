@@ -1,2 +1,1 @@
-web: npm start
-webpackdev: npm run dev
+web: gunicorn wsgi:application --log-file -

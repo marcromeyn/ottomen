@@ -1,1 +1,0 @@
-from .kitten import Kitten

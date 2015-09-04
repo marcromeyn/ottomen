@@ -1,0 +1,45 @@
+web:
+  build: .
+  command: gulp
+  ports:
+   - "5000:5003"
+   - "3000:3000"
+   - "3001:3001"
+  expose:
+    - "5000"
+    - "3000"
+    - "3001"
+  volumes:
+   - .:/code
+  links:
+   - redis
+   - postgres:postgres
+
+#nginx:
+#  restart: always
+#  build: ./nginx/
+#  ports:
+#    - "80:80"
+#  volumes:
+#    - /www/static
+#  volumes_from:
+#    - web
+#  links:
+#    - web:web
+
+redis:
+  image: redis
+  ports:
+    - "5002:6379"
+
+postgres:
+  restart: always
+  image: postgres:latest
+  environment:
+    POSTGRES_DB: ottomen
+    POSTGRES_PASSWORD: docker
+    POSTGRES_USER: docker
+  volumes:
+    - ~/Projects/ottomen/migrations:/var/lib/postgresql
+  ports:
+    - "5001:5432"

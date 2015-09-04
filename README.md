@@ -1,83 +1,52 @@
-# Flask React Boilerplate
 
-Production-ready, one-click deployable boilerplate for [React](http://facebook.github.io/react/), [Webpack](http://webpack.github.io/), [Flask](http://flask.pocoo.org/) and [PostgreSQL](http://www.postgresql.org/).
 
-## One-click production deployment
+### Instructions
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/alexkuz/flask-react-boilerplate)
+#### 1. Clone the project:
 
-This is what you will get:
+    $ git clone https://github.com/marcromeyn/ottomen.git
+    $ cd ottomen
 
-https://flask-react-boilerplate.herokuapp.com/
+#### 2. Build and get the images with Docker-Compose:
 
-## Local installation
+    $ docker-compose build
+    $ docker-compose up -d
+    
+#### 3. Upgrade the database:
 
-You'll neel a little more than one click.
+    $ docker-compose run web python manage.py db upgrade
+    
+#### 4. Seed the database:
 
-**Prerequisites**:
+    $ docker-compose run web python manage.py db seed
+    
+#### 5. Run the development server:
 
-- Pip (https://pip.pypa.io/en/latest/installing.html)
-- PostgreSQL (http://www.postgresql.org/download/)
-- NPM (https://docs.npmjs.com/getting-started/installing-node)
+    $ docker-compose up
 
-Clone repository:
 
-```
-git clone https://github.com/alexkuz/flask-react-boilerplate.git
+#### Management Commands
 
-cd react-webpack-boilerplate
-```
+Management commands can be listed with the following command:
 
-Install npm dependencies:
+    $ python manage.py
 
-```
-npm install
-```
+These can sometimes be useful to manipulate data while debugging in the browser.    
 
-Setup python environment and install dependencies:
 
-```
-virtualenv venv
+#### Database Migrations
 
-source venv/bin/activate     # or venv/bin/activate.fish or whatever
+To create a database migration, run the following command:
 
-pip install -r requirements.txt
-```
+    $ python manage.py db migrate
+    
+Then run the upgrade command
 
-Copy `.env.example` config file to `.env`:
+    $ python manage.py db upgrade
 
-```
-cp .env.example .env
-```
 
-Start PostgreSQL service if needed:
+#### Tests
 
-```
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-```
+To run the tests use the following command:
 
-Create database tables:
-
-```
-foreman run python server/initdb.py
-```
-
-Finally, start local server:
-
-```
-foreman start
-
-open http://localhost:3001
-```
-
-## What do we have here?
-
-- A basket of kittens 🐱
-- Simple Flask **API**, powered with [**Flask-RESTful**](https://flask-restful.readthedocs.org/en/0.3.3/), [**SQLAlchemy**](http://www.sqlalchemy.org/) and [**PostgreSQL**](http://www.postgresql.org/)
-- **UI**, powered with [**React**](http://facebook.github.io/react/), [**Babel**](https://babeljs.io/), [**Webpack**](http://webpack.github.io/) and [**React Hot Loader**](https://github.com/gaearon/react-hot-loader)
-
-## License
-
-Copyright 2015, Alexander Kuznetsov &lt;alexkuz@gmail.com&gt;
-
-This boilerplate is based on [**React Webpack Boilerplate**](https://github.com/srn/react-webpack-boilerplate): MIT © [Søren Brokær](http://srn.io)
+    $ nosetests
