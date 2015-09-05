@@ -1,7 +1,8 @@
 from sqlalchemy import and_, not_
 
 from ...core import db, Service, ServiceWithMem
-from ..models import Answer, Experiment, Validation, Question
+from .models import Validation, Question
+from ..models import Answer, Experiment
 from .memory import QuestionMem
 
 
