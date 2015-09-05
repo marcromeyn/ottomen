@@ -5,7 +5,7 @@ DEBUG = os.getenv('DEBUG', True)
 SECRET_KEY = 'secret_key'
 
 if os.environ.get('TRAVIS'):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@localhost/ottomen')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgres://postgres@localhost/ottomen')
 else:
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@postgres/ottomen')
 
