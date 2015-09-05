@@ -1,4 +1,4 @@
-id,question_id,experiment_id,malware,timestamp
+id,question_id,experiment_id,label,timestamp
 1,1,0,f,
 2,2,0,f,
 3,3,0,f,

@@ -1,11 +1,11 @@
-import os
-import pytest
-
-from ottomen.factory import create_app
-from ottomen.core import db as _db
-from ottomen.resources.models import Experiment, Question, Label, Validation
 import datetime
 import csv
+import sys
+
+import pytest
+from ottomen.web.api import create_app
+from ottomen.core import db as _db
+from ottomen.resources.models import Experiment, Question, Label, Validation
 
 TEST_DATABASE_URI = 'postgres://postgres:turkturk@localhost:5432/mturk_test'
 
@@ -14,8 +14,8 @@ TEST_DATABASE_URI = 'postgres://postgres:turkturk@localhost:5432/mturk_test'
 def app(request):
     """Session-wide test `Flask` application."""
     settings_override = {
-        'TESTING': True,
-        'SQLALCHEMY_DATABASE_URI': TEST_DATABASE_URI
+        'TESTING': True
+        # 'SQLALCHEMY_DATABASE_URI': TEST_DATABASE_URI
     }
     app = create_app(settings_override)
 
@@ -39,7 +39,7 @@ def db(app, request):
 
     _db.init_app(app)
     _db.create_all()
-    _db.engine.raw_connection().connection.text_factory = str
+    # _db.engine.raw_connection().connection.text_factory = str
 
     connection = _db.engine.connect()
     options = dict(bind=connection)
@@ -71,8 +71,9 @@ def session(db, request):
 
 def populate_db(session):
     print 'starting db populate....'
+    print sys.path
     # experiments
-    with open('experiment.csv', 'r+') as csvfile:
+    with open('/code/tests/fixtures/experiment.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             exp = Experiment(**row)
@@ -82,7 +83,7 @@ def populate_db(session):
             session.add(exp)
 
     # questions
-    with open('question.csv', 'r+') as csvfile:
+    with open('/code/tests/fixtures/question.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             q = Question(**row)
@@ -93,7 +94,7 @@ def populate_db(session):
 
     malwares = {}
     # malware
-    with open('malware.csv', 'r+') as csvfile:
+    with open('/code/tests/fixtures/label.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             mw = Label(**row)
@@ -102,26 +103,22 @@ def populate_db(session):
             malwares[row['id']] = mw
             session.add(mw)
 
-
     validations = {}
     # validations
-    with open('validation.csv', 'r+') as csvfile:
+    with open('/code/tests/fixtures/validation.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             val = Validation(**row)
-            val.label = row['malware'] == 't'
+            val.label = row['label'] == 't'
             val.timestamp = datetime.datetime.now()
             validations[row['id']] = val
             session.add(val)
 
     # validation_malwares
-    with open('validation_malware.csv', 'r+') as csvfile:
+    with open('/code/tests/fixtures/validation_label.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
-            validations[row['validation_id']].labels.append(malwares[row['malware_id']])
+            validations[row['validation_id']].labels.append(malwares[row['label_id']])
 
     session.commit()
     print 'complete'
-
-
-

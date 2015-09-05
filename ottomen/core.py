@@ -187,6 +187,9 @@ class ServiceWithMem(Service):
 
 
 class MemoryBase:
+    """
+    Base class for the abstraction on top of Redis
+    """
     def __getitem__(self, key):
         return self.get()[key]
 
