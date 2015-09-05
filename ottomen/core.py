@@ -5,9 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt import JWT
 from flask.ext.bouncer import Bouncer
 
+from walrus import *
 
 #: Flask-SQLAlchemy extension instance
 db = SQLAlchemy()
+
+# Init Redis
+mem = Database(host='redis', port=6379)
 
 #: Flask-Mail extension instance
 mail = Mail()
@@ -161,3 +165,29 @@ class Service(object):
         self._isinstance(model)
         db.session.delete(model)
         db.session.commit()
+
+
+class ServiceWithMem(Service):
+    def __getitem__(self, id):
+        return self.get_mem(id)
+
+    def get_mem(self, id):
+        pass
+
+    def new_mem(self, obj):
+        pass
+
+
+class MemoryBase:
+    def __getitem__(self, key):
+        return self.get()[key]
+
+    def __setitem__(self, key, value):
+        return self.get().update({key: value})
+
+    def get(self):
+        pass
+
+    @staticmethod
+    def new(obj):
+        pass
