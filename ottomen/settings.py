@@ -4,7 +4,11 @@ PORT = os.getenv('PORT', 5003)
 DEBUG = os.getenv('DEBUG', True)
 SECRET_KEY = 'secret_key'
 
-SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@postgres/ottomen')
+if os.environ.get('TRAVIS'):
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@localhost/ottomen')
+else:
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@postgres/ottomen')
+
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://redis:6379/0')
 
 MAIL_DEFAULT_SENDER = 'test@example.com'
