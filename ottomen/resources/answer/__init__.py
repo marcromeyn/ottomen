@@ -1,1 +1,1 @@
-from .service import AnswerService, OutputService
+from .service import AnswerService, LabelService

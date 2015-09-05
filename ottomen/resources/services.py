@@ -1,5 +1,5 @@
 from .accounts import AccountsService
-from .answer import AnswerService, OutputService
+from .answer import AnswerService, LabelService
 from .experiment import ExperimentService
 from .question import QuestionService, ValidationService
 from .session import SessionService
@@ -8,7 +8,7 @@ from .worker import WorkerService
 
 experiments = ExperimentService()
 answers = AnswerService()
-outputs = OutputService()
+labels = LabelService()
 questions = QuestionService()
 accounts = AccountsService()
 sessions = SessionService()
