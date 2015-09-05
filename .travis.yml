@@ -1,0 +1,16 @@
+language: python
+python:
+  - "2.7"
+install: pip install -r requirements.txt
+addons:
+  postgresql: "9.3"
+services:
+  - redis-server
+env:
+  - SQL_DBNAME=ottomen SQL_USER=docker SQL_PASS=docker TRAVIS=true
+before_script:
+  - psql -c 'create database ottomen;' -U postgres
+  - python manage.py db upgrade
+notifications:
+  slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
+script: py.test -v
