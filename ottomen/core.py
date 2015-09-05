@@ -63,20 +63,17 @@ class Service(object):
         kwargs.pop('longitude', None)
         return kwargs
 
-    def save(self, models):
+    def save(self, *args):
         """Commits the models to the database and returns the models
 
         :param models: the models to save
         """
-        if not models:
-            return
-
-        for model in models:
+        for model in args:
             self._isinstance(model)
             db.session.add(model)
         db.session.commit()
 
-        return models
+        return args
 
     def all(self):
         """Returns a generator containing all instances of the service's model.

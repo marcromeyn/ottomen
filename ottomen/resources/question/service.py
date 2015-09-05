@@ -19,14 +19,14 @@ class QuestionService(ServiceWithMem):
     def new_mem(self, exp_id, question):
         return QuestionMem.new(exp_id, question)
 
-    def get_unanswered_consensus(self, exp_id, turk_id, amount):
+    def get_unanswered_consensus(self, exp_id, worker_id, amount):
         # from ..services import answers, validations
 
         val_q_subquery = validations.filter(Validation.experiment_id == exp_id).subquery()
         questions = self.query() \
             .join(val_q_subquery, Question.validations) \
             .filter(db.not_(Question.id.in_(
-            answers.filter(Answer.turk_id == turk_id).all()))).limit(amount).all()
+            answers.filter(Answer.worker_id == worker_id).all()))).limit(amount).all()
 
         return [q.as_dict(exp_id) for q in questions]
 

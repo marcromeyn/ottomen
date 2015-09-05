@@ -5,9 +5,9 @@ class ExperimentMem(MemoryBase):
     def __init__(self, exp_id):
         self.exp_id = exp_id
 
-    # def get_questions_turk(self, turk_id, amount):
-    #     turk = Turk(self.exp_id, turk_id)
-    #     past_questions = turk.past_question_ids()
+    # def get_questions_worker(self, worker_id, amount):
+    #     worker = worker(self.exp_id, worker_id)
+    #     past_questions = worker.past_question_ids()
     #     unique_id = uuid.uuid4()
     #     question_ids = self.question_ids().diffstore(unique_id, past_questions).random(amount)
     #
@@ -63,23 +63,23 @@ class ExperimentMem(MemoryBase):
     def control_question_ids(self):
         return mem.Set("experiment.%s.control_question_ids" % self.exp_id)
 
-    def turks_active_ids(self):
-        return mem.Set("experiment.%s.active_turks" % self.exp_id)
+    def workers_active_ids(self):
+        return mem.Set("experiment.%s.active_workers" % self.exp_id)
 
-    def turks_sorted_tw_pos(self):
-        return mem.ZSet("experiment.%s.turks_sorted_tw_pos" % self.exp_id)
+    def workers_sorted_tw_pos(self):
+        return mem.ZSet("experiment.%s.workers_sorted_tw_pos" % self.exp_id)
 
-    def turks_sorted_tw_neg(self):
-        return mem.ZSet("experiment.%s.turks_sorted_tw_neg" % self.exp_id)
+    def workers_sorted_tw_neg(self):
+        return mem.ZSet("experiment.%s.workers_sorted_tw_neg" % self.exp_id)
 
     def is_completed(self):
         return len(self.question_ids()) == 0
 
     def delete(self):
-        # TODO: delete questions + turks
+        # TODO: delete questions + workers
         self.question_ids().clear()
         self.control_question_ids().clear()
-        self.turks_active_ids().clear()
-        self.turks_sorted_tw_pos().clear()
-        self.turks_sorted_tw_neg().clear()
+        self.workers_active_ids().clear()
+        self.workers_sorted_tw_pos().clear()
+        self.workers_sorted_tw_neg().clear()
         self.get().clear()
