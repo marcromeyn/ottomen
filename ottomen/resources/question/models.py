@@ -15,19 +15,21 @@ class Question(QuestionJsonSerializer, ResourceMixin, db.Model):
     in_progress = db.Column(db.Boolean, default=False)
     text = db.Column(db.String)
 
-validation_output = db.Table("validation_output",
-                         db.Column("validation_id", db.Integer, db.ForeignKey("validation.id")),
-                         db.Column("output_id", db.Integer, db.ForeignKey("output.id")))
+
+validation_output = db.Table("validation_label",
+                             db.Column("validation_id", db.Integer, db.ForeignKey("validation.id")),
+                             db.Column("label_id", db.Integer, db.ForeignKey("label.id")))
 
 
 class Validation(db.Model):
     __tablename__ = "validation"
+
     id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey("question.id"))
     experiment_id = db.Column(db.Integer, db.ForeignKey("experiment.id"))
-    output = db.Column(db.Boolean)
+    label = db.Column(db.Boolean)
     timestamp = db.Column(db.DateTime)
 
-    outputs = db.relationship("Output", secondary=validation_output)
+    labels = db.relationship("Label", secondary=validation_output)
     experiment = db.relationship("Experiment", foreign_keys=[experiment_id], backref="validations")
     question = db.relationship("Question", foreign_keys=[question_id], backref="validations")

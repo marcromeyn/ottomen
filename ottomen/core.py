@@ -172,6 +172,10 @@ class Service(object):
 
 
 class ServiceWithMem(Service):
+    """
+    A service that also contains
+    """
+
     def __getitem__(self, id):
         return self.get_mem(id)
 
