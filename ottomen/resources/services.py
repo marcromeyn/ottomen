@@ -6,11 +6,11 @@ from .session import SessionService
 from .task import TaskService
 from .worker import WorkerService
 
-accounts = AccountsService()
+experiments = ExperimentService()
 answers = AnswerService()
 outputs = OutputService()
-experiments = ExperimentService()
 questions = QuestionService()
+accounts = AccountsService()
 sessions = SessionService()
 tasks = TaskService()
 validations = ValidationService()

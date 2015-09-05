@@ -2,7 +2,6 @@ from sqlalchemy import and_, not_
 
 from ...core import db, Service, ServiceWithMem
 from ..models import Answer, Experiment, Validation, Question
-from ..services import answers, validations
 from .memory import QuestionMem
 
 
@@ -20,13 +19,17 @@ class QuestionService(ServiceWithMem):
         return QuestionMem.new(exp_id, question)
 
     def get_unanswered_consensus(self, exp_id, worker_id, amount):
-        # from ..services import answers, validations
+        from ..services import answers, validations
 
         val_q_subquery = validations.filter(Validation.experiment_id == exp_id).subquery()
         questions = self.query() \
             .join(val_q_subquery, Question.validations) \
-            .filter(db.not_(Question.id.in_(
-            answers.filter(Answer.worker_id == worker_id).all()))).limit(amount).all()
+            .filter(
+                db.not_(
+                    Question.id.in_(answers.filter(Answer.worker_id == worker_id).all())
+                )
+            )\
+            .limit(amount).all()
 
         return [q.as_dict(exp_id) for q in questions]
 
@@ -60,6 +63,8 @@ class QuestionService(ServiceWithMem):
         return [q.as_dict(exp_id) for q in questions]
 
     def get_control_positive(self, exp_id, amount):
+        from ..services import validations
+
         val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, Validation.malware)). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
@@ -68,6 +73,8 @@ class QuestionService(ServiceWithMem):
         return [q.as_dict(exp_id) for q in questions]
 
     def get_control_negative(self, exp_id, amount):
+        from ..services import validations
+
         val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, not_(Validation.malware))). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
