@@ -11,7 +11,7 @@ def new_experiment(id, accuracy, description='', end_date=None, set_limit=400, s
     experiments.save(exp)
     exp_mem = experiments.new_mem(exp.to_json())
     set_questions(exp, set_sizes, question_ids)
-    initialize_sets(exp, set_limit)
+    initialize_sets(exp_mem, set_limit)
 
     return exp_mem
 

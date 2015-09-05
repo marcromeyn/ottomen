@@ -5,8 +5,9 @@
 # from backend.worker import update_worker
 # from backend.question import update_questions
 
-from ..resources.services import answers, experiments, questions, tasks, workers
-from ..resources.models import Experiment, Session, Question, Validation, Worker
+from ..core import db
+from ..resources.services import answers, experiments, questions, sessions, tasks, validations, workers
+from ..resources.models import Answer, Experiment, Session, Question, Validation, Worker
 from .worker import update_worker
 from .question import update_questions
 
@@ -45,11 +46,11 @@ def start_session(worker_id, task_id=1000):
     session.worker_id = worker_id
     session.task_id = task_id
     try:
-        db_session.add(session)
-        db_session.add(worker)
-        db_session.commit()
+        sessions.save(False, session)
+        workers.save(False, worker)
+        db.session.commit()
     except IntegrityError:
-        db_session.rollback()
+        db.session.rollback()
         return {"session": {'completed': 'True', 'banned': 'True'}}
     if exp_id is None:
         return None
@@ -134,8 +135,8 @@ def update_sets(exp_id, validated_questions):
     # set the new questions to be in progress
     for question in new_questions:
         question.in_progress = True
-        db_session.add(question)
-    db_session.commit()
+        questions.save(False, question)
+    db.session.commit()
 
     if len(new_questions) > 0:
         exp = experiments[exp_id]
@@ -168,14 +169,14 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
             except TypeError:
                 val.malware = False
 
-        db_session.add(val)
+        validations.save(False, val)
 
         for answer in question['answers']:
             pg_ans = Answer(timestamp=datetime.datetime.now())
             pg_ans.worker_id = pg_worker.id
             pg_ans.malwares = val.malwares
             pg_ans.question_id = pg_q.id
-            db_session.add(pg_ans)
+            answers.save(pg_ans)
 
         questions.get_mem(exp_id, question['id']).delete()
 
@@ -184,9 +185,9 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         exp = experiments.filter(Experiment.id == exp_id).first()
         exp_mem['completed'] = True
         exp.completed = True
-        db_session.add(exp)
+        experiments.save(False, exp)
 
-    db_session.commit()
+    db.session.commit()
 
 
 # this method clears the answers of this session from Redis

@@ -63,7 +63,7 @@ class Service(object):
         kwargs.pop('longitude', None)
         return kwargs
 
-    def save(self, *args):
+    def save(self, commit=True, *args):
         """Commits the models to the database and returns the models
 
         :param models: the models to save
@@ -71,7 +71,8 @@ class Service(object):
         for model in args:
             self._isinstance(model)
             db.session.add(model)
-        db.session.commit()
+        if commit:
+            db.session.commit()
 
         return args
 
