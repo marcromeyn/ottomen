@@ -30,7 +30,5 @@ pycrypto==2.6.1
 pytz==2014.4
 redis==2.10.1
 requests==2.3.0
-redis
 walrus
 airbrake-flask
-blinker

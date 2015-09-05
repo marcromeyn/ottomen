@@ -1,5 +1,3 @@
-import datetime
-
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt import JWT
@@ -65,15 +63,20 @@ class Service(object):
         kwargs.pop('longitude', None)
         return kwargs
 
-    def save(self, model):
-        """Commits the model to the database and returns the model
+    def save(self, models):
+        """Commits the models to the database and returns the models
 
-        :param model: the model to save
+        :param models: the models to save
         """
-        self._isinstance(model)
-        db.session.add(model)
+        if not models:
+            return
+
+        for model in models:
+            self._isinstance(model)
+            db.session.add(model)
         db.session.commit()
-        return model
+
+        return models
 
     def all(self):
         """Returns a generator containing all instances of the service's model.
@@ -166,6 +169,9 @@ class Service(object):
         db.session.delete(model)
         db.session.commit()
 
+    def query(self):
+        return self.__model__.query
+
 
 class ServiceWithMem(Service):
     def __getitem__(self, id):
@@ -189,5 +195,5 @@ class MemoryBase:
         pass
 
     @staticmethod
-    def new(obj):
+    def new(*args):
         pass
