@@ -5,6 +5,7 @@ from ottomen.core import db
 from .factories import AccountFactory
 from .utils import FlaskTestCaseMixin
 from ottomen.resources import services
+from .populate_db import populate_db
 
 
 class ProjectTestCase(TestCase):
@@ -16,8 +17,9 @@ class ProjectAppTestCase(FlaskTestCaseMixin, ProjectTestCase):
         raise NotImplementedError
 
     def _create_fixtures(self):
-        self.account = AccountFactory()
-        services.accounts.save(self.account)
+        # self.account = AccountFactory()
+        # services.accounts.save(self.account)
+        populate_db(db.session)
 
     def setUp(self):
         super(ProjectAppTestCase, self).setUp()
