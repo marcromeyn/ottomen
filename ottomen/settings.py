@@ -1,13 +1,13 @@
 import os
 
-PORT = os.getenv('PORT', 5003)
+PORT = os.getenv('PORT', 5004)
 DEBUG = os.getenv('DEBUG', True)
 SECRET_KEY = 'secret_key'
 
 if os.environ.get('TRAVIS'):
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgres://postgres@localhost/ottomen')
 else:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@postgres/ottomen')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://docker:docker@db/ottomen')
 
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://redis:6379/0')
 

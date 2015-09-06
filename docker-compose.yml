@@ -2,7 +2,7 @@ web:
   build: .
   command: gulp
   ports:
-   - "5000:5003"
+   - "5000:5004"
    - "3000:3000"
    - "3001:3001"
   expose:
@@ -13,11 +13,12 @@ web:
    - .:/code
   links:
    - redis
-   - postgres:postgres
+   - db:db
+   - dbtest:dbtest
 
 #nginx:
 #  restart: always
-#  build: ./nginx/
+#  build: ./docker/nginx/
 #  ports:
 #    - "80:80"
 #  volumes:
@@ -30,9 +31,9 @@ web:
 redis:
   image: redis
   ports:
-    - "5002:6379"
+    - "5001:6379"
 
-postgres:
+db:
   restart: always
   image: postgres:latest
   environment:
@@ -40,6 +41,18 @@ postgres:
     POSTGRES_PASSWORD: docker
     POSTGRES_USER: docker
   volumes:
-    - ~/Projects/ottomen/migrations:/var/lib/postgresql
+    - ~/Projects/ottomen/migrations/db:/var/lib/postgresql
   ports:
-    - "5001:5432"
+    - "5002:5432"
+
+dbtest:
+  restart: always
+  image: postgres:latest
+  environment:
+    POSTGRES_DB: ottomen
+    POSTGRES_PASSWORD: docker
+    POSTGRES_USER: docker
+  volumes:
+    - ~/Projects/ottomen/migrations/db_test:/var/lib/postgresql
+  ports:
+    - "5003:5432"
