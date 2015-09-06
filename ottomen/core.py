@@ -1,7 +1,7 @@
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt import JWT
-from flask.ext.bouncer import Bouncer
+# from flask_jwt import JWT
+# from flask.ext.bouncer import Bouncer
 
 from walrus import *
 
@@ -14,9 +14,9 @@ mem = Database(host='redis', port=6379)
 #: Flask-Mail extension instance
 mail = Mail()
 
-jwt = JWT()
-
-bouncer = Bouncer()
+# jwt = JWT()
+#
+# bouncer = Bouncer()
 
 
 class ApplicationError(Exception):

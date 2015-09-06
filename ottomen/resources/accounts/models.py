@@ -12,5 +12,6 @@ class Account(AccountJsonSerializer, ResourceMixin, db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True, index=True)
+    username = db.Column(db.String(255), unique=True, index=True)
     password = db.Column(db.String(255))
     is_admin = db.Column(db.Boolean, default=False)

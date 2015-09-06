@@ -6,7 +6,7 @@ from flask import Flask
 from flask_jwt import current_user
 from bouncer.constants import *
 
-from .core import db, mail, jwt, bouncer
+from .core import db
 from .helpers import register_blueprints, check_password
 from .web.middleware import HTTPMethodOverrideMiddleware
 from .resources.services import accounts
@@ -30,45 +30,46 @@ def create_app(package_name, package_path, settings_override=None, register_secu
     app.config.from_object(settings_override)
 
     db.init_app(app)
-    mail.init_app(app)
-    jwt.init_app(app)
-    bouncer.init_app(app)
+    # mail.init_app(app)
+    # jwt.init_app(app)
+    # bouncer.init_app(app)
 
-    @jwt.authentication_handler
-    def authenticate(username, password):
-        account = accounts.first(email=username)
-        print('here')
-        if not account:
-            return None
+    # @jwt.authentication_handler
+    # def authenticate(username, password):
+    #     account = accounts.first(email=username)
+    #     print('here')
+    #     if not account:
+    #         return None
+    #
+    #     if not check_password(password, account.password):
+    #         return None
+    #
+    #     return account
+    #
+    # @jwt.user_handler
+    # def load_user(payload):
+    #     return accounts.get(payload['account_id'])
+    #
+    # @jwt.payload_handler
+    # def make_payload(account):
+    #     exp = datetime.datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
+    #     return {
+    #         'account_id': account.id,
+    #         'exp': exp.strftime(app.config['JSON_DATETIME_FORMAT'])
+    #     }
 
-        if not check_password(password, account.password):
-            return None
-
-        return account
-
-    @jwt.user_handler
-    def load_user(payload):
-        return accounts.get(payload['account_id'])
-
-    @jwt.payload_handler
-    def make_payload(account):
-        exp = datetime.datetime.utcnow() + app.config['JWT_EXPIRATION_DELTA']
-        return {
-            'account_id': account.id,
-            'exp': exp.strftime(app.config['JSON_DATETIME_FORMAT'])
-        }
-
-    @bouncer.authorization_method
-    def define_authorization(user, they):
-        if user.is_admin:
-            they.can(MANAGE, ALL)
-        else:
-            they.can(READ, 'Account')
-            they.can(EDIT, 'Account', lambda a: a.id == user.id)
-
-    @bouncer.user_loader
-    def get_current_user():
-        return current_user
+    # @bouncer.authorization_method
+    # def define_authorization(user, they):
+    #     if user.is_admin:
+    #         they.can(MANAGE, ALL)
+    #     else:
+    #         # they.can(READ, 'Account')
+    #         # they.can(EDIT, 'Account', lambda a: a.id == user.id)
+    #         they.can(MANAGE, ALL)
+    #
+    # @bouncer.user_loader
+    # def get_current_user():
+    #     return current_user
 
     register_blueprints(app, package_name, package_path)
 
