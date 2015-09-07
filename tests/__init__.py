@@ -9,8 +9,13 @@ from . import settings
 
 
 class OttomenTestCase(TestCase):
-    pass
+    @classmethod
+    def setUpClass(cls):
+        pass
 
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
 class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
     # def setUp(self):
@@ -19,27 +24,31 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
     # def tearDown(self):
     #     super(ProjectAppTestCase, self).tearDown()
 
+    @classmethod
     def _create_app(self):
         return create_app(settings, register_security_blueprint=True)
 
+    @classmethod
     def _create_fixtures(self):
         # self.account = AccountFactory()
         # services.accounts.save(self.account)
         populate_db(db.session)
 
-    def setUp(self):
-        super(OttomenAppTestCase, self).setUp()
-        self.app = self._create_app()
-        self.client = self.app.test_client()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
+    @classmethod
+    def setUpClass(cls):
+        super(OttomenAppTestCase, cls).setUpClass()
+        cls.app = cls._create_app()
+        cls.client = cls.app.test_client()
+        cls.app_context = cls.app.app_context()
+        cls.app_context.push()
         db.create_all()
 
-    def tearDown(self):
-        super(OttomenAppTestCase, self).tearDown()
+    @classmethod
+    def tearDownClass(cls):
+        super(OttomenAppTestCase, cls).tearDownClass()
         db.session.commit()
         db.drop_all()
-        self.app_context.pop()
+        cls.app_context.pop()
 
     def db_session(self):
         session = db.create_scoped_session()
