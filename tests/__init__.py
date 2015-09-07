@@ -8,11 +8,11 @@ from .utils import FlaskTestCaseMixin
 from . import settings
 
 
-class ProjectTestCase(TestCase):
+class OttomenTestCase(TestCase):
     pass
 
 
-class ProjectAppTestCase(FlaskTestCaseMixin, ProjectTestCase):
+class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
     # def setUp(self):
     #     super(ProjectAppTestCase, self).setUp()
     #
@@ -28,7 +28,7 @@ class ProjectAppTestCase(FlaskTestCaseMixin, ProjectTestCase):
         populate_db(db.session)
 
     def setUp(self):
-        super(ProjectAppTestCase, self).setUp()
+        super(OttomenAppTestCase, self).setUp()
         self.app = self._create_app()
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
@@ -38,7 +38,7 @@ class ProjectAppTestCase(FlaskTestCaseMixin, ProjectTestCase):
         self._create_fixtures()
 
     def tearDown(self):
-        super(ProjectAppTestCase, self).tearDown()
+        super(OttomenAppTestCase, self).tearDown()
         db.session.commit()
         db.drop_all()
         self.app_context.pop()

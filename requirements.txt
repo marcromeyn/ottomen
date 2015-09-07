@@ -33,3 +33,4 @@ redis==2.10.1
 requests==2.3.0
 walrus
 airbrake-flask
+sure

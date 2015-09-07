@@ -3,12 +3,12 @@ import json
 from werkzeug.test import Headers, Client
 
 from ottomen.web.api import create_app
-from .. import ProjectAppTestCase, settings
+from .. import OttomenAppTestCase, settings
 
 
-class ProjectApiTestCase(ProjectAppTestCase):
+class OttomenApiTestCase(OttomenAppTestCase):
     def setUp(self):
-        super(ProjectApiTestCase, self).setUp()
+        super(OttomenApiTestCase, self).setUp()
         # self.token = self._login()
 
     def send_get_request(self, endpoint):
