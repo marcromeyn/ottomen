@@ -44,5 +44,10 @@ class TaskResourceTestCase(OttomenResourceTestCase):
     def test_new_mem(self):
         task_db = create_task()
         task_mem = tasks.new_mem(task_db.to_json())
-        # task_db.id.should.be.equal(task_mem['task_id'])
-        # a = 5
+        task_mem.get()['id'].should.be.equal(task_db.id)
+
+    def test_access_experiment(self):
+        task_db = create_task()
+        exp_mem = experiments.new_mem(task_db.experiment.to_json())
+        task_mem = tasks.new_mem(task_db.to_json())
+        int(task_mem.experiment()['id']).should.be.equal(task_db.experiment_id)
