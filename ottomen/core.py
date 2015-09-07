@@ -77,7 +77,7 @@ class Service(object):
         if commit:
             db.session.commit()
 
-        return args
+        return [arg for arg in args] if len(args) > 1 else args[0]
 
     def all(self):
         """Returns a generator containing all instances of the service's model.
@@ -145,7 +145,7 @@ class Service(object):
         :param **kwargs: instance parameters
         """
         model = self.new(**kwargs)
-        model.created_at = datetime.datetime.utcnow()
+        model.created_at = datetime.datetime.now()
         return self.save(self.new(**kwargs))
 
     def update(self, model, **kwargs):
