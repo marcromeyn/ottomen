@@ -10,7 +10,7 @@ def test():
     return "test"
 
 
-@route(bp, methods=['POST'])
+@route(bp, '/', methods=['POST'])
 def start():
     json = request.get_json(force=True)
     # Validation of the input data

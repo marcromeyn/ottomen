@@ -33,9 +33,7 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
         self.client = self.app.test_client()
         self.app_context = self.app.app_context()
         self.app_context.push()
-        db.drop_all()
         db.create_all()
-        self._create_fixtures()
 
     def tearDown(self):
         super(OttomenAppTestCase, self).tearDown()

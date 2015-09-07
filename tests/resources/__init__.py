@@ -1,8 +1,3 @@
-import json
-
-from werkzeug.test import Headers, Client
-
-from ottomen.web.api import create_app
 from .. import OttomenAppTestCase, settings
 
 
