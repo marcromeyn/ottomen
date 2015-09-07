@@ -1,14 +1,21 @@
 import datetime
 import csv
 import sys
+import os
 
 from ottomen.resources.models import Experiment, Question, Label, Validation
 
 
 def populate_db(session):
+    if not os.environ.get('TRAVIS') or not os.environ.get('LOCAL'):
+        base = os.path.dirname(os.path.abspath(__file__))
+        path = base + '/fixtures/'
+    else:  # For Docker
+        path = '/code/tests/fixtures/'
+
     print 'starting db populate....'
     # experiments
-    with open('/code/tests/fixtures/experiment.csv', 'r+') as csvfile:
+    with open(path + 'experiment.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             exp = Experiment(**row)
@@ -18,7 +25,7 @@ def populate_db(session):
             session.add(exp)
 
     # questions
-    with open('/code/tests/fixtures/question.csv', 'r+') as csvfile:
+    with open(path + 'question.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             q = Question(**row)
@@ -29,7 +36,7 @@ def populate_db(session):
 
     malwares = {}
     # malware
-    with open('/code/tests/fixtures/label.csv', 'r+') as csvfile:
+    with open(path + 'label.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             mw = Label(**row)
@@ -40,7 +47,7 @@ def populate_db(session):
 
     validations = {}
     # validations
-    with open('/code/tests/fixtures/validation.csv', 'r+') as csvfile:
+    with open(path + 'validation.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             val = Validation(**row)
@@ -50,7 +57,7 @@ def populate_db(session):
             session.add(val)
 
     # validation_malwares
-    with open('/code/tests/fixtures/validation_label.csv', 'r+') as csvfile:
+    with open(path + 'validation_label.csv', 'r+') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             validations[row['validation_id']].labels.append(malwares[row['label_id']])
