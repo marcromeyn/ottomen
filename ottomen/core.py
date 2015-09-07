@@ -1,5 +1,6 @@
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
+from .settings import REDIS_CONFIGURATION
 # from flask_jwt import JWT
 # from flask.ext.bouncer import Bouncer
 
@@ -9,7 +10,7 @@ from walrus import *
 db = SQLAlchemy()
 
 # Init Redis
-mem = Database(host='redis', port=6379)
+mem = Database(**REDIS_CONFIGURATION)
 
 #: Flask-Mail extension instance
 mail = Mail()
