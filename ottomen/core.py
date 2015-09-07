@@ -173,6 +173,8 @@ class Service(object):
     def query(self):
         return self.__model__.query
 
+    def query_columns(self, *columns):
+        return self.__model__.query.with_entities(*columns)
 
 class ServiceWithMem(Service):
     """

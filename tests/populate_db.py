@@ -15,7 +15,7 @@ def populate_db(session):
 
     print 'starting db populate....'
     # experiments
-    with open(path + 'experiment.csv', 'r+') as csvfile:
+    with open(path + 'experiment.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             exp = Experiment(**row)
@@ -25,7 +25,7 @@ def populate_db(session):
             session.add(exp)
 
     # questions
-    with open(path + 'question.csv', 'r+') as csvfile:
+    with open(path + 'question.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             q = Question(**row)
@@ -36,7 +36,7 @@ def populate_db(session):
 
     malwares = {}
     # malware
-    with open(path + 'label.csv', 'r+') as csvfile:
+    with open(path + 'label.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             mw = Label(**row)
@@ -47,7 +47,7 @@ def populate_db(session):
 
     validations = {}
     # validations
-    with open(path + 'validation.csv', 'r+') as csvfile:
+    with open(path + 'validation.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             val = Validation(**row)
@@ -57,7 +57,7 @@ def populate_db(session):
             session.add(val)
 
     # validation_malwares
-    with open(path + 'validation_label.csv', 'r+') as csvfile:
+    with open(path + 'validation_label.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             validations[row['validation_id']].labels.append(malwares[row['label_id']])

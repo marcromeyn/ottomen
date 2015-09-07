@@ -18,36 +18,59 @@ def new_experiment(id, accuracy, description='', end_date=None, set_limit=400, s
 
 def set_questions(exp, set_sizes, question_ids):
     if question_ids is None or len(question_ids) == 0:
-        control_qs = validations.filter(Validation.experiment_id == base_experiment_id).all()
-
-        # positive examples
-        question_set = questions.filter(
-            and_(
-                Question.belief,
-                and_(
-                    not_(Question.in_progress),
-                    not_(Question.id.in_(control_qs))
-                )
-            ))\
-            .limit(set_sizes).all()
-
-        # negative examples
-        question_set.extend(questions.filter(
-            and_(
-                not_(Question.belief),
-                and_(
-                    not_(Question.in_progress),
-                    not_(Question.id.in_(control_qs))
-                )
-            ))
-            .limit(set_sizes).all())
-
+        question_set = get_question_set(set_sizes)
     else:
-        question_set = questions.filter(Question.id.in_(question_ids)).all()
+        question_set = get_questions(question_ids)
+
     exp.questions.extend(question_set)
     experiments.save(exp)
 
     return exp
+
+
+def get_question_set(set_sizes):
+    control_q_ids = get_control_question_ids()
+
+    # positive examples
+    question_set = get_pos_question_set(set_sizes, control_q_ids)
+
+    # negative examples
+    question_set.extend(get_neg_question_set(set_sizes, control_q_ids))
+    return question_set
+
+
+def get_control_question_ids():
+    return [val.id for val in validations.query_columns(Validation.id)
+            .filter(Validation.experiment_id == base_experiment_id).all()]
+
+
+def get_pos_question_set(set_size, control_qs):
+    qs = questions.query().filter(
+        and_(
+            Question.belief,
+            and_(
+                not_(Question.in_progress),
+                not_(Question.id.in_(control_qs))
+            )
+        ))\
+        .limit(set_size).all()
+    return qs
+
+
+def get_neg_question_set(set_size, control_qs):
+    qs = questions.query().filter(
+        and_(
+            not_(Question.belief),
+            and_(
+                not_(Question.in_progress),
+                not_(Question.id.in_(control_qs))
+            )
+        )).limit(set_size).all()
+    return qs
+
+
+def get_questions(question_ids):
+    return questions.filter(Question.id.in_(question_ids)).all()
 
 
 def initialize_sets(exp, set_limit):

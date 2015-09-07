@@ -27,7 +27,7 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
         # services.accounts.save(self.account)
         populate_db(db.session)
 
-    def setUp(self):
+    def setUpClass(self):
         super(OttomenAppTestCase, self).setUp()
         self.app = self._create_app()
         self.client = self.app.test_client()
