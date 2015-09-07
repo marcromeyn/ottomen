@@ -19,7 +19,7 @@ else:
 if os.environ.get('TRAVIS'):
     REDIS_CONFIGURATION = {'host': 'localhost', 'port': 6379, 'db': 1}
 elif os.environ.get('LOCAL'):
-    REDIS_CONFIGURATION = {'host': 'dockerhost', 'port': 5003, 'db': 1}
+    REDIS_CONFIGURATION = {'host': 'dockerhost', 'port': 5005, 'db': 0}
 else:
     REDIS_CONFIGURATION = {'host': 'redis', 'port': 6379, 'db': 1}
 

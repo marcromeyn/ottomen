@@ -3,7 +3,7 @@ import csv
 import sys
 import os
 
-from ottomen.resources.models import Experiment, Question, Label, Validation
+from ottomen.resources.models import Experiment, Question, Label, Validation, Task
 
 
 def populate_db(session):
@@ -62,5 +62,12 @@ def populate_db(session):
         for row in reader:
             validations[row['validation_id']].labels.append(malwares[row['label_id']])
 
+    # experiments
+    with open(path + 'task.csv', 'rb') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter=',')
+        for row in reader:
+            task = Task(**row)
+            task.id = int(row['id'])
+            session.add(exp)
     session.commit()
     print 'complete'

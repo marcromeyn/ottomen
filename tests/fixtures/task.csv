@@ -1,0 +1,2 @@
+id,experiment_id,batch_size,nr_of_batches,size,initial_consensus,returning_consensus,minimum_mt_score,minimum_mt_submissions,reward,title,description,url
+1000,1000,10,5,50,30,10,0.949999999999999956,500,0.5,Malware classification,Malware classification,
