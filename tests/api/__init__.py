@@ -7,9 +7,6 @@ from .. import ProjectAppTestCase, settings
 
 
 class ProjectApiTestCase(ProjectAppTestCase):
-    def _create_app(self):
-        return create_app(settings, register_security_blueprint=True)
-
     def setUp(self):
         super(ProjectApiTestCase, self).setUp()
         # self.token = self._login()
