@@ -7,7 +7,9 @@ from .. import OttomenAppTestCase, settings
 
 
 class OttomenAlgorithmTestCase(OttomenAppTestCase):
-    def setUpClass(self):
-        super(OttomenAlgorithmTestCase, self).setUp()
-        self._create_fixtures()
+
+    @classmethod
+    def setUpClass(cls):
+        super(OttomenAlgorithmTestCase, cls).setUpClass()
+        cls._create_fixtures()
 
