@@ -42,4 +42,7 @@ class TaskResourceTestCase(OttomenResourceTestCase):
             tasks.get_or_404('10000000')
 
     def test_new_mem(self):
-        
+        task_db = create_task()
+        task_mem = tasks.new_mem(task_db.to_json())
+        # task_db.id.should.be.equal(task_mem['task_id'])
+        # a = 5

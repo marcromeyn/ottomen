@@ -9,5 +9,5 @@ class TaskService(ServiceWithMem):
     def get_mem(self, id):
         return TaskMem(id)
 
-    def new_mem(self, experiment):
-        return TaskMem.new(experiment)
+    def new_mem(self, task):
+        return TaskMem.new(task)
