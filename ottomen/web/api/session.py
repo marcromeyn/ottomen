@@ -26,7 +26,7 @@ def start():
     return jsonify(response)
 
 
-@route(bp, '<session_id>', methods=['PUT'])
+@route(bp, '/<session_id>', methods=['PUT'])
 def get_questions(session_id):
     json = request.get_json()
 
