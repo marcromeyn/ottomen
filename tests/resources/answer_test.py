@@ -35,7 +35,7 @@ class AnswerResourceTestCase(OttomenResourceTestCase):
 
     def test_malformed_model(self):
         with pytest.raises(TypeError):
-            exp = answers.new(description="A shitty description", accuracy=.7, not_there=5)
+            a = answers.new(description="A shitty description", accuracy=.7, not_there=5)
 
     def test_404(self):
         with pytest.raises(HTTPException):

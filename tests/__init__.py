@@ -17,6 +17,7 @@ class OttomenTestCase(TestCase):
     def tearDownClass(cls):
         pass
 
+
 class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
     # def setUp(self):
     #     super(ProjectAppTestCase, self).setUp()

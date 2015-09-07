@@ -35,8 +35,11 @@ class TaskResourceTestCase(OttomenResourceTestCase):
 
     def test_malformed_model(self):
         with pytest.raises(TypeError):
-            exp = tasks.new(description="A shitty description", accuracy=.7, not_there=5)
+            t = tasks.new(description="A shitty description", accuracy=.7, not_there=5)
 
     def test_404(self):
         with pytest.raises(HTTPException):
             tasks.get_or_404('10000000')
+
+    def test_new_mem(self):
+        
