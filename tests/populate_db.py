@@ -67,7 +67,6 @@ def populate_db(session):
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
             task = Task(**row)
-            task.id = int(row['id'])
-            session.add(exp)
+            session.add(task)
     session.commit()
     print 'complete'

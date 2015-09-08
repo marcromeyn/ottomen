@@ -33,3 +33,7 @@ body {
 .highlighter{
     background:yellow;
 }
+.highlighter:hover {
+  background:red;
+  cursor: pointer; cursor: hand;
+}

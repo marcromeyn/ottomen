@@ -30,9 +30,11 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
         return create_app(settings, register_security_blueprint=True)
 
     @classmethod
-    def _create_fixtures(self):
+    def _create_fixtures(cls):
         # self.account = AccountFactory()
         # services.accounts.save(self.account)
+        db.drop_all()
+        db.create_all()
         populate_db(db.session)
 
     @classmethod

@@ -9,15 +9,16 @@
             if (sel.getRangeAt) { // thats for FF
                 var range = sel.getRangeAt(0);
                 var contents = $(range.cloneContents());
-                var newNode = document.createElement("span");
-                newNode.setAttribute('class', 'highlighter');
+                var span = document.createElement("span");
+                span.setAttribute('onclick', 'removeHighlightText(this)');
+                span.setAttribute('class', 'highlighter');
                 if(contents.children('.highlighter').size() == 0){
-                  range.surroundContents(newNode);
+                  range.surroundContents(span);
                 }else{
                   var text = range.toString();
                   range.deleteContents();
-                  newNode.appendChild(document.createTextNode(text))
-                  range.insertNode(newNode);
+                  span.appendChild(document.createTextNode(text))
+                  range.insertNode(span);
                   $('span.highlighter:empty').remove()
                 }
 
@@ -36,15 +37,12 @@
                 flag = 1;
             }, false);
             element.addEventListener("mouseup", function (e) {
-                if (flag === 0) {
-                    console.log("click");
-                } else if (flag === 1) {
+                if (flag === 1) {
                     var target = $(e.target);
                     if(!target.hasClass("highlighter")){
                         getSelText();
-                    }else{
-                      window.getSelection().removeAllRanges();
                     }
+                    window.getSelection().removeAllRanges();
                 }
             }, false);
             element.addEventListener("dblclick", function (e) {

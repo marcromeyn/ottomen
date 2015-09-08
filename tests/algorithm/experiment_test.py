@@ -9,6 +9,14 @@ from ottomen.resources import services
 
 class ExperimentTestCase(OttomenAlgorithmTestCase):
 
+    def test_new_experiment(self):
+        exp = new_experiment(1001, .95, 'testing', None, 400, 1000, None)
+        exp.get()["id"].should.equal('1001')
+        len(exp.question_ids()).should.equal(800)
+        len(exp.control_question_ids()).should.be.greater_than(0)
+        (experiments.get(1001)).id.should.equal(1001)
+        experiments[1001].get()["id"].should.equal('1001')
+
     def test_get_control_questions(self):
         control_qs = get_control_question_ids()
         (len(control_qs)).should.be.greater_than(10)

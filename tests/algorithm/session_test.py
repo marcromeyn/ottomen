@@ -4,28 +4,48 @@ import sure
 from . import OttomenAlgorithmTestCase
 from ottomen.algorithm.experiment import *
 from ottomen.algorithm.session import *
+from ottomen.algorithm import globals
 
 class ExperimentTestCase(OttomenAlgorithmTestCase):
 
     def test_start_session_bad_worker(self):
         with pytest.raises(ApplicationError):
-            start_session([], 1000)
+            start_session([], '1000')
         with pytest.raises(ApplicationError):
-            start_session(12, 1000)
+            start_session(12, '1000')
         with pytest.raises(ApplicationError):
-            start_session(None, 1000)
+            start_session(None, '1000')
 
     def test_start_session_bad_task(self):
         with pytest.raises(ApplicationError):
             start_session("turkturk", None)
         with pytest.raises(ApplicationError):
-            start_session("turkturk", "bla")
+            start_session("turkturk", 1)
         with pytest.raises(ApplicationError):
             start_session("turkturk", 0.2)
 
-    # def test_start_session(self):
-    #     response = start_session("gayturkturk", 1000)
+    def test_start_session(self):
+        response = start_session("gayturkturk", '1000')
 
+        response.should.have.key("session")
+        response["session"].should.have.key("id")
+        response["session"].should.have.key("completed")
+        response["session"]["completed"].should.be(False)
+        response["session"].should.have.key("banned")
+        response["session"]["banned"].should.be(False)
+        response["session"].should.have.key("task_id")
+        response["session"].should.have.key("worker_id")
+        response["session"]["task_id"].should.equal('1000')
+        response["session"]["worker_id"].should.equal('gayturkturk')
+
+        len(response["questions"]).should.be(globals.TASK_BATCH_SIZE)
+        len(response["session"]["question_ids"]).should.be(globals.TASK_BATCH_SIZE)
+
+        for question in response["questions"]:
+            question.should.have.key("id")
+            question["id"].should.be.an(int)
+            question["text"].should.be.a(str)
+            question["text"].shouldnt.be.empty()
 
 
     # def test_start_session(self):
