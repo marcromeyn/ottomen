@@ -79,6 +79,8 @@ public, hidden or modified before being being passed to the JSON serializer.
         rv = dict()
         for key in public:
             rv[key] = getattr(self, key)
+            if key in other_models:
+                rv[key] = rv[key]
         for key, modifier in modifiers.items():
             value = getattr(self, key)
             rv[key] = modifier(value, self)

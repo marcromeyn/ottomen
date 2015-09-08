@@ -10,6 +10,7 @@ class TaskMem(MemoryBase):
 
     @staticmethod
     def new(task):
+        task = task.to_json()
         mem.set("task.%s.experiment_id" % task['id'], task['experiment_id'])
         mem.Hash("task.%s" % task['id']).update(task)
 
