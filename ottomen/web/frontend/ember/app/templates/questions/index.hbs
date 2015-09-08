@@ -39,4 +39,8 @@
 		$('[data-toggle="popover"]').popover()
 		$("#question").highlighter();
 	});
+	function removeHighlightText(elem){
+			$(elem).contents().unwrap();
+			$('#text')[0].normalize();
+	}
 </script>
