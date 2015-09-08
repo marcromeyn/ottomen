@@ -10,4 +10,12 @@ class ExperimentService(ServiceWithMem):
         return ExperimentMem(id)
 
     def new_mem(self, experiment):
-        return ExperimentMem.new(experiment)
+        self._isinstance(experiment)
+        exp_mem = ExperimentMem(experiment.id)
+        exp_mem.new(experiment)
+
+        return exp_mem
+
+    def update_mem(self, experiment):
+        new_exp = self.new(**experiment)
+        return self.new_mem(new_exp)

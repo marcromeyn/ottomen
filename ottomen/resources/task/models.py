@@ -2,9 +2,10 @@ from ...core import db
 from .. import ResourceMixin
 from ...helpers import JsonSerializer
 
+
 class TaskJsonSerializer(JsonSerializer):
-    # __json_public__ = ['id', 'belief', 'in_progress', 'text']
-    __json_othermodels__ = ['experiment']
+    __json_other_models__ = ['experiment', 'sessions']
+
 
 class Task(TaskJsonSerializer, ResourceMixin, db.Model):
     __tablename__ = "task"

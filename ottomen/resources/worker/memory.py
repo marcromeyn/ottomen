@@ -9,21 +9,15 @@ class WorkerMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        return mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
+        return self._parse_types(mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id)).as_dict())
 
-    def update(self, worker):
-        return self.get().update(worker)
-
-    @staticmethod
-    def new(experiment_id, worker):
+    def new(self, worker):
         from ..experiment import ExperimentMem
-        exp = ExperimentMem(experiment_id)
+        exp = ExperimentMem(self.exp_id)
         exp.workers_active_ids().add(worker['id'])
         exp.workers_sorted_tw_pos().add(worker['id'], worker['tw_pos'])
         exp.workers_sorted_tw_neg().add(worker['id'], worker['tw_neg'])
-        mem.Hash("experiment.%s.worker.%s" % (experiment_id, worker['id'])).update(worker)
-
-        return WorkerMem(experiment_id, worker['id'])
+        mem.Hash("experiment.%s.worker.%s" % (self.exp_id, worker['id'])).update(worker)
 
     def session_answer_ids(self, session_id):
         return mem.Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))

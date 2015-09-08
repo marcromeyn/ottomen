@@ -18,13 +18,11 @@ class ExperimentMem(MemoryBase):
         return self.get_questions(question_ids)
 
     def get(self):
-        return mem.Hash("experiment.%s" % self.exp_id)
+        return self._parse_types(mem.Hash("experiment.%s" % self.exp_id).as_dict())
 
-    @staticmethod
-    def new(experiment):
+    def new(self, experiment):
+        experiment = self._add_types(experiment.to_json(redis=True))
         mem.Hash("experiment.%s" % experiment['id']).update(experiment)
-
-        return ExperimentMem(experiment['id'])
 
     def get_question(self, question_id):
         return mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))

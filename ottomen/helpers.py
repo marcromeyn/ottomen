@@ -4,6 +4,7 @@ import importlib
 from flask import Blueprint
 from flask.json import JSONEncoder as BaseJSONEncoder
 import bcrypt
+from sqlalchemy.orm.collections import InstrumentedList
 
 from .settings import JSON_DATETIME_FORMAT
 
@@ -62,25 +63,30 @@ public, hidden or modified before being being passed to the JSON serializer.
     __json_public__ = None
     __json_hidden__ = None
     __json_modifiers__ = None
-    __json_othermodels__ = None
+    __json_other_models__ = None
 
     def get_field_names(self):
         for p in self.__mapper__.iterate_properties:
             yield p.key
 
-    def to_json(self, types=False):
+    def to_json(self, redis=False, exclude=[]):
         field_names = self.get_field_names()
 
         public = self.__json_public__ or field_names
         hidden = self.__json_hidden__ or []
-        other_models = self.__json_othermodels__ or []
+        other_models = self.__json_other_models__ or []
         modifiers = self.__json_modifiers__ or dict()
 
         rv = dict()
         for key in public:
-            rv[key] = getattr(self, key)
-            if key in other_models:
-                rv[key] = rv[key]
+            if key not in other_models and key not in exclude:
+                rv[key] = getattr(self, key)
+            elif not redis:
+                if type(getattr(self, key)) is InstrumentedList:
+                    for item in getattr(self, key):
+                        item.to_json()
+                else:
+                    getattr(self, key).to_json()
         for key, modifier in modifiers.items():
             value = getattr(self, key)
             rv[key] = modifier(value, self)

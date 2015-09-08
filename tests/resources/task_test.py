@@ -43,11 +43,44 @@ class TaskResourceTestCase(OttomenResourceTestCase):
 
     def test_new_mem(self):
         task_db = create_task()
-        task_mem = tasks.new_mem(task_db.to_json())
-        task_mem.get()['id'].should.be.equal(task_db.id)
+        task_mem = tasks.new_mem(task_db).get()
+        task_mem['id'].should.be.equal(task_db.id)
+        task_mem['experiment_id'].should.be.equal(task_db.experiment_id)
+        task_mem['batch_size'].should.be.equal(task_db.batch_size)
+        task_mem['nr_of_batches'].should.be.equal(task_db.nr_of_batches)
+        task_mem['size'].should.be.equal(task_db.size)
+        task_mem['initial_consensus'].should.be.equal(task_db.initial_consensus)
+        task_mem['returning_consensus'].should.be.equal(task_db.returning_consensus)
+        task_mem['minimum_mt_score'].should.be.equal(task_db.minimum_mt_score)
+        task_mem['minimum_mt_submissions'].should.be.equal(task_db.minimum_mt_submissions)
+        task_mem['reward'].should.be.equal(task_db.reward)
+        task_mem['title'].should.be.equal(task_db.title)
+        task_mem['description'].should.be.equal(task_db.description)
+        task_mem['url'].should.be.equal(task_db.url)
+        tasks.get_mem(task_db.id).get()['id'].should.be.equal(task_db.id)
 
-    def test_access_experiment(self):
+    def test_new_mem_malformed_model(self):
+        with pytest.raises(ValueError):
+            t = tasks.new_mem({'id': 'wrong_object'})
+
+    def test_update_mem(self):
         task_db = create_task()
-        exp_mem = experiments.new_mem(task_db.experiment.to_json())
-        task_mem = tasks.new_mem(task_db.to_json())
-        int(task_mem.experiment()['id']).should.be.equal(task_db.experiment_id)
+        task_mem = tasks.new_mem(task_db).get()
+        new_id = 'new_shitty_id'
+        task_mem['id'] = new_id
+        tasks.update_mem(task_mem)
+        tasks.get_mem(new_id).get()['id'].should.be.equal(new_id)
+
+    def test_update_mem_malformed_model(self):
+        task_db = create_task()
+        task_mem = tasks.new_mem(task_db).get()
+        task_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
+
+        with pytest.raises(TypeError):
+            tasks.update_mem(task_mem)
+
+    # def test_access_experiment(self):
+    #     task_db = create_task()
+    #     exp_mem = experiments.new_mem(task_db.experiment)
+    #     task_mem = tasks.new_mem(task_db)
+    #     int(task_mem.experiment()['id']).should.be.equal(task_db.experiment_id)

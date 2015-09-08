@@ -5,16 +5,13 @@ class TaskMem(MemoryBase):
     def __init__(self, task_id):
         self.task_id = task_id
 
-    def get(self):
-        return mem.Hash("task.%s" % self.task_id)
-
-    @staticmethod
-    def new(task):
-        task = task.to_json()
+    def new(self, task):
+        task = self._add_types(task.to_json(redis=True))
         mem.set("task.%s.experiment_id" % task['id'], task['experiment_id'])
         mem.Hash("task.%s" % task['id']).update(task)
 
-        return TaskMem(task['id'])
+    def get(self):
+        return self._parse_types(mem.Hash("task.%s" % self.task_id).as_dict())
 
     def experiment(self):
         from ..experiment import ExperimentMem

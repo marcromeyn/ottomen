@@ -8,7 +8,8 @@ experiment_question = db.Table("experiment_question",
 
 
 class ExperimentJsonSerializer(JsonSerializer):
-    __json_public__ = ['id', 'description', 'end_date', 'completed', 'accuracy', 'questions']
+    # __json_public__ = ['id', 'description', 'end_date', 'completed', 'accuracy', 'questions']
+    __json_other_models__ = ['questions', 'validations']
 
 
 class Experiment(ExperimentJsonSerializer, ResourceMixin, db.Model):

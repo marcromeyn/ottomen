@@ -146,7 +146,8 @@ class Service(object):
         """
         model = self.new(**kwargs)
         model.created_at = datetime.datetime.now()
-        return self.save(self.new(**kwargs))
+        # self._isinstance(model)
+        return self.save(model)
 
     def update(self, model, **kwargs):
         """Returns an updated instance of the service's model class.
@@ -186,10 +187,13 @@ class ServiceWithMem(Service):
         return self.get_mem(id)
 
     def get_mem(self, id):
-        pass
+        raise NotImplemented
 
     def new_mem(self, obj):
-        pass
+        raise NotImplemented
+
+    def update_mem(self, obj):
+        raise NotImplemented
 
 
 class MemoryBase:
@@ -203,8 +207,46 @@ class MemoryBase:
         return self.get().update({key: value})
 
     def get(self):
-        pass
+        raise NotImplemented
 
-    @staticmethod
-    def new(*args):
-        pass
+    def new(self, model):
+        raise NotImplemented
+
+    def update(self, model):
+        raise NotImplemented
+
+    def _add_types(self, model):
+        not_str = {key: value for key, value in model.iteritems() if type(value) is not str}
+        for key, value in not_str.iteritems():
+            val_type = type(value)
+            if val_type is int:
+                model['_type_' + key] = 'int'
+            elif val_type is float:
+                model['_type_' + key] = 'float'
+            elif val_type is long:
+                model['_type_' + key] = 'long'
+            elif val_type is bool:
+                model['_type_' + key] = 'bool'
+            elif val_type is datetime:
+                model['_type_' + key] = 'datetime'
+
+        return model
+
+    def _parse_types(self, model):
+        types = {key: value for key, value in model.iteritems() if key.startswith('_type_')}
+        for key, val_type in types.iteritems():
+            tkey = key[6:]
+            model.pop(key, None)
+            if val_type == 'int':
+                model[tkey] = int(model[tkey])
+            elif val_type == 'float':
+                model[tkey] = float(model[tkey])
+            elif val_type == 'long':
+                model[tkey] = long(model[tkey])
+            elif val_type == 'bool':
+                model[tkey] = True if model[tkey] == 'True' else False
+            elif val_type == 'datetime':
+                # TODO: Parse date from str
+                model[tkey] = model[tkey]
+
+        return model
