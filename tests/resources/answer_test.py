@@ -12,6 +12,9 @@ class AnswerResourceTestCase(OttomenResourceTestCase):
         It should be able to insert a answer in the database and successfully retrieve it
         """
         ans_db = create_answer()
+        ans_json = ans_db.to_json()
+        ans_types = ans_db.to_json(types=True)
+
         len(answers.all()).should.be.greater_than(0)
         answers.find(id=ans_db.id).shouldnt.be(None)
         answers.get(id=ans_db.id).shouldnt.be(None)

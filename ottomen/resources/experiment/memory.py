@@ -1,19 +1,21 @@
 from ...core import mem, MemoryBase
+import uuid
 
 
 class ExperimentMem(MemoryBase):
     def __init__(self, exp_id):
         self.exp_id = exp_id
 
-    # def get_questions_worker(self, worker_id, amount):
-    #     worker = worker(self.exp_id, worker_id)
-    #     past_questions = worker.past_question_ids()
-    #     unique_id = uuid.uuid4()
-    #     question_ids = self.question_ids().diffstore(unique_id, past_questions).random(amount)
-    #
-    #     # clear temporary set in Redis
-    #     mem.Set(unique_id).clear()
-    #     return self.get_questions(question_ids)
+    def get_questions_worker(self, worker_id, amount):
+        from ..services import workers
+        worker = workers.get_mem(self.exp_id, worker_id)
+        past_questions = worker.past_question_ids()
+        unique_id = uuid.uuid4()
+        question_ids = self.question_ids().diffstore(unique_id, past_questions).random(amount)
+
+        # clear temporary set in Redis
+        mem.Set(unique_id).clear()
+        return self.get_questions(question_ids)
 
     def get(self):
         return mem.Hash("experiment.%s" % self.exp_id)

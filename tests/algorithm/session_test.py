@@ -23,8 +23,8 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
         with pytest.raises(ApplicationError):
             start_session("turkturk", 0.2)
 
-    def test_start_session(self):
-        response = start_session("gayturkturk", 1000)
+    # def test_start_session(self):
+    #     response = start_session("gayturkturk", 1000)
 
 
 

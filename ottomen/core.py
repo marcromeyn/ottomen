@@ -176,6 +176,7 @@ class Service(object):
     def query_columns(self, *columns):
         return self.__model__.query.with_entities(*columns)
 
+
 class ServiceWithMem(Service):
     """
     A service that also contains

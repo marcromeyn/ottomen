@@ -10,4 +10,5 @@ class TaskService(ServiceWithMem):
         return TaskMem(id)
 
     def new_mem(self, task):
+        self._isinstance(task)
         return TaskMem.new(task)

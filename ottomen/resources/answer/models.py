@@ -8,7 +8,7 @@ answer_label = db.Table("answer_label",
 
 
 class AnswerJsonSerializer(JsonSerializer):
-    __json_public__ = ['id', 'timestamp', 'question', 'outputs', 'worker']
+    __json_public__ = ['id', 'timestamp', 'question', 'labels', 'worker']
 
 
 class Answer(AnswerJsonSerializer, ResourceMixin, db.Model):
