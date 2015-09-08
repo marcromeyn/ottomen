@@ -20,9 +20,6 @@ def start_session(worker_id, task_id=1000):
     if worker_id is None or not isinstance(worker_id, str):
         raise ApplicationError("Invalid worker_id")
 
-    if task_id is None or not isinstance(task_id, int):
-        raise ApplicationError("Invalid task_id")
-
     worker_res = workers.filter(Worker.id == worker_id)
 
     # Update from database
@@ -33,6 +30,9 @@ def start_session(worker_id, task_id=1000):
 
     # check if experiment is completed
     task = tasks[task_id]
+    if task_id is None or not isinstance(task_id, str) or task is None:
+        raise ApplicationError("Invalid task_id")
+
     exp_id = task['experiment_id']
 
     if worker.banned:
@@ -45,11 +45,11 @@ def start_session(worker_id, task_id=1000):
     session = Session(timestamp=datetime.datetime.now())
     session.worker_id = worker_id
     session.task_id = task_id
-    sessions.save(False, session)
-    workers.save(False, worker)
+    sessions.save(session, commit=False)
+    workers.save(worker, commit=False)
     db.session.commit()
 
-    worker_mem = workers.new_mem(exp_id, worker.as_dict())
+    worker_mem = workers.new_mem(exp_id, worker.to_json())
 
     (enough_questions, question_set) = assign_questions(worker_mem, task, session.id)
 
@@ -78,7 +78,7 @@ def assign_questions(worker, task, session_id):
     exp_questions = list(exp.get_questions_worker(worker['id'], questions_left))
     question_set.extend(exp_questions)
 
-    if len(questions) < 20:
+    if len(question_set) < 20:
         return False, question_set
     else:
         worker.ask(session_id, question_set)

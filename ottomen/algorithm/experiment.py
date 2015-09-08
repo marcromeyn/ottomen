@@ -15,7 +15,6 @@ def new_experiment(id, accuracy, description='', end_date=None, set_limit=400, s
 
     return exp_mem
 
-
 def set_questions(exp, set_sizes, question_ids):
     if question_ids is None or len(question_ids) == 0:
         question_set = get_question_set(set_sizes)
@@ -74,14 +73,14 @@ def get_questions(question_ids):
 
 
 def initialize_sets(exp, set_limit):
-    positive_set = [positive.as_dict(exp.id) for positive in questions.get_positive(exp.id, set_limit)]
-    negative_set = [negative.as_dict(exp.id) for negative in questions.get_negative(exp.id, set_limit)]
+    positive_set = [positive.to_json() for positive in questions.get_positive(exp['id'], set_limit)]
+    negative_set = [negative.to_json() for negative in questions.get_negative(exp['id'], set_limit)]
 
     # get control set from base experiment id
     control_set = questions.get_control(base_experiment_id, set_limit)
 
     # Saving the sets to Redis
-    exp = experiments[exp.id]
+    exp = experiments[exp['id']]
     exp.add_questions(positive_set)
     exp.add_questions(negative_set)
     if len(control_set) > 0:

@@ -32,18 +32,20 @@ class QuestionService(ServiceWithMem):
             )\
             .limit(amount).all()
 
-        return [q.as_dict(exp_id) for q in questions]
+        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
+
 
     def get_positive(self, exp_id, amount):
         positive_set = self \
-            .filter(and_(Question.experiments.any(Experiment.id == exp_id),
+            .query().filter(and_(Question.experiments.any(Experiment.id == exp_id),
                          and_(Question.belief, not_(Question.in_progress)))) \
             .limit(amount).all()
 
         return positive_set
 
     def get_negative(self, exp_id, amount, exp=None):
-        negative_set = self.filter(and_(Question.experiments.any(Experiment.id == exp_id),
+        negative_set = self.\
+            query().filter(and_(Question.experiments.any(Experiment.id == exp_id),
                                         and_(not_(Question.belief), not_(Question.in_progress)))) \
             .limit(amount).all()
 
@@ -61,24 +63,34 @@ class QuestionService(ServiceWithMem):
             .join(val_q_subquery, Question.validations) \
             .limit(amount).all()
 
-        return [q.as_dict(exp_id) for q in questions]
+        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
 
     def get_control_positive(self, exp_id, amount):
         from ..services import validations
 
-        val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, Validation.malware)). \
+        val_q_subquery = validations.query().filter(and_(Validation.experiment_id == exp_id, Validation.label)). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()
 
-        return [q.as_dict(exp_id) for q in questions]
+        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
 
     def get_control_negative(self, exp_id, amount):
         from ..services import validations
 
-        val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, not_(Validation.malware))). \
+        val_q_subquery = validations.query().filter(and_(Validation.experiment_id == exp_id, not_(Validation.label))). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()
 
-        return [q.as_dict(exp_id) for q in questions]
+        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
+
+    @staticmethod
+    def get_json_with_validation_info(question, exp_id):
+        json = question.to_json()
+        validations = [x for x in question.validations if x.experiment_id == int(exp_id)]
+        if len(validations) > 0:
+            json['labels'] = [label.name for label in validations[0].labels]
+            json['label'] = validations[0].label
+        json['validated'] = len(validations) > 0
+        return json
