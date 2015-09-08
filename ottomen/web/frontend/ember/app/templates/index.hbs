@@ -1,0 +1,67 @@
+<div id="container">
+  <div id="ad">
+    <div class="row">
+      <div class="col-xs-2">
+        <!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
+        <!--<img id="adlogo" src="{{ server_location }}/static/images/university.png" alt="Lab Logo" />-->
+      </div>
+      <div class="col-xs-10">
+
+        <!--
+            If assignmentid is "ASSIGNMENT_ID_NOT_AVAILABLE"
+            it means the participant has NOT accepted your hit.
+            This should display the typical advertisement about
+            your experiment: who can participate, what the
+            payment is, the time, etc...
+
+          -->
+        {{#if task_id }}
+
+        <!--
+              OTHERWISE
+              If assignmentid is NOT "ASSIGNMENT_ID_NOT_AVAILABLE"
+              it means the participant has accepted your hit.
+              You should thus show them instructions to begin the
+              experiment ... usually a button to launch a new browser
+              window pointed at your server.
+
+              It is important you do not change the code for the
+              openwindow() function below if you want you experiment
+              to work.
+            -->
+        <h1>Thank you for accepting this HIT!</h1>
+        <p>
+          By clicking the following URL link, you will be taken to the experiment, including complete instructions.
+        </p>
+        <div class="alert alert-warning">
+          <b>Warning</b>: In each HIT we incorporate some questions to which we already know the answer, so that we can evaluate the trustworthiness of every worker. After completing this set of questions we will evaluate your answers, if they dont meet our standards you will be banned from participating again and this hit will be rejected.
+        </div>
+        <div class="alert alert-danger">
+          <strong>We are still in Beta so some errors could occur, if they do, please email us at ottomen.cleaning@gmail.com. We will do our best to accept all submissions made to our system.</strong>
+        </div>
+        {{#link-to 'instructions' class="btn btn-primary btn-lg" }} Instructions {{/link-to}}
+        {{#link-to 'questions.index' class="btn btn-success btn-lg continue" }}
+          Skip Instructions <span class="glyphicon glyphicon-arrow-right"></span>
+        {{/link-to}}
+
+        {{else}}
+
+        <h1>Call for participants</h1>
+        <p>
+          We are looking for online participants for a brief data classification experiment. The only requirements are that you are a fluent English speaker. The task should take around 10 minutes.
+        </p>
+        <div class="alert alert-danger">
+          <strong>If your test scores are low you could be banned from trying this task again</strong>
+        </div>
+        <p>
+          Please click the "Accept HIT" button on the Amazon site above to begin the task.
+        </p>
+
+        {{/if}}
+        <!--
+            endif
+          -->
+      </div>
+    </div>
+  </div>
+</div>

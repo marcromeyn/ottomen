@@ -1,0 +1,42 @@
+<div id="container-instructions">
+
+    <h1>Instructions</h1>
+
+    <hr>
+
+    <div class="instructions well">
+
+        <p>
+            This is the last page
+        </p>
+
+        <p>
+            You're going to start experiment now
+        </p>
+
+    </div>
+
+    <hr>
+
+    <div class="instructionsnav">
+        <div class="row">
+            <div class="col-xs-2">
+              <center>
+                {{#link-to 'instructions'class="btn btn-primary btn-lg" }}
+                  Previous <span class="glyphicon glyphicon-arrow-left"></span>
+                {{/link-to}}
+              </center>
+            </div>
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-2">
+              <center>
+                {{#link-to 'questions.index' class="btn btn-success btn-lg continue" }}
+                  Begin experiment <span class="glyphicon glyphicon-arrow-right"></span>
+                {{/link-to}}
+              </center>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,42 @@
+<div id="container-instructions">
+	<div class="nav">
+		<h1 class="nav navbar-nav navbar-left">You are done</h1>
+		<div class="navbar-right" style="padding-right:20px">
+			<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<p>Running into trouble?</p> <p>Please contact: <strong>ottomen.cleaning@gmail.com</strong></p>" data-html="true">
+  			Help
+			</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="instructions well">
+    You have finished the task click on submit to finilize the experiment.
+	</div>
+
+	<hr>
+
+
+    <div class="instructionsnav">
+        <div class="row">
+            <div class="col-xs-2">
+            	<!-- no previous button on first screen -->
+            </div>
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-2">
+              <form action={{worker_submit_to}}>
+                <input type="hidden" name="assignmentId" value={{task_id}}>
+                <input type="hidden" name="workerid" value={{worker_id}}>
+                <input type="submit" value="Submit" class="btn btn-primary btn-lg">
+              </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+	$(function () {
+		$('[data-toggle="popover"]').popover()
+	});
+</script>
