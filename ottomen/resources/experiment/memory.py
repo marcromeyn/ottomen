@@ -17,18 +17,24 @@ class ExperimentMem(MemoryBase):
         experiment = self.to_hash(experiment)
         mem.Hash("experiment.%s" % experiment['id']).update(experiment)
 
-    def get_question(self, question_id, new=False):
-        question = mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
-        if not question and not new:
+    def _get_question_hash(self, question_id):
+        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
+
+    def _get_control_question_hash(self, question_id):
+        return mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))
+
+    def get_question_json(self, question_id):
+        question = self._get_question_hash(question_id)
+        if not question:
             raise KeyError
 
-        return question
+        return self.parse_hash(question)
 
     def get_questions(self, ids):
-        return [self.get_question(question_id).as_dict() for question_id in ids]
+        return [self.get_question_json(question_id) for question_id in ids]
 
     def get_control_question(self, question_id):
-        c_question = mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))
+        c_question = self._get_control_question_hash(question_id)
         if not c_question:
             raise KeyError
 
@@ -51,14 +57,15 @@ class ExperimentMem(MemoryBase):
 
     def add_question(self, question, control=False):
         from ..services import questions
+        old = question
         if type(question) is dict:
             question = questions.new(**question)
             questions._isinstance(question)
         self.question_ids().add(question.id)
         if not control:
-            self.get_question(question.id).update(self.to_hash(question))
+            self._get_question_hash(question.id).update(self.to_hash(question))
         else:
-            self.get_control_question(question.id).update(self.to_hash(question))
+            self._get_control_question_hash(question.id).update(self.to_hash(question))
 
     def add_questions(self, question_list, control=False):
         for question in question_list:
