@@ -8,9 +8,6 @@ class WorkerMem(MemoryBase):
         self.worker_id = worker_id
         self.exp_id = exp_id
 
-    def _hash(self):
-        return mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
-
     def get(self):
         return self.parse_hash(self._hash())
 
@@ -21,7 +18,7 @@ class WorkerMem(MemoryBase):
         exp.workers_active_ids().add(worker['id'])
         exp.workers_sorted_tw_pos().add(worker['id'], worker['tw_pos'])
         exp.workers_sorted_tw_neg().add(worker['id'], worker['tw_neg'])
-        mem.Hash("experiment.%s.worker.%s" % (self.exp_id, worker['id'])).update(worker)
+        self._hash().update(worker)
 
     def add_answer(self, session_id, answer):
         from ..services import answers
@@ -33,13 +30,6 @@ class WorkerMem(MemoryBase):
                 answers._isinstance(answer)
 
             return self._answer_hash(session_id, answer['id']).update(answer)
-
-    def _answer_hash(self, session_id, answer_id):
-        return mem.Hash("experiment.%s.worker.%s.%s.answer.%s" % (self.exp_id, self.worker_id, session_id, answer_id))
-
-    def _control_question_hash(self, session_id, question_id):
-        return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
-                             (self.exp_id, self.worker_id, session_id, question_id))
 
     def get_answer(self, session_id, answer_id):
         return self.parse_hash(self._answer_hash(session_id, answer_id))
@@ -160,3 +150,13 @@ class WorkerMem(MemoryBase):
         self.next_question_ids().clear()
         self.past_question_ids().clear()
         self.get().clear()
+
+    def _hash(self):
+        return mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
+
+    def _answer_hash(self, session_id, answer_id):
+        return mem.Hash("experiment.%s.worker.%s.%s.answer.%s" % (self.exp_id, self.worker_id, session_id, answer_id))
+
+    def _control_question_hash(self, session_id, question_id):
+        return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
+                             (self.exp_id, self.worker_id, session_id, question_id))

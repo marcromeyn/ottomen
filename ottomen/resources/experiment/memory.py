@@ -7,21 +7,10 @@ class ExperimentMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        exp = self.parse_hash(mem.Hash("experiment.%s" % self.exp_id))
-        if not exp:
-            raise KeyError
-
-        return exp
+        return self.parse_hash(self._hash())
 
     def new(self, experiment):
-        experiment = self.to_hash(experiment)
-        mem.Hash("experiment.%s" % experiment['id']).update(experiment)
-
-    def _question_hash(self, question_id):
-        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
-
-    def _control_question_hash(self, question_id):
-        return mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))
+        self._hash().update(self.to_hash(experiment))
 
     def get_question_json(self, question_id):
         return self.parse_hash(self._question_hash(question_id))
@@ -59,7 +48,6 @@ class ExperimentMem(MemoryBase):
             self._control_question_hash(question.id).update(self.to_hash(question))
             self.control_question_ids().add(question.id)
 
-
     def add_questions(self, question_list, control=False):
         for question in question_list:
             self.add_question(question, control)
@@ -90,3 +78,12 @@ class ExperimentMem(MemoryBase):
         self.workers_sorted_tw_pos().clear()
         self.workers_sorted_tw_neg().clear()
         self.get().clear()
+
+    def _hash(self):
+        return mem.Hash("experiment.%s" % self.exp_id)
+
+    def _question_hash(self, question_id):
+        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
+
+    def _control_question_hash(self, question_id):
+        return mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))

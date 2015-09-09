@@ -7,15 +7,10 @@ class QuestionMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        question =  self._parse_types(mem.Hash("experiment.%s.question.%s" % (self.exp_id, self.question_id)).as_dict())
-        if not question:
-            raise KeyError
-
-        return question
+        return self.parse_hash(self._hash())
 
     def new(self, question):
-        question = self._add_types(question.to_json(redis=True))
-        mem.Hash("experiment.%s.question.%s" % (self.exp_id, question['id'])).update(question)
+        self._hash().update(self.to_hash(question))
 
     def answer_ids(self):
         return mem.Set("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
@@ -39,3 +34,6 @@ class QuestionMem(MemoryBase):
         to_del = [self.get_answer(answer_id).clear() for answer_id in self.answer_ids().members()]
         self.answer_ids().clear()
         self.get().clear()
+
+    def _hash(self):
+        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, self.question_id))
