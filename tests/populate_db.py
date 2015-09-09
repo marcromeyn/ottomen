@@ -28,8 +28,8 @@ def populate_db(session):
     with open(path + 'question.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
+            del row['id']
             q = Question(**row)
-            q.id = int(row['id'])
             q.in_progress = row['in_progress'] == 't'
             q.belief = row['belief'] == 't'
             session.add(q)
@@ -39,10 +39,11 @@ def populate_db(session):
     with open(path + 'label.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
+            id = row['id']
+            del row['id']
             mw = Label(**row)
-            mw.id = int(row['id'])
             mw.timestamp = datetime.datetime.now()
-            malwares[row['id']] = mw
+            malwares[id] = mw
             session.add(mw)
 
     validations = {}
@@ -50,10 +51,12 @@ def populate_db(session):
     with open(path + 'validation.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
         for row in reader:
+            id = row['id']
+            del row['id']
             val = Validation(**row)
             val.label = row['label'] == 't'
             val.timestamp = datetime.datetime.now()
-            validations[row['id']] = val
+            validations[id] = val
             session.add(val)
 
     # validation_malwares

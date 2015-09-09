@@ -15,7 +15,7 @@ class OttomenAlgorithmTestCase(OttomenAppTestCase):
         cls._create_fixtures()
         # create experiment and task in redis
         exp = experiments.get(1000)
-        experiments.new_mem(exp.to_json())
+        experiments.new_mem(exp)
         task = tasks.get('1000')
         tasks.new_mem(task)
 

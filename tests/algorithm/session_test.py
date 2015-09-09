@@ -9,20 +9,28 @@ from ottomen.algorithm import globals
 class ExperimentTestCase(OttomenAlgorithmTestCase):
 
     def test_start_session_bad_worker(self):
-        with pytest.raises(ApplicationError):
-            start_session([], '1000')
-        with pytest.raises(ApplicationError):
-            start_session(12, '1000')
-        with pytest.raises(ApplicationError):
-            start_session(None, '1000')
+        start_session.when.called_with([], '1000').should.throw(ApplicationError)
+        start_session.when.called_with(12, '1000').should.throw(ApplicationError)
+        start_session.when.called_with(None, '1000').should.throw(ApplicationError)
+        #
+        # with pytest.raises(ApplicationError):
+        #     start_session([], '1000')
+        # with pytest.raises(ApplicationError):
+        #     start_session(12, '1000')
+        # with pytest.raises(ApplicationError):
+        #     start_session(None, '1000')
 
     def test_start_session_bad_task(self):
-        with pytest.raises(ApplicationError):
-            start_session("turkturk", None)
-        with pytest.raises(ApplicationError):
-            start_session("turkturk", 1)
-        with pytest.raises(ApplicationError):
-            start_session("turkturk", 0.2)
+        start_session.when.called_with('turkturk', None).should.throw(ApplicationError)
+        start_session.when.called_with('turkturk', 1).should.throw(ApplicationError)
+        start_session.when.called_with('turkturk', 0.2).should.throw(ApplicationError)
+        #
+        # with pytest.raises(ApplicationError):
+        #     start_session("turkturk", None)
+        # with pytest.raises(ApplicationError):
+        #     start_session("turkturk", 1)
+        # with pytest.raises(ApplicationError):
+        #     start_session("turkturk", 0.2)
 
     def test_start_session(self):
         response = start_session("gayturkturk", '1000')
@@ -47,6 +55,8 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
             question["text"].should.be.a(str)
             question["text"].shouldnt.be.empty()
 
+
+    # def test_update_
 
     # def test_start_session(self):
     #     response = start_session("turkyturk", 1000)
