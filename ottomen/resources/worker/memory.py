@@ -9,75 +9,70 @@ class WorkerMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        worker = self._parse_types(mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id)).as_dict())
+        worker = mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
         if not worker:
             raise KeyError
 
-        return worker
+        return self.parse_hash(worker)
 
     def new(self, worker):
         from ..experiment import ExperimentMem
-        worker = self._add_types(worker.to_json(redis=True))
+        worker = self.to_hash(worker)
         exp = ExperimentMem(self.exp_id)
         exp.workers_active_ids().add(worker['id'])
         exp.workers_sorted_tw_pos().add(worker['id'], worker['tw_pos'])
         exp.workers_sorted_tw_neg().add(worker['id'], worker['tw_neg'])
         mem.Hash("experiment.%s.worker.%s" % (self.exp_id, worker['id'])).update(worker)
 
-    def session_answer_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
-
     def add_answer(self, session_id, answer):
+        from ..services import answers
         if not answer:
             return
         else:
-            return self.get_answer(session_id, answer['id']).update(answer)
+            if type(answer) is dict:
+                answer = answers.new(**answer)
+                answers._isinstance(answer)
 
-    def get_answer(self, session_id, answer_id):
+            return self._answer_hash(session_id, answer['id']).update(answer)
+
+    def _answer_hash(self, session_id, answer_id):
         return mem.Hash("experiment.%s.worker.%s.%s.answer.%s" % (self.exp_id, self.worker_id, session_id, answer_id))
 
+    def _control_question_hash(self, session_id, question_id):
+        return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
+                             (self.exp_id, self.worker_id, session_id, question_id))
+
+    def get_answer(self, session_id, answer_id):
+        return self.parse_hash(self._answer_hash(session_id, answer_id))
+
+    def get_control_question(self, session_id, question_id):
+        return self.parse_hash(self._control_question_hash(session_id, question_id))
+
     def session_answers(self, session_id):
-        return [self.get_answer(session_id, answer_id).as_dict()
+        return [self.get_answer(session_id, answer_id)
                 for answer_id in self.session_answer_ids(session_id).members()]
 
     def delete_answer(self, session_id, answer_id):
-        return self.get_answer(session_id, answer_id).clear()
-
-    def past_question_ids(self):
-        return mem.Set("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
-
-    def past_questions(self):
-        from ..experiment import ExperimentMem
-        return ExperimentMem(self.exp_id).get_questions(self.past_question_ids().members())
-
-    def next_question_ids(self):
-        return mem.Set("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
+        return self._answer_hash(session_id, answer_id).clear()
 
     def next_questions(self):
         from ..experiment import ExperimentMem
         return ExperimentMem(self.exp_id).get_questions(self.next_question_ids().members())
 
+    def past_questions(self):
+        from ..experiment import ExperimentMem
+        return ExperimentMem(self.exp_id).get_questions(self.past_question_ids().members())
+
     def next_session_questions(self, session_id):
         from ..experiment import ExperimentMem
         return ExperimentMem(self.exp_id).get_questions(self.next_session_question_ids(session_id))
-
-    def next_session_question_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
-
-    def get_control_question(self, session_id, question_id):
-        return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
-                             (self.exp_id, self.worker_id, session_id, question_id))
-
-    def control_question_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.control_question_ids" %
-                            (self.exp_id, self.worker_id, session_id))
 
     def add_control_questions(self, session_id, questions):
         if not questions:
             return
         self.control_question_ids(session_id).add(*[question['id'] for question in questions])
         for question in questions:
-           self.get_control_question(session_id, question['id']).update(question)
+            self.get_control_question(session_id, question['id']).update(question)
 
     def control(self, session_id):
         return [self.get_control_question(session_id, question_id).as_dict()
@@ -138,13 +133,29 @@ class WorkerMem(MemoryBase):
         shuffle(others)
         return others
 
-    def ask_global(self, questions):
-        return self.next_question_ids().add(*[question['id'] for question in questions])
-
     def ask(self, session_id, questions):
         self.next_session_question_ids(session_id).add(*[question['id'] for question in questions])
         control = [question for question in questions if str(question['validated']) == "True"]
         self.add_control_questions(session_id, control)
+
+    def ask_global(self, questions):
+        return self.next_question_ids().add(*[question['id'] for question in questions])
+
+    def session_answer_ids(self, session_id):
+        return mem.Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
+
+    def next_question_ids(self):
+        return mem.Set("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
+
+    def past_question_ids(self):
+        return mem.Set("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
+
+    def next_session_question_ids(self, session_id):
+        return mem.Set("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
+
+    def control_question_ids(self, session_id):
+        return mem.Set("experiment.%s.worker.%s.%s.control_question_ids" %
+                            (self.exp_id, self.worker_id, session_id))
 
     def delete(self):
         self.next_question_ids().clear()

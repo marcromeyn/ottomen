@@ -223,6 +223,9 @@ class MemoryBase:
         raise NotImplemented
 
     def parse_hash(self, hash):
+        if not hash:
+            raise KeyError
+
         return self._parse_types(hash.as_dict())
 
     def to_hash(self, model):
