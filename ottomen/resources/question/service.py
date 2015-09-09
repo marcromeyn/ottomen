@@ -39,12 +39,13 @@ class QuestionService(ServiceWithMem):
     def get_unanswered_consensus(self, exp_id, worker_id, amount):
         from ..services import answers, validations
 
-        val_q_subquery = validations.filter(Validation.experiment_id == exp_id).subquery()
+        val_q_subquery = validations.query()\
+            .filter(Validation.experiment_id == exp_id).subquery()
         questions = self.query() \
             .join(val_q_subquery, Question.validations) \
             .filter(
                 db.not_(
-                    Question.id.in_(answers.filter(Answer.worker_id == worker_id).all())
+                    Question.id.in_(answers.filter(Answer.worker_id == worker_id))
                 )
             )\
             .limit(amount).all()
@@ -54,7 +55,7 @@ class QuestionService(ServiceWithMem):
 
     def get_positive(self, exp_id, amount):
         positive_set = self \
-            .filter(and_(Question.experiments.any(Experiment.id == exp_id),
+            .query().filter(and_(Question.experiments.any(Experiment.id == exp_id),
                          and_(Question.belief, not_(Question.in_progress)))) \
             .limit(amount).all()
 
@@ -62,7 +63,7 @@ class QuestionService(ServiceWithMem):
 
     def get_negative(self, exp_id, amount, exp=None):
         negative_set = self \
-            .filter(and_(Question.experiments.any(Experiment.id == exp_id),
+            .query().filter(and_(Question.experiments.any(Experiment.id == exp_id),
                                         and_(not_(Question.belief), not_(Question.in_progress)))) \
             .limit(amount).all()
 
@@ -85,7 +86,8 @@ class QuestionService(ServiceWithMem):
     def get_control_positive(self, exp_id, amount):
         from ..services import validations
 
-        val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, Validation.label)). \
+        val_q_subquery = validations.query().\
+            filter(and_(Validation.experiment_id == exp_id, Validation.label)). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()
@@ -95,7 +97,8 @@ class QuestionService(ServiceWithMem):
     def get_control_negative(self, exp_id, amount):
         from ..services import validations
 
-        val_q_subquery = validations.filter(and_(Validation.experiment_id == exp_id, not_(Validation.label))). \
+        val_q_subquery = validations.\
+            query().filter(and_(Validation.experiment_id == exp_id, not_(Validation.label))). \
             subquery()
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()

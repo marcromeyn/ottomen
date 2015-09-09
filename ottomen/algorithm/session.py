@@ -49,7 +49,7 @@ def start_session(worker_id, task_id=1000):
     workers.save(worker, commit=False)
     db.session.commit()
 
-    worker_mem = workers.new_mem(exp_id, worker.to_json())
+    worker_mem = workers.new_mem(exp_id, worker)
 
     (enough_questions, question_set) = assign_questions(worker_mem, task, session.id)
 
@@ -167,8 +167,8 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         val.timestamp = datetime.datetime.now()
         val.question_id = pg_q.id
         val.experiment_id = exp_id
-        mws = eval(question['labels'])
-        val.labels = answers.save_or_get_labels(mws)
+        labels = eval(question['labels'])
+        val.labels = answers.save_or_get_labels(labels)
         val.label = len(val.malwares) > 0
         validations.save(False, val)
 

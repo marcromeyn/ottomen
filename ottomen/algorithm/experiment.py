@@ -1,7 +1,7 @@
 from sqlalchemy import not_, and_
 
-from ..resources.models import Question, Experiment, Validation
-from ..resources.services import questions, experiments, validations
+from ..resources.models import Question, Experiment, Validation, Task
+from ..resources.services import questions, experiments, validations, tasks
 
 base_experiment_id = 0
 
@@ -9,11 +9,19 @@ base_experiment_id = 0
 def new_experiment(id, accuracy, description='', end_date=None, set_limit=400, set_sizes=1000, question_ids=None):
     exp = Experiment(id=id, accuracy=accuracy, description=description, end_date=end_date)
     experiments.save(exp)
-    exp_mem = experiments.new_mem(exp.to_json())
+    exp_mem = experiments.new_mem(exp)
     set_questions(exp, set_sizes, question_ids)
     initialize_sets(exp_mem, set_limit)
 
     return exp_mem
+
+
+def new_task(id, exp_id, **kwargs):
+    task = Task(id=id, experiment_id=exp_id, **kwargs)
+    tasks.save(task)
+    task_mem = tasks.new_mem(task)
+    return task_mem
+
 
 def set_questions(exp, set_sizes, question_ids):
     if question_ids is None or len(question_ids) == 0:
