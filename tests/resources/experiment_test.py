@@ -52,6 +52,10 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         exp_mem['accuracy'].should.be.equal(exp_db.accuracy)
         experiments.get_mem_obj(exp_db.id).id.should.be.equal(exp_db.id)
 
+    def test_get_non_existing_mem(self):
+        with pytest.raises(KeyError):
+            exp_mem = experiments.get_mem_obj(100000000)
+
     def test_new_mem_malformed_model(self):
         with pytest.raises(TypeError):
             t = experiments.new_mem({'not_there': True})

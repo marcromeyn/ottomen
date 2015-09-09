@@ -59,6 +59,10 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         task_mem['url'].should.be.equal(task_db.url)
         tasks.get_mem_obj(task_db.id).id.should.be.equal(task_db.id)
 
+    def test_get_non_existing_mem(self):
+        with pytest.raises(KeyError):
+            t = tasks.get_mem_obj('not_there')
+
     def test_new_mem_malformed_model(self):
         with pytest.raises(TypeError):
             t = tasks.new_mem({'not_there': True})

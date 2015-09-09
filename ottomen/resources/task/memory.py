@@ -11,7 +11,11 @@ class TaskMem(MemoryBase):
         mem.Hash("task.%s" % task['id']).update(task)
 
     def get(self):
-        return self._parse_types(mem.Hash("task.%s" % self.task_id).as_dict())
+        task = self._parse_types(mem.Hash("task.%s" % self.task_id).as_dict())
+        if not task:
+            raise KeyError
+
+        return task
 
     def experiment(self):
         from ..experiment import ExperimentMem

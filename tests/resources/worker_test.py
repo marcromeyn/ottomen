@@ -58,6 +58,11 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
             exp_db = create_experiment()
             t = workers.new_mem(exp_db.id, {'not_there': True})
 
+    def test_get_non_existing_mem(self):
+        with pytest.raises(KeyError):
+            exp_db = create_experiment()
+            exp_mem = workers.get_mem_obj(exp_db.id, 'not_there')
+
     def test_update_mem(self):
         worker_db = create_worker()
         exp_db = create_experiment()

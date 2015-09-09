@@ -9,7 +9,11 @@ class WorkerMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        return self._parse_types(mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id)).as_dict())
+        worker = self._parse_types(mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id)).as_dict())
+        if not worker:
+            raise KeyError
+
+        return worker
 
     def new(self, worker):
         from ..experiment import ExperimentMem

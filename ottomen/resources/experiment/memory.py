@@ -18,7 +18,11 @@ class ExperimentMem(MemoryBase):
         return self.get_questions(question_ids)
 
     def get(self):
-        return self._parse_types(mem.Hash("experiment.%s" % self.exp_id).as_dict())
+        exp = self._parse_types(mem.Hash("experiment.%s" % self.exp_id).as_dict())
+        if not exp:
+            raise KeyError
+
+        return exp
 
     def new(self, experiment):
         experiment = self._add_types(experiment.to_json(redis=True))
