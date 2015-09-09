@@ -9,6 +9,9 @@ class WorkerService(ServiceWithMem):
     def get_mem(self, exp_id, id):
         return WorkerMem(exp_id, id)
 
+    def get_mem_obj(self, exp_id, id):
+        return WorkerMem(exp_id, id).get()
+
     def new_mem(self, exp_id, worker):
         self._isinstance(worker)
         worker_mem = WorkerMem(exp_id, worker.id)

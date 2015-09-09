@@ -13,6 +13,7 @@ class WorkerMem(MemoryBase):
 
     def new(self, worker):
         from ..experiment import ExperimentMem
+        worker = self._add_types(worker.to_json(redis=True))
         exp = ExperimentMem(self.exp_id)
         exp.workers_active_ids().add(worker['id'])
         exp.workers_sorted_tw_pos().add(worker['id'], worker['tw_pos'])

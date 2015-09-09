@@ -3,7 +3,7 @@ from ottomen.resources.services import *
 from werkzeug.exceptions import HTTPException
 import sure
 import pytest
-from helpers import create_worker
+from helpers import create_worker, create_experiment
 
 
 class WorkerResourceTestCase(OttomenResourceTestCase):
@@ -40,27 +40,38 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         with pytest.raises(HTTPException):
             workers.get_or_404('10000000')
 
-    # def test_new_mem(self):
-    #     worker_db = create_worker()
-    #     worker_mem = workers.new_mem(worker_db).get()
-    #
-    #
-    # def test_new_mem_malformed_model(self):
-    #     with pytest.raises(ValueError):
-    #         t = tasks.new_mem({'id': 'wrong_object'})
-    #
-    # def test_update_mem(self):
-    #     task_db = create_task()
-    #     task_mem = tasks.new_mem(task_db).get()
-    #     new_id = 'new_shitty_id'
-    #     task_mem['id'] = new_id
-    #     tasks.update_mem(task_mem)
-    #     tasks.get_mem(new_id).get()['id'].should.be.equal(new_id)
-    #
-    # def test_update_mem_malformed_model(self):
-    #     task_db = create_task()
-    #     task_mem = tasks.new_mem(task_db).get()
-    #     task_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
-    #
-    #     with pytest.raises(TypeError):
-    #         tasks.update_mem(task_mem)
+    def test_new_mem(self):
+        worker_db = create_worker()
+        exp_db = create_experiment()
+        worker_mem = workers.new_mem(exp_db.id, worker_db).get()
+        worker_mem['id'].should.be.equal(worker_db.id)
+        worker_mem['tw_pos'].should.be.equal(worker_db.tw_pos)
+        worker_mem['tw_neg'].should.be.equal(worker_db.tw_neg)
+        worker_mem['class_pos'].should.be.equal(worker_db.class_pos)
+        worker_mem['class_neg'].should.be.equal(worker_db.class_neg)
+        worker_mem['banned'].should.be.equal(worker_db.banned)
+        worker_mem['timestamp'].should.be.equal(worker_db.timestamp)
+        workers.get_mem_obj(exp_db.id, worker_mem['id'])['id'].should.be.equal(worker_db.id)
+
+    def test_new_mem_malformed_model(self):
+        with pytest.raises(ValueError):
+            exp_db = create_experiment()
+            t = workers.new_mem(exp_db.id, {'id': 'wrong_object'})
+
+    def test_update_mem(self):
+        worker_db = create_worker()
+        exp_db = create_experiment()
+        worker_mem = workers.new_mem(exp_db.id, worker_db).get()
+        new_id = 'new_shitty_id'
+        worker_mem['id'] = new_id
+        workers.update_mem(exp_db.id, worker_mem)
+        workers.get_mem_obj(exp_db.id, new_id)['id'].should.be.equal(new_id)
+
+    def test_update_mem_malformed_model(self):
+        worker_db = create_worker()
+        exp_db = create_experiment()
+        worker_mem = workers.new_mem(exp_db.id, worker_db).get()
+        worker_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
+
+        with pytest.raises(TypeError):
+            workers.update_mem(exp_db.id, worker_mem)

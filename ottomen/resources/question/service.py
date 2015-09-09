@@ -16,8 +16,19 @@ class QuestionService(ServiceWithMem):
     def get_mem(self, exp_id, question_id):
         return QuestionMem(exp_id, question_id)
 
+    def get_mem_obj(self, exp_id, question_id):
+        return QuestionMem(exp_id, question_id).get()
+
     def new_mem(self, exp_id, question):
-        return QuestionMem.new(exp_id, question)
+        self._isinstance(question)
+        ques_mem = QuestionMem.new(exp_id, question)
+        ques_mem.new(question)
+
+        return ques_mem
+
+    def update_mem(self, exp_id, question):
+        new_ques = self.new(**question)
+        return self.new_mem(exp_id, new_ques)
 
     def get_unanswered_consensus(self, exp_id, worker_id, amount):
         from ..services import answers, validations

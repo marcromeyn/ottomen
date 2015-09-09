@@ -1,3 +1,4 @@
+from types import NoneType
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from .settings import REDIS_CONFIGURATION
@@ -189,6 +190,9 @@ class ServiceWithMem(Service):
     def get_mem(self, id):
         raise NotImplemented
 
+    def get_mem_obj(self, id):
+        raise NotImplemented
+
     def new_mem(self, obj):
         raise NotImplemented
 
@@ -229,6 +233,8 @@ class MemoryBase:
                 model['_type_' + key] = 'bool'
             elif val_type is datetime:
                 model['_type_' + key] = 'datetime'
+            elif val_type is NoneType:
+                model['_type_' + key] = 'NoneType'
 
         return model
 
@@ -244,9 +250,19 @@ class MemoryBase:
             elif val_type == 'long':
                 model[tkey] = long(model[tkey])
             elif val_type == 'bool':
-                model[tkey] = True if model[tkey] == 'True' else False
+                if model[tkey] == 'True':
+                    model[tkey] = True
+                elif model[tkey] == 'None':
+                    model[tkey] = None
+                else:
+                    model[tkey] = False
             elif val_type == 'datetime':
                 # TODO: Parse date from str
-                model[tkey] = model[tkey]
+                if model[tkey] == 'None':
+                    model[tkey] = None
+                else:
+                    model[tkey] = model[tkey]
+            elif val_type == 'NoneType':
+                model[tkey] = None
 
         return model

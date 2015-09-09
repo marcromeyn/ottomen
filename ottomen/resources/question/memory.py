@@ -7,12 +7,11 @@ class QuestionMem(MemoryBase):
         self.exp_id = exp_id
 
     def get(self):
-        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, self.question_id))
+        return self._parse_types(mem.Hash("experiment.%s.question.%s" % (self.exp_id, self.question_id)).as_dict())
 
-    @staticmethod
-    def new(exp_id, question):
-        mem.Hash("experiment.%s.question.%s" % (exp_id, question['id'])).update(question)
-        return QuestionMem(exp_id, question['id'])
+    def new(self, question):
+        question = self._add_types(question.to_json(redis=True))
+        mem.Hash("experiment.%s.question.%s" % (self.exp_id, question['id'])).update(question)
 
     def answer_ids(self):
         return mem.Set("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))

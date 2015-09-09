@@ -9,6 +9,9 @@ class ExperimentService(ServiceWithMem):
     def get_mem(self, id):
         return ExperimentMem(id)
 
+    def get_mem_obj(self, id):
+        return ExperimentMem(id).get()
+
     def new_mem(self, experiment):
         self._isinstance(experiment)
         exp_mem = ExperimentMem(experiment.id)

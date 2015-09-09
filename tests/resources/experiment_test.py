@@ -50,7 +50,7 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         # exp_mem['end_date'].should.be.equal(exp_db.end_date)
         exp_mem['completed'].should.be.equal(exp_db.completed)
         exp_mem['accuracy'].should.be.equal(exp_db.accuracy)
-        experiments.get_mem(exp_db.id).get()['id'].should.be.equal(exp_db.id)
+        experiments.get_mem_obj(exp_db.id)['id'].should.be.equal(exp_db.id)
 
     def test_new_mem_malformed_model(self):
         with pytest.raises(ValueError):
