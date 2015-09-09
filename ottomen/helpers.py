@@ -5,6 +5,8 @@ from flask import Blueprint
 from flask.json import JSONEncoder as BaseJSONEncoder
 import bcrypt
 from sqlalchemy.orm.collections import InstrumentedList
+from .core import mem
+from walrus import containers
 
 from .settings import JSON_DATETIME_FORMAT
 
@@ -93,3 +95,16 @@ public, hidden or modified before being being passed to the JSON serializer.
         for key in hidden:
             rv.pop(key, None)
         return rv
+
+
+class Set(containers.Set):
+    def __init__(self, key, type='int'):
+        super(Set, self).__init__(mem, key)
+        self.type = type
+
+    def members(self, typed=True):
+        members = self.database.smembers(self.key)
+        if not typed:
+            return members
+        if self.type == 'int':
+            return [int(member) for member in members]

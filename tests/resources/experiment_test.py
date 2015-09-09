@@ -87,6 +87,5 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         question_mem['belief'].should.equal(question_db.belief)
         question_mem['in_progress'].should.equal(question_db.in_progress)
         question_mem['text'].should.equal(question_db.text)
-
-
-
+        exp_mem.question_ids().should.contain(question_db.id)
+        exp_mem.question_ids().members().should.contain(question_db.id)

@@ -1,5 +1,6 @@
 from ...core import mem, MemoryBase
 import uuid
+from ...helpers import Set
 
 
 class ExperimentMem(MemoryBase):
@@ -53,13 +54,13 @@ class ExperimentMem(MemoryBase):
             self.add_question(question, control)
 
     def question_ids(self):
-        return mem.Set("experiment.%s.question_ids" % self.exp_id)
+        return Set("experiment.%s.question_ids" % self.exp_id)
 
     def control_question_ids(self):
-        return mem.Set("experiment.%s.control_question_ids" % self.exp_id)
+        return Set("experiment.%s.control_question_ids" % self.exp_id)
 
     def workers_active_ids(self):
-        return mem.Set("experiment.%s.active_workers" % self.exp_id)
+        return Set("experiment.%s.active_workers" % self.exp_id)
 
     def workers_sorted_tw_pos(self):
         return mem.ZSet("experiment.%s.workers_sorted_tw_pos" % self.exp_id)
@@ -77,7 +78,7 @@ class ExperimentMem(MemoryBase):
         self.workers_active_ids().clear()
         self.workers_sorted_tw_pos().clear()
         self.workers_sorted_tw_neg().clear()
-        self.get().clear()
+        self._hash().clear()
 
     def _hash(self):
         return mem.Hash("experiment.%s" % self.exp_id)

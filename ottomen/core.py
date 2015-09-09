@@ -222,6 +222,12 @@ class MemoryBase:
     def update(self, model):
         raise NotImplemented
 
+    def parse_set(self, set, type):
+        if type == 'int':
+            return [int(member) for member in set.members()]
+        else:
+            raise NotImplemented
+
     def parse_hash(self, hash):
         if not hash:
             raise KeyError
