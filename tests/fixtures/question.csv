@@ -13,7 +13,7 @@ id,belief,in_progress,text
 51,t,f,QuickSurf Virus will display numerous fake infections of exaggerated security threats on your computer and then state that you should purchase the program in order to remove the infections.
 52,t,f,How To Remove Ads by QuickSurf Manually.
 53,t,f,My new system is infected by CostMin pop-up virus.
-3677,t,t,Czech banks targeted by Hesperbot
+3677,t,f,Czech banks targeted by Hesperbot
 156,t,f,Improved SSL protection to prevent latest injection trick by Capper banker Trojan.
 3515,t,f,Cryptowall _6_.bin 1316.
 54,t,f,"Ukash Virus , Federal Computer Crime Unit Virus , Cheshire Police Authority Virus , Police Rendőrség virus , Bundeskriminalamt virus , Policia Boliviana virus , Policia Federal Mexico Virus , Lebanese Internal Security Forces Virus , Abu Dhabi Police GHQ virus , Public Security Directorate virus , Spamhaus virus , Metropolitan Police Total Policing Ukash virus , Buma Stemra Politie PaySafeCard Virus , Tono ""Computer Locked"" Paysafecard Virus , Joint Chiefs of Staff Moneypak virus , FBI Cybercrime Division and ICSPA Moneypak virus , etc."
@@ -42,7 +42,7 @@ id,belief,in_progress,text
 91,t,f,"I need only mention incidents such as the Siberian gas pipeline, Stuxnet or Conflickr."
 92,t,f,"BlackWorm v2.1 has the same abilities as the original version and additional functionality, including bypassing UAC, disabling host firewalls and spreading over network shares, said FireEye."
 94,t,f,"#Cyber Weapon of Mass Destruction, the Blackhole Exploit Kit http://t.co/Gi8fWZoRYa."
-76,t,t,"If the Jokra packer is limited to the one group, then the connections between Backdoor.Prioxer and Trojan.Jokra are reliable."
+76,t,f,"If the Jokra packer is limited to the one group, then the connections between Backdoor.Prioxer and Trojan.Jokra are reliable."
 95,t,f,#Dridex Trojan Banks on MS Word Macros for Infection #malware http://t.co/qZOgv6rBfj via @TrendLabs #banking #security.
 96,t,f,@pressable now saying that their epic downtime was due to a “Slowloris” DOS attack.
 97,t,f,"A hacker's group with codename 'The Syrian Malware Team' or SMT is apparently having links with the wicked Syrian Electronic Army (SEA) and is launching a several cyber attacks employing the infamous BlackWorm Trojan, actually a Remote Access Trojan."
@@ -71,15 +71,15 @@ id,belief,in_progress,text
 130,t,f,"For example, Zemot specifically targets machines running Windows XP, which Microsoft no longer upgrades."
 132,t,f,"For example, the most recent version of the Gh0st malware, which is designed to steal sensitive data, has lately added in a repurposed version of the Russian-built DarKDdoser tool, which can steal any passwords stored in the Mozilla Firefox browser, as well as launch three flavors of distributed denial-of-service attacks -- UDP floods, SYN floods, and HTTP floods -- according to a blog post from Vinay Pidathala, a security content researcher at FireEye."
 4956,t,f,From the CryptoWall 3.0 sample:
-131,t,t,"For example, the Barkiofork sample 606a3279d855f122ea3b34b0eb40c33f is similarly configured:"
-109,t,t,"After activation on the victim's computer worm Rodpicom seeking processes active in the system for subsequent detection instant messaging services: Skype, Windows Messenger, Quite Internet Pager, GoogleTalk, Digsby."
-98,t,t,"A lot of malware impacts control systems, like Conficker or Slammer, said Joel Langill, security consultant and author of the SCADAhacker blog, referring to two computer worms that caused headaches for tens of thousands of people using Microsoft."
-104,t,t,According to the Composite Blocking List (CBL) the source of this latest round of stock spam is Slenfbot.
-125,t,t,F-Secure research places India as a centre for bonnets - as bot infecting viruses like Ramnit and Sality are rampant.
-123,t,t,"F-Secure dubbed it 'CosmicDuke' because it uses the same loader as MiniDuke, combined with the payload from the Cosmu family of information stealers."
-112,t,t,"As is the case with other botnets, the Hesperbot infected bot will establish a communication channel with its Command & Control server, said Lipovsky."
-108,t,t,"AceSpy completely records chat conversations, emails, web sites, MySpace and other Internet activity."
-113,t,t,"Backdoors detected with the Swisyn verdict are frequently a part of APT related toolchains, and this one most certainly is."
+131,t,f,"For example, the Barkiofork sample 606a3279d855f122ea3b34b0eb40c33f is similarly configured:"
+109,t,f,"After activation on the victim's computer worm Rodpicom seeking processes active in the system for subsequent detection instant messaging services: Skype, Windows Messenger, Quite Internet Pager, GoogleTalk, Digsby."
+98,t,f,"A lot of malware impacts control systems, like Conficker or Slammer, said Joel Langill, security consultant and author of the SCADAhacker blog, referring to two computer worms that caused headaches for tens of thousands of people using Microsoft."
+104,t,f,According to the Composite Blocking List (CBL) the source of this latest round of stock spam is Slenfbot.
+125,t,f,F-Secure research places India as a centre for bonnets - as bot infecting viruses like Ramnit and Sality are rampant.
+123,t,f,"F-Secure dubbed it 'CosmicDuke' because it uses the same loader as MiniDuke, combined with the payload from the Cosmu family of information stealers."
+112,t,f,"As is the case with other botnets, the Hesperbot infected bot will establish a communication channel with its Command & Control server, said Lipovsky."
+108,t,f,"AceSpy completely records chat conversations, emails, web sites, MySpace and other Internet activity."
+113,t,f,"Backdoors detected with the Swisyn verdict are frequently a part of APT related toolchains, and this one most certainly is."
 133,t,f,"For example, the one called Crilock is aimed mainly at computers in the U.S. and U.K. while Reveton aims at the likes of Spain, Belgium, Portugal, Hungary and Austria."
 134,t,f,"For example, the one called Crilock is aimed mostly at computers in the U.S. and U.K. while Reveton aims at the likes of Spain, Belgium, Portugal, Hungary and Austria."
 135,t,f,"For example, with just one heuristic record we detect around 600,000 variants of the WBNA worm !"
@@ -107,14 +107,14 @@ id,belief,in_progress,text
 169,t,f,"In an email to SCMagazine.com, Frederic Wolens, a spokesman for Facebook, said that the company is attempting to eliminate the threat through collaboration with researchers, and has been successful at blocking spam being sent by the Fifesock worm."
 170,t,f,In fact Nickispy sends out data without the user's knowledge.
 171,t,f,"In fact, FakeInst is known to have targeted users in Germany, France, Finland, Hong Kong, Ukraine, the U.K., Switzerland, Argentina, Spain, Poland, Canada, China, and many more nations."
-136,t,t,"For instance, take Shamoon, the targeted attack that crippled the oil and gas company Saudi Aramco for a week."
-149,t,t,"If you Google ""WhiteSmoke Virus"", hundreds of complaints about this thing come up."
-146,t,t,"I bet this Hesperbot is going to spread, said Peter Kruse, an IT security expert and founder of CSIS Security Group, based in Copenhagen, which does deep investigations into online crime for financial services companies."
-167,t,t,"In addition to overwriting the MBR on compromised computers, the Korhigh Trojan program can also wipe files with specific extensions, including executable files, libraries, Web pages, videos and images."
-145,t,t,"Hi, I believe the ransomware is known as Birele."
-163,t,t,"In a recent #phishing campaign, attackers used the recent POODLE security vulnerability to get users to download the NetWiredRC RAT #malware."
-140,t,t,FortiGuard Labs researchers have discovered a new malware called 'Rodpicom Botnet' that spreads via messaging applications such as Skype and MSN Messenger.
-153,t,t,"If you examine the top families, you'll spot the top offenders: Taterf, Rimecud, Conficker, and Autorun (a ""family"" that we detect with generic signatures based on Autorun propagation behaviors)."
+136,t,f,"For instance, take Shamoon, the targeted attack that crippled the oil and gas company Saudi Aramco for a week."
+149,t,f,"If you Google ""WhiteSmoke Virus"", hundreds of complaints about this thing come up."
+146,t,f,"I bet this Hesperbot is going to spread, said Peter Kruse, an IT security expert and founder of CSIS Security Group, based in Copenhagen, which does deep investigations into online crime for financial services companies."
+167,t,f,"In addition to overwriting the MBR on compromised computers, the Korhigh Trojan program can also wipe files with specific extensions, including executable files, libraries, Web pages, videos and images."
+145,t,f,"Hi, I believe the ransomware is known as Birele."
+163,t,f,"In a recent #phishing campaign, attackers used the recent POODLE security vulnerability to get users to download the NetWiredRC RAT #malware."
+140,t,f,FortiGuard Labs researchers have discovered a new malware called 'Rodpicom Botnet' that spreads via messaging applications such as Skype and MSN Messenger.
+153,t,f,"If you examine the top families, you'll spot the top offenders: Taterf, Rimecud, Conficker, and Autorun (a ""family"" that we detect with generic signatures based on Autorun propagation behaviors)."
 172,t,f,"In fact, domain names that have been used as Enfal command and control servers by separate, but possibly affiliated, attackers - assam2008.net, msnxy.net, sysroots.net, womanld.com, womannana.com, lookbyturns."
 173,t,f,"In recent (2014) reports Conficker has accounted for nearly 1/3 of the top 10 Internet threats detected, Gorup explains. The largest issue with this malware now is that it disables auto-updates and anti-virus (AV). To the user, all seems to be fine until the dozens of other infectious software take hold of the host. By then, it's too late for the user, as all control of his/her machine is lost to attackers around the world."
 174,t,f,"In response to the recent resurrection of the Srizbi botnet, an Estonian ISP has shut down the hosting company that was housing its new control servers."
@@ -145,14 +145,14 @@ id,belief,in_progress,text
 208,t,f,Kaspersky says Tyupkin Malware is used to steal from ATM machines.
 210,t,f,Kaspersky says Tyupkin malware is used to steal from ATM machines.
 212,t,f,"Kaspersky's TDSSKiller is an excellent tool to detect Rootkits such as TDSS, SST, Pihar, ZeroAccess, Sinowal, Whistler, Phanta, Trap, etc..."
-196,t,t,It was just a matter of time until the highly prolific gang behind the Reveton / IcePol network made a move on Android.
-178,t,t,"Instead of doing so, follow the removal instructions provided in our site to remove Linkular and any associated malware from your computer."
-193,t,t,It is suspected that computer hackers created Windows Defence Unit from the large family of FakeVimes malware applications.
-198,t,t,"Karagany is competent of uploading stolen information, downloading new-flanged files and running executable files on a tainted computer."
-186,t,t,Is this the Zwangi virus?
-211,t,t,"Kaspersky's @jorgemieres continues his analysis of the Jumcar malware, which targets Peru and Chile http://t.co/L4lfvFANVJ."
-184,t,t,Is this Zwangi virus?
-202,t,t,Kaspersky Lab now offers a removal tool for the Flashback/Flashfake trojan.
+196,t,f,It was just a matter of time until the highly prolific gang behind the Reveton / IcePol network made a move on Android.
+178,t,f,"Instead of doing so, follow the removal instructions provided in our site to remove Linkular and any associated malware from your computer."
+193,t,f,It is suspected that computer hackers created Windows Defence Unit from the large family of FakeVimes malware applications.
+198,t,f,"Karagany is competent of uploading stolen information, downloading new-flanged files and running executable files on a tainted computer."
+186,t,f,Is this the Zwangi virus?
+211,t,f,"Kaspersky's @jorgemieres continues his analysis of the Jumcar malware, which targets Peru and Chile http://t.co/L4lfvFANVJ."
+184,t,f,Is this Zwangi virus?
+202,t,f,Kaspersky Lab now offers a removal tool for the Flashback/Flashfake trojan.
 214,t,f,"Kingpin: how one hacker took over the billion-dollar Cybercrime underground, pou http://t.co/EvNLihVKy7 http://t.co/DD2pSoslWj."
 215,t,f,"Korhigh gathers information such as the operating system version, the computer's name and the current date from infected computers and uploads the data to remote servers, the researchers said."
 217,t,f,"Last May, security firm ESET found an older version of Sazoora that went out to users in Slovakia via a tax return spam scam."
@@ -188,16 +188,16 @@ id,belief,in_progress,text
 257,t,f,"On Oct. 30, five individuals were apprehended after developing Dougalek, malware that claimed to play movie clips but in actuality, like Enesoluty, stole contact information."
 258,t,f,"On the contrary, it helped to remove the dangerous Lovesan worm, also known as Blaster, from the system."
 259,t,f,"On the contrary, the Netsky worm would."
-213,t,t,"Kaspersky's continues his analysis of the Jumcar malware, which targets Peru and Chile  http://t.co/SdeswQHbRY."
-218,t,t,"Last year the Mariposa botnet when that got taken down, what was discovered was that it was trying to connect to 12 million unique IP addresses, and those are the number of, you know, unique IP addresses that were attempt to connect into the botnet."
-230,t,t,"MiniDuke attacks are back in force, says Kaspersky Lab."
-252,t,t,Of particular note is how these actors use a Remote Administration Tool (RAT) named NetWire (part of the NetWiredRC malware family).
-241,t,t,"Note: Jailbroken iPhones & iPads It is important to add here that iOS AdThief was used on jailbroken iPhones and iPads, Apvrille told FierceDeveloper , because it might offer some level of reassurance to developers.iOS/AdThief hijacks advertisement revenues and redirects them to accounts owned by the attackers."
-243,t,t,"Nov 14, Kaspersky identified a fifth group using this framework the Winnti group."
-221,t,t,Linux backdoor Fokirtor injects traffic into SSH protocol.
-232,t,t,"Months after Murofet appeared, ZeuS Tracker started to blacklist DGA domains used by Murofet as soon as they had been registered."
-216,t,t,"Kuluoz malware, fake USPS mail with link to download of ZIPfile, which includes an EXE with Word icon"
-256,t,t,On August 11th we started seeing the Rebot JavaScript malware string injected on various websites.
+213,t,f,"Kaspersky's continues his analysis of the Jumcar malware, which targets Peru and Chile  http://t.co/SdeswQHbRY."
+218,t,f,"Last year the Mariposa botnet when that got taken down, what was discovered was that it was trying to connect to 12 million unique IP addresses, and those are the number of, you know, unique IP addresses that were attempt to connect into the botnet."
+230,t,f,"MiniDuke attacks are back in force, says Kaspersky Lab."
+252,t,f,Of particular note is how these actors use a Remote Administration Tool (RAT) named NetWire (part of the NetWiredRC malware family).
+241,t,f,"Note: Jailbroken iPhones & iPads It is important to add here that iOS AdThief was used on jailbroken iPhones and iPads, Apvrille told FierceDeveloper , because it might offer some level of reassurance to developers.iOS/AdThief hijacks advertisement revenues and redirects them to accounts owned by the attackers."
+243,t,f,"Nov 14, Kaspersky identified a fifth group using this framework the Winnti group."
+221,t,f,Linux backdoor Fokirtor injects traffic into SSH protocol.
+232,t,f,"Months after Murofet appeared, ZeuS Tracker started to blacklist DGA domains used by Murofet as soon as they had been registered."
+216,t,f,"Kuluoz malware, fake USPS mail with link to download of ZIPfile, which includes an EXE with Word icon"
+256,t,f,On August 11th we started seeing the Rebot JavaScript malware string injected on various websites.
 260,t,f,"On the other hand, it may simply mean that the group was familiar enough with the modus operandi characteristic of SCADA sites to gamble on the likelihood that Stuxnet would hit enough poorly-defended, poorly-patched and poorly regulated PLCs to gain them the information and control they wanted."
 261,t,f,"On the other hand, it may simply mean that the group was familiar enough with the modus operandi characteristic of SCADA sites to gamble on the likelihood that Stuxnet would hit enough poorly-defended, poorly-patched and poorly- regulated PLCs to gain them the information and control they wanted."
 262,t,f,"One interesting detail is the fact that the wiping process was similar to other attacks in the past, attributed to hackers behind Shamoon-related incidents at Aramco, a Saudi Arabian oil company."
@@ -229,16 +229,16 @@ id,belief,in_progress,text
 302,t,f,South Korean Banks and Their Customers Targeted by Castov Malware http://t.co/xYk2dRWJon Good read.
 305,t,f,Spam volumes dip slightly as bagle botnet fills Rustock shoes.
 306,t,f,"Symantec discovered that the devices compromised were infected with Oldrea in most cases, and only found Karagany installed in a small number of cases."
-270,t,t,"Panin is believed to have sold the SpyEye virus to at least 150 clients who, in turn, used it to set up their own botnets."
-296,t,t,Since when is it okay for security companies to post SS#'s of hackers online after Doxxing them?
-282,t,t,"Rovnix Trojan has infected 130,000 UK Windows PCs, warns BitDefender - http://t.co/cEdoRYA24X http://t.co/B6SnsrWGJp @bitdefender."
-280,t,t,Rovnix Malware campaign targets United Kingdom users - http://t.co/5V7hHhIWQZ.
-297,t,t,SneakerNet infections is one of the more troubling vectors of attack for malicious code in the past year.
-281,t,t,"Rovnix Trojan has infected 130,000 UK Windows PCs, warns @BitDefender - http://t.co/9klBskiYaU Steals credit card data."
-301,t,t,South Korean Banks and Their Customers Targeted by Castov Malware http://t.co/4oPbToNuvs #InfoSec.
-298,t,t,Sniffer malware preys upon a glaring flaw in credit transactions.
-278,t,t,"Rootkit Remover deals easily with Mebroot, all TDL families (TDL/SST/Pihar), Mayachok, Mybios, Plite, XPaj, Whistler, Alipop, Cpd, Fengd, Fips, Guntior, MBR Locker, Mebratix, Niwa, Ponreb, Ramnit, Stoned, Yoddos, Yurn, Zegost and also cleans infections with Necurs (the last rootkit standing)."
-300,t,t,South African Banks Lose Out In Dexter Malware Fraud http://t.co/VwEBcFpUQ3 #InfoSec.
+270,t,f,"Panin is believed to have sold the SpyEye virus to at least 150 clients who, in turn, used it to set up their own botnets."
+296,t,f,Since when is it okay for security companies to post SS#'s of hackers online after Doxxing them?
+282,t,f,"Rovnix Trojan has infected 130,000 UK Windows PCs, warns BitDefender - http://t.co/cEdoRYA24X http://t.co/B6SnsrWGJp @bitdefender."
+280,t,f,Rovnix Malware campaign targets United Kingdom users - http://t.co/5V7hHhIWQZ.
+297,t,f,SneakerNet infections is one of the more troubling vectors of attack for malicious code in the past year.
+281,t,f,"Rovnix Trojan has infected 130,000 UK Windows PCs, warns @BitDefender - http://t.co/9klBskiYaU Steals credit card data."
+301,t,f,South Korean Banks and Their Customers Targeted by Castov Malware http://t.co/4oPbToNuvs #InfoSec.
+298,t,f,Sniffer malware preys upon a glaring flaw in credit transactions.
+278,t,f,"Rootkit Remover deals easily with Mebroot, all TDL families (TDL/SST/Pihar), Mayachok, Mybios, Plite, XPaj, Whistler, Alipop, Cpd, Fengd, Fips, Guntior, MBR Locker, Mebratix, Niwa, Ponreb, Ramnit, Stoned, Yoddos, Yurn, Zegost and also cleans infections with Necurs (the last rootkit standing)."
+300,t,f,South African Banks Lose Out In Dexter Malware Fraud http://t.co/VwEBcFpUQ3 #InfoSec.
 308,t,f,Symantec has acquired some data that has allowed us to get an idea of how successful Exprespam may be in scamming Android users into providing personal data.
 309,t,f,"Symantec has closely followed the Enesoluty scam since July, 2012."
 310,t,f,Symantec has detections in place for the new Rloader variant as Trojan.Rloader.B.
@@ -265,7 +265,7 @@ id,belief,in_progress,text
 335,t,f,"The Cycbot malware was then analyzed using a Disassembler, and several functions that were called by the Trojan were retrieved."
 336,t,f,"The Darkhotel suite of malware tools - a clutch of Trojans including Tapaoux, pioneer, Karba, and Nemim - could be traced back to 2006 or 2007 but the hotel attacks seem to date from 2012, Kaspersky said."
 338,t,f,"The Department of Homeland Security's U.S. Computer Emergency Readiness Team ( US-CERT ), in collaboration with Trustwave SpiderLabs , FS-ISAC and the U.S. Secret Service , recently issued an alert warning of new malware called Backoff, which specifically targets point-of-sale (PoS) systems."
-546,t,t,"Tinba uses a DGA based on a hard-coded domain and seed which are unique to each sample generating 1,000 unique domains."
+546,t,f,"Tinba uses a DGA based on a hard-coded domain and seed which are unique to each sample generating 1,000 unique domains."
 340,t,f,The DoJ said that Coreflood will be removed from infected computers only when the owners have been identified by the Department of Justice (DOJ).
 341,t,f,"The Dorifel malware has infected over 3,000 computers worldwide, attempting to steal sensitive information, encrypt files and install backdoors."
 342,t,f,"The Dorkbot/Rodpicom worm, which spreads via messaging applications and leads to additional malware infections, is currently doing rounds on Skype and MSN Messenger, warns Fortinet."
@@ -277,12 +277,12 @@ id,belief,in_progress,text
 349,t,f,"The Flashback software, also known as ""Flashfake"",advertises itself for download on infected websites as a Javasoftware add-on or applet, experts said."
 350,t,f,The Gamarue trojan?
 351,t,f,"The GameOver Zeus malware had a nice run for itself, making untold millions of dollars for its creators."
-307,t,t,Symantec doesn't believe Tomdep has become widespread yet - its antivirus products have detected fewer than 50 cases so far.
-343,t,t,The Droidpak mobile banking trojan exploits syncing between smartphones and Windows PCs to jump from ...
-337,t,t,"The Darlloz Linux worm, which has been targeting home routers and security cameras, has now been modified to infect computers......."
-314,t,t,Symantec has pulled back some of the covers from the Proxybox botnet.
-333,t,t,The CosmicDuke malware involved in the campaign hit the headlines in July when it surfaced as a 'mongrel' hybrid of the MiniDuke malware family.
-319,t,t,Symantec says Wipbot and Turla cyberespionage malware is being used to target governments as predicted by KCS.
+307,t,f,Symantec doesn't believe Tomdep has become widespread yet - its antivirus products have detected fewer than 50 cases so far.
+343,t,f,The Droidpak mobile banking trojan exploits syncing between smartphones and Windows PCs to jump from ...
+337,t,f,"The Darlloz Linux worm, which has been targeting home routers and security cameras, has now been modified to infect computers......."
+314,t,f,Symantec has pulled back some of the covers from the Proxybox botnet.
+333,t,f,The CosmicDuke malware involved in the campaign hit the headlines in July when it surfaced as a 'mongrel' hybrid of the MiniDuke malware family.
+319,t,f,Symantec says Wipbot and Turla cyberespionage malware is being used to target governments as predicted by KCS.
 352,t,f,"The Gammima virus, for example, propagates via removable flash drives."
 353,t,f,"The Gpcode attack program runs on the Windows operating system."""
 354,t,f,"The Harnig botnet, also known as Piptea, also went offline at about the same time."
@@ -319,13 +319,13 @@ id,belief,in_progress,text
 392,t,f,"The Trojan Horse sample, which is packed with the Jokra packer, contains a build path string."
 393,t,f,"The UK still accounts for a quarter of Snifula activity, with Germany responsible for a fifth while the US handles 15%."
 436,t,f,"The infected computers that are communicating with domains appear to have a variant of Bredolab installed, Mushtaq wrote."
-359,t,t,The Jokra packer was also used to obfuscate Trojan Horse (with an MD5 of 50e03200c3a0becbf33b3788dac8cd46).
-373,t,t,"The Mediyes malware has been seen between December 2011 and March 7, 2012 and in all the cases it was signed with a certificate issued for the Swiss company Conpavi, according to the Kaspersky Lab researcher."
-357,t,t,"The IP with which Necurs tries to communicate, where did it came from, is it hard-coded?"
-376,t,t,The Panda virus - also known as Fujacks - made headlines after seemingly innocuous graphics of a panda holding three burning joss sticks replaced icons of files on computers across China.
-367,t,t,"The Lethic botnet went quiet on Dec. 28, and the Xarvester botnet on Dec. 31."
-358,t,t,"The Iranian Computer Emergency Response Team (MAHER) claims to have discovered a new targeted malware attack attacking the country, which has been dubbed Flame (also known as Flamer or Skywiper)."
-377,t,t,"The Phorpiex worm, meanwhile, targets removable drives and spreads via Skype messages with links to sites hosting the worm."
+359,t,f,The Jokra packer was also used to obfuscate Trojan Horse (with an MD5 of 50e03200c3a0becbf33b3788dac8cd46).
+373,t,f,"The Mediyes malware has been seen between December 2011 and March 7, 2012 and in all the cases it was signed with a certificate issued for the Swiss company Conpavi, according to the Kaspersky Lab researcher."
+357,t,f,"The IP with which Necurs tries to communicate, where did it came from, is it hard-coded?"
+376,t,f,The Panda virus - also known as Fujacks - made headlines after seemingly innocuous graphics of a panda holding three burning joss sticks replaced icons of files on computers across China.
+367,t,f,"The Lethic botnet went quiet on Dec. 28, and the Xarvester botnet on Dec. 31."
+358,t,f,"The Iranian Computer Emergency Response Team (MAHER) claims to have discovered a new targeted malware attack attacking the country, which has been dubbed Flame (also known as Flamer or Skywiper)."
+377,t,f,"The Phorpiex worm, meanwhile, targets removable drives and spreads via Skype messages with links to sites hosting the worm."
 394,t,f,"The Wall Street Journal reported , ""Ask Jeeves also has abandoned …Mindset Interactive, a maker of spyware that installs other spyware…"" ZDNet reported that ""[a]ccording to information around the Web"" Mindset Interactive's FavoriteMan ""periodically connects to its home servers, piggybacking on Internet Explorer so firewalls won't catch it, and downloads other spyware applications such as nCase, Bargain Buddy, and HotBar."
 395,t,f,The Washington Post's blog reports that a recent version of the Zlob trojan (also known as DNSChanger) looks for routers that still use the default router passwords.
 396,t,f,The Welchia virus also became famous for its good deeds.
@@ -353,20 +353,20 @@ id,belief,in_progress,text
 425,t,f,"The first computer virus to escape into the wild was the Elk Cloner virus, a boot sector virus for Apple DOS 3.3, in 1982."
 426,t,f,The first mIRC worm emerged in December - it was a fundamentally new.
 430,t,f,"The fourth most prevalent however was Pushbot, and detections for that malware increased 24 percent compared to the first three months of the year."
-530,t,t,"This period, Sasfis was observed downloading updated spamming modules."
+530,t,f,"This period, Sasfis was observed downloading updated spamming modules."
 431,t,f,The guys behind Carberp seem to have ignored a long-observed but increasingly ignored tradition of not targeting companies and individuals in Russian and former Soviet states.
 432,t,f,The guys over at F-Secure Labs declared that by running the email it will not show you pictures but instead it will launch a very dangerous Trojan that make's part of the Banload family.
 433,t,f,The hack was by a Bangladesh based hacker knows as CyBER-71.
 434,t,f,The high tally of affected machines reflects Renocide's relative age; the botnet has been around since 2008 and has slowly but steadily increased its prevalence.
 2679,t,f,Blackhole malware toolkit creator ‘paunch’ suspect arrested.
-413,t,t,"The crimeware families are a new Zeus variant, Bamital, BankPatch, Bonnana, Expiro."
-400,t,t,"The Xarvester botnet is also sending spam again, though as before it accounts for a smaller proportion of the total than Rustock."
-304,t,t,Spam Campaign Delivers Liftoh Downloader | Dell SecureWorks.
-189,t,t,It does this all through a trojan identified as Vundo or MS Juan.
-401,t,t,The Yahos malware targeted Facebook users from 2010 through to October this year..
-435,t,t,"The identities of the attackers behind the Korhigh Trojan program cannot be confirmed, the Symantec researchers said, noting that their investigation of the threat continues."
-416,t,t,"The database of one of those forums had at one time been hacked and leaked, which contained information on their Hesperbot man, leading to his identity, he said."
-427,t,t,The first one is a cluster consisting of Russian fake installers ( Android:FakeInst ).
+413,t,f,"The crimeware families are a new Zeus variant, Bamital, BankPatch, Bonnana, Expiro."
+400,t,f,"The Xarvester botnet is also sending spam again, though as before it accounts for a smaller proportion of the total than Rustock."
+304,t,f,Spam Campaign Delivers Liftoh Downloader | Dell SecureWorks.
+189,t,f,It does this all through a trojan identified as Vundo or MS Juan.
+401,t,f,The Yahos malware targeted Facebook users from 2010 through to October this year..
+435,t,f,"The identities of the attackers behind the Korhigh Trojan program cannot be confirmed, the Symantec researchers said, noting that their investigation of the threat continues."
+416,t,f,"The database of one of those forums had at one time been hacked and leaked, which contained information on their Hesperbot man, leading to his identity, he said."
+427,t,f,The first one is a cluster consisting of Russian fake installers ( Android:FakeInst ).
 438,t,f,"The investigators discovered that Tyupkin malware, which mainly hit banking institutions in Eastern Europe, may have spread to several other countries, including the US, India, and China."
 439,t,f,The large number of malicious websites designed to infect Android devices with the well-known Android: FakeInst SMS Trojan have made Avast security experts issue another warning to alert users of its presence.
 441,t,f,The latest banking malware Carberp has gone through three versions since it came on the scene last year and continues to add on new features.
@@ -398,12 +398,12 @@ id,belief,in_progress,text
 472,t,f,"The new ZitMo Trojan is capable of stealing mTAN (mobile transaction authentication) codes, which are one-time passwords used to conduct a remote transaction."
 474,t,f,"The new variant, called Emotet, first cropped up largely in Germany, with 75% of cases across the Europe, the Middle East and Africa."
 475,t,f,"The new virus is definitely not stupid but nevertheless Lebanese banks have the means to counter such a virus, he added. The Gauss virus was first discovered by Kaspersky Lab, a leading computer security firm."
-449,t,t,The malware has been named 'DarkSeoul' and 'Jokra' by the community.
-473,t,t,"The new sample of Grolker uses the same code as before, and also checks the URL loaded in the browser against Korean bank URLs."
-468,t,t,"The new Trojan named Korhigh by the firm's researchers, is similar to the Jokra Trojan that hit the country in March in that it attempts to delete system files and render a Windows PC unbootable by overwriting the Master Boot Record (MBR)."
-440,t,t,"The latest Nickispy variant can intercept incoming calls without the user's knowledge while sending call logs, text messages and other information to a remote server."
-443,t,t,"The latest variant of Darlloz, found by Symantec in mid-January, looks for computers running Intel's architecture, wrote Kaoru Hayashi, a senior development manager and threat analyst with Symantec in Japan."
-456,t,t,The malware was developed by the 'Reveton Team' and determines a user's location via the device's IP address.
+449,t,f,The malware has been named 'DarkSeoul' and 'Jokra' by the community.
+473,t,f,"The new sample of Grolker uses the same code as before, and also checks the URL loaded in the browser against Korean bank URLs."
+468,t,f,"The new Trojan named Korhigh by the firm's researchers, is similar to the Jokra Trojan that hit the country in March in that it attempts to delete system files and render a Windows PC unbootable by overwriting the Master Boot Record (MBR)."
+440,t,f,"The latest Nickispy variant can intercept incoming calls without the user's knowledge while sending call logs, text messages and other information to a remote server."
+443,t,f,"The latest variant of Darlloz, found by Symantec in mid-January, looks for computers running Intel's architecture, wrote Kaoru Hayashi, a senior development manager and threat analyst with Symantec in Japan."
+456,t,f,The malware was developed by the 'Reveton Team' and determines a user's location via the device's IP address.
 476,t,f,"The newest Tiny Banker (Tinba) variant uses a DGA based on a hard-coded domain and seed which are unique to each sample generating 1,000 unique domains."
 477,t,f,"The next two years would see the Slammer and Blaster worms, even more damaging than the worms of 2001."
 479,t,f,"The older Darlloz targeted routers and STBs that had Linux on Intel's x86 chip architecture, and other embedded device architectures like PPC, MIPS and MIPSEL."
@@ -441,11 +441,11 @@ id,belief,in_progress,text
 517,t,f,"This downloaded file is named using the value of arg1 in the GET command sent to the C&C. In this case, Egobot attempts to download a file called 1irst.tmp, which is the main payload."
 519,t,f,"This fact additionaly proves that Adpeak hides itself to perform illegal actions on your PC (infringe your privacy by tracking your browsing history, bother you with different advertisements etc.)."
 520,t,f,This includes the Hikiti malware family and other associated backdoor strains such as Mdmbot and Moudoor - itself derived from the notorious Gh0st RAT.
-489,t,t,"The prevailing theory now is that it is related to a malware infection, most likely something from the Daonol family of Trojans ."
-504,t,t,"These similar tactics include the use of zero-day exploits, strategic web compromise as well as Briba malware."
-480,t,t,"The operators of Nugache, one of the Web's most sophisticated emerging botnets, appear to be expanding their network and slashing prices to customers who want to use it to distribute spam, according to researcher Paul Henry, vice president of technology evangelism at Secure Computing Corp. (Nasdaq: SCUR - message board)."
-515,t,t,"This blog will discuss Miuref, a browser hijacker that can perform click fraud and hijack search results."
-494,t,t,"The rootkit, known as Crisis, Morcut or Maljava, is a Java archive (JAR) file that can attack both Windows and OS X systems."
+489,t,f,"The prevailing theory now is that it is related to a malware infection, most likely something from the Daonol family of Trojans ."
+504,t,f,"These similar tactics include the use of zero-day exploits, strategic web compromise as well as Briba malware."
+480,t,f,"The operators of Nugache, one of the Web's most sophisticated emerging botnets, appear to be expanding their network and slashing prices to customers who want to use it to distribute spam, according to researcher Paul Henry, vice president of technology evangelism at Secure Computing Corp. (Nasdaq: SCUR - message board)."
+515,t,f,"This blog will discuss Miuref, a browser hijacker that can perform click fraud and hijack search results."
+494,t,f,"The rootkit, known as Crisis, Morcut or Maljava, is a Java archive (JAR) file that can attack both Windows and OS X systems."
 521,t,f,"This increase is mainly down to two particular virus families, Sality and Xpiro."
 522,t,f,"This increase is mainly down to two particular virus families: Sality and Xpiro. The first virus family has been around a long time, whereas the second one is more recent and capable of infecting executable files on 32-bit and 64-bit systems, says Luis Corrons, technical director of PandaLabs."
 525,t,f,This is why the worm is sometimes called the Lovesan worm.
@@ -479,13 +479,13 @@ id,belief,in_progress,text
 563,t,f,Ultra-stealthy Clampi Trojan snags 'tremendous' amount of financial info.
 564,t,f,"Umesh Wanve, a principal research engineer at McAfee Labs, said in a Tuesday blog post that Travnet can steal files, such as Microsoft Office documents, PDFs and various text files."
 3075,t,f,Carbanak bank malware attack causes nearly $1 billion in losses.
-523,t,t,This intruder is a part of the FakeVimes family also known as Rogue.VirusDoctor.
-524,t,t,This is another trick of Necurs to conceal its Command server infrastructure and make analysis difficult.
-533,t,t,"This removal tool promises to thoroughly analyze your entire system, specifically the places where the ArchSMS trojan might hide."
-547,t,t,"To date, it is thought that Matsnu is spreading mainly by spam email messages (in German) relating to online shopping sites."
-556,t,t,"Trusteer threat engineer, Ilya Kolmanovich, notes in a blog post that apart from relying on Asprox botnet and Zemot for distribution, the new Neverquest is also delivered through exploit kits in drive-by attacks."
-535,t,t,"This rootkit is know under other names such as Rootkit.Win32.TDSS, Tidserv, TDSServ, and Alureon."
-565,t,t,"Unfortunately, he said, many in the transportation industry have forgotten the impact of the Slammer and Blaster worms around eight years ago. I am afraid we have seen that any industry can be a victim of attack, but the most likely sectors to be targeted include transportation, energy, finance, telecoms and military, he said."
+523,t,f,This intruder is a part of the FakeVimes family also known as Rogue.VirusDoctor.
+524,t,f,This is another trick of Necurs to conceal its Command server infrastructure and make analysis difficult.
+533,t,f,"This removal tool promises to thoroughly analyze your entire system, specifically the places where the ArchSMS trojan might hide."
+547,t,f,"To date, it is thought that Matsnu is spreading mainly by spam email messages (in German) relating to online shopping sites."
+556,t,f,"Trusteer threat engineer, Ilya Kolmanovich, notes in a blog post that apart from relying on Asprox botnet and Zemot for distribution, the new Neverquest is also delivered through exploit kits in drive-by attacks."
+535,t,f,"This rootkit is know under other names such as Rootkit.Win32.TDSS, Tidserv, TDSServ, and Alureon."
+565,t,f,"Unfortunately, he said, many in the transportation industry have forgotten the impact of the Slammer and Blaster worms around eight years ago. I am afraid we have seen that any industry can be a victim of attack, but the most likely sectors to be targeted include transportation, energy, finance, telecoms and military, he said."
 567,t,f,"Unlike previous occurrences - like the Stuxnet virus that assaulted Iran's nuclear program and also the 2012 Shamoon adware and spyware attack on Saudi Aramco, which infected the hard disk drives in excess of 30,000 computer systems - the Wiper malware isn't specific particularly to some brand or kind of machine."
 568,t,f,Unuchek believes the FakeInst was likely developed by cybercriminals in Russia.
 569,t,f,"Up until recently, language barriers protected APAC countries such as Japan, China and Korea from many of the well publicized targeted attacks that have plagued U.S. and European companies, but that is no longer the case, said Masafumi Hatakeyama, Business Development Manager for Easy Solutions. Recently in Japan, we have been experiencing a proliferation of attacks, such as the Snifula banking trojan, which specifically targeted Japanese financial institutions. In addition, we are seeing a variety of highly sophisticated phishing attacks and Man-In-The-Browser drive-by downloads aimed at banks. I'm excited to join Easy Solutions at this critical time, and help the company expand its presence in this growing market."
@@ -513,16 +513,16 @@ id,belief,in_progress,text
 601,t,f,"Welchia utilized exactly the same vulnerabilities to infect a computer, however its next actions were very unusual."
 602,t,f,What are the damages that Yiqilai Virus can do towards your laptop?
 604,t,f,When AV signatures became available for this threat it came to be known as Ramdo in the security industry.
-595,t,t,"We identified at least two malware families, Napolar and Lecpetex, that utilize Facebook as a vector to spread and install Bitcoin miners."
-579,t,t,Variants of the the SillyFDC worm are capable of spreading over networks.
-590,t,t,"We have also observed instances in which multiple Darkshell botnets engaged in coordinated attacks against a single victim (again, vendors of industrial food processing equipment), said Arbor."
-575,t,t,"Users whose computers are infected with ZeuS Trojan, and at the same time have the ZitMo Trojan on their mobile devices when they synchronize with their PCs, are vulnerable from cybercriminals who can gain access to their bank accounts."
-578,t,t,"Variants of the Darkshell botnet agent, circulating in China, turn infected Windows machines into attack drones."
-566,t,t,"Unlike known malware kits such as Zeus, Torpig, and Ambler which simultaneously target hundreds of banks and enterprises around the world and are on the radar of all security vendors, regional financial malware such as Silon.var2 and Agent.DBJP are highly targeted, said Mickey Boodaei, Trusteer's chief exec."
-570,t,t,"Upon executing Sykipot EXE for the first time, it copies itself to its working directory (one level above %temp% directory) as dmm.exe."
-589,t,t,We first detected Miuref in December 2013.
-600,t,t,Welchia then destroyed itself after completing all these operations.
-603,t,t,"What we know is that Janicab can grab screenshots and record audio via your computer, without you realising, using the third-party command line utility Sox."
+595,t,f,"We identified at least two malware families, Napolar and Lecpetex, that utilize Facebook as a vector to spread and install Bitcoin miners."
+579,t,f,Variants of the the SillyFDC worm are capable of spreading over networks.
+590,t,f,"We have also observed instances in which multiple Darkshell botnets engaged in coordinated attacks against a single victim (again, vendors of industrial food processing equipment), said Arbor."
+575,t,f,"Users whose computers are infected with ZeuS Trojan, and at the same time have the ZitMo Trojan on their mobile devices when they synchronize with their PCs, are vulnerable from cybercriminals who can gain access to their bank accounts."
+578,t,f,"Variants of the Darkshell botnet agent, circulating in China, turn infected Windows machines into attack drones."
+566,t,f,"Unlike known malware kits such as Zeus, Torpig, and Ambler which simultaneously target hundreds of banks and enterprises around the world and are on the radar of all security vendors, regional financial malware such as Silon.var2 and Agent.DBJP are highly targeted, said Mickey Boodaei, Trusteer's chief exec."
+570,t,f,"Upon executing Sykipot EXE for the first time, it copies itself to its working directory (one level above %temp% directory) as dmm.exe."
+589,t,f,We first detected Miuref in December 2013.
+600,t,f,Welchia then destroyed itself after completing all these operations.
+603,t,f,"What we know is that Janicab can grab screenshots and record audio via your computer, without you realising, using the third-party command line utility Sox."
 764,t,f,2015-06-12 - NUCLEAR EK FROM 108.61.178.68.
 605,t,f,"When Kaspersky Lab last week spotted code signed Trojan malware dubbed Mediyes that had been signed with a digital certificate owned by Swiss firm Conpavi AG and issued by Symantec, it touched off a hunt to determine the source of the problem."
 607,t,f,"When Panin got to court, he admitted writing a virus known as SpyEye, which first made its appearance in 2009."
@@ -547,13 +547,13 @@ id,belief,in_progress,text
 634,t,f,With its help you can find out whether your computer is really contaminated by the ArchSMS trojan or any of its variants.
 635,t,f,"With security researchers focused on the Black Hat security conference, a trojan called Clampi is still making its way across the Web looking for victims."
 638,t,f,"Worms increase in prevalence with Sircam, CodeRed, and BadTrans creating the most problems."
-633,t,t,"With help from Facebook, the FBI found millions of machines were infected with variants of the Yahos malware, which targeted Facebook users from 2010-2012, which was linked to the Butterfly botnet, which steals credit card, bank details, and other personal identifiable information on infected machines.."
-617,t,t,"When you become infected with the CTB Locker infection, the malware will store itself in the %Temp% folder as a random named executable."
-629,t,t,Winlock viruses block Windows software in PCs.
-624,t,t,"While the majority of Android malware is dominated by SMS Trojans , designed to rack up premium text message charges, phony apps such as Exprespam are designed to steal data that could be used for other nefarious purposes."
-636,t,t,"With targeted attacks like Flamer, they are by nature not prevalent and not spreading out in the field, Marcus said. It's not spreading like spam, it's very targeted, so we've only seen a handful of detections globally."
-610,t,t,"When a computer system at the Sheriff's Office in Dickinson, Tennessee, was hit by CryptoWall, they chose to pay the ransom of $500, something experts say never to do."
-609,t,t,"When Yiqilai Virus includes contaminated a laptop or computer method, it will start off operating code that commences infecting other documents upon the method and in addition other computer systems related in the direction of its community."
+633,t,f,"With help from Facebook, the FBI found millions of machines were infected with variants of the Yahos malware, which targeted Facebook users from 2010-2012, which was linked to the Butterfly botnet, which steals credit card, bank details, and other personal identifiable information on infected machines.."
+617,t,f,"When you become infected with the CTB Locker infection, the malware will store itself in the %Temp% folder as a random named executable."
+629,t,f,Winlock viruses block Windows software in PCs.
+624,t,f,"While the majority of Android malware is dominated by SMS Trojans , designed to rack up premium text message charges, phony apps such as Exprespam are designed to steal data that could be used for other nefarious purposes."
+636,t,f,"With targeted attacks like Flamer, they are by nature not prevalent and not spreading out in the field, Marcus said. It's not spreading like spam, it's very targeted, so we've only seen a handful of detections globally."
+610,t,f,"When a computer system at the Sheriff's Office in Dickinson, Tennessee, was hit by CryptoWall, they chose to pay the ransom of $500, something experts say never to do."
+609,t,f,"When Yiqilai Virus includes contaminated a laptop or computer method, it will start off operating code that commences infecting other documents upon the method and in addition other computer systems related in the direction of its community."
 639,t,f,"You can protect yourself from the Bugbear worm by never opening any suspicious emails, either as previews or by opening the whole message, according to Kaspersky researchers."
 640,t,f,"You can protect yourself from the Bugbear worm by never opening any suspicious emails, either as previews or by opening the whole message, according to Kaspersky researchers.."
 641,t,f,You may recognize the URL landing for the Flash Pack Exploit Kit.
@@ -596,13 +596,13 @@ id,belief,in_progress,text
 685,t,f,"16 Shalal-Esa, A. ""Iran strengthened cyber capabilities after Stuxnet: U.S. general""."
 744,t,f,2015-01-30 - ANGLER EK FROM 178.32.131.248 - 6JD5C9.
 745,t,f,2015-02-06 - Rig EK from 46.182.30.163 pushing kronos.
-644,t,t,Zefarch Trojan on PC running Internet Security 2011.
-655,t,t,"• [0'49""] Return of the Android ""Selfmite"" virus."
-674,t,t,"[11] Wyke, J. The ZeroAccess rootkit under the microscope."
-672,t,t,11 Charged In ZeuS & Money Mule Ring.
-653,t,t,"• [0'22""] Spyware app StealthGenie's CEO fined $500,000."
-643,t,t,ZAccess and Sality are just two of the numerous malware programs Kaspersky Lab specialists detected on the computers involved in the study.
-652,t,t,New Breaches Tied to Evasive Malware.
+644,t,f,Zefarch Trojan on PC running Internet Security 2011.
+655,t,f,"• [0'49""] Return of the Android ""Selfmite"" virus."
+674,t,f,"[11] Wyke, J. The ZeroAccess rootkit under the microscope."
+672,t,f,11 Charged In ZeuS & Money Mule Ring.
+653,t,f,"• [0'22""] Spyware app StealthGenie's CEO fined $500,000."
+643,t,f,ZAccess and Sality are just two of the numerous malware programs Kaspersky Lab specialists detected on the computers involved in the study.
+652,t,f,New Breaches Tied to Evasive Malware.
 687,t,f,"19 August 2013 Facebook ""likes"" and the number of Twitter followers a company has are a very real commodity, so it's no wonder that someone has been enterprising enough to now sell that commodity in a new Zeus-based fraud scheme."
 688,t,f,"19 June 2013 The source code for the Carberp banking trojan is up on the block in the Russian underground - and for a mere $5,000."
 691,t,f,1-infected by Necurs (scan with cloud cleaner).
@@ -642,21 +642,21 @@ id,belief,in_progress,text
 741,t,f,2015-01-21 - upatre/dyre phishing run - Subject: Employee Documents - Internal Use.
 742,t,f,2015-01-22 - Angler EK from 64.251.14.164 and 207.182.149.13.
 743,t,f,2015-01-27 - upatre/dyre malspam wave - Subject: Voice Message.
-705,t,t,2013 has seen some significant changes in the way that attackers use the Blackhole exploit kit in spam attacks.
-727,t,t,2014-09-19 - SWEET ORANGE EK - 8.28.175.67 - CDN2.
-689,t,t,19 million windows pcs still vulnerable to Stuxnet zero-day.
-729,t,t,2014-10-04 - Rig EK and upatre from phishing emails.
-712,t,t,2014-04-12 - FlashPack EK from 176.102.37.55 - kliftpres.com - MSIE/Java/Flash exploits.
-723,t,t,2014-08-29 - ASPROX BOTNET PHISHING EMAIL - SUBJECT: NOTICE OF COURT ATTENDANCE.
-695,t,t,2 is loaded which drops the Trojan containing the TDSS malware.
-737,t,t,2014-12-12 - Ransomware infection after Nuclear EK from 128.199.52.211 - yquesrerman.ga.
-690,t,t,193.124.16.16 hosted SDA Express TorrentLocker domains.
-694,t,t,2 Icefog -- interacts with a script-based proxy server that redirects commands from the attackers to another machine.
-718,t,t,2014-06-23 - FlashPack EK from 46.21.159.163.
-701,t,t,2010 in Review: The Hype and Reality of Stuxnet.
-736,t,t,2014-12-11 - Asprox botnet phishing campaign - Subject: Facebook password change.
-692,t,t,"[2] 66 (8B|A1) [4-5] 66 2B [1] 0F B7 [1] (35|83 F0) [1-4] C1 E8 [1-4] 8B E5 5D C2 } $interface = ""jjjinterface"" condition: all of them } I made this rule after finding several ZeroAccess Trojans that all had the same exported function called ""WaesColawe""."
-728,t,t,"2014-10-01 - Malware from fake IRS notification causes ""CryptoWall 2.0"" infection."
+705,t,f,2013 has seen some significant changes in the way that attackers use the Blackhole exploit kit in spam attacks.
+727,t,f,2014-09-19 - SWEET ORANGE EK - 8.28.175.67 - CDN2.
+689,t,f,19 million windows pcs still vulnerable to Stuxnet zero-day.
+729,t,f,2014-10-04 - Rig EK and upatre from phishing emails.
+712,t,f,2014-04-12 - FlashPack EK from 176.102.37.55 - kliftpres.com - MSIE/Java/Flash exploits.
+723,t,f,2014-08-29 - ASPROX BOTNET PHISHING EMAIL - SUBJECT: NOTICE OF COURT ATTENDANCE.
+695,t,f,2 is loaded which drops the Trojan containing the TDSS malware.
+737,t,f,2014-12-12 - Ransomware infection after Nuclear EK from 128.199.52.211 - yquesrerman.ga.
+690,t,f,193.124.16.16 hosted SDA Express TorrentLocker domains.
+694,t,f,2 Icefog -- interacts with a script-based proxy server that redirects commands from the attackers to another machine.
+718,t,f,2014-06-23 - FlashPack EK from 46.21.159.163.
+701,t,f,2010 in Review: The Hype and Reality of Stuxnet.
+736,t,f,2014-12-11 - Asprox botnet phishing campaign - Subject: Facebook password change.
+692,t,f,"[2] 66 (8B|A1) [4-5] 66 2B [1] 0F B7 [1] (35|83 F0) [1-4] C1 E8 [1-4] 8B E5 5D C2 } $interface = ""jjjinterface"" condition: all of them } I made this rule after finding several ZeroAccess Trojans that all had the same exported function called ""WaesColawe""."
+728,t,f,"2014-10-01 - Malware from fake IRS notification causes ""CryptoWall 2.0"" infection."
 746,t,f,2015-02-09 - Chanitor/Vawtrak malspam - Subject: USPS Delivery Notification.
 747,t,f,2015-02-10 - ANGLER EK FROM 151.80.94.250.
 749,t,f,2015-02-10 - COMPROMISED WEBSITE AND ANGLER EK:
@@ -694,13 +694,13 @@ id,belief,in_progress,text
 792,t,f,6 stages of Regin There are six stages: The first driver is the only visible piece of the attack on the infected machine -- the next five stages of the attack are encrypted.
 832,t,f,A comparison of code found in BlackHole and code published earlier as a proof-of-concept exploit.
 2680,t,f,"Blackhole of ""/closest/"" version with trojan UDP version of spyware(?)."
-774,t,t,[3] Attackers using Taidoor have leveraged this model as well.
-763,t,t,2015-06-12 - angler EK sends cryptowall 3.0 (again).
-752,t,t,2015-03-30 - fiesta EK from 205.234.186.113 pushes simda malware.
-781,t,t,"3.6 Command And Control Unlike the previously documented POS malware families Backoff is not based on a local infrastructure, but directly communicates to a C&C server on the internet."
-782,t,t,[36] It is custom-packed to obfuscate its code and to make it difficult for Soraya also borrowed ZeuS's form-grabbing security researchers to reverse-engineer its functionality.
-748,t,t,2015-02-10 - ANGLER EK HAPPENS AGAIN DURING THE POST-INFECTION TRAFFIC:
-758,t,t,2015-05-14 - Nuclear EK from 109.234.37.12.
+774,t,f,[3] Attackers using Taidoor have leveraged this model as well.
+763,t,f,2015-06-12 - angler EK sends cryptowall 3.0 (again).
+752,t,f,2015-03-30 - fiesta EK from 205.234.186.113 pushes simda malware.
+781,t,f,"3.6 Command And Control Unlike the previously documented POS malware families Backoff is not based on a local infrastructure, but directly communicates to a C&C server on the internet."
+782,t,f,[36] It is custom-packed to obfuscate its code and to make it difficult for Soraya also borrowed ZeuS's form-grabbing security researchers to reverse-engineer its functionality.
+748,t,f,2015-02-10 - ANGLER EK HAPPENS AGAIN DURING THE POST-INFECTION TRAFFIC:
+758,t,f,2015-05-14 - Nuclear EK from 109.234.37.12.
 793,t,f,"""64-bit is a class of computer architecture which basically allows the usage of additional computer resources [such as] memory, [and so on],"" Raff said. ""However, it also requires the operating system and applications to support this architecture. Tinba now added support to inject itself to such applications."""
 794,t,f,64-bit version of HAVEX spotted.
 795,t,f,64-bit ZBOT Levels Up Antimalware Evasion Tricks.
@@ -730,16 +730,16 @@ id,belief,in_progress,text
 830,t,f,"A closer look at the iframe and Angler EK landing page URL, injected in real-time:"
 831,t,f,"A coalition of security and Internet companies formed the Conficker Working Group [26] to block and prevent any of these new domains from being registered or used, as well as to collect and share intelligence about the worm."
 2681,t,f,Blackhole Ramnit - samples and analysis.
-812,t,t,"A BBS posting of the Mac Icefog trojan, bundled with the graphics program Img2icns The backdoor portions of the program are similar to their Windows counterparts: they collect information about the host system, report it back to the command and control server and then request commands to execute."
-816,t,t,"A blog post published Thursday by IBM Security Intelligence researchers John Kuhn and Lance Mueller explains the rest:Once the infected victim tries to log in to one of the hundreds of bank websites for which Dyre is programmed to monitor, a new screen will appear instead of the corporate banking site."
-823,t,t,A Chinese hacker stealing intellectual property from a US defense contractor is qualitatively different from a BlackEnergy implant in a natural gas pipeline control system.
-813,t,t,"A big wave of emails purporting to be Craigslist notifications but containing links to websites hosting the Black Hole exploit kit hit the Internet yesterday, a day that already was filled with drama surrounding the LinkedIn password dump."
-819,t,t,"A California woman is suing both Lenovo and Superfish , after the PC maker was found shipping laptops to consumers with Superfish adware pre-installed."
-806,t,t,"A 2012 book and article authored by Sanger said Stuxnet was among the crowning achievements of ""Olympic Games,"" a covert program jointly pursued by the US and Israel to curb Iran's attempts to obtain nuclear weapons."
-800,t,t,84 www.eset.com 4 Preface This report is devoted to the analysis of the notorious Stuxnet worm (Win32/Stuxnet) that suddenly attracted the attention of virus researchers this summer.
-822,t,t,"A case of ""buggy Ransomware"" with backdoor, spyware (is an Andromeda + Botnet CnC) Infection via Apache's Blackhole Exploit Kit."
-804,t,t,9FB4DD1B3E0B Malwarebytes : Trojan.Agent.ED Ikarus : Worm.Win32.Cridex Fortinet : W32/Kryptik.ASU!
-803,t,t,"91.211.65.107 is hosting a Command and Control server for Rustock, one of the largest spam botnets:"
+812,t,f,"A BBS posting of the Mac Icefog trojan, bundled with the graphics program Img2icns The backdoor portions of the program are similar to their Windows counterparts: they collect information about the host system, report it back to the command and control server and then request commands to execute."
+816,t,f,"A blog post published Thursday by IBM Security Intelligence researchers John Kuhn and Lance Mueller explains the rest:Once the infected victim tries to log in to one of the hundreds of bank websites for which Dyre is programmed to monitor, a new screen will appear instead of the corporate banking site."
+823,t,f,A Chinese hacker stealing intellectual property from a US defense contractor is qualitatively different from a BlackEnergy implant in a natural gas pipeline control system.
+813,t,f,"A big wave of emails purporting to be Craigslist notifications but containing links to websites hosting the Black Hole exploit kit hit the Internet yesterday, a day that already was filled with drama surrounding the LinkedIn password dump."
+819,t,f,"A California woman is suing both Lenovo and Superfish , after the PC maker was found shipping laptops to consumers with Superfish adware pre-installed."
+806,t,f,"A 2012 book and article authored by Sanger said Stuxnet was among the crowning achievements of ""Olympic Games,"" a covert program jointly pursued by the US and Israel to curb Iran's attempts to obtain nuclear weapons."
+800,t,f,84 www.eset.com 4 Preface This report is devoted to the analysis of the notorious Stuxnet worm (Win32/Stuxnet) that suddenly attracted the attention of virus researchers this summer.
+822,t,f,"A case of ""buggy Ransomware"" with backdoor, spyware (is an Andromeda + Botnet CnC) Infection via Apache's Blackhole Exploit Kit."
+804,t,f,9FB4DD1B3E0B Malwarebytes : Trojan.Agent.ED Ikarus : Worm.Win32.Cridex Fortinet : W32/Kryptik.ASU!
+803,t,f,"91.211.65.107 is hosting a Command and Control server for Rustock, one of the largest spam botnets:"
 833,t,f,A complex variant of the MiniDuke malware - first seen almost 18 months ago and which targets NATO and other European government IT systems - has been spotted.
 834,t,f,A comprehensive analysis of the version of BlackEnergy circulating at the time was done in 2007 by Arbor Networks.
 835,t,f,"A Conficker infection, Zeus bot call-home traffic, or noisy worms are best found through the gathering approach."
@@ -772,12 +772,12 @@ id,belief,in_progress,text
 869,t,f,"A few weeks later, a new issue of the Journal of Communications was released, and in it a paper written by two German researchers who have managed to create a malware prototype that uses a ""covert channel of communication"", i.e. the very speakers and microphones that Raiu believes crucial to badBIOS' dissemination."
 870,t,f,A few words about the HLux botnet.
 871,t,f,"A file encrypted by SynoLocker, as viewed in a hex editor (Arrows pointing to beginning of marker string)."
-847,t,t,A digitally signed version of the popular CryptoWall ransomware is distributed via five Alexa top-ranked websites in a widespread malvertising campaign.
-839,t,t,"A criminal leak investigation into a top military official has stalled out of concern it could force US officials to confirm joint US-Israeli involvement behind the Stuxnet worm that targeted Iran's nuclear program, according to a media report published Wednesday."
-861,t,t,"A few months have passed since the release of the ""Backoff"" point-of-sale (PoS) malware advisory , but Backoff and other PoS malware continue to be an active threat as businesses keep reporting data breaches and the compromise of their customers' financial information."
-853,t,t,"A few days ago, the security industry was surprised by the discovery of a new strain of the popular Duqu worm , so called Duqu 2.0 ."
-863,t,t,"A few weeks after Operation Tovar, another global operation led to the seizure of command and control (C2) servers and botnet-related domains associated with the Shylock infrastructure."
-913,t,t,A malware scan uncovered a Zeus variant configured to detect Salesforce.com authenticated sessions instead of banking sites.
+847,t,f,A digitally signed version of the popular CryptoWall ransomware is distributed via five Alexa top-ranked websites in a widespread malvertising campaign.
+839,t,f,"A criminal leak investigation into a top military official has stalled out of concern it could force US officials to confirm joint US-Israeli involvement behind the Stuxnet worm that targeted Iran's nuclear program, according to a media report published Wednesday."
+861,t,f,"A few months have passed since the release of the ""Backoff"" point-of-sale (PoS) malware advisory , but Backoff and other PoS malware continue to be an active threat as businesses keep reporting data breaches and the compromise of their customers' financial information."
+853,t,f,"A few days ago, the security industry was surprised by the discovery of a new strain of the popular Duqu worm , so called Duqu 2.0 ."
+863,t,f,"A few weeks after Operation Tovar, another global operation led to the seizure of command and control (C2) servers and botnet-related domains associated with the Shylock infrastructure."
+913,t,f,A malware scan uncovered a Zeus variant configured to detect Salesforce.com authenticated sessions instead of banking sites.
 873,t,f,A fix for that vulnerability was released by Microsoft 29 days before Conficker first began to appear and if users had applied the patch quickly enough Conficker would have been dead on arrival.
 874,t,f,"A Forbes article and a Times article yesterday brought the apparition back to the front, with some claiming that the site offered by the DNSChanger Working Group is a new one, which it is not."
 876,t,f,"A further sign of the success of SpyEye (and helped boost its success even further) came in October 2010 when the maker of rival ZeuS , arguably as successful as SpyEye, decided to retire and go underground and handed his wares over to Panin."
@@ -805,17 +805,17 @@ id,belief,in_progress,text
 910,t,f,A malicious DLL which is also part of other versions of the Neutrino exploit pack (discussed later in this article).
 911,t,f,A malicious script on several of the pages directed victims to an attacker-owned site serving the Poison Ivy remote access trojan.
 912,t,f,A malware researcher who uses the name Kafeine and closely follows the sale and use of exploit kits has looked at the major groups that have been using Cool and Blackhole in recent years and found that Cool is virtually gone from the exploit kit landscape.
-899,t,t,"A large number of apps in the Android Market have been found to contain a piece of malware known as DroidDream, a Trojan that not only is able to harvest sensitive data from an infected device, but also can break out of the Android sandbox and download additional malicious code to the phone from remote servers."
-900,t,t,"A Lenovo representative said in a forum that Superfish has been uninstalled and cited ""some issues (browser pop up behavior for example)"" as the reason."
-886,t,t,"A group of saboteurs using the world's largest spam botnet, Cutwail , have opted to distribute their malware via the Magnitude exploit kit instead of through BlackHole ."
-893,t,t,A huge leap for DOWNAD.
-880,t,t,"(A good example of the latter case in 2012 was the release of Blackhole Exploit Kit 2.0, a direct response to successful efforts to block attacks that used the previous 1.x version."
-891,t,t,A history lesson brought to you by the Nuclear exploit kit.
-879,t,t,A gift from zeus for passengers of US Airways.
-896,t,t,A joint operation by crime agencies and computer security companies has successfully taken down the Beebone botnet.
-889,t,t,"A handful of publishers in the market recently published several dozen apps that had been loaded with a piece of malware called DroidDream, which is capable of all kinds of nastiness."
-875,t,t,"A former law enforcement officer involved in the Rustock investigation said the name attached to that attested account was ""Vladimir Shergin."""
-892,t,t,A History Lesson on Zeus.
+899,t,f,"A large number of apps in the Android Market have been found to contain a piece of malware known as DroidDream, a Trojan that not only is able to harvest sensitive data from an infected device, but also can break out of the Android sandbox and download additional malicious code to the phone from remote servers."
+900,t,f,"A Lenovo representative said in a forum that Superfish has been uninstalled and cited ""some issues (browser pop up behavior for example)"" as the reason."
+886,t,f,"A group of saboteurs using the world's largest spam botnet, Cutwail , have opted to distribute their malware via the Magnitude exploit kit instead of through BlackHole ."
+893,t,f,A huge leap for DOWNAD.
+880,t,f,"(A good example of the latter case in 2012 was the release of Blackhole Exploit Kit 2.0, a direct response to successful efforts to block attacks that used the previous 1.x version."
+891,t,f,A history lesson brought to you by the Nuclear exploit kit.
+879,t,f,A gift from zeus for passengers of US Airways.
+896,t,f,A joint operation by crime agencies and computer security companies has successfully taken down the Beebone botnet.
+889,t,f,"A handful of publishers in the market recently published several dozen apps that had been loaded with a piece of malware called DroidDream, which is capable of all kinds of nastiness."
+875,t,f,"A former law enforcement officer involved in the Rustock investigation said the name attached to that attested account was ""Vladimir Shergin."""
+892,t,f,A History Lesson on Zeus.
 916,t,f,"A ""Masque Attack,"" however, can't replace Apple's platform applications, such as Mobile Safari, but it can replace applications installed from the App Store."
 917,t,f,"A massive spam wave is installing banking Trojan Dyreza on tens of thousands of computers to steal sensitive financial data from unsuspecting customers, Bitdefender malware analysts warn."
 918,t,f,"A member of the FBI's Cyber's Most Wanted list, he was identified in court documents as the leader of a gang of cybercriminals based in Russia and Ukraine responsible for the development and operation of both the GameOver Zeus and CryptoLocker schemes."
@@ -849,11 +849,11 @@ id,belief,in_progress,text
 950,t,f,"A new malvertising attack, constructed around the Magnitude exploit kit, is using a novel technique to push users to sites where they can be attacked with a drive-by download."
 951,t,f,"A new malware called NitlovePoS has the capability of capture and exfiltrate track one and two from payment cards, and to accomplish that it scans the running processes of the infected machine."
 953,t,f,"A new piece of extortion-ready malware, dubbed Critroni, is making its way out of the Dark Web into the wild."
-946,t,t,"A new iteration of the Carberp trojan is targeting Facebook users, but unlike most Facebook attacks that attempt to pinch login credentials, this one is trying to steal money by fooling users into handing over an e-cash voucher."
-915,t,t,A man suspected of being the author of the notorious Blackhole Exploit Kit has been arrested by Russian authorities.
-923,t,t,"A Monday TrendLabs blog post noted that despite its use of Tor a la Chewbacca, the names in the LusyPOS code mirror those found in Dexter's ""very distinctive text string.""."
-941,t,t,"""A new exploit kit is being advertised since yesterday on underground forum : Neutrino,"" he announced."
-928,t,t,"A nearly peerless, multi-staged and modular spying tool known as Regin is being referred to by Symantec, the security company that initially released information on the malware, as 'groundbreaking' - particularly because of the advanced techniques it uses to conceal itself."
+946,t,f,"A new iteration of the Carberp trojan is targeting Facebook users, but unlike most Facebook attacks that attempt to pinch login credentials, this one is trying to steal money by fooling users into handing over an e-cash voucher."
+915,t,f,A man suspected of being the author of the notorious Blackhole Exploit Kit has been arrested by Russian authorities.
+923,t,f,"A Monday TrendLabs blog post noted that despite its use of Tor a la Chewbacca, the names in the LusyPOS code mirror those found in Dexter's ""very distinctive text string.""."
+941,t,f,"""A new exploit kit is being advertised since yesterday on underground forum : Neutrino,"" he announced."
+928,t,f,"A nearly peerless, multi-staged and modular spying tool known as Regin is being referred to by Symantec, the security company that initially released information on the malware, as 'groundbreaking' - particularly because of the advanced techniques it uses to conceal itself."
 955,t,f,"A new piece of malware known as Shamoon that has the ability to destroy files on infected machines and overwrite the master boot record has researchers scratching their heads, wondering what the tool's purpose might be and why the attackers behind it would destroy infected PCs."
 957,t,f,"A new powerful strain of Duqu malware, dubbed Duqu 2.0, appeared in the wild after going dark in 2012."
 959,t,f,"A new pushdo botnet variant infected 11,000 machine in 24 hours."
@@ -886,13 +886,13 @@ id,belief,in_progress,text
 992,t,f,A new version of the BlackHole exploit kit is now out on the web and ready to start infecting.
 993,t,f,"A new version of the file-encrypting CryptoWall ransomware has emerged, and it has Tor and Invisible Internet Project (I2P) in tow."
 994,t,f,"A new version of the infamous Koobface worm designed to attack Mac OS X computers is spreading through Facebook and other social networking sites, security experts warn."
-958,t,t,"A new powerful variant of the Vawtrak malware, also known as Neverquest or or Snifula, appeared in the wild."
-980,t,t,A new variant of the Android malware Koler now spreads by text message and holds infected users' phones hostage until a ransom is paid.
-956,t,t,"A new Point of Sale (POS) malware family, PoSeidon, has been identified."
-970,t,t,A new strain of the BASHLITE malware was detected by experts at Trend Micro shortly after the public disclosure of the ShellShock bug.
-977,t,t,A new variant Cryptowall (An advanced version of cryptolocker) is now using a malicious .chm file attachment to infect systems.
-983,t,t,"A new variant of the nefarious Zeus trojan is targeting a number of banks in Canada, including Bank of Montreal, Royal Bank of Canada, and National Bank of Canada, according to SentinelOne."
-954,t,t,"A new piece of malware dubbed Gauss, that experts say is a direct descendant of Flame and also related to Stuxnet and Duqu, has been found on thousands of PCs in the Middle East, mostly in Lebanon."
+958,t,f,"A new powerful variant of the Vawtrak malware, also known as Neverquest or or Snifula, appeared in the wild."
+980,t,f,A new variant of the Android malware Koler now spreads by text message and holds infected users' phones hostage until a ransom is paid.
+956,t,f,"A new Point of Sale (POS) malware family, PoSeidon, has been identified."
+970,t,f,A new strain of the BASHLITE malware was detected by experts at Trend Micro shortly after the public disclosure of the ShellShock bug.
+977,t,f,A new variant Cryptowall (An advanced version of cryptolocker) is now using a malicious .chm file attachment to infect systems.
+983,t,f,"A new variant of the nefarious Zeus trojan is targeting a number of banks in Canada, including Bank of Montreal, Royal Bank of Canada, and National Bank of Canada, according to SentinelOne."
+954,t,f,"A new piece of malware dubbed Gauss, that experts say is a direct descendant of Flame and also related to Stuxnet and Duqu, has been found on thousands of PCs in the Middle East, mostly in Lebanon."
 996,t,f,"A new version of the notorious Zeus banking Trojan, which hides itself inside digital photos, has been discovered by research firm Malwarebytes."
 998,t,f,A new version of the Zeus botnet was used to steal about $47 million from European banking customers in the past year.
 999,t,f,A new zero-day of Adobe Flash is used by the prevalent Angler Exploit Kit in the wild.
@@ -921,15 +921,15 @@ id,belief,in_progress,text
 1030,t,f,A recent example was the Conficker worm: we developed a generic Figure 1-3: AV Comparatives Awards heuristic update for the worm and used ThreatSense technology to see how many variants of the worm were detected before a new heuristic update would be required.
 1031,t,f,A recent joint report by Deakin University and Trend Micro had looked into the ongoing nature of TorrentLocker spam runs for November and December 2014.
 1183,t,f,"According to Fortinet's Chan, the latest variant of Backoff, dubbed ""ROM"" (and detected as W32/Backoff.B!"
-1021,t,t,"A proof of concept attack, called iBrute, was posted to GitHub days before the attack; the poster reported yesterday that the vulnerability it exploited has now been patched by Apple."
-995,t,t,"A new version of the infamous Simplocker malware has been discovered in English featuring a raft of improvements including expanded file encryption technology, security researchers have warned."
-1026,t,t,A quick search on IP (58.65.237.153) revealed that this server is a known CnC for 'Zbot' which is already.
-1000,t,t,"A newer version of Dyre, however, has begun targeting the popular cloud service Salesforce , the threat actors seem to be interested in the customer information the cloud contains."
-997,t,t,"A new version of the TDSS/TDL-4 botnet is rapidly growing, primarily because it's having great success using an evasion technique known as a domain generation algorithm (DGA) to avoid detection, researchers at Damballa Security revealed today.."
-1029,t,t,"""A recent detection name that has been used in relation to this botnet is 'Mevade.A', but older references suggest the name 'Sefnit', which dates back to at least 2009 and also included Tor connectivity."
-1017,t,t,"A portion of the ZeroAccess botnet was recently taken down by Symantec, but it's estimated to be present in 2.2 to 1.9 million computers on any given day, making it the most pervasive botnet to date."
-1006,t,t,A number of suspects believed to be responsible for one of the first major banking malware threats - known as Svpeng - were arrested in Russia last month .
-1018,t,t,A posting in Information Week in there security /attacks sections : Beware the latest version of the banking malware known as Shylock - also called Caphaw - which has been retooled to target customers of 24 different banks.
+1021,t,f,"A proof of concept attack, called iBrute, was posted to GitHub days before the attack; the poster reported yesterday that the vulnerability it exploited has now been patched by Apple."
+995,t,f,"A new version of the infamous Simplocker malware has been discovered in English featuring a raft of improvements including expanded file encryption technology, security researchers have warned."
+1026,t,f,A quick search on IP (58.65.237.153) revealed that this server is a known CnC for 'Zbot' which is already.
+1000,t,f,"A newer version of Dyre, however, has begun targeting the popular cloud service Salesforce , the threat actors seem to be interested in the customer information the cloud contains."
+997,t,f,"A new version of the TDSS/TDL-4 botnet is rapidly growing, primarily because it's having great success using an evasion technique known as a domain generation algorithm (DGA) to avoid detection, researchers at Damballa Security revealed today.."
+1029,t,f,"""A recent detection name that has been used in relation to this botnet is 'Mevade.A', but older references suggest the name 'Sefnit', which dates back to at least 2009 and also included Tor connectivity."
+1017,t,f,"A portion of the ZeroAccess botnet was recently taken down by Symantec, but it's estimated to be present in 2.2 to 1.9 million computers on any given day, making it the most pervasive botnet to date."
+1006,t,f,A number of suspects believed to be responsible for one of the first major banking malware threats - known as Svpeng - were arrested in Russia last month .
+1018,t,f,A posting in Information Week in there security /attacks sections : Beware the latest version of the banking malware known as Shylock - also called Caphaw - which has been retooled to target customers of 24 different banks.
 1032,t,f,"A recent Kaspersky Lab research examination of two command and control servers used by the Backoff point-of-sale malware revealed that a U.S.-based Mexican restaurant chain, a North American freight shipping company and a North American payroll association had also been breached."
 1033,t,f,"A recent malware attack against Windows Mobile phones basically took an existing, legitimate smartphone app and booby-trapped it with malware: the 3D Anti-Terrorist app game for Windows Mobile was rewritten with auto-dialer malware, according to Lookout's Hering."
 1034,t,f,"A recent report suggested that many Mac users were running vulnerable versions of the Java software , exposing them to the Flashback Trojan."
@@ -957,12 +957,12 @@ id,belief,in_progress,text
 1064,t,f,"A self-described ""cabal"" of companies, including Microsoft, Symantec, and a host of domain registration providers, have been trying to thwart the efforts of Conficker by pre-registering and locking up the domain names being used by the worm to distribute updates."
 1844,t,f,Angler exploit kit and domain shadowing: A deadly combination.
 1069,t,f,"A significant string of distributed denial-of-service (DDoS) campaigns during the second quarter of 2014 were driven by Linux web servers that were compromised and infected by IptabLes and IptabLex malware, according to a threat advisory from Akamai's Prolexic Security Engineering & Research Team (PLXsert)."
-1065,t,t,"A separate advisory by Israel-based Seculert said that Shamoon attacked ""several specific companies in a few industries."""
-1045,t,t,"A retired general and trusted member of President Barack Obama's national security team is the target of a Department of Justice (DOJ) investigation into a leak about a covert cyberattack on Iran's nuclear facilities using the purpose-built Stuxnet virus, NBC reports ."
-1056,t,t,A seasoned cybercriminal is better off using Zeus v2.0 for free.
-1049,t,t,A review of the email addresses and other contact information bx1 shared on these forums suggests that bx1 was the 19th and 20th John Doe named in Microsoft's 2012 legal suit seeking to discover the identities of 39 alleged ZeuS botmasters .
-1051,t,t,A rogue group is covertly collecting top-secret data with an infrastructure rivaling Flame and Stuxnet.
-1052,t,t,A Russian agency could be behind a sophisticated piece of malware known as Uroburos that has potentially been stealing confidential data from governments and other high profile targets since as far back as 2011.
+1065,t,f,"A separate advisory by Israel-based Seculert said that Shamoon attacked ""several specific companies in a few industries."""
+1045,t,f,"A retired general and trusted member of President Barack Obama's national security team is the target of a Department of Justice (DOJ) investigation into a leak about a covert cyberattack on Iran's nuclear facilities using the purpose-built Stuxnet virus, NBC reports ."
+1056,t,f,A seasoned cybercriminal is better off using Zeus v2.0 for free.
+1049,t,f,A review of the email addresses and other contact information bx1 shared on these forums suggests that bx1 was the 19th and 20th John Doe named in Microsoft's 2012 legal suit seeking to discover the identities of 39 alleged ZeuS botmasters .
+1051,t,f,A rogue group is covertly collecting top-secret data with an infrastructure rivaling Flame and Stuxnet.
+1052,t,f,A Russian agency could be behind a sophisticated piece of malware known as Uroburos that has potentially been stealing confidential data from governments and other high profile targets since as far back as 2011.
 1070,t,f,"A similar advisory was issued by the FBI at the beginning of this year against other RAM-scraping malware variants, but despite those warnings, new research now shows that attackers are continuing to utilize Backoff to a devastating effect."
 1071,t,f,"A similar approach was used previously in the high-profile banking trojan Citadel .""."
 1072,t,f,A similar message allegedly from HSBC advised of a failed payment yet was designed to deliver Trojan Zbot with the intention of collecting as much financial data from active bank accounts as possible.
@@ -1038,26 +1038,26 @@ id,belief,in_progress,text
 37,f,f,House Government Oversight and Accountability Committee scheduled a hearing Monday on the state's contract with the Boston-based Public Consulting Group
 38,f,f,fire at a New Jersey
 39,f,f,"He was born Aug. 30, 1946, in Puerto Rico"
-10483,f,t,PSAC on renewing their collective agreement (Department of Foreign Affairs and International Trade of Canada
-9654,f,t,Jonathan Maher
-9655,f,t,"Dan Mathieson, also the Mayor of Stratford"
+10483,f,f,PSAC on renewing their collective agreement (Department of Foreign Affairs and International Trade of Canada
+9654,f,f,Jonathan Maher
+9655,f,f,"Dan Mathieson, also the Mayor of Stratford"
 11964,f,f,Petroflow announce
-9712,f,t,"Biden was a regular on the Amtrak train shuttle between Wilmington and Washington when he was a senator, and has said he would prefer to take the train, but he said the Secret Service would't let him because it ""gives too many opportunities for people to interact with me in a way they wouldn't like to see,"" according to the Daily Mail."
-9656,f,t,defective clutches
-9657,f,t,Santa Claus Arrested for Chalking in Austin http://t.co/gccGWChz #Occupy #OWS #Activist #Protest
-9658,f,t,Turkey has softened its opposition toward a Russia
-10311,f,t,It has a long history and unfortunately it continues to be problematic for not only the service but for our citizens as well
-9633,f,t,"""On October 3 rd , Sheila Taylor, who was a trustee with the Calgary Board of Education, resigned from her position. Since then the board has been actively seeking information regarding the costs and the logistics of holding a byelection. Today we're excited to announce a survey that we have launched to the public and we're looking for public input, public feedback to find out what they think about the possibility of holding a byelection to fulfill the vacant position,"" said Joy Bowen-Eyre, Chair of the Board of Trustees."
+9712,f,f,"Biden was a regular on the Amtrak train shuttle between Wilmington and Washington when he was a senator, and has said he would prefer to take the train, but he said the Secret Service would't let him because it ""gives too many opportunities for people to interact with me in a way they wouldn't like to see,"" according to the Daily Mail."
+9656,f,f,defective clutches
+9657,f,f,Santa Claus Arrested for Chalking in Austin http://t.co/gccGWChz #Occupy #OWS #Activist #Protest
+9658,f,f,Turkey has softened its opposition toward a Russia
+10311,f,f,It has a long history and unfortunately it continues to be problematic for not only the service but for our citizens as well
+9633,f,f,"""On October 3 rd , Sheila Taylor, who was a trustee with the Calgary Board of Education, resigned from her position. Since then the board has been actively seeking information regarding the costs and the logistics of holding a byelection. Today we're excited to announce a survey that we have launched to the public and we're looking for public input, public feedback to find out what they think about the possibility of holding a byelection to fulfill the vacant position,"" said Joy Bowen-Eyre, Chair of the Board of Trustees."
 11965,f,f,"Norman Chalk, 89"
-9634,f,t,"""It's going to put much more pressure on the Yahoo board... because the performance is not going to be masked by what's happening on the other side of the world,"" said Ian Maude at the researcher Enders Analysis."
-10439,f,t,"A week from Today, CNBC will be debuting it's latest special ""The Oprah Fact"", which is all about how the talkshow host has become a latter day Queen Midas for all kinds of products, from Twitter to KFC grilled chicken."
-12834,f,t,trial attorneys in Denver
+9634,f,f,"""It's going to put much more pressure on the Yahoo board... because the performance is not going to be masked by what's happening on the other side of the world,"" said Ian Maude at the researcher Enders Analysis."
+10439,f,f,"A week from Today, CNBC will be debuting it's latest special ""The Oprah Fact"", which is all about how the talkshow host has become a latter day Queen Midas for all kinds of products, from Twitter to KFC grilled chicken."
+12834,f,f,frial attorneys in Denver
 12416,f,f,Students in Chicago and Boston
 12545,f,f,Goalkeeper Julio Cesar of Brazil
-12835,f,t,"his talk, Mercier"
-13170,f,f,the arrest of Godfrey and Smith
-13995,f,f,to take the lead on ENDA
-14931,f,t,Purchase Black Friday Deal Bosal
+12835,f,f,"his talk, Mercier"
+13170,f,f,fhe arrest of Godfrey and Smith
+13995,f,f,fo take the lead on ENDA
+14931,f,f,Purchase Black Friday Deal Bosal
 16347,f,f,Fosun buys Ironshore
 10371,f,f,Stericycle Acquires Eclipse Marketing - Analyst
 10373,f,f,"two police officers in Ferguson, Mo."
@@ -1066,29 +1066,29 @@ id,belief,in_progress,text
 9687,f,f,"when there is a ""flat spot"" in his work"
 9688,f,f,"come from Mexico, she"
 9689,f,f,"Edwards, the 14-year-old"
-9619,f,t,"Basement Waterproofing Pays in the Prolonged Operate For most people, the home they stay in is the largest financial investment"
-9609,f,t,It was good and healthy for everyone to see both sides in a lively debate
-9610,f,t,"There weren't students huddled around the computer, watching the inappropriate material,"" Bell said"
-9623,f,t,Carl Shelton was shot
-9618,f,t,"She was born and raised in Biddeford, Maine"
-9620,f,t,"That pipe is in there illegally,"" said Texas landowner Michael Bishop"
-9621,f,t,later when asked Question 4: Interviewer: He ordered a cup of coffee for the candidate
-9622,f,t,You don't want to put a shoe on a girl that she really can't walk in it because then it becomes distracting
-9624,f,t,"""Unfortunately, what often happens around Christmas is this expectation that we have to please everybody and so we end up getting ourselves into such a lather that nobody enjoys Christmas,"" Jill Chapman, chairman of Minimisation of Suicide Harm (MOSH) Adelaide, said."
-9625,f,t,killed in Guinea-Bissau and the Nigerian Embassy attacked
-9636,f,t,Gulberg SHO Imran Manan arrived at the scene and told the protesters
-9637,f,t,"Beijing at 0115 GMT on Monday, Athens Airport officials said.Standing outside the stadium, the protesters"
-9638,f,t,he tells jokes of a racial nature she
-9639,f,t,"the group of leaders to support the deal, but has said he will leave the signing of it to his successor, who will be elected next April"
-9640,f,t,"I'm not talking down the texting systems, but you can't replace the real-life experience of talking to someone and you can't replace the assurance students get first-hand,"" he said"
-9641,f,t,"assault of a police officer in Riverside, New Jersey, was sentenced in Bucks County Court"
-9642,f,t,"Because of the temporary and intermittent nature, they have down time between projects,"" he said"
-9643,f,t,The US Navy is already investigating this
-9644,f,t,GSK has announced
-9645,f,t,"in Idlib is outnumbered, despite losing hundreds of terrorists they still manage to attack"
-9646,f,t,"""I am thrilled to join the team at BISG,"" Mr. Kuyper noted."
-9647,f,t,Laying aside all the debates about climate change Christians have had a duty as old as the Bible itself to have a God-like dominion over and an Adam-like service to the earth (Genesis 128 and 215).
-9883,f,t,We used to be the place where the world came to see the most innovative products and ideas.
+9619,f,f,"Basement Waterproofing Pays in the Prolonged Operate For most people, the home they stay in is the largest financial investment"
+9609,f,f,It was good and healthy for everyone to see both sides in a lively debate
+9610,f,f,"There weren't students huddled around the computer, watching the inappropriate material,"" Bell said"
+9623,f,f,Carl Shelton was shot
+9618,f,f,"She was born and raised in Biddeford, Maine"
+9620,f,f,"That pipe is in there illegally,"" said Texas landowner Michael Bishop"
+9621,f,f,later when asked Question 4: Interviewer: He ordered a cup of coffee for the candidate
+9622,f,f,You don't want to put a shoe on a girl that she really can't walk in it because then it becomes distracting
+9624,f,f,"""Unfortunately, what often happens around Christmas is this expectation that we have to please everybody and so we end up getting ourselves into such a lather that nobody enjoys Christmas,"" Jill Chapman, chairman of Minimisation of Suicide Harm (MOSH) Adelaide, said."
+9625,f,f,killed in Guinea-Bissau and the Nigerian Embassy attacked
+9636,f,f,Gulberg SHO Imran Manan arrived at the scene and told the protesters
+9637,f,f,"Beijing at 0115 GMT on Monday, Athens Airport officials said.Standing outside the stadium, the protesters"
+9638,f,f,he tells jokes of a racial nature she
+9639,f,f,"the group of leaders to support the deal, but has said he will leave the signing of it to his successor, who will be elected next April"
+9640,f,f,"I'm not talking down the texting systems, but you can't replace the real-life experience of talking to someone and you can't replace the assurance students get first-hand,"" he said"
+9641,f,f,"assault of a police officer in Riverside, New Jersey, was sentenced in Bucks County Court"
+9642,f,f,"Because of the temporary and intermittent nature, they have down time between projects,"" he said"
+9643,f,f,The US Navy is already investigating this
+9644,f,f,GSK has announced
+9645,f,f,"in Idlib is outnumbered, despite losing hundreds of terrorists they still manage to attack"
+9646,f,f,"""I am thrilled to join the team at BISG,"" Mr. Kuyper noted."
+9647,f,f,Laying aside all the debates about climate change Christians have had a duty as old as the Bible itself to have a God-like dominion over and an Adam-like service to the earth (Genesis 128 and 215).
+9883,f,f,We used to be the place where the world came to see the most innovative products and ideas.
 9675,f,f,"Karnataka Bank, Indian Abroad Bank, Dabur Investment Corporation and Sompo Japan Insurance Inc enjoy tied up pro forming a non-life insurance flock while Bank of Maharashtra has tied up with Shriram Assemblage and South Africas Sanlam alliance"
 9676,f,f,We're comfortable and confident with the position we've taken on the evidence
 9677,f,f,"should we rebuild, where and how"
@@ -1110,29 +1110,29 @@ id,belief,in_progress,text
 9703,f,f,"Michael Escalante, Griffin Capital's Chief Investment Officer and President of GCEAR II, added, ""With these acquisitions, we believe that the REITs were able to capitalize on the market's over-reaction to the recent sell-off in the price of oil. We have every confidence in the long-term prospects of the Houston economy and real estate market, and on the business model and competitive position of the Tenant. Business essential assets with long-term lease duration such as the Westgate properties shield the REITs' respective portfolios from short-term market fluctuations."""
 9704,f,f,"BBX Capital Corporation (""BBX Capital,"" ""BBX,"" and/or the ""Company"") (.), formerly BankAtlantic Bancorp, Inc., reported financial results for the fourth quarter and full year ending December 31, 2013"
 9705,f,f,"A New Jersey native and Fairfax County resident, Cuccinelli"
-9653,f,t,"Yang Baojun, vice-president of the China Academy of Urban Planning and Design, said urban construction in China, in a quest for instant benefit, lacks foresight and ignores basic development principles."
-9697,f,t,"They were very athletic; they were definitely bigger than us, that's what gave us some trouble, not only defensively, but we just couldn't score on the offensive end,"" she said"
-9696,f,t,Lightly Coated Fish Fillet with Cream Corn Sauce.
-9686,f,t,Our contact center and multiple assister organizations statewide are looking forward to providing a supportive consumer experience over this next 180 day period of open enrollment.
-9678,f,t,"We need help both from people that live in the area and those apartment managers,"" Heighes said"
-9662,f,t,@J_Costero Eonia called to fix 11 - 13 bp lower  at 0.22 0.235 fyi .
-9648,f,t,"Old news would be saying UK lost to Robert Morris in the NIT last year, but I bet State street was hype as fuck during that game 😂😂😂😂😂."
-9649,f,t,"In this daily horoscope, Kelli Fox, The Astrologer says: ""Today, you're in touch with your spiritual side."
-9650,f,t,"There is a huge political commitment in Germany to continue,"" he said"
-9651,f,t,"If you are making pharmaceutical products then regulatory agencies allow a larger residual amount of iron compared to platinum or rhodium,' he tells"
-9652,f,t,Drivers in Puerto Rico
-9661,f,t,Predictive Publishing for Facebook - Business Wire (press release
-9663,f,t,"me and my friends dream of the day we can teleport, I swear 😂."
-9664,f,t,XSS) vulnerability in the search module in CMS Mundo 1.0
-9665,f,t,other countries can learn from Taiwan's experience in promoting tourism
-9666,f,t,"Michael Dessau of Boulder, Colo."
-9667,f,t,"Fuji Heavy Industries Ltd., the maker of Subaru cars, targets a 6 percent increase in global sales"
-9668,f,t,With three burglaries reported in her neighborhood during the past week
-9669,f,t,AT&T attempted to snatch-up T-Mobile USA in a deal
-9671,f,t,the board of JJB became concerned about the potentially adverse publicity as they were about to launch their flotation at a time of financial difficulty for the firm
-9672,f,t,General Mills Announces 2015 Sustainability Goals; Reports Progress on 2010 Goals.
-9674,f,t,"For me, the Olympics are a mission,"" said Calve"
-9706,f,t,"We are very pleased with our solid results in the first quarter, spread evenly throughout our business,"" said Dominic Casserley"
+9653,f,f,"Yang Baojun, vice-president of the China Academy of Urban Planning and Design, said urban construction in China, in a quest for instant benefit, lacks foresight and ignores basic development principles."
+9697,f,f,"They were very athletic; they were definitely bigger than us, that's what gave us some trouble, not only defensively, but we just couldn't score on the offensive end,"" she said"
+9696,f,f,Lightly Coated Fish Fillet with Cream Corn Sauce.
+9686,f,f,Our contact center and multiple assister organizations statewide are looking forward to providing a supportive consumer experience over this next 180 day period of open enrollment.
+9678,f,f,"We need help both from people that live in the area and those apartment managers,"" Heighes said"
+9662,f,f,@J_Costero Eonia called to fix 11 - 13 bp lower  at 0.22 0.235 fyi .
+9648,f,f,"Old news would be saying UK lost to Robert Morris in the NIT last year, but I bet State street was hype as fuck during that game 😂😂😂😂😂."
+9649,f,f,"In this daily horoscope, Kelli Fox, The Astrologer says: ""Today, you're in touch with your spiritual side."
+9650,f,f,"There is a huge political commitment in Germany to continue,"" he said"
+9651,f,f,"If you are making pharmaceutical products then regulatory agencies allow a larger residual amount of iron compared to platinum or rhodium,' he tells"
+9652,f,f,Drivers in Puerto Rico
+9661,f,f,Predictive Publishing for Facebook - Business Wire (press release
+9663,f,f,"me and my friends dream of the day we can teleport, I swear 😂."
+9664,f,f,XSS) vulnerability in the search module in CMS Mundo 1.0
+9665,f,f,other countries can learn from Taiwan's experience in promoting tourism
+9666,f,f,"Michael Dessau of Boulder, Colo."
+9667,f,f,"Fuji Heavy Industries Ltd., the maker of Subaru cars, targets a 6 percent increase in global sales"
+9668,f,f,With three burglaries reported in her neighborhood during the past week
+9669,f,f,AT&T attempted to snatch-up T-Mobile USA in a deal
+9671,f,f,fhe board of JJB became concerned about the potentially adverse publicity as they were about to launch their flotation at a time of financial difficulty for the firm
+9672,f,f,General Mills Announces 2015 Sustainability Goals; Reports Progress on 2010 Goals.
+9674,f,f,"For me, the Olympics are a mission,"" said Calve"
+9706,f,f,"We are very pleased with our solid results in the first quarter, spread evenly throughout our business,"" said Dominic Casserley"
 9707,f,f,"Douglas Manion, MD, head of specialty development at BMS, said, ""Throughout our collaboration with Pfizer, the alliance has been dedicated to further investigating the use and application of Eliquis."
 9708,f,f,delete Tuesday's loss from their memory bank and look forward to their next assignment
 9709,f,f,he didn't fail sobriety tests after being cited for DUI
@@ -1184,12 +1184,12 @@ id,belief,in_progress,text
 9762,f,f,in Selma shooting
 9763,f,f,"Sen. Marco Rubio of Florida, former Pennsylvania U.S."
 9764,f,f,declared by the Mines Geosciences Bureau
-9728,f,t,ClientTell announces Broadcast Manager For On-demand
-9737,f,t,"investigators from Seattle, Washington"
-9738,f,t,That's probably the most significant issue we're facing.
-9715,f,t,"It's exciting because a cappella was the first music, and it's always been with us,"" says Sharon"
-9718,f,t,"employers needed to ""pay attention"" to the issue"
-9747,f,t,"Speaking to BusinessLine , Maheshwari said, ""We will look at well-located residential projects with high sales velocity and developers with well-established track records.""Also, a percentage of the project must have been sold. Our focus will be on projects which can absorb debt of ₹80 crore."""
+9728,f,f,ClientTell announces Broadcast Manager For On-demand
+9737,f,f,"investigators from Seattle, Washington"
+9738,f,f,That's probably the most significant issue we're facing.
+9715,f,f,"It's exciting because a cappella was the first music, and it's always been with us,"" says Sharon"
+9718,f,f,"employers needed to ""pay attention"" to the issue"
+9747,f,f,"Speaking to BusinessLine , Maheshwari said, ""We will look at well-located residential projects with high sales velocity and developers with well-established track records.""Also, a percentage of the project must have been sold. Our focus will be on projects which can absorb debt of ₹80 crore."""
 9765,f,f,"Myers breakthrough in synthesizing macrolides--constructing them out of ""basic industrial chemicals,"" says Miller--leaves the company at an early stage of development with a two- to three-year march to the clinic."
 9766,f,f,"Prabhu, in his speech"
 9767,f,f,"New York, and killed at least 14 people posed a major flooding"
@@ -1232,18 +1232,18 @@ id,belief,in_progress,text
 9819,f,f,His arrival in the Middle East
 9885,f,f,"spill, oil is still visible in parts of the Gulf of Mexico"
 9886,f,f,** RHSJ7NDD ZNFISQ5G Artcraft Lighting AC8851BK Michigan 1-Light Outdoor Wall Light in Black LOLC9YGZW37YSFI 3L0QRIGT Outdoor Wall Mount AV7NZ1SN VCGWLDVY.
-9797,f,t,I've always been interested.
-9785,f,t,"Kason Olson, 9"
-9775,f,t,This can be easily accomplished via a targeted grants programme within the Government of India's Science and Engineering Research Council's (SERC's) existing Fund for Improvement of Science & Technology Infrastructure programme.
-9803,f,t,Archos will happily sell
-9784,f,t,was eerie not to see Sir Roy Trotman the general secretary of the BWU among the delegates
-9799,f,t,"Alex Bedford says, ""and why is that cargo tech arrested"
-9770,f,t,"SkyWest, Inc. (""SkyWest"") (NASDAQ: SKYW) today reported net income of $3.2 million , or $0.06 per diluted share, for the quarter ended March 31, 2013"
-9776,f,t,"election run, and used state funds to set up a $317 million biotech zone in Wisconsin"
-9798,f,t,British spy agencies hacked their way into accessing smartphone encryption
-9884,f,t,Operation Atlantic Resolve is a U.S. Army Europe lead exercise
-9781,f,t,Zur's visit to TRADOC headquarters
-9768,f,t,"Nguyen Phu Trong paid a working visit to Loc Thuy commune, Quang Binh province"
+9797,f,f,I've always been interested.
+9785,f,f,"Kason Olson, 9"
+9775,f,f,This can be easily accomplished via a targeted grants programme within the Government of India's Science and Engineering Research Council's (SERC's) existing Fund for Improvement of Science & Technology Infrastructure programme.
+9803,f,f,Archos will happily sell
+9784,f,f,was eerie not to see Sir Roy Trotman the general secretary of the BWU among the delegates
+9799,f,f,"Alex Bedford says, ""and why is that cargo tech arrested"
+9770,f,f,"SkyWest, Inc. (""SkyWest"") (NASDAQ: SKYW) today reported net income of $3.2 million , or $0.06 per diluted share, for the quarter ended March 31, 2013"
+9776,f,f,"election run, and used state funds to set up a $317 million biotech zone in Wisconsin"
+9798,f,f,British spy agencies hacked their way into accessing smartphone encryption
+9884,f,f,Operation Atlantic Resolve is a U.S. Army Europe lead exercise
+9781,f,f,Zur's visit to TRADOC headquarters
+9768,f,f,"Nguyen Phu Trong paid a working visit to Loc Thuy commune, Quang Binh province"
 9820,f,f,"""I'm excited to take this next step in my career at Quantcast. Our growth in the UK market has been strong to date, and I look forward to driving our team to become the market leader,"" says White. ""Building on the excellent brand equity that the business has built over its lifespan, my focus will be on further developing the great relationships we have with agencies, brands, and our publisher clients, helping all to build their business and reach their audiences through data, modelling, and sophisticated technology."""
 9821,f,f,"The wooden furniture offered by C&F Warehouse not only focuses on style and pattern, but ensure that furniture is highly durable in nature."
 9822,f,f,"$CGX Acquisition of Consolidated Graphics, Inc. (CGX) by R.R. Donnelley &amp; Sons ..."
@@ -1295,18 +1295,18 @@ id,belief,in_progress,text
 9876,f,f,Shell-bg deal could ease Petrobras
 9878,f,f,THE OFFEROR TO ACQUIRE ALL OF THE ISSUED H SHARES IN THE COMPANY
 9879,f,f,al-Qaeda should strap a bomb to a dolphin and blow up all the people killing
-9881,f,f,the star's smash hit collaboration with Jessie J and Nicki Minaj - Grande
-9839,f,t,"We are a licensed company with the right to sell gas on that market, and we would be interested in working in that direction"
-9880,f,t,northern Argentina that they will be treated with a suspected meteor
-9844,f,t,I'll give Whitehall a big haircut
-9868,f,t,he Taliban wanted to make an example of the girl
-9866,f,t,"Sells 3,974 Shares of American Woodmark Corp."
-9841,f,t,the Allied invasion of Germany
-9659,f,t,he returns to Lebanon on 8 December
-9660,f,t,visit of this delegation to India will further advance relations between the two countries.
-9836,f,t,the $5bn sale of Dell's financial services division
-9831,f,t,"Now, we are talking about a young man who, as a private business man, has touched the lives of many people in Anambra State positively."
-9823,f,t,"forces of radical Islam, who will use it to attack Israel"
+9881,f,f,fhe star's smash hit collaboration with Jessie J and Nicki Minaj - Grande
+9839,f,f,"We are a licensed company with the right to sell gas on that market, and we would be interested in working in that direction"
+9880,f,f,northern Argentina that they will be treated with a suspected meteor
+9844,f,f,I'll give Whitehall a big haircut
+9868,f,f,he Taliban wanted to make an example of the girl
+9866,f,f,"Sells 3,974 Shares of American Woodmark Corp."
+9841,f,f,fhe Allied invasion of Germany
+9659,f,f,he returns to Lebanon on 8 December
+9660,f,f,visit of this delegation to India will further advance relations between the two countries.
+9836,f,f,fhe $5bn sale of Dell's financial services division
+9831,f,f,"Now, we are talking about a young man who, as a private business man, has touched the lives of many people in Anambra State positively."
+9823,f,f,"forces of radical Islam, who will use it to attack Israel"
 9890,f,f,"Michael Becker say that authorities in Sioux Falls, South Dakota, removed their three children in December 2014."
 9891,f,f,"Mark Lester of FutureLearn said: ""As the world reaches the 70th anniversary of the liberation of the concentration camps and the number of living survivors decreases, it becomes of the utmost importance that the lessons of this turning point in history are kept alive.""Massive open online courses have emerged as an important means of reaching thousands of learners around the world with the highest quality learning material on a range of topical issues."""
 9893,f,f,"Never approach a dog that shows those kind of symptoms,"" Cunningham said"
@@ -1333,7 +1333,7 @@ id,belief,in_progress,text
 9917,f,f,Cairo and Israelis have taken to streets
 9918,f,f,"Jose Calzada, 35 phoned a suicide hotline at around 4 am, claiming he"
 9919,f,f,bought my Minolta
-9920,f,f,typhoons of my childhood in Thailand
+9920,f,f,fyphoons of my childhood in Thailand
 9921,f,f,"Jessica Brady, AAA public relations specialist, in a news release"
 9923,f,f,"It would be bad"" he said."
 9926,f,f,"Because of this, Buffalo companies had strong representation at the BIO meeting."
@@ -1356,16 +1356,16 @@ id,belief,in_progress,text
 9944,f,f,"In urban areas, we definitely have to be on top of our game operationally,"" says Kerr"
 9945,f,f,"the EU and the German Federal government to ""resist"" the scheme"
 9947,f,f,protest at the Jantar Mantar in New Delhi
-9922,f,t,Starwood hotels &amp; resorts extends it outsourcing contract with Accenture
-9892,f,t,Joyce Mitchell charged with helping Clinton Prison inmates escape trembles
-9924,f,t,"Currently, cell-based tissue engineering strategies have been used for reconstruction; however, donor tissue biopsy and ex vivo cell manipulation are required prior to implantation."
-9889,f,t,There are loads of spots on the online to find Sony Speaker Evaluation.
-9888,f,t,"As he decided which elements he wanted to become a part of his life, he came across information about how Thomas Jefferson decided to create his own version of the Bible, followed by Charles Dickens, and then Leo Tolstoy."
-9916,f,t,Of course she was the only child in her class to receive one
-9902,f,t,"She was charged on sixth-degree larceny, theft of a credit card and illegal use of a credit card"
-9946,f,t,the People's Own Savings Bank will be acting as an agent facilitating the mobile banking platform for this service.
-9897,f,t,he was shot
-9932,f,t,"""No doubt,"" he said, the ""program vacuums up information about virtually every telephone call to, from or within the United States.""."
+9922,f,f,Starwood hotels &amp; resorts extends it outsourcing contract with Accenture
+9892,f,f,Joyce Mitchell charged with helping Clinton Prison inmates escape trembles
+9924,f,f,"Currently, cell-based tissue engineering strategies have been used for reconstruction; however, donor tissue biopsy and ex vivo cell manipulation are required prior to implantation."
+9889,f,f,There are loads of spots on the online to find Sony Speaker Evaluation.
+9888,f,f,"As he decided which elements he wanted to become a part of his life, he came across information about how Thomas Jefferson decided to create his own version of the Bible, followed by Charles Dickens, and then Leo Tolstoy."
+9916,f,f,Of course she was the only child in her class to receive one
+9902,f,f,"She was charged on sixth-degree larceny, theft of a credit card and illegal use of a credit card"
+9946,f,f,fhe People's Own Savings Bank will be acting as an agent facilitating the mobile banking platform for this service.
+9897,f,f,he was shot
+9932,f,f,"""No doubt,"" he said, the ""program vacuums up information about virtually every telephone call to, from or within the United States.""."
 9949,f,f,Libya's descent toward anarchy two years after the revolution
 9953,f,f,Sprint has today announced
 9954,f,f,"Rector of the school, John Alexander, said the conference would br..."
@@ -1380,7 +1380,7 @@ id,belief,in_progress,text
 9965,f,f,Jim Florio visited Trenton
 9966,f,f,"David Elliot Moran, 47, and 42-year-old Charles Thomas Newcomb - each were arrested Thursday on one state count of conspiracy to commit murder"
 9967,f,f,"""concrete motive"" for the shooting wasn't clear."
-9969,f,f,the mill had not come to the attention of company executives as a safety concern
+9969,f,f,fhe mill had not come to the attention of company executives as a safety concern
 9971,f,f,"Nissan battery strategy, Panasonic's Tesla gigafactory investment"
 9972,f,f,Canadian mining and energy company Sherritt International ( TSE:S ) rose on Wednesday after saying it has inititated a restructuring plan that will cut about 10 percent of its salaried workforce
 9973,f,f,Canon SELPHY CP910 review: print times.
@@ -1413,20 +1413,20 @@ id,belief,in_progress,text
 10008,f,f,Medtronic announces
 10011,f,f,doping during his career.The
 10012,f,f,"Dr. Christopher Chung, a board-certified plastic surgeon in Corona"
-9984,f,t,Labor wins as dems try to keep senate.
-9952,f,t,We just made too many mistakes to overcome.
-9963,f,t,"DUBAI, United Arab Emirates (AP) - Pakistan was frustrated by New Zealand's tailenders before left-arm spinner Zulfiqar Babar claimed 4-137 to help dismiss the Black Caps for 403 on the second day of the first test on Tuesday."
-9968,f,t,"If PKR can protect the hills with 0% development, why is it so difficult for City Hall to do the same for the KL area?"
-9995,f,t,he arrived in Havana on Dec. 29
-10007,f,t,"""The Turkish border is the only way to smuggle oil, weapons and foreign fighters into [Iraq and Syria],"" said Dr Hisham al-Hashimi, an Iraqi expert on Isis. ""If it's closed, it will cut three things: funding, an entrance for the foreign fighters and links to Europe which they are trying to open. If those plans are destroyed, they will aim for another gate to Lebanon."""
-9950,f,t,HK Government offices closed as protests
-9996,f,t,the Los Angeles trial of Gerhartsreiter
-10009,f,t,"Russia has already signed agreements on project implementation with all the transit countries: Bulgaria, Serbia, Hungary, Greece, Slovenia, Croatia"
-9951,f,t,"It's very early days for this new series but the feedback from our audience about the quality of the programme has been hugely positive which is very encouraging,"" she said"
-10010,f,t,The state wants to do the right thing
-10003,f,t,UC Berkeley explosion: Huge blast believed caused by copper wire theft (Video).
-9991,f,t,On walking away from an opportunity to be a judge on American Idol :
-9999,f,t,buy Facebook
+9984,f,f,Labor wins as dems try to keep senate.
+9952,f,f,We just made too many mistakes to overcome.
+9963,f,f,"DUBAI, United Arab Emirates (AP) - Pakistan was frustrated by New Zealand's tailenders before left-arm spinner Zulfiqar Babar claimed 4-137 to help dismiss the Black Caps for 403 on the second day of the first test on Tuesday."
+9968,f,f,"If PKR can protect the hills with 0% development, why is it so difficult for City Hall to do the same for the KL area?"
+9995,f,f,he arrived in Havana on Dec. 29
+10007,f,f,"""The Turkish border is the only way to smuggle oil, weapons and foreign fighters into [Iraq and Syria],"" said Dr Hisham al-Hashimi, an Iraqi expert on Isis. ""If it's closed, it will cut three things: funding, an entrance for the foreign fighters and links to Europe which they are trying to open. If those plans are destroyed, they will aim for another gate to Lebanon."""
+9950,f,f,HK Government offices closed as protests
+9996,f,f,fhe Los Angeles trial of Gerhartsreiter
+10009,f,f,"Russia has already signed agreements on project implementation with all the transit countries: Bulgaria, Serbia, Hungary, Greece, Slovenia, Croatia"
+9951,f,f,"It's very early days for this new series but the feedback from our audience about the quality of the programme has been hugely positive which is very encouraging,"" she said"
+10010,f,f,The state wants to do the right thing
+10003,f,f,UC Berkeley explosion: Huge blast believed caused by copper wire theft (Video).
+9991,f,f,On walking away from an opportunity to be a judge on American Idol :
+9999,f,f,buy Facebook
 10013,f,f,"Chief prosecutor Gerrie Nel said that the defense's suggestion of house arrest and 16 hours of community service a month was a ""shockingly inappropriate"" sentence."
 10014,f,f,"New Nintendo eShop releases: Super Mario 3D World, A Link Between Worlds, Mario Party."
 10015,f,f,"Those include a tweaked Status Bar and Quick Settings UI that Sony says is ""more intuitive and customizable,"" as well as a new UI that brings the launch animation and livewallpaper from PlayStation 4 to the lock and home screens."
@@ -1453,7 +1453,7 @@ id,belief,in_progress,text
 10043,f,f,EDF Trading to jointly acquire
 10044,f,f,"""Of course some urban people who only see rabbits as cute and cuddly pets find it distressing, but rabbits have to be controlled,"" he said."
 10045,f,f,"Penguin Group and Bertelsmann's Random House, which is the largest publisher in the U.S. and U.K., as a joint venture"
-10046,f,f,the Mayor of Limassol Andreas Christou
+10046,f,f,fhe Mayor of Limassol Andreas Christou
 10047,f,f,Nancy Shukri has become the  template for MCA and gerakan Ministers seeking to deny the truth instead of facing up to harsh realities.
 10049,f,f,"Anderson argued that without a long-promised new school, many families will leave the district."
 10051,f,f,"It would have been far better if rates were cut last month to put two cuts in the lead-up to Christmas, but as usual it is too little too late from the RBA."
@@ -1470,16 +1470,16 @@ id,belief,in_progress,text
 10065,f,f,"High blood pressure can be managed or controlled through early detection,"" stated Kermit Crawford"
 10067,f,f,was in keeping with its educational thrust that the bank had donated the TV set
 10068,f,f,London Orthodox Jews get a lot of measles
-10024,f,t,2014-07-30 10:57:44.890 - Thread: 1 -> 6704740496C47C5FDE69887798D17883 - START.
-10050,f,t,"as it has become impossible to control the content of social networks, it is important to produce counter-speech, reported AFP."
-10066,f,t,Japanese markets too have begun to show early signs of resurrection from the calamitous aftermath of the earthquake
-10021,f,t,"Loui was one of (Sweden's) best players,"" said Julien"
-10029,f,t,meeting that brought together 87 delegates and officials from all sub-locations in Rongo on Tuesday stalled after Naphtali Omollo
-10061,f,t,We depend very heavily on grain imports--for more than fifty percent of our staple foods.
-10060,f,t,Chinese state-owned enterprises and their government regulators are in a near state of paralysis
-10033,f,t,"Prof Istafanus Dafwang, who disclosed this while briefing stakeholders on the level of preparedness of the commission towards the forthcoming polls, noted that the commission has outlined public places such as markets, to demonstrate how effective the Card Reader machines work."
-10048,f,t,Celtic manager Ronny Deila said he would not ban his players from using social media.
-10040,f,t,"San Jose hopes that by giving people better data, it will make better decisions about how to deploy resources, said Kerrie Romanow , director of the city's environmental services department."
+10024,f,f,2014-07-30 10:57:44.890 - Thread: 1 -> 6704740496C47C5FDE69887798D17883 - START.
+10050,f,f,"as it has become impossible to control the content of social networks, it is important to produce counter-speech, reported AFP."
+10066,f,f,Japanese markets too have begun to show early signs of resurrection from the calamitous aftermath of the earthquake
+10021,f,f,"Loui was one of (Sweden's) best players,"" said Julien"
+10029,f,f,meeting that brought together 87 delegates and officials from all sub-locations in Rongo on Tuesday stalled after Naphtali Omollo
+10061,f,f,We depend very heavily on grain imports--for more than fifty percent of our staple foods.
+10060,f,f,Chinese state-owned enterprises and their government regulators are in a near state of paralysis
+10033,f,f,"Prof Istafanus Dafwang, who disclosed this while briefing stakeholders on the level of preparedness of the commission towards the forthcoming polls, noted that the commission has outlined public places such as markets, to demonstrate how effective the Card Reader machines work."
+10048,f,f,Celtic manager Ronny Deila said he would not ban his players from using social media.
+10040,f,f,"San Jose hopes that by giving people better data, it will make better decisions about how to deploy resources, said Kerrie Romanow , director of the city's environmental services department."
 10069,f,f,"its purchase of Stayz Pty Ltd , a wholly-owned subsidiary of Fairfax Media Limited [ ASX : FXJ ], for A$ 220 million"
 10070,f,f,Walmart workers protest over minimum wage in 15 US
 10071,f,f,Nicolas Marceau announced
@@ -1530,16 +1530,16 @@ id,belief,in_progress,text
 10120,f,f,"This means that D&C should still be considered an appropriate intervention in carefully selected patients, but that its use should be minimized,"" he said"
 10121,f,f,"By using expertise of the scientists, we can significantly move forward on our agenda to solve national food and nutritional security problems of millions of Pakistani households"
 10122,f,f,Â Christmas trees in Rockefeller Center have ranged from 50-foot Pines to 100-foot Norway Spruces and are viewed by millions of spectators during the holiday season.
-10124,f,f,the August 2009 Station Fire
+10124,f,f,fhe August 2009 Station Fire
 10126,f,f,There's a fascination with them; they're so beautiful
-10125,f,t,assassination of President Kennedy
-10127,f,t,elected Petro Poroshenko as president
-10128,f,t,Washington they called off their rebellion
-10085,f,t,"sometime between 00.11UTC and 01.15 UTC, the aircraft was no longer able to communicate with the ground station."
-10072,f,t,"Deputy Prime Minister and Home Affairs Minister Teo Chee Hean said this following a dialogue with over 60 religous and community leaders of various faiths, which focused on the conflict in Syria and its potential impact on Singapore."
-10075,f,t,Westboro is protesting
-10077,f,t,"petitions have been filed before Hyderabad and Madras high courts, while the National Human Rights Council"
-10123,f,t,"Wowza Media Systems, LLC, provider of Simply Powerful Streaming media server software, today launched its new Wowza Streaming Engine, the most flexible and extensible video streaming software on the market with more powerful performance capabilit."
+10125,f,f,assassination of President Kennedy
+10127,f,f,elected Petro Poroshenko as president
+10128,f,f,Washington they called off their rebellion
+10085,f,f,"sometime between 00.11UTC and 01.15 UTC, the aircraft was no longer able to communicate with the ground station."
+10072,f,f,"Deputy Prime Minister and Home Affairs Minister Teo Chee Hean said this following a dialogue with over 60 religous and community leaders of various faiths, which focused on the conflict in Syria and its potential impact on Singapore."
+10075,f,f,Westboro is protesting
+10077,f,f,"petitions have been filed before Hyderabad and Madras high courts, while the National Human Rights Council"
+10123,f,f,"Wowza Media Systems, LLC, provider of Simply Powerful Streaming media server software, today launched its new Wowza Streaming Engine, the most flexible and extensible video streaming software on the market with more powerful performance capabilit."
 10130,f,f,"Questioned about the row after her speech at Labour's headquarters in London she said: ""I don't think there is going to be a break between Unite or any of the unions that are affiliated to the Labour Party."
 10132,f,f,"there is jovial banter among her students, even remarking in jest, ""Stage 2!"
 10134,f,f,"Chattem plans expansion at Chattanooga plant, to add 50 jobs."
@@ -1559,7 +1559,7 @@ id,belief,in_progress,text
 10151,f,f,Malone intends to use Liberty's stake to pressure for a control premium in talks with Sirius Chief Executive Officer Mel Karmazin
 10152,f,f,It's unbelievable that someone would say that in 2014
 10154,f,f,"The allegations described in this complaint describe a bribery case with all the sexy elements of a TV drama,"" Duffy said"
-10155,f,f,the AFP track extremists in Melbourne
+10155,f,f,fhe AFP track extremists in Melbourne
 10157,f,f,Liam Hemsworth Flew to Australia
 10159,f,f,protesters rallied at City Hall for a temporary halt to evictions in a popular San Francisco
 10161,f,f,"The most challenging part was trying to separate the many myths and fictions surrounding Tecumseh and the battle itself from the truth,"" Robinet said"
@@ -1591,16 +1591,16 @@ id,belief,in_progress,text
 10191,f,f,The queen has visited the Vatican
 10192,f,f,"iGate Corp., which recently named former Infosys Ltd veteran Ashok Vemuri as its chief executive, won a new outsourcing contract"
 10193,f,f,APCO could not afford to buy out TIME magazine - well every Media is not Bikau Media
-10136,f,t,"Where to Find Cyber Monday Sale + Bower 37mm 4X Telephoto Lens with Wood Box , LIMITED TIME OFFER!"
-10144,f,t,Mystic Seaport was incorporated in 1929
-10133,f,t,02.06 00:54:02 [Server] ERROR The trait sentry failed to load for NPC ID: 699.
-10175,f,t,"""I'm a little sad about the rain,"" said regular festival goer Brandi Smith."
-10156,f,t,Police and assault Police
-10190,f,t,"But, at Nunzio's anyone can be named Joe"
-10158,f,t,I am here to make a choice that I never thought I would make -- not to join Forza Italia
-10131,f,t,"We are also working hand-in-hand with the surrounding colleges and universities to promote this card,"" said Cheong"
-10140,f,t,"actual content of the accord - ""not some artificial time limit"" - will drive the negotiations and his government's trade strategy"
-10153,f,t,"Greece's ""Riot"
+10136,f,f,"Where to Find Cyber Monday Sale + Bower 37mm 4X Telephoto Lens with Wood Box , LIMITED TIME OFFER!"
+10144,f,f,Mystic Seaport was incorporated in 1929
+10133,f,f,02.06 00:54:02 [Server] ERROR The trait sentry failed to load for NPC ID: 699.
+10175,f,f,"""I'm a little sad about the rain,"" said regular festival goer Brandi Smith."
+10156,f,f,Police and assault Police
+10190,f,f,"But, at Nunzio's anyone can be named Joe"
+10158,f,f,I am here to make a choice that I never thought I would make -- not to join Forza Italia
+10131,f,f,"We are also working hand-in-hand with the surrounding colleges and universities to promote this card,"" said Cheong"
+10140,f,f,"actual content of the accord - ""not some artificial time limit"" - will drive the negotiations and his government's trade strategy"
+10153,f,f,"Greece's ""Riot"
 10194,f,f,D Ball 2012 basketball tournament is to keep youths off the streets
 10195,f,f,"Al Waleed said that oil would ""never"" go to $100 again."
 10196,f,f,"Optimal IdM, LLC, a Microsoft Gold Certified partner, today announced the availability of its Virtual Identity Server"
@@ -1643,16 +1643,16 @@ id,belief,in_progress,text
 10244,f,f,"Umno Youth chief Khairy Jamaluddin described Ngeh's comments as insensitive and offensive, adding: ""It clearly shows that he and DAP have failed to understand Islam and Muslims, our respect for the Prophet and our feelings.""."
 10245,f,f,Essential Functions of the Nikon D7000 The Nikon D7000 is just one of the new DSLR cameras that have a blend of its personal characteristics some discovered on the D300 and other people can be located on the D90.
 10246,f,f,Am so sorry that you're above inflation pay rises aren't good enough for you @RMTunion and @TSSAunion and you feel the need to strike.
-10201,f,t,election in Italy
-10230,f,t,their neighbors in California
-10219,f,t,"Jeremy Brandon Swango, 37"
-10220,f,t,"Deputy Tom Peine says, ""You feel the adrenalin rush, you feel how you're breathing. You're dealing with it because you don't know what's going to happen in the next split second."""
-10198,f,t,"He states that the reason for this is the fact that with the exception of the standard Kingdom Hearts 2 version, the remaining content included in this collection was only available with english dubs."
-10206,f,t,"Anecdotally, we don't hear a turnaround in optimism,"" said Robert N. Lowry, Jr."
-10207,f,t,contaminated groundwater
-10247,f,t,"Watching one of my childhood favorites, Matilda, and eating steak!"
-10202,f,t,"he federal government should strengthen the language of the bill to provide a ""clearer commitment to the substantive reform agenda"""
-10222,f,t,the primary election in Michigan
+10201,f,f,election in Italy
+10230,f,f,fheir neighbors in California
+10219,f,f,"Jeremy Brandon Swango, 37"
+10220,f,f,"Deputy Tom Peine says, ""You feel the adrenalin rush, you feel how you're breathing. You're dealing with it because you don't know what's going to happen in the next split second."""
+10198,f,f,"He states that the reason for this is the fact that with the exception of the standard Kingdom Hearts 2 version, the remaining content included in this collection was only available with english dubs."
+10206,f,f,"Anecdotally, we don't hear a turnaround in optimism,"" said Robert N. Lowry, Jr."
+10207,f,f,contaminated groundwater
+10247,f,f,"Watching one of my childhood favorites, Matilda, and eating steak!"
+10202,f,f,"he federal government should strengthen the language of the bill to provide a ""clearer commitment to the substantive reform agenda"""
+10222,f,f,fhe primary election in Michigan
 10248,f,f,"Why should anyone complain that Nigeria is bad, after all, every people deserve the kind of leaders they get."
 10249,f,f,"Manye, 49, left South Africa"
 10250,f,f,Mariner Energy Announce
@@ -1705,15 +1705,15 @@ id,belief,in_progress,text
 10305,f,f,many people don't know that they can demand that a tow-truck driver show a written authorization from owner of the property they're towing from
 10309,f,f,"inflation expectations are rising on a whole, and sees improvements in economy and markets since easing began."
 10310,f,f,"Healey, a Charlestown Democrat who will be sworn in at Faneuil Hall, will announce"
-10312,f,f,the case against her
-10268,f,t,"We have invested deeply in mobile and we are seeing those investments pay off,"" Mayer said"
-10293,f,t,"both Pakistan and India had been facing poverty, adding, ""If we come out of this poverty, we will be Europe and America."
-10262,f,t,"Mr. Mukherjee confirmed that he has no disagreements with TeleTech or our board of directors regarding TeleTech's operations, policies or practices."
-10277,f,t,"I expect the dollar to be supported amid expectations that the Federal Reserve will start tapering its quantitative easing,"" said Kyosuke Suzuki"
-10260,f,t,i cant believe they want the hands in bp.
-10290,f,t,8 WHERE'S FLOYDY 3352 22.75 Barry Mcpherson.
-10308,f,t,Protests in Sudan
-10267,f,t,"Vicus Therapeutics, LLC, today announced"
+10312,f,f,fhe case against her
+10268,f,f,"We have invested deeply in mobile and we are seeing those investments pay off,"" Mayer said"
+10293,f,f,"both Pakistan and India had been facing poverty, adding, ""If we come out of this poverty, we will be Europe and America."
+10262,f,f,"Mr. Mukherjee confirmed that he has no disagreements with TeleTech or our board of directors regarding TeleTech's operations, policies or practices."
+10277,f,f,"I expect the dollar to be supported amid expectations that the Federal Reserve will start tapering its quantitative easing,"" said Kyosuke Suzuki"
+10260,f,f,i cant believe they want the hands in bp.
+10290,f,f,8 WHERE'S FLOYDY 3352 22.75 Barry Mcpherson.
+10308,f,f,Protests in Sudan
+10267,f,f,"Vicus Therapeutics, LLC, today announced"
 10315,f,f,"We're looking to get back to what got us through the unbeaten run,"" New York coach Mike Petke said"
 10316,f,f,Pariser tells Brain Pickings
 10317,f,f,causing actual bodily harm
@@ -1752,22 +1752,22 @@ id,belief,in_progress,text
 10355,f,f,"""I am willing to bet if we have that data for solved homicides that north of 85 percent of them involve offenders who have been in the system or had a history of violence in school that maybe could have warned someone that there was a problem waiting to blow up,"" he said."
 10356,f,f,Microsoft acquired Softricity in 2006
 10357,f,f,"he found the death of Gurshan Singh, who was visiting from Punjab in northern India, ""personally distressing"" but urged people not to speculate about the case"
-10358,f,f,the Jewish refugees from Germany and Austria
+10358,f,f,fhe Jewish refugees from Germany and Austria
 10359,f,f,"""This has been a successful major operation and our strike force will continue its investigations,"" Inspector Lindsay said.""We expect there will further arrests and further charges."""
 10361,f,f,The CRM Group also dealt in premium chocolate
 10362,f,f,"his support for the Sanders bill, that's going to put it near the top of the Senate's to-do list"
 10364,f,f,riots in many countries especially in the Philippines
-10365,f,f,the agreement with Achipelago/Dewan Niaga and the NFA
+10365,f,f,fhe agreement with Achipelago/Dewan Niaga and the NFA
 10366,f,f,Hurricane Sandy.Take a Bow
 10367,f,f,"The Victorian Coroners Court earlier heard that early in May 2013 police at Hastings had received emails about Anderson from other police, including one that said ""going postal would definitely apply to this bloke""."
 10368,f,f,"Lewis County sheriff's deputies arrested Michael Rouscher, 23,"
 10369,f,f,White House petition
 10370,f,f,"Taliban have vowed to kill Yousafzai should she return to Pakistan, but militants"
-10333,f,t,"Pollack to say, ""Do we wonder if John Williams was slightly influenced by that?"
-10372,f,t,Ifaki Students that Sen. Adetunmbi has paid
-10339,f,t,Vancouver and people quickly become immune to earthquake
-10360,f,t,Amir Peretz arrived in Istanbul
-10363,f,t,"We've been able to bring the Moyston fire under control, the Hastings fire caused some challenges as the wind squalls were coming through late into yesterday,"" he said"
+10333,f,f,"Pollack to say, ""Do we wonder if John Williams was slightly influenced by that?"
+10372,f,f,Ifaki Students that Sen. Adetunmbi has paid
+10339,f,f,Vancouver and people quickly become immune to earthquake
+10360,f,f,Amir Peretz arrived in Istanbul
+10363,f,f,"We've been able to bring the Moyston fire under control, the Hastings fire caused some challenges as the wind squalls were coming through late into yesterday,"" he said"
 10374,f,f,"Days after the triple murder a ""grand assembly"" - mahapanchayat - was organized in Muzaffarnagar by Hindu Jats to discuss the safety of their women."
 10375,f,f,#myJSU make sure support the lovely ladieZ of Zeta Phi Beta Sorority Inc. This week!!!!
 10377,f,f,"""If they want to get a conviction on me as a marijuana seller, they can take it to a jury and let a jury decide,"" he said, calling the case ""baloney"" that he believed prosecutors wouldn't want to bring to trial."
@@ -1789,7 +1789,7 @@ id,belief,in_progress,text
 10394,f,f,"Hello, and welcome to our live-blog coverage as Republicans make a play to call President Barack Obama on his veto threat - or was it a bluff?"
 10395,f,f,"expects Lloyds to be ""a high dividend paying stock"" in the future, based on its strong cash generation"
 10396,f,f,Earlier this month
-10397,f,f,t was really hard and really expensive to actually get your own
+10397,f,f,f was really hard and really expensive to actually get your own
 10398,f,f,Fred Morales declared
 10399,f,f,"NAIROBI, Kenya - A Kenyan court has acquitted a British man of robbery charges stemming from a 2008 attack on a police post that allowed him to escape from police custody."
 10400,f,f,"""Cheerleading has definitely moved from the stereotype,"" said Gary."
@@ -1811,26 +1811,26 @@ id,belief,in_progress,text
 10423,f,f,David's upcoming trial
 10424,f,f,"The USDA reports this week deflated the last of the supply and domestic usage balloons, and the weather appears to be near ideal as we move into the pollination stage for much of the Midwest,"" he says"
 10425,f,f,Hungary internet tax cancelled after mass protests
-10426,f,f,the fire marshal was called
+10426,f,f,fhe fire marshal was called
 10430,f,f,Graftobian Student Theatrical makeup Kit - Deluxe - Light/Fair Varicose Veins - nine Matters to Do - nine Issues to Keep away from Varicose veins are shaped by force prompted by fluctuations of hormones.
 10431,f,f,UK: SNP tsunami is good news for Indian students.
 10490,f,f,Tunisia's new constitution upholds equal rights and freedoms forthe citizensof Tunisia
-10406,f,t,"weeks ago, Apple released iOS 8.2"
-10388,f,t,Desert Battle Duke Pursuit of Cobra POC action figure damaged card GI Joe - Full read by e… http://t.co/mI9lwjTZy8 http://t.co/0QsCreliCN.
-10411,f,t,And also the staff at Maui Lani Safeway for there prayers and get well wishes.
-10418,f,t,Stites said people can literally walk in off the street to see their hotel exhibit at 111 N. Corcoran Street.
-10376,f,t,Steelworkers are among the thousands of Canadians responding to the urgent appeals for emergency assistance in the wake of the destruction of Haiyan
-10409,f,t,UK forces led an operation in the southern city of Basra
-10422,f,t,everybody should just admit that TTP is an enemy and driven by lust for blood.
-10429,f,t,ONLINE Black Friday Sale ++ Guitar Hero Smash Hits - Xbox 360Cyber Monday Deals.
-10403,f,t,there is a crsis as local administrators report to the Kieni East District Officer in Nyeri county and not in Laikipia
-10405,f,t,Washington anunció
+10406,f,f,"weeks ago, Apple released iOS 8.2"
+10388,f,f,Desert Battle Duke Pursuit of Cobra POC action figure damaged card GI Joe - Full read by e… http://t.co/mI9lwjTZy8 http://t.co/0QsCreliCN.
+10411,f,f,And also the staff at Maui Lani Safeway for there prayers and get well wishes.
+10418,f,f,Stites said people can literally walk in off the street to see their hotel exhibit at 111 N. Corcoran Street.
+10376,f,f,Steelworkers are among the thousands of Canadians responding to the urgent appeals for emergency assistance in the wake of the destruction of Haiyan
+10409,f,f,UK forces led an operation in the southern city of Basra
+10422,f,f,everybody should just admit that TTP is an enemy and driven by lust for blood.
+10429,f,f,ONLINE Black Friday Sale ++ Guitar Hero Smash Hits - Xbox 360Cyber Monday Deals.
+10403,f,f,fhere is a crsis as local administrators report to the Kieni East District Officer in Nyeri county and not in Laikipia
+10405,f,f,Washington anunció
 10432,f,f,Born Group was formed after multi-channel content and commerce company Group FMG and integrated omni-channel content and commerce business Pod1 rebranded under the new name last year following Group FMG's acquisition of Pod1 in 2012.
 10433,f,f,"If you are a sensual, fun, appealing, warm, vivacious, beautiful woman, and it turns out that you are a bit of a partyer, or live slightly on the wild side - I don't think that pulls the wool out from under her,"" Montgomery said"
 10434,f,f,We've been together three or four years. We work to get better and better everyday.
 10436,f,f,shooting and the Confederate flag in South Carolina
 10437,f,f,John Boehner has won his primary in Ohio
-10438,f,f,the pain started to increase as the game went on.
+10438,f,f,fhe pain started to increase as the game went on.
 10441,f,f,Spokesman Alex Reeves said the cost of producing and distributing a single penny was 1.6 cents.
 10443,f,f,"An investor will usually be better off with a lower return but less volatility because even sophisticated investors get carried away when they see market fluctuations, he says: ""Less volatility leads to less bad behaviour by investors. In my mind, if investors want to protect themselves from their own bad behaviour, adding bonds would help."""
 10444,f,f,"""As Tsujunkyo is a large-scale project, it looks the bridge must have been built by the national government. However, stone bridges in this area were actually built by local people, not by the Tokugawa shogunate or the local feudal domain,"" said Satoshi Mizukami, 38, an official of the social education department of the town's education board."
@@ -1869,16 +1869,16 @@ id,belief,in_progress,text
 10487,f,f,"Sometimes real problems bring on the need for reform,"" Ralston said"
 10488,f,f,Nielsen will for the first time sell
 10489,f,f,a deal with Dollar General
-10462,f,t,The Mattapan man accused of stabbing
-10463,f,t,He left Coffs Harbour
-10440,f,t,Mr Damjanović was born in 1966
-10456,f,t,"I just thought that they had a little bit more energy early on and played a little bit more desperate than we did,"" Phoenix coach Russ Pennell said"
-10480,f,t,shooting outside South Dublin pub
-10442,f,t,"Biomimicry thinking is a skill set for 21st century careers,"" Boradkar said"
-10467,f,t,staged a protest demonstration against Israel over an on-going Israel
-9956,f,t,"""Learning to read opens up so many doors to educate themselves and learn about what they want to learn about,"" Terhune said."
-10449,f,t,Dan (Beverly) Krizan of Wisconsin
-10435,f,t,invest in the National Park Service
+10462,f,f,The Mattapan man accused of stabbing
+10463,f,f,He left Coffs Harbour
+10440,f,f,Mr Damjanović was born in 1966
+10456,f,f,"I just thought that they had a little bit more energy early on and played a little bit more desperate than we did,"" Phoenix coach Russ Pennell said"
+10480,f,f,shooting outside South Dublin pub
+10442,f,f,"Biomimicry thinking is a skill set for 21st century careers,"" Boradkar said"
+10467,f,f,staged a protest demonstration against Israel over an on-going Israel
+9956,f,f,"""Learning to read opens up so many doors to educate themselves and learn about what they want to learn about,"" Terhune said."
+10449,f,f,Dan (Beverly) Krizan of Wisconsin
+10435,f,f,invest in the National Park Service
 10491,f,f,"Given the tensions in the world, Manley said, unfortunately, another attack could happen again."
 10618,f,f,"Newark power outage impacts more than 8,700 customers; repairs under way."
 10493,f,f,"Rand Paul, an opthamologist, also has said vaccines should be voluntary, and said he's heard cases of children suffering ""profound mental disorders after vaccines,"
@@ -1917,7 +1917,7 @@ id,belief,in_progress,text
 10535,f,f,"This is a time to think about the families and honor our fallen officers,"" said mayoral spokesman Wiley Norvell"
 10536,f,f,Protests in #Athens
 10537,f,f,"(NYSE:BAC) is delivering on its promises to cut costs, increase capital ratios and make the company more efficient"
-10538,f,f,the junior senator from Texas
+10538,f,f,fhe junior senator from Texas
 10539,f,f,"When Australia's cheekiest sportsman Shane Warne received an honorary doctorate in 2006, he quipped ""I am officially a spin doctor now""."
 10540,f,f,he was arrested in 2009
 10541,f,f,U.S. Central Command news release
@@ -1930,18 +1930,18 @@ id,belief,in_progress,text
 10552,f,f,Ireland
 10553,f,f,"Prime minister Salam Fayyad lamented foreign governments' failure to honour their aid pledges as he presented the 2013 draft budget to politicians and economists in Ramallah, the seat of the Palestinian Authority, on Monday."
 10555,f,f,"Health officials have been consistently monitoring the residents' conditions and providing them with anti-retroviral treatment (ART), said Voeung Bunreth, the director of Battambang's Provincial Health Department."
-10510,f,t,not enough to blame #bokoHaram  #BringBackOurGirls.
-10543,f,t,press release announcing the appointment of Catherine Lewis and Barrett Brady to the Board
-10551,f,t,tainted food
-10498,f,t,(Visit www.worthington.org for future dates.).
-10500,f,t,"Rowan Williams, the Archbishop of Canterbury"
-10530,f,t,"Foxconn's major clients include Apple, Microsoft, Sony"
-10550,f,t,"said Rod Tomita ""and having a safe, secure and trusted system like DebitWay, INTERAC(R) Online solutions for remittance is what their customers and clients are looking for."
-10522,f,t,members to remain firm and focus on the opposition coalition's agenda to ensure devolution is strengthened
-10531,f,t,Alaska Air Group announces
-10519,f,t,she wins a fourth term in the Senate
-10492,f,t,Purchase Black Friday $ BMW Genuine Air Duct Expanding Plastic Rivet for
-10546,f,t,those who do not have a plot reserved will be referred elsewhere
+10510,f,f,not enough to blame #bokoHaram  #BringBackOurGirls.
+10543,f,f,press release announcing the appointment of Catherine Lewis and Barrett Brady to the Board
+10551,f,f,fainted food
+10498,f,f,(Visit www.worthington.org for future dates.).
+10500,f,f,"Rowan Williams, the Archbishop of Canterbury"
+10530,f,f,"Foxconn's major clients include Apple, Microsoft, Sony"
+10550,f,f,"said Rod Tomita ""and having a safe, secure and trusted system like DebitWay, INTERAC(R) Online solutions for remittance is what their customers and clients are looking for."
+10522,f,f,members to remain firm and focus on the opposition coalition's agenda to ensure devolution is strengthened
+10531,f,f,Alaska Air Group announces
+10519,f,f,she wins a fourth term in the Senate
+10492,f,f,Purchase Black Friday $ BMW Genuine Air Duct Expanding Plastic Rivet for
+10546,f,f,fhose who do not have a plot reserved will be referred elsewhere
 10556,f,f,"You're not going to turn employers into insurance companies; you're not going to turn employees into actuaries; but you can regulate lifetime income products so employers can offer them and people can buy them with confidence,"" said Gotbaum"
 10557,f,f,"I want to personally thank these three talented and dedicated individuals for their service to this administration and to the citizens of New Jersey,"" Christie said"
 10794,f,f,wounded seven people on the Thai
@@ -1960,7 +1960,7 @@ id,belief,in_progress,text
 10572,f,f,"Apple does have some 3-D sensor technology right now, but that it could improved upon."
 10574,f,f,district enrollment is expected to grow by 45 to 50 students every year
 10575,f,f,Emma Watson's Feminism Speech
-10576,f,f,this in an interview..
+10576,f,f,fhis in an interview..
 10577,f,f,Now the fact of the matter is that Lalu is incarcerated in a Patna Jail and his wife Rabri has become party leader.
 10578,f,f,"Sufi brotherhood is the oldest, largest & fastest."
 10581,f,f,Google play announce
@@ -1982,7 +1982,7 @@ id,belief,in_progress,text
 10599,f,f,"Russia will do everything possible for the peace process, if it begins,"" he told"
 10600,f,f,"On 30 March, Purvi Patel was sentenced to 20"
 10601,f,f,"My own personal new line in the sand is I never go above 10 mg (of methadone), three times a day,"" she said"
-10602,f,f,the team in California
+10602,f,f,fhe team in California
 10603,f,f,"Though it isn't the new GranSport that had been rumored, Maserati has upped the performance of its GranTurismo Convertible with a new track-focused version revealed today ahead of its debut at the 2012 Paris Auto Show on Thursday."
 10604,f,f,"Adding to this, the president warned the people of the United States that we will never see it coming."
 10605,f,f,The Braun Series seven 790cc Supplies the Most Unbelievable Shave You will have to be seeking to get a dry shaver due to the fact you are reading through this.
@@ -1992,10 +1992,10 @@ id,belief,in_progress,text
 10609,f,f,Shareholders Foundation announces
 10610,f,f,"Jaiswal, also the local MP, was headed back from Bhairon Ghat crematorium"
 10611,f,f,protesting ATTILA
-10573,f,t,"(Before It's News) US-May 31, 2013: Budget virtual private server (VPS), today is a prominent web hosting option available to customers."
-10588,f,t,New Mexico to help it prepare for a return of the H1N1
-10589,f,t,"Army psychiatrist on trial for the 2009 shooting rampage at Fort Hood passed on his final chance to address jurors on Thursday, even after prosecutors insisted he carried out a planned attack"
-10561,f,t,Westboro Baptist church to picket
-10580,f,t,Etherton said he denied the band's application to march in this year's parade because of those gap problems.
+10573,f,f,"(Before It's News) US-May 31, 2013: Budget virtual private server (VPS), today is a prominent web hosting option available to customers."
+10588,f,f,New Mexico to help it prepare for a return of the H1N1
+10589,f,f,"Army psychiatrist on trial for the 2009 shooting rampage at Fort Hood passed on his final chance to address jurors on Thursday, even after prosecutors insisted he carried out a planned attack"
+10561,f,f,Westboro Baptist church to picket
+10580,f,f,Etherton said he denied the band's application to march in this year's parade because of those gap problems.
 10612,f,f,"More than two million households are engaged in rice-based farming; millions more of farm laborers and tens of thousands of merchants, depend on rice farming and trading for a living"
 10613,f,f,"McDonald's franchise owner Richard Cisneros settled for $500,000 after denying employees uniform cleaning expenses."

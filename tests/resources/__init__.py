@@ -1,5 +1,5 @@
 from .. import OttomenAppTestCase, settings
-
+from ottomen.algorithm.experiment import new_experiment, new_task
 
 class OttomenResourceTestCase(OttomenAppTestCase):
     def setUp(self):
@@ -14,3 +14,5 @@ class OttomenResourceTestCaseWithPopulatedDb(OttomenAppTestCase):
     def setUpClass(cls):
         super(OttomenResourceTestCaseWithPopulatedDb, cls).setUpClass()
         cls._create_fixtures()
+        new_experiment(1337, 0.98)
+        new_task('1337',1337)

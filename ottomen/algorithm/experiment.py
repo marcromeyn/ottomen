@@ -81,8 +81,8 @@ def get_questions(question_ids):
 
 
 def initialize_sets(exp, set_limit):
-    positive_set = [positive.to_json() for positive in questions.get_positive(exp['id'], set_limit)]
-    negative_set = [negative.to_json() for negative in questions.get_negative(exp['id'], set_limit)]
+    positive_set = questions.get_positive(exp['id'], set_limit)
+    negative_set = questions.get_negative(exp['id'], set_limit)
 
     # get control set from base experiment id
     control_set = questions.get_control(base_experiment_id, set_limit)
@@ -92,6 +92,6 @@ def initialize_sets(exp, set_limit):
     exp.add_questions(positive_set)
     exp.add_questions(negative_set)
     if len(control_set) > 0:
-        exp.add_control_questions(control_set)
+        exp.add_questions(control_set, control=True)
 
     return positive_set, negative_set, control_set

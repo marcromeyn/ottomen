@@ -50,8 +50,7 @@ class QuestionService(ServiceWithMem):
             )\
             .limit(amount).all()
 
-        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
-
+        return questions
 
     def get_positive(self, exp_id, amount):
         positive_set = self \
@@ -73,16 +72,6 @@ class QuestionService(ServiceWithMem):
         questions = self.get_control_negative(exp_id, amount) + self.get_control_positive(exp_id, amount)
         return questions
 
-        val_q_subquery = db_session.query(Validation). \
-            filter(Validation.experiment_id == exp_id). \
-            subquery()
-
-        questions = db_session.query(Question) \
-            .join(val_q_subquery, Question.validations) \
-            .limit(amount).all()
-
-        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
-
     def get_control_positive(self, exp_id, amount):
         from ..services import validations
 
@@ -92,7 +81,7 @@ class QuestionService(ServiceWithMem):
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()
 
-        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
+        return questions
 
     def get_control_negative(self, exp_id, amount):
         from ..services import validations
@@ -103,7 +92,7 @@ class QuestionService(ServiceWithMem):
         questions = self.query().join(val_q_subquery, Question.validations) \
             .limit(amount).all()
 
-        return [self.get_json_with_validation_info(q, exp_id) for q in questions]
+        return questions
 
     @staticmethod
     def get_json_with_validation_info(question, exp_id):
