@@ -193,6 +193,9 @@ class ServiceWithMem(Service):
     def get_mem_obj(self, id):
         raise NotImplemented
 
+    def get_mem_json(self, id):
+        raise NotImplemented
+
     def new_mem(self, obj):
         raise NotImplemented
 

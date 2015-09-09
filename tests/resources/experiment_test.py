@@ -50,11 +50,11 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         # exp_mem['end_date'].should.be.equal(exp_db.end_date)
         exp_mem['completed'].should.be.equal(exp_db.completed)
         exp_mem['accuracy'].should.be.equal(exp_db.accuracy)
-        experiments.get_mem_obj(exp_db.id)['id'].should.be.equal(exp_db.id)
+        experiments.get_mem_obj(exp_db.id).id.should.be.equal(exp_db.id)
 
     def test_new_mem_malformed_model(self):
-        with pytest.raises(ValueError):
-            t = experiments.new_mem({'id': 'wrong_object'})
+        with pytest.raises(TypeError):
+            t = experiments.new_mem({'not_there': True})
 
     def test_update_mem(self):
         exp_db = create_experiment()
@@ -62,7 +62,7 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         new_id = 500000
         exp_mem['id'] = new_id
         experiments.update_mem(exp_mem)
-        experiments.get_mem(new_id).get()['id'].should.be.equal(new_id)
+        experiments.get_mem_obj(new_id).id.should.be.equal(new_id)
 
     def test_update_mem_malformed_model(self):
         exp_id = create_experiment()

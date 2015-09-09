@@ -19,6 +19,6 @@ class Experiment(ExperimentJsonSerializer, ResourceMixin, db.Model):
     description = db.Column(db.String)
     end_date = db.Column(db.DateTime)
     completed = db.Column(db.Boolean, default=False)
-    accuracy = db.Column(db.Float)
+    accuracy = db.Column(db.Float, nullable=False)
 
     questions = db.relationship("Question", secondary=experiment_question, backref="experiments")

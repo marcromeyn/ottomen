@@ -57,11 +57,11 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         task_mem['title'].should.be.equal(task_db.title)
         task_mem['description'].should.be.equal(task_db.description)
         task_mem['url'].should.be.equal(task_db.url)
-        tasks.get_mem(task_db.id).get()['id'].should.be.equal(task_db.id)
+        tasks.get_mem_obj(task_db.id).id.should.be.equal(task_db.id)
 
     def test_new_mem_malformed_model(self):
-        with pytest.raises(ValueError):
-            t = tasks.new_mem({'id': 'wrong_object'})
+        with pytest.raises(TypeError):
+            t = tasks.new_mem({'not_there': True})
 
     def test_update_mem(self):
         task_db = create_task()
@@ -69,7 +69,7 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         new_id = 'new_shitty_id'
         task_mem['id'] = new_id
         tasks.update_mem(task_mem)
-        tasks.get_mem(new_id).get()['id'].should.be.equal(new_id)
+        tasks.get_mem_obj(new_id).id.should.be.equal(new_id)
 
     def test_update_mem_malformed_model(self):
         task_db = create_task()
