@@ -3,7 +3,7 @@ from ottomen.resources.services import experiments
 from werkzeug.exceptions import HTTPException
 import sure
 import pytest
-from .helpers import create_experiment
+from .helpers import create_experiment, create_question
 
 
 class ExperimentResourceTestCase(OttomenResourceTestCase):
@@ -69,11 +69,24 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         experiments.get_mem_obj(new_id).id.should.be.equal(new_id)
 
     def test_update_mem_malformed_model(self):
-        exp_id = create_experiment()
-        exp_mem = experiments.new_mem(exp_id).get()
+        exp_db = create_experiment()
+        exp_mem = experiments.new_mem(exp_db).get()
         exp_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
 
         with pytest.raises(TypeError):
             experiments.update_mem(exp_mem)
+
+    def test_mem_add_question(self):
+        exp_db = create_experiment()
+        question_db = create_question()
+        exp_mem = experiments.new_mem(exp_db)
+        exp_mem.add_question(question_db)
+
+        question_mem = exp_mem.get_question_json(question_db.id)
+        question_mem['id'].should.equal(question_db.id)
+        question_mem['belief'].should.equal(question_db.belief)
+        question_mem['in_progress'].should.equal(question_db.in_progress)
+        question_mem['text'].should.equal(question_db.text)
+
 
 
