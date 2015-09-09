@@ -8,12 +8,11 @@ class WorkerMem(MemoryBase):
         self.worker_id = worker_id
         self.exp_id = exp_id
 
-    def get(self):
-        worker = mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
-        if not worker:
-            raise KeyError
+    def _hash(self):
+        return mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
 
-        return self.parse_hash(worker)
+    def get(self):
+        return self.parse_hash(self._hash())
 
     def new(self, worker):
         from ..experiment import ExperimentMem

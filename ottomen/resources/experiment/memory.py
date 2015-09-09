@@ -52,11 +52,13 @@ class ExperimentMem(MemoryBase):
         if type(question) is dict:
             question = questions.new(**question)
             questions._isinstance(question)
-        self.question_ids().add(question.id)
         if not control:
             self._question_hash(question.id).update(self.to_hash(question))
+            self.question_ids().add(question.id)
         else:
             self._control_question_hash(question.id).update(self.to_hash(question))
+            self.control_question_ids().add(question.id)
+
 
     def add_questions(self, question_list, control=False):
         for question in question_list:
