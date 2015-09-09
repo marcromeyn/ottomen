@@ -222,6 +222,12 @@ class MemoryBase:
     def update(self, model):
         raise NotImplemented
 
+    def parse_hash(self, hash):
+        return self._parse_types(hash.as_dict())
+
+    def to_hash(self, model):
+        return self._add_types(model.to_json(redis=True))
+
     def _add_types(self, model):
         not_str = {key: value for key, value in model.iteritems() if type(value) is not str}
         for key, value in not_str.iteritems():

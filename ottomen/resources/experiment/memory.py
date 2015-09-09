@@ -6,6 +6,38 @@ class ExperimentMem(MemoryBase):
     def __init__(self, exp_id):
         self.exp_id = exp_id
 
+    def get(self):
+        exp = self.parse_hash(mem.Hash("experiment.%s" % self.exp_id))
+        if not exp:
+            raise KeyError
+
+        return exp
+
+    def new(self, experiment):
+        experiment = self.to_hash(experiment)
+        mem.Hash("experiment.%s" % experiment['id']).update(experiment)
+
+    def get_question(self, question_id, new=False):
+        question = mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
+        if not question and not new:
+            raise KeyError
+
+        return question
+
+    def get_questions(self, ids):
+        return [self.get_question(question_id).as_dict() for question_id in ids]
+
+    def get_control_question(self, question_id):
+        c_question = mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))
+        if not c_question:
+            raise KeyError
+
+        return c_question
+
+    def get_control_questions(self, amount):
+        ids = self.control_question_ids().random(amount)
+        return [self.get_control_question(q_id).as_dict() for q_id in ids]
+
     def get_questions_worker(self, worker_id, amount):
         from ..services import workers
         worker = workers.get_mem(self.exp_id, worker_id)
@@ -17,49 +49,20 @@ class ExperimentMem(MemoryBase):
         mem.Set(unique_id).clear()
         return self.get_questions(question_ids)
 
-    def get(self):
-        exp = self._parse_types(mem.Hash("experiment.%s" % self.exp_id).as_dict())
-        if not exp:
-            raise KeyError
+    def add_question(self, question, control=False):
+        from ..services import questions
+        if type(question) is dict:
+            question = questions.new(**question)
+            questions._isinstance(question)
+        self.question_ids().add(question.id)
+        if not control:
+            self.get_question(question.id).update(self.to_hash(question))
+        else:
+            self.get_control_question(question.id).update(self.to_hash(question))
 
-        return exp
-
-    def new(self, experiment):
-        experiment = self._add_types(experiment.to_json(redis=True))
-        mem.Hash("experiment.%s" % experiment['id']).update(experiment)
-
-    def get_question(self, question_id):
-        return mem.Hash("experiment.%s.question.%s" % (self.exp_id, question_id))
-
-    def get_questions(self, ids):
-        return [self.get_question(question_id).as_dict() for question_id in ids]
-
-    def add_questions(self, questions):
-        if not questions:
-            return
-        # add the question ids to the question_ids
-        ids = map(lambda x: x['id'], questions)
-        self.question_ids().add(*ids)
-        # Add the questions to the experiment
-        for question in questions:
-            self.get_question(question['id']).update(question)
-
-    def get_control_question(self, question_id):
-        return mem.Hash("experiment.%s.control_question.%s" % (self.exp_id, question_id))
-
-    def get_control_questions(self, amount):
-        ids = self.control_question_ids().random(amount)
-        return [self.get_control_question(q_id).as_dict() for q_id in ids]
-
-    def add_control_questions(self, questions):
-        if not questions:
-            return
-        # add the question ids to the question_ids
-        ids = map(lambda x: x['id'], questions)
-        self.control_question_ids().add(*ids)
-        # Add the questions to the experiment
-        for question in questions:
-            self.get_control_question(question['id']).update(question)
+    def add_questions(self, question_list, control=False):
+        for question in question_list:
+            self.add_question(question, control)
 
     def question_ids(self):
         return mem.Set("experiment.%s.question_ids" % self.exp_id)
