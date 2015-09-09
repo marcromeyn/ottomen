@@ -2,6 +2,7 @@ from unittest import TestCase
 import pytest
 from .populate_db import populate_db
 from ottomen.core import db, mem
+from ottomen.resources.services import *
 
 from ottomen.web.api import create_app
 from .utils import FlaskTestCaseMixin
@@ -36,6 +37,7 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
         db.drop_all()
         db.create_all()
         populate_db(db.session)
+
 
     @classmethod
     def setUpClass(cls):

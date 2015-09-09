@@ -45,12 +45,46 @@ class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):
         len(response).should.equal(10)
         response.should.be.a('list')
         for q in response:
-            q.should.be.a('dict')
-
+            q.id.should.be.an('int')
         # non-existing experiment
         response = questions.get_unanswered_consensus(100, "gayturk", 0)
         len(response).should.equal(0)
 
+    def test_get_positive(self):
+        response = questions.get_positive(1337, 400)
+        len(response).should.equal(400)
+        response.should.be.a('list')
+        for q in response:
+            q.experiments[0].id.should.equal(1337)
+            q.belief.should.equal(True)
 
-    
+    def test_get_negative(self):
+        response = questions.get_negative(1337, 400)
+        len(response).should.equal(400)
+        response.should.be.a('list')
+        for q in response:
+            q.experiments[0].id.should.equal(1337)
+            q.belief.should.equal(False)
+
+    def test_get_control_positive(self):
+        response = questions.get_control_positive(0, 20)
+        len(response).should.equal(20)
+        response.should.be.a('list')
+        for q in response:
+            q.validations[0].experiment_id.should.be(0)
+            q.validations[0].label.should.be(True)
+            len(q.validations[0].labels).should.be.greater_than(0)
+
+    def test_get_control_negative(self):
+        response = questions.get_control_negative(0, 20)
+        len(response).should.equal(20)
+        response.should.be.a('list')
+        for q in response:
+            q.validations[0].experiment_id.should.be(0)
+            q.validations[0].label.should.be(False)
+            q.validations[0].labels.should.be.empty
+
+
+
+
 
