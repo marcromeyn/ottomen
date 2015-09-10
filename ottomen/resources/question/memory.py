@@ -43,7 +43,7 @@ class QuestionMem(MemoryBase):
         if not self._validation_hash():
             return False
         else:
-            return self._validation_hash()['validated']
+            return True
 
     def validate(self, validation):
         from ..services import validations
