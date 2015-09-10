@@ -1,6 +1,6 @@
 from . import OttomenResourceTestCaseWithPopulatedDb
 from ottomen.resources.services import *
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 import sure
 import pytest
 from helpers import create_question
@@ -33,12 +33,11 @@ class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):
         updated.text.should.be.equal('ottomoney')
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            qs = questions.new(description="A shitty description", accuracy=.7, not_there=5)
+        questions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
+            .should.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            questions.get_or_404(10000000)
+        questions.get_or_404.when.called_with('10000000').should.throw(NotFound)
 
     def test_get_unanswered_consensus(self):
         response = questions.get_unanswered_consensus(0, "gayturk", 10)

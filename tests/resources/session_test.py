@@ -1,8 +1,7 @@
+from werkzeug.exceptions import NotFound
+
 from . import OttomenResourceTestCase
 from ottomen.resources.services import *
-from werkzeug.exceptions import HTTPException
-import sure
-import pytest
 from helpers import create_session, create_worker
 
 
@@ -34,11 +33,8 @@ class SessionResourceTestCase(OttomenResourceTestCase):
         updated.worker.id.should_not.be.different_of(new_worker.id)
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            sess = sessions.new(description="A shitty description", accuracy=.7, not_there=5)
+        sessions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5) \
+            .shoud.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            sessions.get_or_404(10000000)
-
-
+        sessions.get_or_404.when.called_with(10000000).should.throw(NotFound)

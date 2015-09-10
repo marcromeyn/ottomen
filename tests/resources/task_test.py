@@ -1,6 +1,6 @@
 from . import OttomenResourceTestCase
 from ottomen.resources.services import *
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 import sure
 import pytest
 from helpers import create_task, create_experiment
@@ -34,12 +34,10 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         updated.experiment.id.should.be.equal(new_experiment.id)
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            t = tasks.new(description="A shitty description", accuracy=.7, not_there=5)
+        tasks.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5).should.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            tasks.get_or_404('10000000')
+        tasks.get_or_404.when.called_with('10000000').should.throw(NotFound)
 
     def test_new_mem(self):
         task_db = create_task()
@@ -60,12 +58,10 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         tasks.get_mem_obj(task_db.id).id.should.be.equal(task_db.id)
 
     def test_get_non_existing_mem(self):
-        with pytest.raises(KeyError):
-            t = tasks.get_mem_obj('not_there')
+        tasks.get_mem_obj.when.called_with('not_there').should.throw(KeyError)
 
     def test_new_mem_malformed_model(self):
-        with pytest.raises(TypeError):
-            t = tasks.new_mem({'not_there': True})
+        tasks.new_mem.when.called_with({'not_there': True}).should.throw(TypeError)
 
     def test_update_mem(self):
         task_db = create_task()
@@ -80,8 +76,7 @@ class TaskResourceTestCase(OttomenResourceTestCase):
         task_mem = tasks.new_mem(task_db).get()
         task_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
 
-        with pytest.raises(TypeError):
-            tasks.update_mem(task_mem)
+        tasks.update_mem.when.called_with(task_mem).should.throw(TypeError)
 
     # def test_access_experiment(self):
     #     task_db = create_task()

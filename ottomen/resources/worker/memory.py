@@ -1,7 +1,7 @@
 from random import shuffle
 
 from ...core import mem, MemoryBase
-from ...helpers import Set
+from ...helpers import TypedSet
 
 
 class WorkerMem(MemoryBase):
@@ -89,19 +89,21 @@ class WorkerMem(MemoryBase):
         self.past_question_ids().expire(exp_in_sec)
         self.next_question_ids().expire(exp_in_sec)
 
-    # def update_answers(self, session_id, answers):
-    #     if not answers:
-    #         return
-    #     for answer in answers:
-    #         answer['id'] = str(session_id) + '_' + answer['question_id']
-    #         if answer['question_id'] in self.control_question_ids(session_id).members():
-    #             question_mem = self.get_control_question(session_id, answer['question_id'])
-    #             question_mem.update({"answer": answer})
-    #         else:
-    #             question_mem = Question(self.exp_id, answer['question_id'])
-    #             question_mem.add_answer(answer)
-    #             self.add_answer(session_id, answer)
-    #             self.session_answer_ids(session_id).add(answer['id'])
+    def update_answers(self, session_id, answers):
+        from ..services import questions
+
+        if not answers:
+            return
+        for answer in answers:
+            answer['id'] = str(session_id) + '_' + answer['question_id']
+            if answer['question_id'] in self.control_question_ids(session_id).members():
+                question_mem = self._control_question_hash(session_id, answer['question_id'])
+                question_mem.update({"answer": answer})
+            else:
+                question_mem = questions.get_mem(self.exp_id, answer['question_id'])
+                question_mem.add_answer(answer)
+                self.add_answer(session_id, answer)
+                self.session_answer_ids(session_id).add(answer['id'])
 
     def new_batch(self, session_id, answers, number):
         from ..experiment import ExperimentMem
@@ -132,20 +134,20 @@ class WorkerMem(MemoryBase):
         return self.next_question_ids().add(*[question['id'] for question in questions])
 
     def session_answer_ids(self, session_id):
-        return Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
+        return TypedSet("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
 
     def next_question_ids(self):
-        return Set("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
+        return TypedSet("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
 
     def past_question_ids(self):
-        return Set("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
+        return TypedSet("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
 
     def next_session_question_ids(self, session_id):
-        return Set("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
+        return TypedSet("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
 
     def control_question_ids(self, session_id):
-        return Set("experiment.%s.worker.%s.%s.control_question_ids" %
-                            (self.exp_id, self.worker_id, session_id))
+        return TypedSet("experiment.%s.worker.%s.%s.control_question_ids" %
+                   (self.exp_id, self.worker_id, session_id))
 
     def delete(self):
         self.next_question_ids().clear()
@@ -160,4 +162,4 @@ class WorkerMem(MemoryBase):
 
     def _control_question_hash(self, session_id, question_id):
         return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
-                             (self.exp_id, self.worker_id, session_id, question_id))
+                        (self.exp_id, self.worker_id, session_id, question_id))

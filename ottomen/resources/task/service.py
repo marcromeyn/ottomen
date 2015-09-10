@@ -10,7 +10,7 @@ class TaskService(ServiceWithMem):
         return TaskMem(id)
 
     def get_mem_obj(self, id):
-        return self.new(**TaskMem(id).get())
+        return self.new(**self.get_mem_json(id))
 
     def get_mem_json(self, id):
         return TaskMem(id).get()

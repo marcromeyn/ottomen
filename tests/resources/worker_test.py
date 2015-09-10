@@ -1,6 +1,6 @@
 from . import OttomenResourceTestCase
 from ottomen.resources.services import *
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 import sure
 import pytest
 from helpers import create_worker, create_experiment
@@ -33,12 +33,11 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         updated.tw_pos.should.be.equal(.8)
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            w = workers.new(description="A shitty description", accuracy=.7, not_there=5)
+        workers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
+            .should.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            workers.get_or_404('10000000')
+        workers.get_or_404.when.called_with('10000000').should.throw(NotFound)
 
     def test_new_mem(self):
         worker_db = create_worker()
@@ -54,14 +53,12 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         workers.get_mem_obj(exp_db.id, worker_mem['id']).id.should.be.equal(worker_db.id)
 
     def test_new_mem_malformed_model(self):
-        with pytest.raises(TypeError):
-            exp_db = create_experiment()
-            t = workers.new_mem(exp_db.id, {'not_there': True})
+        exp_db = create_experiment()
+        workers.new_mem.when.called_with(exp_db.id, {'not_there': True}).should.throw(TypeError)
 
     def test_get_non_existing_mem(self):
-        with pytest.raises(KeyError):
-            exp_db = create_experiment()
-            exp_mem = workers.get_mem_obj(exp_db.id, 'not_there')
+        exp_db = create_experiment()
+        workers.get_mem_obj.when.called_with(exp_db.id, 'not_there').should.throw(KeyError)
 
     def test_update_mem(self):
         worker_db = create_worker()
@@ -78,5 +75,4 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         worker_mem = workers.new_mem(exp_db.id, worker_db).get()
         worker_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
 
-        with pytest.raises(TypeError):
-            workers.update_mem(exp_db.id, worker_mem)
+        workers.update_mem.when.called_with(exp_db.id, worker_mem).should.throw(TypeError)

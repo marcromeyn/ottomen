@@ -1,6 +1,6 @@
 from . import OttomenResourceTestCase
 from ottomen.resources.services import experiments, workers, answers
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 import sure
 import pytest
 from helpers import create_answer, create_label
@@ -34,11 +34,10 @@ class AnswerResourceTestCase(OttomenResourceTestCase):
         updated.labels[0].name.should.be.equal('Label2')
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            a = answers.new(description="A shitty description", accuracy=.7, not_there=5)
+        answers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
+            .should.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            answers.get_or_404(10000000)
+        answers.get_or_404.when.called_with('10000000').should.throw(NotFound)
 
 

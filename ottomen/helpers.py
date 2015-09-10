@@ -85,10 +85,9 @@ public, hidden or modified before being being passed to the JSON serializer.
                 rv[key] = getattr(self, key)
             elif not redis:
                 if type(getattr(self, key)) is InstrumentedList:
-                    for item in getattr(self, key):
-                        item.to_json()
+                    rv[key] = [item.to_json for item in getattr(self, key)]
                 else:
-                    getattr(self, key).to_json()
+                    rv[key] = getattr(self, key).to_json()
         for key, modifier in modifiers.items():
             value = getattr(self, key)
             rv[key] = modifier(value, self)
@@ -97,9 +96,9 @@ public, hidden or modified before being being passed to the JSON serializer.
         return rv
 
 
-class Set(containers.Set):
+class TypedSet(containers.Set):
     def __init__(self, key, type='int'):
-        super(Set, self).__init__(mem, key)
+        super(TypedSet, self).__init__(mem, key)
         self.type = type
 
     def members(self, typed=True):

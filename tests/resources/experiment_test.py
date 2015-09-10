@@ -1,6 +1,6 @@
 from . import OttomenResourceTestCase
 from ottomen.resources.services import experiments
-from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import NotFound
 import sure
 import pytest
 from .helpers import create_experiment, create_question
@@ -35,12 +35,11 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         experiments.get(exp.id).accuracy.should.be.equal(.9)
 
     def test_malformed_model(self):
-        with pytest.raises(TypeError):
-            exp = experiments.new(description="A shitty description", accuracy=.7, not_there=5)
+        experiments.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5).\
+            should.throw(TypeError)
 
     def test_404(self):
-        with pytest.raises(HTTPException):
-            experiments.get_or_404(10000000)
+        experiments.get_or_404.when.called_with(10000000).should.throw(NotFound)
             
     def test_new_mem(self):
         exp_db = create_experiment()
@@ -53,12 +52,10 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         experiments.get_mem_obj(exp_db.id).id.should.be.equal(exp_db.id)
 
     def test_get_non_existing_mem(self):
-        with pytest.raises(KeyError):
-            exp_mem = experiments.get_mem_obj(100000000)
+        experiments.get_mem_obj.when.called_with(100000000).should.throw(KeyError)
 
     def test_new_mem_malformed_model(self):
-        with pytest.raises(TypeError):
-            t = experiments.new_mem({'not_there': True})
+        experiments.new_mem.when.called_with({'not_there': True}).should.throw(TypeError)
 
     def test_update_mem(self):
         exp_db = create_experiment()
@@ -72,9 +69,7 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         exp_db = create_experiment()
         exp_mem = experiments.new_mem(exp_db).get()
         exp_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
-
-        with pytest.raises(TypeError):
-            experiments.update_mem(exp_mem)
+        experiments.update_mem.when.called_with(exp_mem).should.throw(TypeError)
 
     def test_mem_add_question(self):
         exp_db = create_experiment()

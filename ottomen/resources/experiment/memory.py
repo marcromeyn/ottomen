@@ -1,6 +1,6 @@
 from ...core import mem, MemoryBase
 import uuid
-from ...helpers import Set
+from ...helpers import TypedSet
 
 
 class ExperimentMem(MemoryBase):
@@ -15,6 +15,10 @@ class ExperimentMem(MemoryBase):
 
     def get_question_json(self, question_id):
         return self.parse_hash(self._question_hash(question_id))
+
+    def get_question(self, id):
+        from ..services import questions
+        return questions.get_mem(self.exp_id, id)
 
     def get_questions(self, ids):
         return [self.get_question_json(question_id) for question_id in ids]
@@ -54,13 +58,13 @@ class ExperimentMem(MemoryBase):
             self.add_question(question, control)
 
     def question_ids(self):
-        return Set("experiment.%s.question_ids" % self.exp_id)
+        return TypedSet("experiment.%s.question_ids" % self.exp_id)
 
     def control_question_ids(self):
-        return Set("experiment.%s.control_question_ids" % self.exp_id)
+        return TypedSet("experiment.%s.control_question_ids" % self.exp_id)
 
     def workers_active_ids(self):
-        return Set("experiment.%s.active_workers" % self.exp_id)
+        return TypedSet("experiment.%s.active_workers" % self.exp_id)
 
     def workers_sorted_tw_pos(self):
         return mem.ZSet("experiment.%s.workers_sorted_tw_pos" % self.exp_id)
