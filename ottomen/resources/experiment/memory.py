@@ -14,7 +14,12 @@ class ExperimentMem(MemoryBase):
         self._hash().update(self.to_hash(experiment))
 
     def get_question_json(self, question_id):
-        return self.parse_hash(self._question_hash(question_id))
+        if question_id in self.question_ids():
+            return self.parse_hash(self._question_hash(question_id))
+        elif question_id in self.control_question_ids():
+            return self.parse_hash(self._control_question_hash(question_id))
+        else:
+            raise KeyError
 
     def get_question(self, id):
         from ..services import questions
@@ -24,6 +29,9 @@ class ExperimentMem(MemoryBase):
         return [self.get_question_json(question_id) for question_id in ids]
 
     def get_control_question(self, question_id):
+        return self.parse_hash(self._control_question_hash(question_id))
+
+    def get_control_question_json(self, question_id):
         return self.parse_hash(self._control_question_hash(question_id))
 
     def get_control_questions(self, amount):

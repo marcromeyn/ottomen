@@ -26,7 +26,8 @@ class QuestionMem(MemoryBase):
         answers._isinstance(answer)
 
         self.answer_ids().add(answer['id'])
-        self.answer_label_set(answer['id']).add(*labels)
+        if labels:
+            self.answer_label_set(answer['id']).add(*labels)
 
         return self._answer_hash(answer['id']).update(answer)
 
@@ -55,7 +56,8 @@ class QuestionMem(MemoryBase):
         validation_model = validations.new(**validation)
         validations._isinstance(validation_model)
 
-        self._validation_labels().add(*labels)
+        if labels:
+            self._validation_labels().add(*labels)
         self._validation_hash().update(validation)
 
         return validation()

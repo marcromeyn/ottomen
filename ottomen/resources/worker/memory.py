@@ -62,7 +62,7 @@ class WorkerMem(MemoryBase):
             return
         self.control_question_ids(session_id).add(*[question['id'] for question in questions])
         for question in questions:
-            self.get_control_question(session_id, question['id']).update(question)
+            self._control_question_hash(session_id, question['id']).update(question)
 
     def control(self, session_id):
         return [self.get_control_question(session_id, question_id).as_dict()
