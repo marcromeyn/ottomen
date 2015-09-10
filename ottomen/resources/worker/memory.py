@@ -1,6 +1,7 @@
 from random import shuffle
 
 from ...core import mem, MemoryBase
+from ...helpers import Set
 
 
 class WorkerMem(MemoryBase):
@@ -131,19 +132,19 @@ class WorkerMem(MemoryBase):
         return self.next_question_ids().add(*[question['id'] for question in questions])
 
     def session_answer_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
+        return Set("experiment.%s.worker.%s.%s.answers" % (self.exp_id, self.worker_id, session_id))
 
     def next_question_ids(self):
-        return mem.Set("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
+        return Set("experiment.%s.worker.%s.next_question_ids" % (self.exp_id, self.worker_id))
 
     def past_question_ids(self):
-        return mem.Set("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
+        return Set("experiment.%s.worker.%s.past_question_ids" % (self.exp_id, self.worker_id))
 
     def next_session_question_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
+        return Set("experiment.%s.worker.%s.%s.next_question_ids" % (self.exp_id, self.worker_id, session_id))
 
     def control_question_ids(self, session_id):
-        return mem.Set("experiment.%s.worker.%s.%s.control_question_ids" %
+        return Set("experiment.%s.worker.%s.%s.control_question_ids" %
                             (self.exp_id, self.worker_id, session_id))
 
     def delete(self):
