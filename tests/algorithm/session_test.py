@@ -15,25 +15,11 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
         start_session.when.called_with([], '1000').should.throw(ApplicationError)
         start_session.when.called_with(12, '1000').should.throw(ApplicationError)
         start_session.when.called_with(None, '1000').should.throw(ApplicationError)
-        #
-        # with pytest.raises(ApplicationError):
-        #     start_session([], '1000')
-        # with pytest.raises(ApplicationError):
-        #     start_session(12, '1000')
-        # with pytest.raises(ApplicationError):
-        #     start_session(None, '1000')
 
     def test_start_session_bad_task(self):
         start_session.when.called_with('turkturk', None).should.throw(ApplicationError)
         start_session.when.called_with('turkturk', 1).should.throw(ApplicationError)
         start_session.when.called_with('turkturk', 0.2).should.throw(ApplicationError)
-        #
-        # with pytest.raises(ApplicationError):
-        #     start_session("turkturk", None)
-        # with pytest.raises(ApplicationError):
-        #     start_session("turkturk", 1)
-        # with pytest.raises(ApplicationError):
-        #     start_session("turkturk", 0.2)
 
     def test_start_session(self):
         response = start_session("gayturkturk", '1337')
@@ -82,7 +68,7 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
 
     def test_store_validated_questions(self):
         old_q_ids = self.exp.question_ids()
-        random_q_ids = random.shuffle(self.exp.question_ids())[:25]
+        random_q_ids = random.shuffle(self.exp.question_ids())[:self.validated_qs_batch]
         validated_questions = self.exp.get_questions(random_q_ids)
 
         # should add some labels to that stuff
@@ -124,13 +110,23 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
             turk_answer = answers.filter(db.and_(Answer.worker_id == "gayturk", Answer.question_id == q['id']))
             turk_answer.should.exist
             len(turk_answer.labels).should.equal(len(q['labels']))
-            for q['label'] in turk_answer.labels:
+            for label in turk_answer.labels:
                 turk_label = next(lb for lb in turk_answer.labels if lb.name == label)
                 turk_label.shouldnt.be(None)
 
+    def store_validated_qs_until_finish(self):
+        """
+        This method rus store_validated_questions until all the questions are validated and the experiment is completed.
+        """
+        nr_of_iters = (self.set_sizes * 2) / self.validated_qs_batch
+        for i in range(0, nr_of_iters):
+            self.test_store_validated_questions()
 
-
-
+        # should be finished and no more questions
+        self.exp['completed'].should.equal(True)
+        self.exp.question_ids().should.be.empty
+        db_exp = experiments.get(self.exp['id'])
+        db_exp.completed.should.equal()
 
 
 
