@@ -30,10 +30,14 @@ body {
 .container{
   border: 18px solid #f3f3f3
 }
-.highlighter{
+.highlighter, .highlight{
     background:yellow;
 }
 .highlighter:hover {
   background:red;
   cursor: pointer; cursor: hand;
+}
+.error{
+  color: red;
+  font-weight: bold;
 }

@@ -9,6 +9,7 @@ export default DS.RESTSerializer.extend({
     json['task_id'] = record.get('task_id');
     json['worker_id'] = record.get('worker_id');
     json['hit_id'] = record.get('hit_id');
+    json['questions_type'] = record.get('questions_type');
     if(options && options['embedded']){
       json = {session: json}
     }
