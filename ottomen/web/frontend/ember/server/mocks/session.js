@@ -15,7 +15,8 @@ module.exports = function(app) {
         id: 'XXXX',
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
-        task_id: 'test123'
+        task_id: 'test123',
+        questions_type: "boolean"
       },
       'questions': [{
         id: "J3Xq5m",
@@ -47,12 +48,13 @@ module.exports = function(app) {
         id: 'XXXX',
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
-        task_id: 'test123'
+        task_id: 'test123',
+        questions_type: "boolean"
       },
       'questions': [{
         id: "J3Xq5m",
         text: "For more than two decades, our research teams from Slovakia, Russia, Canada, Netherlands, Latin America and the US worked on hundreds of projects uncovering series of events related to hackers and other cyber criminals activities including less worrying samples to sophisticated and targeted attacks such as ACAD projects stealthy ACAD/Medre, military focused Georgian Georbot, very first impactful mac Flashback Trojan or the Linux/Cdorked.A apache webserver backdoor, analyzing their methodology and tracking their origins as well as the malware spread, helping users, companies and government institutions around the world to stay and feel protected.",
-        answers: ["ACAD/Medre"]
+        answers: ["ACAD/Medre", "Linux/Cdorked"]
       }, {
         id: "JNFAmM",
         text: "Four specific families of threats contributed to the steep rise in the malware infection rates of Austria, Germany, Italy, and the Netherlands: Win32/EyeStye, Win32/Zbot (also known as Zeus), Win32/Keygen, and Blacole.",
@@ -85,7 +87,7 @@ module.exports = function(app) {
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
         task_id: 'test123',
-        no_questions: true
+        questions_type: "string"
       },
       'questions': [{
         id: "J3Xq5m",

@@ -44,9 +44,40 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
             question["text"].should.be.a(str)
             question["text"].shouldnt.be.empty()
 
+    def start_new_batch_once(self, turk_answers=None, start_new_session=True, response=None):
+        if start_new_session:
+            response = start_session(self.worker_id, self.task['id'])
+
+        if not turk_answers:
+            turk_answers = []
+            # randomly give some answers
+            for question in response['questions']:
+                answer = {'question_id': question['id'], 'labels': []}
+                r = random.randint(0, 3)
+
+                for i in range(0, r):
+                    answer['labels'].append(str(uuid1()))
+                turk_answers.append(answer)
+
+        nb_response = new_batch(self.worker_id, answers, self.task['id'], response['session']['id'])
+        nb_response["session"]["id"].should.equal(response['session']['id'])
+        return nb_response
+
+    def test_start_new_batch_once(self):
+        nb_response = self.start_new_batch_once()
+        nb_response.should.contain.key("session")
+        nb_response.should.contain.key("questions")
+        len(nb_response["questions"]).should.equal(globals.TASK_BATCH_SIZE)
+        nb_response["session"]["worker_id"].should.equal(self.worker_id)
+        nb_response["session"]["task_id"].should.equal(self.task['id'])
+        len(nb_response["session"]["questions"]).should.equal(globals.TASK_BATCH_SIZE)
+        len(nb_response["session"]["completed"]).should.equal(False)
+        len(nb_response["session"]["banned"]).should.equal(False)
+
+
     def test_update_sets(self):
         old_q_ids = self.exp.question_ids()
-        random_q_ids = random.shuffle(self.exp.question_ids())[:25]
+        random_q_ids = random.shuffle(self.exp.question_ids())[:self.validated_qs_batch]
         qs = self.exp.get_questions(random_q_ids)
 
         for q in qs:

@@ -100,7 +100,7 @@ def new_batch(worker_id, answers, task_id, session_id):
         answer['worker_id'] = worker_id
 
     question_set = worker.new_batch(session_id, answers, task['batch_size'])
-    question_ids = [question_set["id"] for question in question_set if 'id' in question]
+    question_ids = [question["id"] for question in question_set]
 
     batch = {
         "session": {

@@ -1,6 +1,16 @@
 <div id="container-instructions">
 	<div class="nav">
-		<h1 class="nav navbar-nav navbar-left">Classify the Malwares</h1>
+		<div class="nav navbar-nav navbar-left">
+			<h1 >Classify the Malwares</h1>
+			<h4>
+				{{#if question.is_boolean}}
+					This questions are only Yes or No questions, please select the correct option.
+				{{/if}}
+				{{#if question.is_string}}
+					This questions are highlight questions, please highlight any malware you find on the text.
+				{{/if}}
+			</h4>
+		</div>
 		<div class="navbar-right" style="padding-right:20px">
 			<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<p>Running into trouble?</p> <p>Please contact: <strong>ottomen.cleaning@gmail.com</strong></p>" data-html="true">
   			Help
@@ -11,10 +21,27 @@
 	<hr>
 
 	<div class="instructions well" style="height:200px">
+		{{#if question.is_string}}
+			<div id="highlighter-question">
+				<div id="text">{{question.text}}</div>
+			</div>
+			<script type="text/javascript">
+				$(function () {
+					$('[data-toggle="popover"]').popover()
+					$("#highlighter-question").highlighter();
+				});
+				function removeHighlightText(elem){
+						$(elem).contents().unwrap();
+						$('#text')[0].normalize();
+				}
+			</script>
+		{{/if}}
+		{{#if question.is_boolean}}
+			<div id="unhighlighter-question">
+				<div id="text">{{highlight question}}</div>
+			</div>
+		{{/if}}
 
-		<div id="question">
-			<div id="text">{{question.text}}</div>
-		</div>
 
 	</div>
 
@@ -22,25 +49,32 @@
 
 
     <div class="instructionsnav">
-        <div class="row">
-            <div class="col-xs-8">
-            </div>
-						<div class="col-xs-2">
-							<button type="button" id="next" value="next" class="btn btn-primary btn-lg continue" {{action 'next' target=view}}>
-		              Next <span class="glyphicon glyphicon-arrow-right"></span>
-		          </button>
-            </div>
-        </div>
+      <div class="row">
+        {{#if question.is_string}}
+					<div class="col-xs-8">
+
+					</div>
+				{{/if}}
+				{{#if question.is_boolean}}
+					<div class="col-xs-1">
+					</div>
+					<div class="col-xs-7">
+						<div class="row">
+							<p id="instructions">
+								Are the highlighted words in the text shown above define a malware?
+							</p>
+							{{input value="true" type="radio" name="answer"}} Yes
+							<br>
+							{{input value="false" type="radio" name="answer"}} No
+						</div>
+          </div>
+				{{/if}}
+				<div class="col-xs-2">
+					<button type="button" id="next" value="next" class="btn btn-primary btn-lg continue" {{action 'next' target=view}}>
+							Next <span class="glyphicon glyphicon-arrow-right"></span>
+					</button>
+				</div>
+      </div>
     </div>
 
 </div>
-<script type="text/javascript">
-	$(function () {
-		$('[data-toggle="popover"]').popover()
-		$("#question").highlighter();
-	});
-	function removeHighlightText(elem){
-			$(elem).contents().unwrap();
-			$('#text')[0].normalize();
-	}
-</script>

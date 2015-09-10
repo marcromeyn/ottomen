@@ -3,13 +3,24 @@ import Ember from 'ember';
 export default Ember.View.extend({
   actions:{
     next: function(){
-      var answers = $('.highlighter').map(function(){return $(this).text();});
-      $('.highlighter').map(function(){return $(this).contents().unwrap();});
-      $('#text')[0].normalize();
-      this.get("controller").send("next", answers);
-    },
-    add: function(){
-      $('#answers').prepend('<div class="form-group"><input type="text" class="answer form-control" value=""></div>')
+      var questions_type = this.get('controller').model.get('questions_type');
+      if(questions_type == "string"){
+        var answers = $('.highlighter').map(function(){return $(this).text();});
+        $('.highlighter').map(function(){return $(this).contents().unwrap();});
+        $('#text')[0].normalize();
+        this.get("controller").send("next", answers);
+      }
+      if(questions_type == "boolean"){
+        var answers = $('input[name=answer]:checked').val();
+        if(answers){
+          $('#instructions').removeClass('error')
+          $('input[name=answer]:checked').prop('checked', false);
+          this.get("controller").send("next", answers);
+        }else{
+          $('#instructions').addClass('error')
+        }
+      }
+
     }
   },
   selectText: function(){
