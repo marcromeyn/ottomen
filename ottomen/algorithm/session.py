@@ -77,7 +77,6 @@ def assign_questions(worker, task, session_id):
     pos_amount = int(questions_left / 2)
     exp_questions = list(exp.get_questions_worker(worker['id'], questions_left))
     question_set.extend(exp_questions)
-
     if len(question_set) < 20:
         return False, question_set
     else:
@@ -120,7 +119,7 @@ def new_batch(worker_id, answers, task_id, session_id):
         if not pg_worker.banned:
             validated_questions = update_questions(exp_id, worker_id, session_id, float(exp['accuracy']))
             update_sets(exp_id, validated_questions)
-            store_validated_questions(worker_id, exp_id, validated_questions)
+            store_validated_questions(exp_id, validated_questions)
         else:
             batch["session"]['banned'] = True
         clear_session(exp_id, worker_id, session_id)
@@ -147,7 +146,7 @@ def update_sets(exp_id, validated_questions):
 
     if len(new_questions) > 0:
         exp = experiments[exp_id]
-        exp.add_questions([q.as_dict(exp_id) for q in new_questions])
+        exp.add_questions([questions.get_json_with_validation_info(q, exp_id) for q in new_questions])
 
 
 def store_validated_questions(worker_id, exp_id, validated_questions):
@@ -156,6 +155,7 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
     pg_worker = workers.filter(Worker.id == worker_id).first()
 
     exp_mem = experiments[exp_id]
+
     # remove the questions from the list of questions in the experiment
     if len(validated_questions) > 0:
         remove_ids = [str(q['id']) for q in validated_questions]
@@ -167,15 +167,14 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         val.timestamp = datetime.datetime.now()
         val.question_id = pg_q.id
         val.experiment_id = exp_id
-        labels = eval(question['labels'])
-        val.labels = answers.save_or_get_labels(labels)
-        val.label = len(val.malwares) > 0
+        val.labels = answers.save_or_get_labels(question['labels'])
+        val.label = len(val.labels) > 0
         validations.save(False, val)
 
         for answer in question['answers']:
             pg_ans = Answer(timestamp=datetime.datetime.now())
-            pg_ans.worker_id = pg_worker.id
-            pg_ans.labels = answers.save_or_get_labels(eval(answer['labels']))
+            pg_ans.worker_id = answer['worker_id']
+            pg_ans.labels = answers.save_or_get_labels(answer['labels'])
             pg_ans.question_id = pg_q.id
             answers.save(pg_ans)
 

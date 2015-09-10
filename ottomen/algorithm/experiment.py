@@ -81,17 +81,16 @@ def get_questions(question_ids):
 
 
 def initialize_sets(exp, set_limit):
-    positive_set = questions.get_positive(exp['id'], set_limit)
-    negative_set = questions.get_negative(exp['id'], set_limit)
+    question_set = questions.get_positive(exp['id'], set_limit)
+    question_set.extend(questions.get_negative(exp['id'], set_limit))
+    question_set = [questions.get_json_with_validation_info(q, exp['id']) for q in question_set]
 
     # get control set from base experiment id
     control_set = questions.get_control(base_experiment_id, set_limit)
+    question_set = [questions.get_json_with_validation_info(q, exp['id']) for q in control_set]
 
     # Saving the sets to Redis
-    exp = experiments[exp['id']]
-    exp.add_questions(positive_set)
-    exp.add_questions(negative_set)
+    exp.add_questions(question_set)
     if len(control_set) > 0:
         exp.add_questions(control_set, control=True)
 
-    return positive_set, negative_set, control_set
