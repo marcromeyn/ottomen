@@ -121,3 +121,15 @@ def create_answer():
     answer.labels[0].name.should.be.equal(label.name)
 
     return answer
+
+
+def create_validation():
+    some_validation = {
+        'label': True,
+        'labels': ['Jan', 'Juan']
+    }
+
+    val = validations.create(**some_validation)
+    val.shouldnt.be(None)
+
+    return val

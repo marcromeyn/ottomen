@@ -60,14 +60,16 @@ class QuestionMem(MemoryBase):
             raise NotImplemented
 
         labels = validation.pop('labels', [])
-        validation_model = validations.new(**validation)
-        validations._isinstance(validation_model)
+        validation['experiment_id'] = self.exp_id
+        validation['question_id'] = self.question_id
+        validation = validations.new(**validation)
+        validations._isinstance(validation)
 
         if labels:
             self._validation_labels().add(*labels)
-        self._validation_hash().update(validation)
+        self._validation_hash().update(self.to_hash(validation))
 
-        return validation()
+        return self.validation()
 
     def validation(self):
         to_return = self.parse_hash(self._validation_hash())

@@ -3,7 +3,7 @@ from ottomen.resources.services import *
 from werkzeug.exceptions import NotFound
 import sure
 import pytest
-from .helpers import create_experiment, create_question
+from .helpers import create_experiment, create_question, create_validation
 
 
 class ExperimentResourceTestCase(OttomenResourceTestCase):
@@ -84,6 +84,28 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         question_mem['text'].should.equal(question_db.text)
         exp_mem.question_ids().should.contain(question_db.id)
         exp_mem.question_ids().members().should.contain(question_db.id)
+
+    def test_mem_add_control_question(self):
+        exp_db = create_experiment()
+        question_db = create_question()
+        val = {
+            'label': True,
+            'labels': ['Jan', 'Juan']
+        }
+        exp_mem = experiments.new_mem(exp_db)
+        ques_mem = exp_mem.add_question(question_db, control=True)
+        ques_mem.validate(val)
+
+        question_mem = exp_mem.get_question_json(question_db.id)
+        question_mem['id'].should.equal(question_db.id)
+        question_mem['belief'].should.equal(question_db.belief)
+        question_mem['in_progress'].should.equal(question_db.in_progress)
+        question_mem['text'].should.equal(question_db.text)
+        ques_mem.is_validated().should.equal(True)
+        exp_mem.control_question_ids().should.contain(question_db.id)
+        exp_mem.control_question_ids().members().should.contain(question_db.id)
+        exp_mem.get_control_questions(1)[0]['id'].should.equal(question_db.id)
+
 
     # Should be in question_test but since that one is failing now I put it here
 

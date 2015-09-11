@@ -32,7 +32,7 @@ class QuestionService(ServiceWithMem):
         self._isinstance(question)
 
         ques_mem = QuestionMem(exp_id, question.id)
-        question = ques_mem.parse_hash(question)
+        question = ques_mem.to_hash(question)
         question['validation'] = validation
         question['control'] = control
         ques_mem.new(question)

@@ -21,7 +21,7 @@ validation_output = db.Table("validation_label",
                              db.Column("label_id", db.Integer, db.ForeignKey("label.id")))
 
 
-class Validation(db.Model):
+class Validation(JsonSerializer, db.Model):
     __tablename__ = "validation"
 
     id = db.Column(db.Integer, primary_key=True)

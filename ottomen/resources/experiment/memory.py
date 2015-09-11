@@ -42,11 +42,11 @@ class ExperimentMem(MemoryBase):
         mem.Set(unique_id).clear()
         return self.get_questions(question_ids)
 
-    def add_question(self, question):
+    def add_question(self, question, control=False):
         from ..services import questions
         ques_mem = questions.new_mem(self.exp_id, question)
-        if type(question) is dict and 'control' in question \
-                and question['control']:
+        if (type(question) is dict and 'control' in question
+                and question['control']) or control:
             self.control_question_ids().add(question.id)
         else:
             self.question_ids().add(question.id)
