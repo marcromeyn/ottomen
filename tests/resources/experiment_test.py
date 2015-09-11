@@ -1,5 +1,5 @@
 from . import OttomenResourceTestCase
-from ottomen.resources.services import experiments
+from ottomen.resources.services import *
 from werkzeug.exceptions import NotFound
 import sure
 import pytest
@@ -84,3 +84,16 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         question_mem['text'].should.equal(question_db.text)
         exp_mem.question_ids().should.contain(question_db.id)
         exp_mem.question_ids().members().should.contain(question_db.id)
+
+    # Should be in question_test but since that one is failing now I put it here
+
+    def test_mem_new_question(self):
+        question_db = create_question()
+        exp_db = create_experiment()
+        question_mem = questions.new_mem(exp_db.id, question_db).get()
+        question_mem.shouldnt.be(None)
+
+    def test_question_get_non_existing_mem(self):
+        exp_db = create_experiment()
+        exp_mem = experiments.new_mem(exp_db)
+        exp_mem.get_question_json.when.called_with(100000000).should.throw(KeyError)

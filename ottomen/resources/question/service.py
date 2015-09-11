@@ -23,10 +23,18 @@ class QuestionService(ServiceWithMem):
         return QuestionMem(exp_id, question_id).get()
 
     def new_mem(self, exp_id, question):
+        validation = None
+        control = False
         if type(question) is dict:
+            validation = question.pop('validation', None)
+            control = question.pop('control', False)
             question = self.new(**question)
         self._isinstance(question)
-        ques_mem = QuestionMem.new(exp_id, question)
+
+        ques_mem = QuestionMem(exp_id, question.id)
+        question = ques_mem.parse_hash(question)
+        question['validation'] = validation
+        question['control'] = control
         ques_mem.new(question)
 
         return ques_mem

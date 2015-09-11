@@ -11,7 +11,14 @@ class QuestionMem(MemoryBase):
         return self.parse_hash(self._hash())
 
     def new(self, question):
-        self._hash().update(self.to_hash(question))
+        if type(question) is not dict:
+            raise TypeError
+        validation = question.pop('validation', None)
+        control = question.pop('control', False)
+        if validation:
+            self.validate(validation)
+
+        self._hash().update(question)
 
     def answer_ids(self):
         return TypedSet("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
