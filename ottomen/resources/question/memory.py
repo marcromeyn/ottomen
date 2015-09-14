@@ -23,23 +23,29 @@ class QuestionMem(MemoryBase):
     def answer_ids(self):
         return TypedSet("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
 
-    def add_answer(self, answer):
-        from ..services import answers
+    def add_answer(self, *answers):
+        from ..services import answers as answer_service
 
-        if type(answer) is not dict:
-            raise NotImplemented
-        labels = answer.pop('labels', [])
-        answer = answers.new(**answer)
-        answers._isinstance(answer)
+        if not answers:
+            raise ValueError
 
-        self.answer_ids().add(answer['id'])
-        if labels:
-            self.answer_label_set(answer['id']).add(*labels)
+        for answer in answers:
+            if type(answer) is not dict:
+                raise NotImplemented
+            labels = answer.pop('labels', [])
+            answer = answer_service.new(**answer)
+            answer_service._isinstance(answer)
 
-        return self._answer_hash(answer['id']).update(answer)
+            self.answer_ids().add(answer.id)
+            if labels:
+                self.answer_label_set(answer.id).add(*labels)
+
+            self._answer_hash(answer.id).update(self.to_hash(answer))
 
     def get_answer(self, answer_id):
         answer = self.parse_hash(self._answer_hash(answer_id))
+        if not answer:
+            raise KeyError
         answer['labels'] = self.answer_label_set(answer_id)
 
         return answer
