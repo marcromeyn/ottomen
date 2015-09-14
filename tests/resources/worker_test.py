@@ -33,8 +33,8 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         updated.tw_pos.should.be.equal(.8)
 
     def test_malformed_model(self):
-        workers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
-            .should.throw(TypeError)
+        (workers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)
+            .should.throw(TypeError))
 
     def test_404(self):
         workers.get_or_404.when.called_with('10000000').should.throw(NotFound)
@@ -90,7 +90,6 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
             'id': ans_id,
             'question_id': ques_db.id,
             'labels': ['Jan', 'Juan']
-            # 'labels': [1, 2]
         }
         worker_mem.add_answer(ses_id, ans)
         ans = worker_mem.get_answer("%s_%s" % (ses_id, ques_db.id))

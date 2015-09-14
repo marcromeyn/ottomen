@@ -1,9 +1,8 @@
+from werkzeug.exceptions import NotFound
+
 from . import OttomenResourceTestCaseWithPopulatedDb
 from ottomen.resources.services import *
-from werkzeug.exceptions import NotFound
-import sure
-import pytest
-from helpers import create_question, create_experiment
+from helpers import create_question
 
 
 class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):
@@ -33,8 +32,8 @@ class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):
         updated.text.should.be.equal('ottomoney')
 
     def test_malformed_model(self):
-        questions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
-            .should.throw(TypeError)
+        (questions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)
+         .should.throw(TypeError))
 
     def test_404(self):
         questions.get_or_404.when.called_with('10000000').should.throw(NotFound)
@@ -82,8 +81,3 @@ class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):
             q.validations[0].experiment_id.should.be(0)
             q.validations[0].label.should.be(False)
             q.validations[0].labels.should.be.empty
-
-
-
-
-

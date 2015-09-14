@@ -1,9 +1,8 @@
+from werkzeug.exceptions import NotFound
+
 from . import OttomenResourceTestCase
 from ottomen.resources.services import *
-from werkzeug.exceptions import NotFound
-import sure
-import pytest
-from .helpers import create_experiment, create_question, create_validation
+from .helpers import create_experiment, create_question
 
 
 class ExperimentResourceTestCase(OttomenResourceTestCase):
@@ -35,12 +34,12 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         experiments.get(exp.id).accuracy.should.be.equal(.9)
 
     def test_malformed_model(self):
-        experiments.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5).\
-            should.throw(TypeError)
+        (experiments.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)
+         .should.throw(TypeError))
 
     def test_404(self):
         experiments.get_or_404.when.called_with(10000000).should.throw(NotFound)
-            
+
     def test_new_mem(self):
         exp_db = create_experiment()
         exp_mem = experiments.new_mem(exp_db).get()
@@ -105,7 +104,6 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
         exp_mem.control_question_ids().should.contain(question_db.id)
         exp_mem.control_question_ids().members().should.contain(question_db.id)
         exp_mem.get_control_questions(1)[0]['id'].should.equal(question_db.id)
-
 
     # Should be in question_test but since that one is failing now I put it here
 

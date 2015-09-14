@@ -33,8 +33,8 @@ class SessionResourceTestCase(OttomenResourceTestCase):
         updated.worker.id.should_not.be.different_of(new_worker.id)
 
     def test_malformed_model(self):
-        sessions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5) \
-            .shoud.throw(TypeError)
+        (sessions.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)
+            .should.throw(TypeError))
 
     def test_404(self):
         sessions.get_or_404.when.called_with(10000000).should.throw(NotFound)

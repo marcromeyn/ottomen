@@ -34,8 +34,8 @@ class AnswerResourceTestCase(OttomenResourceTestCase):
         updated.labels[0].name.should.be.equal('Label2')
 
     def test_malformed_model(self):
-        answers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)\
-            .should.throw(TypeError)
+        (answers.new.when.called_with(description="A shitty description", accuracy=.7, not_there=5)
+            .should.throw(TypeError))
 
     def test_404(self):
         answers.get_or_404.when.called_with('10000000').should.throw(NotFound)
