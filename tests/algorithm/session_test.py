@@ -9,7 +9,19 @@ from ottomen.resources.services import validations
 import random
 from uuid import uuid1
 
-class ExperimentTestCase(OttomenAlgorithmTestCase):
+class SessionTestCase(OttomenAlgorithmTestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super(SessionTestCase, cls).setUpClass()
+        cls.set_sizes = 500
+        cls.set_limit = 200
+        cls.worker_id = 'turkleton'
+        cls.exp = new_experiment(1337, 0.98, set_limit=cls.set_limit, set_sizes=cls.set_sizes)
+        db_worker = workers.save(Worker(id="gayturk", tw_pos=0.9, class_pos=30, class_neg=30))
+        cls.task = new_task('1337',1337)
+        cls.worker = workers.new_mem(1337, db_worker)
+        cls.validated_qs_batch = 25
 
     def test_start_session_bad_worker(self):
         start_session.when.called_with([], '1000').should.throw(ApplicationError)
@@ -73,7 +85,6 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
         len(nb_response["session"]["questions"]).should.equal(globals.TASK_BATCH_SIZE)
         len(nb_response["session"]["completed"]).should.equal(False)
         len(nb_response["session"]["banned"]).should.equal(False)
-
 
     def test_update_sets(self):
         old_q_ids = self.exp.question_ids()
@@ -145,7 +156,7 @@ class ExperimentTestCase(OttomenAlgorithmTestCase):
                 turk_label = next(lb for lb in turk_answer.labels if lb.name == label)
                 turk_label.shouldnt.be(None)
 
-    def store_validated_qs_until_finish(self):
+    def test_store_validated_qs_until_finish(self):
         """
         This method rus store_validated_questions until all the questions are validated and the experiment is completed.
         """

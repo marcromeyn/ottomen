@@ -77,6 +77,7 @@ def assign_questions(worker, task, session_id):
     pos_amount = int(questions_left / 2)
     exp_questions = list(exp.get_questions_worker(worker['id'], questions_left))
     question_set.extend(exp_questions)
+    # question_set = [questions.get_json_with_validation_info(q, exp['id']) for q in question_set]
     if len(question_set) < 20:
         return False, question_set
     else:

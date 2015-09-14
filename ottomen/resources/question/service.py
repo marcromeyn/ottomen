@@ -107,7 +107,20 @@ class QuestionService(ServiceWithMem):
         json = question.to_json()
         validations = [x for x in question.validations if x.experiment_id == int(exp_id)]
         if len(validations) > 0:
-            json['labels'] = [label.name for label in validations[0].labels]
-            json['label'] = validations[0].label
-        json['validated'] = len(validations) > 0
+            json['validation'] = {
+                'labels': [label.name for label in validations[0].labels],
+                'label': validations[0].label
+            }
         return json
+
+    @staticmethod
+    def get_validation_info(question, exp_id):
+        dict = {}
+        validations = [x for x in question.validations if x.experiment_id == int(exp_id)]
+        if len(validations) > 0:
+            dict['labels'] = [label.name for label in validations[0].labels]
+            dict['label'] = validations[0].label
+        dict['validated'] = len(validations) > 0
+        return dict
+
+
