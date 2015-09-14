@@ -47,9 +47,9 @@ class ExperimentMem(MemoryBase):
         ques_mem = questions.new_mem(self.exp_id, question)
         if (type(question) is dict and 'control' in question
                 and question['control']) or control:
-            self.control_question_ids().add(question.id)
+            self.control_question_ids().add(question['id'])
         else:
-            self.question_ids().add(question.id)
+            self.question_ids().add(question['id'])
 
         return ques_mem
 
