@@ -102,6 +102,13 @@ class QuestionService(ServiceWithMem):
 
         return questions
 
+    def set_in_progress(self, questions):
+        for question in questions:
+            question.in_progress = True
+            self.save(question, commit=False)
+        db.session.commit()
+
+
     @staticmethod
     def get_json_with_validation_info(question, exp_id):
         json = question.to_json()

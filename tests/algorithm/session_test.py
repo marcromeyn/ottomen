@@ -48,13 +48,13 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         response["session"]["worker_id"].should.equal('gayturkturk')
 
         len(response["questions"]).should.be(globals.TASK_BATCH_SIZE)
-        len(response["session"]["question_ids"]).should.be(globals.TASK_BATCH_SIZE)
+        len(response["session"]["questions"]).should.be(globals.TASK_BATCH_SIZE)
 
         for question in response["questions"]:
             question.should.have.key("id")
             question["id"].should.be.an(int)
             question["text"].should.be.a(str)
-            question["text"].shouldnt.be.empty()
+            question["text"].shouldnt.be.empty
 
     def start_new_batch_once(self, turk_answers=None, start_new_session=True, response=None):
         if start_new_session:
@@ -71,24 +71,25 @@ class SessionTestCase(OttomenAlgorithmTestCase):
                     answer['labels'].append(str(uuid1()))
                 turk_answers.append(answer)
 
-        nb_response = new_batch(self.worker_id, answers, self.task['id'], response['session']['id'])
+        nb_response = new_batch(self.worker_id, turk_answers, self.task['id'], response['session']['id'])
         nb_response["session"]["id"].should.equal(response['session']['id'])
         return nb_response
 
     def test_start_new_batch_once(self):
         nb_response = self.start_new_batch_once()
-        nb_response.should.contain.key("session")
-        nb_response.should.contain.key("questions")
+        nb_response.should.have.key("session")
+        nb_response.should.have.key("questions")
         len(nb_response["questions"]).should.equal(globals.TASK_BATCH_SIZE)
         nb_response["session"]["worker_id"].should.equal(self.worker_id)
         nb_response["session"]["task_id"].should.equal(self.task['id'])
         len(nb_response["session"]["questions"]).should.equal(globals.TASK_BATCH_SIZE)
-        len(nb_response["session"]["completed"]).should.equal(False)
-        len(nb_response["session"]["banned"]).should.equal(False)
+        nb_response["session"]["completed"].should.equal(False)
+        nb_response["session"]["banned"].should.equal(False)
 
     def test_update_sets(self):
-        old_q_ids = self.exp.question_ids()
-        random_q_ids = random.shuffle(self.exp.question_ids())[:self.validated_qs_batch]
+        old_q_ids = self.exp.question_ids().members()
+        random.shuffle(old_q_ids)
+        random_q_ids = old_q_ids[:self.validated_qs_batch]
         qs = self.exp.get_questions(random_q_ids)
 
         for q in qs:
@@ -96,8 +97,10 @@ class SessionTestCase(OttomenAlgorithmTestCase):
 
         update_sets(self.exp['id'], qs)
 
-        new_q_ids = self.exp.question_ids()
-        new_q_ids.remove(old_q_ids)
+        new_q_ids = self.exp.question_ids().members()
+        new_q_ids = [id for id in new_q_ids if id not in old_q_ids]
+
+        len(new_q_ids).should.equal(len(random_q_ids))
 
         new_qs = questions.filter(Question.id.in_(new_q_ids))
         for q in new_qs:
@@ -105,12 +108,14 @@ class SessionTestCase(OttomenAlgorithmTestCase):
 
         new_qs = self.exp.get_questions(new_q_ids)
 
-        (sum(nq['belief'] for nq in new_qs)).should.equal(rq['belief'] for rq in random_q_ids)
-        (sum(not nq['belief'] for nq in new_qs)).should.equal(not rq['belief'] for rq in random_q_ids)
+        (sum(nq['belief'] for nq in new_qs)).should.equal(sum(rq['belief'] for rq in qs))
+        (sum(not nq['belief'] for nq in new_qs)).should.equal(sum(not rq['belief'] for rq in qs))
 
     def test_store_validated_questions(self):
-        old_q_ids = self.exp.question_ids()
-        random_q_ids = random.shuffle(self.exp.question_ids())[:self.validated_qs_batch]
+        old_q_ids = self.exp.question_ids().members()
+        random.shuffle(old_q_ids)
+        random_q_ids = old_q_ids[:self.validated_qs_batch]
+
         validated_questions = self.exp.get_questions(random_q_ids)
 
         # should add some labels to that stuff
@@ -126,7 +131,7 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         store_validated_questions("gayturk", self.exp['id'], validated_questions)
 
         # the random_q_ids should be removed now
-        new_q_ids = self.exp.question_ids()
+        new_q_ids = self.exp.question_ids().members()
         for id in random_q_ids:
             new_q_ids.shouldnt.contain(id)
 

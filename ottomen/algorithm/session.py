@@ -6,7 +6,7 @@
 # from backend.question import update_questions
 
 from ..core import db
-from ..resources.services import answers, experiments, questions, sessions, tasks, validations, workers
+from ..resources.services import *
 from ..resources.models import Answer, Experiment, Session, Question, Validation, Worker
 from .worker import update_worker
 from ..core import ApplicationError
@@ -85,7 +85,7 @@ def assign_questions(worker, task, session_id):
         return True, question_set
 
 
-def new_batch(worker_id, answers, task_id, session_id):
+def new_batch(worker_id, answer_list, task_id, session_id):
     task = tasks[task_id]
     if task is None:
         return ApplicationError("Invalid task id")
@@ -97,10 +97,10 @@ def new_batch(worker_id, answers, task_id, session_id):
     if worker is None:
         return ApplicationError("Invalid worker id")
 
-    for answer in answers:
+    for answer in answer_list:
         answer['worker_id'] = worker_id
 
-    question_set = worker.new_batch(session_id, answers, task['batch_size'])
+    question_set = worker.new_batch(session_id, answer_list, task['batch_size'])
     question_ids = [question["id"] for question in question_set]
 
     batch = {
@@ -136,24 +136,20 @@ def update_sets(exp_id, validated_questions):
 
     new_questions = []
     new_questions.extend(questions.get_positive(exp_id, val_pos))
-    new_questions.extend(questions.get_negative(exp_id, val_pos))
+    new_questions.extend(questions.get_negative(exp_id, val_neg))
 
 
-    # set the new questions to be in progress
-    for question in new_questions:
-        question.in_progress = True
-        questions.save(False, question)
-    db.session.commit()
+    questions.set_in_progress(new_questions)
 
     if len(new_questions) > 0:
         exp = experiments[exp_id]
-        exp.add_questions([questions.get_json_with_validation_info(q, exp_id) for q in new_questions])
+        exp.add_questions(new_questions)
 
 
 def store_validated_questions(worker_id, exp_id, validated_questions):
     pg_questions = questions.filter(Question.id.in_([x['id'] for x in validated_questions]))
     pg_dic = {x.id: x for x in pg_questions}
-    pg_worker = workers.filter(Worker.id == worker_id).first()
+    pg_worker = workers.filter(Worker.id == worker_id)[0]
 
     exp_mem = experiments[exp_id]
 
@@ -168,9 +164,9 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         val.timestamp = datetime.datetime.now()
         val.question_id = pg_q.id
         val.experiment_id = exp_id
-        val.labels = answers.save_or_get_labels(question['labels'])
+        val.labels = labels.save_or_get_labels(question['labels'])
         val.label = len(val.labels) > 0
-        validations.save(False, val)
+        validations.save(val, commit=False)
 
         for answer in question['answers']:
             pg_ans = Answer(timestamp=datetime.datetime.now())
@@ -186,7 +182,7 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         exp = experiments.filter(Experiment.id == exp_id).first()
         exp_mem['completed'] = True
         exp.completed = True
-        experiments.save(False, exp)
+        experiments.save(exp, commit=False)
 
     db.session.commit()
 
