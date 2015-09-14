@@ -53,11 +53,13 @@ class WorkerMem(MemoryBase):
         return self.parse_hash(self._control_question_hash(session_id, question_id))
 
     def session_answers(self, session_id):
-        return [self.get_answer(session_id, answer_id)
+        return [self.get_answer(answer_id)
                 for answer_id in self.session_answer_ids(session_id).members()]
 
-    def delete_answer(self, session_id, answer_id):
-        return self._answer_hash(session_id, answer_id).clear()
+    def delete_answer(self, answer_id):
+        from ..services import questions
+        session_id, question_id = tuple(answer_id.split("_"))
+        questions.get_mem(self.exp_id, question_id).delete_answer(answer_id)
 
     def next_questions(self):
         from ..experiment import ExperimentMem

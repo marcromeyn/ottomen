@@ -50,6 +50,9 @@ class QuestionMem(MemoryBase):
 
         return answer
 
+    def delete_answer(self, answer_id):
+        self._answer_hash(answer_id).clear()
+
     def answers(self):
         return [self.get_answer(answer_id) for answer_id in self.answer_ids().members()]
 
