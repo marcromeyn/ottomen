@@ -127,7 +127,7 @@ class WorkerMem(MemoryBase):
 
     def ask(self, session_id, questions):
         self.next_session_question_ids(session_id).add(*[question['id'] for question in questions])
-        control = [question for question in questions if str(question['validated']) == "True"]
+        control = [question for question in questions if question['validated']]
         self.add_control_questions(session_id, control)
 
     def ask_global(self, questions):

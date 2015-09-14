@@ -53,9 +53,9 @@ class ExperimentMem(MemoryBase):
 
         return ques_mem
 
-    def add_questions(self, question_list):
+    def add_questions(self, question_list, control=False):
         for question in question_list:
-            self.add_question(question)
+            self.add_question(question, control=control)
 
     def question_ids(self):
         return TypedSet("experiment.%s.question_ids" % self.exp_id)
