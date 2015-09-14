@@ -12,7 +12,7 @@ class LabelService(Service):
     def save_or_get_labels(self, output_names):
         if output_names is None or len(output_names) == 0:
             return []
-        saved_labels = self.filter(Label.name.in_(output_names)).all()
+        saved_labels = self.filter(Label.name.in_(output_names))
         saved_names = [x.name for x in saved_labels]
         labels_left = [mw for mw in output_names if mw not in saved_names]
         to_save = []
