@@ -3,12 +3,13 @@ from .. import ResourceMixin
 from ...helpers import JsonSerializer
 
 answer_label = db.Table("answer_label",
-                         db.Column("answer_id", db.Integer, db.ForeignKey("answer.id")),
-                         db.Column("label_id", db.Integer, db.ForeignKey("label.id")))
+                        db.Column("answer_id", db.Integer, db.ForeignKey("answer.id")),
+                        db.Column("label_id", db.Integer, db.ForeignKey("label.id")))
 
 
 class AnswerJsonSerializer(JsonSerializer):
     __json_public__ = ['id', 'timestamp', 'question', 'labels', 'worker']
+    __json_other_models__ = ['labels', 'question', 'worker']
 
 
 class Answer(AnswerJsonSerializer, ResourceMixin, db.Model):

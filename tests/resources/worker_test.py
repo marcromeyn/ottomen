@@ -3,7 +3,7 @@ from ottomen.resources.services import *
 from werkzeug.exceptions import NotFound
 import sure
 import pytest
-from helpers import create_worker, create_experiment
+from helpers import create_worker, create_experiment, create_question
 
 
 class WorkerResourceTestCase(OttomenResourceTestCase):
@@ -76,3 +76,24 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         worker_mem['key_that_doesnt_exist_in_model'] = 'new_shitty_value'
 
         workers.update_mem.when.called_with(exp_db.id, worker_mem).should.throw(TypeError)
+
+    def test_add_question(self):
+        worker_db = create_worker()
+        exp_db = create_experiment()
+        ques_db = create_question()
+        ses_id = 1
+        worker_mem = workers.new_mem(exp_db.id, worker_db)
+        worker_mem.add_control_questions(ses_id, [ques_db])
+        worker_mem.get_control_question(ses_id, ques_db.id)['id'].should.be.equal(ques_db.id)
+        ans_id = 1
+        ans = {
+            'id': ans_id,
+            'question_id': ques_db.id,
+            'labels': ['Jan', 'Juan']
+            # 'labels': [1, 2]
+        }
+        worker_mem.add_answer(ses_id, ans)
+        ans = worker_mem.get_answer("%s_%s" % (ses_id, ques_db.id))
+        ans['id'].should.be.equal("%s_%s" % (ses_id, ques_db.id))
+        ans['labels'].should.contain('Jan')
+
