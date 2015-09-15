@@ -34,11 +34,11 @@ class WorkerMem(MemoryBase):
                 self.control_question_ids(session_id).add(question_id)
 
     def new_batch(self, session_id, answers, number):
+        for answer in answers:
+            if not isinstance(answer, dict):
+                raise TypeError
+
         from ..experiment import ExperimentMem
-
-        if not isinstance(answers, dict):
-            raise TypeError
-
         if len(answers) > 0:
             self.add_answer(session_id, *answers)
             question_ids = [answer['question_id'] for answer in answers]
@@ -94,8 +94,8 @@ class WorkerMem(MemoryBase):
         return ExperimentMem(self.exp_id).get_questions(self.next_session_question_ids(session_id))
 
     def control(self, session_id):
-        return [self.get_control_question(session_id, question_id).as_dict()
-                for question_id in self.control_question_ids(session_id).members()]
+        from ..services import experiments
+        return experiments.get_mem(self.exp_id).get_questions(self.control_question_ids(session_id).members())
 
     def end_session(self, session_id):
         from ..experiment import ExperimentMem
@@ -104,11 +104,7 @@ class WorkerMem(MemoryBase):
         exp.workers_sorted_tw_pos().remove(self.worker_id)
         exp.workers_sorted_tw_neg().remove(self.worker_id)
 
-        # delete session answers
-        for answer_id in self.session_answer_ids(session_id).members():
-            self.delete_answer(session_id, answer_id)
-
-        # delete control questions
+        # check whether control questions have to deleted
         for question_id in self.control_question_ids(session_id).members():
             self.get_control_question(session_id, question_id).clear()
         self.control_question_ids(session_id).clear()
