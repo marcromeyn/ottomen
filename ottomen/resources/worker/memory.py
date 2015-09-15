@@ -25,9 +25,9 @@ class WorkerMem(MemoryBase):
         if not questions:
             raise ValueError
 
-        from ..services import questions as question_service
+        from ..services import experiments
         for question in questions:
-            ques_mem = question_service.new_mem(self.exp_id, question)
+            ques_mem = experiments.get_mem(self.exp_id).add_question(question)
             question_id = ques_mem.get()['id']
             self.next_session_question_ids(session_id).add(question_id)
             if ques_mem.is_validated():
