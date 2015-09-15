@@ -27,11 +27,10 @@ class QuestionMem(MemoryBase):
         return mem.Set("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
 
     def add_answer(self, *answers):
-        from ..services import answers as answer_service
-
         if not answers:
             raise ValueError
 
+        from ..services import answers as answer_service
         for answer in answers:
             if type(answer) is not dict:
                 raise NotImplemented
@@ -84,6 +83,9 @@ class QuestionMem(MemoryBase):
         return self.validation()
 
     def validation(self):
+        if not self.is_validated():
+            return None
+
         to_return = self.parse_hash(self._validation_hash())
         to_return['labels'] = self._validation_labels().members()
 
