@@ -5,14 +5,13 @@ from ..resources.services import experiments, workers, questions
 def update_questions(exp_id, worker_id, session_id, accuracy):
     worker = workers.get_mem(exp_id, worker_id)
     answers = worker.session_answers(session_id)
-    exp = experiments[exp_id]
+    exp = experiments.get_mem(exp_id)
 
     validated_questions = []
     for answer in answers:
-        ques_mem = exp.get_question(answer['question_id'])
-        question = ques_mem.get()
-        if 'id' in question:
-            question = evaluate(ques_mem.as_dict(), accuracy, exp_id)
+        question = exp.get_question_json(answer['question_id'])
+        if question:
+            question = evaluate(question, accuracy, exp_id)
             if question['validated']:
                 validated_questions.append(question)
     return validated_questions

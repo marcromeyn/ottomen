@@ -4,7 +4,7 @@ from .globals import TW_SET_SIZE, MIN_TW_WORKER
 
 
 def update_worker(experiment_id, session_id, worker_id):
-    worker = workers.filter(Worker.id == worker_id).first()
+    worker = workers.get(worker_id)
     worker_mem = workers.get_mem(experiment_id, worker_id)
 
     control_question_ids = worker_mem.control_question_ids(session_id)
@@ -14,7 +14,7 @@ def update_worker(experiment_id, session_id, worker_id):
 
     # save worker to postgres and then to Redis
     workers.save(worker)
-    worker_mem.update(worker.to_json())
+    worker_mem.update(worker)
 
     return worker
 
