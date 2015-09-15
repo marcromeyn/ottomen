@@ -21,12 +21,35 @@ class WorkerMem(MemoryBase):
         exp.workers_sorted_tw_neg().add(worker['id'], worker['tw_neg'])
         self._hash().update(worker)
 
-    def add_control_questions(self, session_id, questions):
+    def ask(self, session_id, *questions):
         if not questions:
-            return
-        self.control_question_ids(session_id).add(*[question.id for question in questions])
+            raise ValueError
+
+        from ..services import questions as question_service
         for question in questions:
-            self._control_question_hash(session_id, question.id).update(self.to_hash(question))
+            ques_mem = question_service.new_mem(self.exp_id, question)
+            question_id = ques_mem.get()['id']
+            self.next_question_ids().add(question_id)
+            if ques_mem.is_validated():
+                self.control_question_ids(session_id).add(question_id)
+
+    def new_batch(self, session_id, answers, number):
+        from ..experiment import ExperimentMem
+
+        if not isinstance(answers, dict):
+            raise TypeError
+
+        if len(answers) > 0:
+            self.add_answer(session_id, *answers)
+            question_ids = [answer['question_id'] for answer in answers]
+            self.next_session_question_ids(session_id).remove(*question_ids)
+            self.past_question_ids().add(*question_ids)
+
+        new_questions_ids = self.next_session_question_ids(session_id).random(number)
+        batch = ExperimentMem(self.exp_id).get_questions(new_questions_ids)
+        shuffle(batch)
+
+        return batch
 
     def add_answer(self, session_id, *answers):
         if not answers:
@@ -48,9 +71,6 @@ class WorkerMem(MemoryBase):
 
         # questions.get_
         # return self.parse_hash(self._answer_hash(session_id, answer_id))
-
-    def get_control_question(self, session_id, question_id):
-        return self.parse_hash(self._control_question_hash(session_id, question_id))
 
     def session_answers(self, session_id):
         return [self.get_answer(answer_id)
@@ -98,47 +118,6 @@ class WorkerMem(MemoryBase):
         self.past_question_ids().expire(exp_in_sec)
         self.next_question_ids().expire(exp_in_sec)
 
-    # def update_answers(self, session_id, answers):
-    #     from ..services import questions
-    #
-    #     if not answers:
-    #         return
-    #     for answer in answers:
-    #         answer['id'] = str(session_id) + '_' + answer['question_id']
-    #         if answer['question_id'] in self.control_question_ids(session_id).members():
-    #             question_mem = self._control_question_hash(session_id, answer['question_id'])
-    #             question_mem.update({"answer": answer})
-    #         else:
-    #             question_mem = questions.get_mem(self.exp_id, answer['question_id'])
-    #             question_mem.add_answer(answer)
-    #             self.add_answer(session_id, answer)
-    #             self.session_answer_ids(session_id).add(answer['id'])
-
-    def new_batch(self, session_id, answers, number):
-        from ..experiment import ExperimentMem
-        if len(answers) > 0:
-            # self.update_answers(session_id, answers)
-            question_ids = [answer['question_id'] for answer in answers]
-            self.next_session_question_ids(session_id).remove(*question_ids)
-            past_question_ids = [answer['question_id'] for answer in answers]
-            self.past_question_ids().add(*past_question_ids)
-
-        new_questions = self.next_session_question_ids(session_id).random(number)
-        control_question_ids = self.control_question_ids(session_id).members()
-        control_qs_ids_to_get = [q for q in new_questions if q in list(control_question_ids)]
-        new_questions = [q for q in new_questions if q not in list(control_question_ids)]
-        control_questions = [self.get_control_question(session_id, question) for question in control_qs_ids_to_get]
-        others = ExperimentMem(self.exp_id).get_questions(new_questions)
-        others.extend(control_questions)
-        shuffle(others)
-
-        return others
-
-    def ask(self, session_id, questions):
-        self.next_session_question_ids(session_id).add(*[question['id'] for question in questions])
-        control = [question for question in questions if 'validation' in question]
-        self.add_control_questions(session_id, control)
-
     def ask_global(self, questions):
         return self.next_question_ids().add(*[question['id'] for question in questions])
 
@@ -165,7 +144,3 @@ class WorkerMem(MemoryBase):
 
     def _hash(self):
         return mem.Hash("experiment.%s.worker.%s" % (self.exp_id, self.worker_id))
-
-    def _control_question_hash(self, session_id, question_id):
-        return mem.Hash("experiment.%s.worker.%s.%s.control_question.%s" %
-                        (self.exp_id, self.worker_id, session_id, question_id))
