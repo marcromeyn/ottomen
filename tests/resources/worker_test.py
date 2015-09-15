@@ -82,9 +82,17 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
         exp_db = create_experiment()
         ques_db = create_question()
         ses_id = 1
+        val = {
+            'label': True,
+            'labels': ['Jan', 'Juan']
+        }
+
         worker_mem = workers.new_mem(exp_db.id, worker_db)
-        worker_mem.add_control_questions(ses_id, [ques_db])
-        worker_mem.get_control_question(ses_id, ques_db.id)['id'].should.be.equal(ques_db.id)
+        question = ques_db.to_json()
+        question['validation'] = val
+
+        worker_mem.ask(ses_id, question)
+        worker_mem.control_question_ids(ses_id).should.contain(ques_db.id)
         ans_id = 1
         ans = {
             'id': ans_id,
