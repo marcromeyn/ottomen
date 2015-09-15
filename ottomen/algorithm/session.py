@@ -11,6 +11,7 @@ from ..resources.models import Answer, Experiment, Session, Question, Validation
 from .worker import update_worker
 from ..core import ApplicationError
 from .question import update_questions
+from ..settings import DEBUG
 
 from psycopg2 import IntegrityError
 import datetime
@@ -65,23 +66,25 @@ def assign_questions(worker, task, session_id):
     # control questions
     if worker['class_neg'] == '1' and worker['class_pos'] == '1':
         question_set = list(exp.get_control_questions(task['initial_consensus']))
+        for q in question_set:
+            q['validation'] = exp.get_question(q['id']).validation()
     else:
         question_set = list(questions.get_unanswered_consensus(
             task['experiment_id'],
             worker['id'],
             task['returning_consensus'])
         )
+        question_set = [questions.get_json_with_validation_info(q, exp['id']) for q in question_set]
 
     # not control questions
     questions_left = int(task['size']) - len(question_set)
     pos_amount = int(questions_left / 2)
     exp_questions = list(exp.get_questions_worker(worker['id'], questions_left))
     question_set.extend(exp_questions)
-    # question_set = [questions.get_json_with_validation_info(q, exp['id']) for q in question_set]
     if len(question_set) < 20:
         return False, question_set
     else:
-        worker.ask(session_id, question_set)
+        worker.ask(session_id, *question_set)
         return True, question_set
 
 
@@ -101,6 +104,10 @@ def new_batch(worker_id, answer_list, task_id, session_id):
         answer['worker_id'] = worker_id
 
     question_set = worker.new_batch(session_id, answer_list, task['batch_size'])
+    if DEBUG:
+        for q in question_set:
+            q['validation'] = exp.get_question(q['id']).validation()
+
     question_ids = [question["id"] for question in question_set]
 
     batch = {
@@ -171,7 +178,7 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         for answer in question['answers']:
             pg_ans = Answer(timestamp=datetime.datetime.now())
             pg_ans.worker_id = answer['worker_id']
-            pg_ans.labels = answers.save_or_get_labels(answer['labels'])
+            pg_ans.labels = labels.save_or_get_labels(answer['labels'])
             pg_ans.question_id = pg_q.id
             answers.save(pg_ans)
 
@@ -179,9 +186,9 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
 
     # Experiment is complete
     if len(exp_mem.question_ids()) == 0:
-        exp = experiments.filter(Experiment.id == exp_id).first()
-        exp_mem['completed'] = True
+        exp = experiments.get(exp_id)
         exp.completed = True
+        experiments.update_mem(exp)
         experiments.save(exp, commit=False)
 
     db.session.commit()
@@ -190,3 +197,5 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
 # this method clears the answers of this session from Redis
 def clear_session(exp_id, worker_id, session_id):
     workers.get_mem(exp_id, worker_id).end_session(session_id)
+
+

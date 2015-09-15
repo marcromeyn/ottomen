@@ -21,6 +21,8 @@ class LabelService(Service):
             mw = Label(name=mw_name)
             to_save.append(mw)
             saved_labels.append(mw)
-        self.save(to_save)
+
+        if len(to_save) > 0:
+            self.save(*to_save)
 
         return saved_labels

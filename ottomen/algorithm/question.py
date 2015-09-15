@@ -54,8 +54,10 @@ def evaluate(question, accuracy, exp_id):
     for mw in malwares_count:
         n = malwares_count[mw]
         pos_likeliness = binom.cdf(n, x, p_pos_min)
+
         # then calc for !malware
         neg_likeliness = binom.cdf(x - n, x, p_neg_min)
+
         # positive confirmation
 
         if pos_likeliness > error > neg_likeliness:
@@ -72,9 +74,6 @@ def evaluate(question, accuracy, exp_id):
     if len(malwares_count) == 0:
         pos_likeliness = binom.cdf(0, x, p_pos_min)
         neg_likeliness = binom.cdf(x, x, p_neg_min)
-
-        # print 'pos_likeliness : binom.cdf(%s,%s,%s) = %s' % (0, x, p_pos_min, pos_likeliness)
-        # print 'neg_likeliness : binom.cdf(%s,%s,%s) = %s' % (x, x, p_neg_min, neg_likeliness)
 
         if pos_likeliness < error < neg_likeliness:
             neg_validation = True

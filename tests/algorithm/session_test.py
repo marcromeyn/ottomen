@@ -56,7 +56,7 @@ class SessionTestCase(OttomenAlgorithmTestCase):
             question["text"].should.be.a(str)
             question["text"].shouldnt.be.empty
 
-    def start_new_batch_once(self, turk_answers=None, start_new_session=True, response=None):
+    def start_new_batch_once(self, worker_id, turk_answers=None, start_new_session=True, response=None):
         if start_new_session:
             response = start_session(self.worker_id, self.task['id'])
 
@@ -75,8 +75,11 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         nb_response["session"]["id"].should.equal(response['session']['id'])
         return nb_response
 
-    def test_start_new_batch_once(self):
-        nb_response = self.start_new_batch_once()
+    def test_new_batch_once(self, worker_id=None, start_new_session=True, turk_answers=None, response=None):
+        if not worker_id:
+            worker_id = self.worker_id
+        nb_response = self.start_new_batch_once(worker_id, start_new_session=start_new_session,
+                                                turk_answers=turk_answers, response=response)
         nb_response.should.have.key("session")
         nb_response.should.have.key("questions")
         len(nb_response["questions"]).should.equal(globals.TASK_BATCH_SIZE)
@@ -85,6 +88,101 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         len(nb_response["session"]["questions"]).should.equal(globals.TASK_BATCH_SIZE)
         nb_response["session"]["completed"].should.equal(False)
         nb_response["session"]["banned"].should.equal(False)
+        return nb_response
+
+    def test_new_batch_until_no_more_questions(self, worker_id=None):
+        nr_of_iters = (self.set_sizes * 2) / globals.TASK_BATCH_SIZE
+
+        if worker_id is None:
+            worker_id = self.worker_id
+
+        # run it till the end
+        for i in range(0, nr_of_iters):
+            response = start_session(worker_id, self.task['id'])
+            nr_of_batches = (globals.TASK_SIZE / globals.TASK_BATCH_SIZE) - 1
+            for j in range(0, nr_of_batches - 1):
+                qs = response["questions"]
+                answer_list = []
+
+                # give the correct answer
+                for q in qs:
+                    if q['validation']:
+                        answer_list.append({
+                            'question_id': q['id'],
+                            'labels': q['validation']['labels']
+                        })
+                    else:
+                        answer_list.append({
+                            'question_id': q['id'],
+                            'labels': []
+                        })
+
+                response = self.test_new_batch_once(self.worker_id, start_new_session=False,
+                                                    turk_answers=answer_list, response=response)
+
+        # test the final response
+        response = self.start_new_batch_once(self.worker_id, answer_list, False, response)
+        response['session']['completed'].should.equal(True)
+        response['session']['banned'].should.equal(False)
+        response['questions'].should.be.empty
+
+    # def test_new_batch_until_no_more_questions_no_answer(self, worker_id=None):
+    #     nr_of_iters = (self.set_sizes * 2) / globals.TASK_BATCH_SIZE
+    #
+    #     if worker_id is None:
+    #         worker_id = self.worker_id
+    #
+    #     # run it till the end
+    #     for i in range(0, nr_of_iters):
+    #         response = start_session(worker_id, self.task['id'])
+    #         nr_of_batches = (globals.TASK_SIZE / globals.TASK_BATCH_SIZE) - 1
+    #         for j in range(0, nr_of_batches - 1):
+    #             qs = response["questions"]
+    #             answer_list = []
+    #
+    #             # give the correct answer
+    #             for q in qs:
+    #                 answer_list.append({
+    #                     'question_id': q['id'],
+    #                     'labels': []
+    #                 })
+    #
+    #             response = self.test_new_batch_once(self.worker_id, turk_answers=answer_list, response=response)
+    #
+    #     # test the final response
+    #     response = self.start_new_batch_once(self.worker_id, answer_list, False, response)
+    #     response['session']['completed'].should.equal(True)
+    #     response['session']['banned'].should.equal(True)
+    #     response['questions'].should.be.empty
+
+    # def test_new_batch_until_no_more_questions_bad_answer(self, worker_id=None):
+    #     nr_of_iters = (self.set_sizes * 2) / globals.TASK_BATCH_SIZE
+    #
+    #     if worker_id is None:
+    #         worker_id = self.worker_id
+    #
+    #     # run it till the end
+    #     for i in range(0, nr_of_iters):
+    #         response = start_session(worker_id, self.task['id'])
+    #         nr_of_batches = (globals.TASK_SIZE / globals.TASK_BATCH_SIZE) - 1
+    #         for j in range(0, nr_of_batches - 1):
+    #             qs = response["questions"]
+    #             answer_list = []
+    #
+    #             # give the correct answer
+    #             for q in qs:
+    #                 answer_list.append({
+    #                     'question_id': q['id'],
+    #                     'labels': ['bad_label']
+    #                 })
+    #
+    #             response = self.test_new_batch_once(self.worker_id, turk_answers=answer_list, response=response)
+    #
+    #     # test the final response
+    #     response = self.start_new_batch_once(self.worker_id, answer_list, False, response)
+    #     response['session']['completed'].should.equal(True)
+    #     response['session']['banned'].should.equal(True)
+    #     response['questions'].should.be.empty
 
     def test_update_sets(self):
         old_q_ids = self.exp.question_ids().members()
@@ -135,29 +233,27 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         for id in random_q_ids:
             new_q_ids.shouldnt.contain(id)
 
-        new_q_ids.remove(old_q_ids)
-
         # get the questions and check if they are validated correctly
         db_questions = questions.filter(Question.id.in_(random_q_ids))
         len(db_questions).should.equal(len(random_q_ids))
         for q in validated_questions:
             db_q = next(db_q for db_q in db_questions if db_q.id == q['id'])
             len(db_q.validations).should.be.greater_than(0)
-            validation = next(val for val in q.validations if val.experiment_id == self.exp['id'])
+            validation = next(val for val in db_q.validations if val.experiment_id == self.exp['id'])
 
             # check if validation correct
             validation.label.should.equal(len(q['labels']) > 0)
-            len(validation.labels).should.equal(q['labels'])
+            len(validation.labels).should.equal(len(q['labels']))
             for label in q['labels']:
                 db_label = next(lb for lb in validation.labels if lb.name == label)
                 db_label.shouldnt.be(None)
 
         # now check the answers
         for q in validated_questions:
-            turk_answer = answers.filter(db.and_(Answer.worker_id == "gayturk", Answer.question_id == q['id']))
-            turk_answer.should.exist
+            turk_answer = answers.filter(db.and_(Answer.worker_id == "gayturk", Answer.question_id == q['id']))[0]
+            turk_answer.shouldnt.be(None)
             len(turk_answer.labels).should.equal(len(q['labels']))
-            for label in turk_answer.labels:
+            for label in q['labels']:
                 turk_label = next(lb for lb in turk_answer.labels if lb.name == label)
                 turk_label.shouldnt.be(None)
 
@@ -170,10 +266,11 @@ class SessionTestCase(OttomenAlgorithmTestCase):
             self.test_store_validated_questions()
 
         # should be finished and no more questions
-        self.exp['completed'].should.equal(True)
-        self.exp.question_ids().should.be.empty
+        exp = experiments[self.exp['id']]
+        exp['completed'].should.equal(True)
+        exp.question_ids().should.be.empty
         db_exp = experiments.get(self.exp['id'])
-        db_exp.completed.should.equal()
+        db_exp.completed.should.equal(True)
 
 
 

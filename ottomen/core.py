@@ -71,6 +71,8 @@ class Service(object):
         :param *args: the models to save
         :param **kwargs: the settings (commit)
         """
+        if not args:
+            raise ValueError
         commit = kwargs.pop('commit', True)
         for model in args:
             self._isinstance(model)
