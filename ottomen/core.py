@@ -1,5 +1,5 @@
 from types import NoneType
-from flask_mail import Mail
+# from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from .settings import REDIS_CONFIGURATION
 # from flask_jwt import JWT
@@ -14,7 +14,7 @@ db = SQLAlchemy()
 mem = Database(**REDIS_CONFIGURATION)
 
 #: Flask-Mail extension instance
-mail = Mail()
+# mail = Mail()
 
 # jwt = JWT()
 #
