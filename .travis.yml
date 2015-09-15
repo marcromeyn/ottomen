@@ -42,7 +42,7 @@ before_script:
   - psql -c 'create database ottomen;' -U postgres
   - python manage.py db upgrade
 notifications:
-  slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
+  slack: team-ottomen:E0PjYxU4NlXUfLF8i4zb0z99
   email: false
 script:
   - py.test tests/resources
