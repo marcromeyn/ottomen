@@ -29,7 +29,7 @@ class WorkerMem(MemoryBase):
         for question in questions:
             ques_mem = question_service.new_mem(self.exp_id, question)
             question_id = ques_mem.get()['id']
-            self.next_question_ids().add(question_id)
+            self.next_session_question_ids(session_id).add(question_id)
             if ques_mem.is_validated():
                 self.control_question_ids(session_id).add(question_id)
 

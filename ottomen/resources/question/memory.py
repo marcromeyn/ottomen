@@ -20,6 +20,9 @@ class QuestionMem(MemoryBase):
 
         self._hash().update(question)
 
+    def exp(self, ttl):
+        self._hash().expire(ttl)
+
     def answer_ids(self):
         return TypedSet("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
 
