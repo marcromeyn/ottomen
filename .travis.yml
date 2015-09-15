@@ -45,4 +45,4 @@ notifications:
   slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
   email: false
 script:
-  - py.test -v
+  - py.test tests/resources
