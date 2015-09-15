@@ -32,10 +32,6 @@ install:
   # You can also install some dependencies with pip if not available in conda
 
   - pip install -r requirements.txt
-
-script:
-
-  - py.test  # will run all tests in the package
 addons:
   postgresql: "9.3"
 services:
