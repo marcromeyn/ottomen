@@ -18,7 +18,7 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda create create -p $HOME/py --yes scipy numpy "python=$TRAVIS_PYTHON_VERSION"
+  - conda create create -p $HOME/py --yes 'scipy numpy' "python=$TRAVIS_PYTHON_VERSION"
   - export PATH=$HOME/py/bin:$PATH
   - python setup.py install
 addons:
