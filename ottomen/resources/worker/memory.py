@@ -38,7 +38,7 @@ class WorkerMem(MemoryBase):
             if not isinstance(answer, dict):
                 raise TypeError
 
-        from ..experiment import ExperimentMem
+        from ..services import experiments
         if len(answers) > 0:
             self.add_answer(session_id, *answers)
             question_ids = [answer['question_id'] for answer in answers]
@@ -46,7 +46,7 @@ class WorkerMem(MemoryBase):
             self.past_question_ids().add(*question_ids)
 
         new_questions_ids = self.next_session_question_ids(session_id).random(number)
-        batch = ExperimentMem(self.exp_id).get_questions(new_questions_ids)
+        batch = experiments.get_mem(self.exp_id).get_questions(new_questions_ids)
         shuffle(batch)
 
         return batch

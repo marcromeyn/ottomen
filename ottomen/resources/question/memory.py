@@ -24,7 +24,7 @@ class QuestionMem(MemoryBase):
         self._hash().expire(ttl)
 
     def answer_ids(self):
-        return TypedSet("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
+        return mem.Set("experiment.%s.question.%s.answer_ids" % (self.exp_id, self.question_id))
 
     def add_answer(self, *answers):
         from ..services import answers as answer_service
