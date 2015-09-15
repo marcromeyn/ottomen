@@ -1,15 +1,30 @@
 language: python
 python:
+  # We don't actually use the Travis Python, but this keeps it organized.
   - "2.7"
+  - "3.4"
 install:
+  - sudo apt-get update
+  # We do this conditionally because it saves us some downloading if the
+  # version is the same.
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh;
+    else
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION scipy numpy
+  - source activate test-environment
   - pip install -r requirements.txt
 addons:
   postgresql: "9.3"
-  apt:
-    packages:
-    - build-essential
-    - python-numpy
-    - python-scipy
 services:
   - redis-server
 env:
@@ -19,4 +34,5 @@ before_script:
   - python manage.py db upgrade
 notifications:
   slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
+  email: false
 script: py.test -v
