@@ -18,7 +18,7 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda install --yes -c https://conda.binstar.org/faircloth-lab python=$TRAVIS_PYTHON_VERSION scipy numpy
+  - conda install --yes -c https://conda.binstar.org/faircloth-lab python=$TRAVIS_PYTHON_VERSION scipy numpy Flask-SQLAlchemy
   - pip install -r requirements.txt
 addons:
   postgresql: "9.3"
