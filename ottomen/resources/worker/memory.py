@@ -105,9 +105,9 @@ class WorkerMem(MemoryBase):
         exp.workers_sorted_tw_neg().remove(self.worker_id)
 
         # check whether control questions have to deleted
-        for question_id in self.control_question_ids(session_id).members():
-            self.get_control_question(session_id, question_id).clear()
-        self.control_question_ids(session_id).clear()
+        # for question_id in self.control_question_ids(session_id).members():
+        #     self.get_control_question(session_id, question_id).clear()
+        # self.control_question_ids(session_id).clear()
 
         # expire the past and next question sets
         exp_in_sec = 10000
