@@ -18,8 +18,8 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION scipy numpy
-  - source activate test-environment
+  - conda create create -p $HOME/py --yes scipy numpy "python=$TRAVIS_PYTHON_VERSION"
+  - export PATH=$HOME/py/bin:$PATH
   - python setup.py install
 addons:
   postgresql: "9.3"
