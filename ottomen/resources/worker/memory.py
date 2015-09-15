@@ -32,6 +32,7 @@ class WorkerMem(MemoryBase):
             self.next_session_question_ids(session_id).add(question_id)
             if ques_mem.is_validated():
                 self.control_question_ids(session_id).add(question_id)
+                ques_mem.exp(10000)
 
     def new_batch(self, session_id, answers, number):
         for answer in answers:
