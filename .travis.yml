@@ -34,4 +34,6 @@ before_script:
 notifications:
   slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
   email: false
-script: py.test -v
+script:
+  - source activate test-environment
+  - py.test -v
