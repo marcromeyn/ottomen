@@ -18,9 +18,7 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION scipy numpy
-  - source activate test-environment
+  - conda install --yes -c https://conda.binstar.org/faircloth-lab python=$TRAVIS_PYTHON_VERSION scipy numpy
   - pip install -r requirements.txt
 addons:
   postgresql: "9.3"
@@ -35,5 +33,4 @@ notifications:
   slack: mechanicalturkteam:E0PjYxU4NlXUfLF8i4zb0z99
   email: false
 script:
-  - source activate test-environment
   - py.test -v
