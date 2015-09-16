@@ -3,7 +3,7 @@ from ottomen.resources.services import *
 from werkzeug.exceptions import NotFound
 import sure
 import pytest
-from helpers import create_worker, create_experiment, create_question
+from .helpers import create_worker, create_experiment, create_question
 
 
 class WorkerResourceTestCase(OttomenResourceTestCase):

@@ -2,7 +2,7 @@ from werkzeug.exceptions import NotFound
 
 from . import OttomenResourceTestCaseWithPopulatedDb
 from ottomen.resources.services import *
-from helpers import create_question
+from .helpers import create_question
 
 
 class QuestionResourceTestCase(OttomenResourceTestCaseWithPopulatedDb):

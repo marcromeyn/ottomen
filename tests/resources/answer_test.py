@@ -3,7 +3,7 @@ from ottomen.resources.services import experiments, workers, answers
 from werkzeug.exceptions import NotFound
 import sure
 import pytest
-from helpers import create_answer, create_label
+from .helpers import create_answer, create_label
 
 
 class AnswerResourceTestCase(OttomenResourceTestCase):

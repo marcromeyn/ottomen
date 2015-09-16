@@ -2,7 +2,7 @@ from werkzeug.exceptions import NotFound
 
 from . import OttomenResourceTestCase
 from ottomen.resources.services import *
-from helpers import create_session, create_worker
+from .helpers import create_session, create_worker
 
 
 class SessionResourceTestCase(OttomenResourceTestCase):
