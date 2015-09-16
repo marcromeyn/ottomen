@@ -1,4 +1,3 @@
-from types import NoneType
 # from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from .settings import REDIS_CONFIGURATION
@@ -253,7 +252,7 @@ class MemoryBase:
                 model['_type_' + key] = 'bool'
             elif val_type is datetime:
                 model['_type_' + key] = 'datetime'
-            elif val_type is NoneType:
+            elif val_type is type(None):
                 model['_type_' + key] = 'NoneType'
 
         return model
