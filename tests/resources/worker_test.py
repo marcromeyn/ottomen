@@ -99,7 +99,7 @@ class WorkerResourceTestCase(OttomenResourceTestCase):
             'question_id': ques_db.id,
             'labels': ['Jan', 'Juan']
         }
-        worker_mem.add_answer(ses_id, ans)
+        worker_mem.add_answers(ses_id, ans)
         ans = worker_mem.get_answer("%s_%s" % (ses_id, ques_db.id))
         ans['id'].should.be.equal("%s_%s" % (ses_id, ques_db.id))
         ans['labels'].should.contain('Jan')

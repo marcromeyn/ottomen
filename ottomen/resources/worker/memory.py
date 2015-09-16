@@ -41,7 +41,7 @@ class WorkerMem(MemoryBase):
 
         from ..services import experiments
         if len(answers) > 0:
-            self.add_answer(session_id, *answers)
+            self.add_answers(session_id, *answers)
             question_ids = [answer['question_id'] for answer in answers]
             self.next_session_question_ids(session_id).remove(*question_ids)
             self.past_question_ids().add(*question_ids)
@@ -52,7 +52,7 @@ class WorkerMem(MemoryBase):
 
         return batch
 
-    def add_answer(self, session_id, *answers):
+    def add_answers(self, session_id, *answers):
         if not answers:
             raise ValueError
 
