@@ -1,6 +1,5 @@
 import datetime
 import csv
-import sys
 import os
 
 from ottomen.resources.models import Experiment, Question, Label, Validation, Task
@@ -13,7 +12,7 @@ def populate_db(session):
     else:  # For Docker
         path = '/code/tests/fixtures/'
 
-    print 'starting db populate....'
+    print('starting db populate....')
     # experiments
     with open(path + 'experiment.csv', 'rb') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',')
@@ -72,4 +71,4 @@ def populate_db(session):
             task = Task(**row)
             session.add(task)
     session.commit()
-    print 'complete'
+    print('complete')
