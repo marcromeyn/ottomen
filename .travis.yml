@@ -1,12 +1,10 @@
 language: python
+
 python:
-  # We don't actually use the Travis Python, but this keeps it organized.
   - "2.7"
-#  - "3.4"
+  - "3.4"
+
 before_install:
-
-  # Here we just install Miniconda, which you shouldn't have to change.
-
   - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
   - chmod +x miniconda.sh
   - ./miniconda.sh -b
@@ -14,35 +12,27 @@ before_install:
   - conda update --yes conda
 
 install:
-
-  # We just set up a conda environment with the right Python version. This
-  # should not need changing.
-
   - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
   - source activate test
-
-  # Below, include the dependencies you want to install with conda, optionally
-  # specifying versions used in the matrix above. If you split this into
-  # multiple conda install commands, you should always include numpy=$NUMPY as
-  # the first package to install (for every conda install command) otherwise
-  # numpy may be automatically upgraded.
-
   - conda install --yes numpy scipy pytest pip
-
-  # You can also install some dependencies with pip if not available in conda
-
   - pip install -r requirements.txt
+
 addons:
   postgresql: "9.3"
+
 services:
   - redis-server
+
 env:
   - SQL_DBNAME=ottomen SQL_USER=docker SQL_PASS=docker TRAVIS=true
+
 before_script:
   - psql -c 'create database ottomen;' -U postgres
   - python manage.py db upgrade
+
 notifications:
   slack: team-ottomen:E0PjYxU4NlXUfLF8i4zb0z99
   email: false
+
 script:
   - py.test tests/resources
