@@ -6,7 +6,7 @@ from flask import Flask
 from flask_jwt import current_user
 from bouncer.constants import *
 
-from .core import db
+from .core import db, json_schema
 from .helpers import register_blueprints, check_password
 from .web.middleware import HTTPMethodOverrideMiddleware
 from .resources.services import accounts
@@ -30,6 +30,8 @@ def create_app(package_name, package_path, settings_override=None, register_secu
     app.config.from_object(settings_override)
 
     db.init_app(app)
+    json_schema.init_app(app)
+
     # mail.init_app(app)
     # jwt.init_app(app)
     # bouncer.init_app(app)

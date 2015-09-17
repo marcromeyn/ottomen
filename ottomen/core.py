@@ -1,6 +1,7 @@
 # from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
 from .settings import REDIS_CONFIGURATION
+from flask_jsonschema import JsonSchema
 # from flask_jwt import JWT
 # from flask.ext.bouncer import Bouncer
 
@@ -11,6 +12,9 @@ db = SQLAlchemy()
 
 # Init Redis
 mem = Database(**REDIS_CONFIGURATION)
+
+# Init JsonSchema
+json_schema = JsonSchema()
 
 #: Flask-Mail extension instance
 # mail = Mail()
