@@ -61,4 +61,4 @@ def on_404(e):
 
 
 def on_validation_error(e):
-    return jsonify(dict(type='Validation Error', error=e))
+    return jsonify(dict(type='Validation Error', error=e.message)), 400

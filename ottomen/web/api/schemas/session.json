@@ -1,0 +1,63 @@
+{
+  "start": {
+    "type": "object",
+    "properties": {
+      "session": {
+        "type": "object",
+        "turk_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "question_type": {
+          "type": "string"
+        },
+        "required": [
+          "turk_id",
+          "task_id"
+        ]
+      }
+    },
+    "required": [
+      "session"
+    ]
+  },
+  "get_questions": {
+    "type": "object",
+    "properties": {
+      "session": {
+        "turk_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "question_type": {
+          "type": "string"
+        },
+        "answers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "question_id": {
+                "type": "string"
+              },
+              "labels": {
+                "type": "array",
+                "items": { "type": "string" },
+                "uniqueItems": true
+              }
+            }
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "required": [
+      "session"
+    ]
+  }
+}
