@@ -6,11 +6,6 @@ from . import route
 bp = Blueprint('session', __name__, url_prefix='/session')
 
 
-@route(bp, '/test')
-def test():
-    return "test"
-
-
 @route(bp, '/', methods=['POST'])
 @json_schema.validate('session', 'start')
 def start():
@@ -21,7 +16,11 @@ def start():
     # if 'task_id' not in json["session"]:
     # return jsonify({'error': 'requires task_id'})
 
-    response = start_session(json["session"]['turk_id'], '1000')
+    worker_id = json["session"]['worker_id'].encode('ascii', 'ignore')
+    if worker_id != json["session"]['worker_id'].encode('ascii', 'replace'):
+        raise ValueError
+
+    response = start_session(worker_id, '1000')
     if response is None:
         return jsonify({'error': 'task is closed'})
 
@@ -41,7 +40,7 @@ def get_questions(session_id):
     # if 'answers' not in json["session"]:
     #     return jsonify({'error': 'requires answers'})
 
-    batch = new_batch(json["session"]['turk_id'],
+    batch = new_batch(json["session"]['worker_id'],
                       json["session"]["answers"],
                       json["session"]["task_id"],
                       session_id)

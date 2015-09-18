@@ -4,7 +4,7 @@
     "properties": {
       "session": {
         "type": "object",
-        "turk_id": {
+        "worker_id": {
           "type": "string"
         },
         "task_id": {
@@ -14,7 +14,7 @@
           "type": "string"
         },
         "required": [
-          "turk_id",
+          "worker_id",
           "task_id"
         ]
       }
@@ -27,7 +27,7 @@
     "type": "object",
     "properties": {
       "session": {
-        "turk_id": {
+        "worker_id": {
           "type": "string"
         },
         "task_id": {
