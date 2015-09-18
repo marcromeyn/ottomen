@@ -1,7 +1,7 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var FluxSessionConstants = require('../constants/FluxSessionConstants');
-var FluxSessionActions = require('../actions/FluxSessionActions');
+var SessionActions = require('../actions/Session');
 var _ = require('underscore');
 
 // Define initial data points
@@ -9,7 +9,7 @@ var _session = {}, _loaded = false;
 
 // Method to load session data from API
 function loadSessionData(data) {
-  _session = data.session;
+  _session = data;
   _loaded = true;
 }
 
@@ -31,7 +31,7 @@ var SessionStore = _.extend({}, EventEmitter.prototype, {
   },
 
   // Store actions
-  actions: FluxSessionActions,
+  actions: SessionActions,
 
   // Add change listener
   addChangeListener: function(callback) {
