@@ -3,7 +3,7 @@ const React = require('React');
 module.exports = React.createClass({
   render: function() {
     return (
-      <div id="container">
+      <div id="container" className={this.props.hidden? "hidden": ""}>
         <div id="ad">
           <div className="row">
             <div className="col-xs-2">

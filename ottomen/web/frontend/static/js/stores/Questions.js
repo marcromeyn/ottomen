@@ -5,19 +5,19 @@ var SessionActions = require('../actions/Session');
 var _ = require('underscore');
 
 // Define initial data points
-var _session = {}, _loaded = false;
+var _questions = {}, _loaded = false;
 
 // Method to load session data from API
 function loadSessionData(data) {
-  _session = data.session;
+  _questions = data.questions;
   _loaded = true;
 }
 
-// Extend SessionStore with EventEmitter to add eventing capabilities
-var SessionStore = _.extend({}, EventEmitter.prototype, {
+// Extend QuestionsStore with EventEmitter to add eventing capabilities
+var QuestionsStore = _.extend({}, EventEmitter.prototype, {
   // Return Session data
-  getSession: function() {
-    return _session;
+  getQuestions: function() {
+    return _questions;
   },
 
   // Return loaded
@@ -29,9 +29,6 @@ var SessionStore = _.extend({}, EventEmitter.prototype, {
   setLoaded: function(loaded) {
     _loaded = loaded;
   },
-
-  // Store actions
-  actions: SessionActions,
 
   // Add change listener
   addChangeListener: function(callback) {
@@ -56,15 +53,11 @@ AppDispatcher.register(function(payload) {
 
   switch(action.actionType) {
 
-    // Respond to SELECT_PRODUCT action
     case SessionConstants.LOAD_SESSION_SUCCESS:
       loadSessionData(action.data);
       break;
-    case SessionConstants.LOAD_SESSION_FAIL:
-      return true; //Implement FAIL !!!!
-      break;
     case SessionConstants.LOAD_SESSION:
-      SessionStore.setLoaded(false);
+      QuestionsStore.setLoaded(false);
       break;
 
     default:
@@ -72,9 +65,9 @@ AppDispatcher.register(function(payload) {
   }
 
   // If action was responded to, emit change event
-  SessionStore.emitChange();
+  QuestionsStore.emitChange();
 
   return true;
 
 });
-module.exports = SessionStore
+module.exports = QuestionsStore

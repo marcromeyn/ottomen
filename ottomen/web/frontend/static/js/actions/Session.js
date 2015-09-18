@@ -7,8 +7,7 @@ module.exports = {
   createSession: function(assignmentId, workerId) {
     AppDispatcher.handleAction({actionType: SessionConstants.LOAD_SESSION });
     SessionApi.createSession(assignmentId, workerId).then(function(data){
-      session = data.session;
-      AppDispatcher.handleAction({actionType: SessionConstants.LOAD_SESSION_SUCCESS, data: session });
+      AppDispatcher.handleAction({actionType: SessionConstants.LOAD_SESSION_SUCCESS, data: data });
     }, function(err){
       AppDispatcher.handleAction({actionType: SessionConstants.LOAD_SESSION_FAIL, data: err });
     })
