@@ -224,17 +224,18 @@ class SessionTestCase(OttomenAlgorithmTestCase):
 
 
     def test_update_sets(self):
-        old_q_ids = self.exp.question_ids().members()
+        exp = new_experiment(1001, 0.98, set_limit=self.set_limit, set_sizes=self.set_sizes)
+        old_q_ids = exp.question_ids().members()
         random.shuffle(old_q_ids)
         random_q_ids = old_q_ids[:self.validated_qs_batch]
-        qs = self.exp.get_questions(random_q_ids)
+        qs = exp.get_questions(random_q_ids)
 
         for q in qs:
             q['validated'] = True
 
-        update_sets(self.exp['id'], qs)
+        update_sets(exp['id'], qs)
 
-        new_q_ids = self.exp.question_ids().members()
+        new_q_ids = exp.question_ids().members()
         new_q_ids = [id for id in new_q_ids if id not in old_q_ids]
 
         len(new_q_ids).should.equal(len(random_q_ids))
@@ -243,7 +244,7 @@ class SessionTestCase(OttomenAlgorithmTestCase):
         for q in new_qs:
             q.in_progress.should.equal(True)
 
-        new_qs = self.exp.get_questions(new_q_ids)
+        new_qs = exp.get_questions(new_q_ids)
 
         (sum(nq['belief'] for nq in new_qs)).should.equal(sum(rq['belief'] for rq in qs))
         (sum(not nq['belief'] for nq in new_qs)).should.equal(sum(not rq['belief'] for rq in qs))
@@ -291,14 +292,6 @@ class SessionTestCase(OttomenAlgorithmTestCase):
                 db_label = next(lb for lb in validation.labels if lb.name == label)
                 db_label.shouldnt.be(None)
 
-        # now check the answers
-        for q in validated_questions:
-            turk_answer = answers.filter(db.and_(Answer.worker_id == "gayturk", Answer.question_id == q['id']))[0]
-            turk_answer.shouldnt.be(None)
-            len(turk_answer.labels).should.equal(len(label_list))
-            for label in q['labels']:
-                turk_label = next(lb for lb in turk_answer.labels if lb.name == label)
-                turk_label.shouldnt.be(None)
 
     def test_store_validated_qs_until_finish(self):
         """

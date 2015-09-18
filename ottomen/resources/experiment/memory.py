@@ -47,7 +47,7 @@ class ExperimentMem(MemoryBase):
     def add_question(self, question, control=False):
         from ..services import questions
         ques_mem = questions.new_mem(self.exp_id, question)
-        if ques_mem.validation() is not None:
+        if ques_mem.validation() is not None or control:
             self.control_question_ids().add(ques_mem.question_id)
         else:
             self.question_ids().add(ques_mem.question_id)
