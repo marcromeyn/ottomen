@@ -1,13 +1,10 @@
 var React = require('React');
-var Instructions = require('./Instructions');
+
 module.exports = React.createClass({
 
-  goToInstructions: function(){
-    React.render(<Instructions assignmentId={this.props.assignmentId} workerId={this.props.workerId} turkSubmitTo={this.props.turkSubmitTo} />, document.getElementById('app'));
-  },
   render: function() {
     return (
-      <div id="container">
+      <div id="container" className={this.props.hidden? "hidden": ""}>
         <div id="ad">
           <div className="row">
             <div className="col-xs-2">
@@ -23,7 +20,7 @@ module.exports = React.createClass({
               <div className="alert alert-danger">
                 <strong>We are still in Beta so some errors could occur, if they do, please email us at ottomen.cleaning@gmail.com. We will do our best to accept all submissions made to our system.</strong>
               </div>
-              <button type="button" className="btn btn-primary btn-lg" onClick={this.goToInstructions} >Instructions </button>
+              <button type="button" className="btn btn-primary btn-lg" onClick={this.props.goToInstructions} >Instructions </button>
             </div>
           </div>
         </div>

@@ -1,14 +1,10 @@
 var React = require('React');
-var Questions = require('./Questions');
 
 module.exports = React.createClass({
 
-  goToQuestions: function(){
-    React.render(<Questions assignmentId={this.props.assignmentId} workerId={this.props.workerId} turkSubmitTo={this.props.turkSubmitTo} />, document.getElementById('app'));
-  },
   render: function() {
     return (
-      <div id="container-instructions">
+      <div id="container-instructions" className={this.props.hidden? "hidden": ""}>
       	<div className="nav">
       		<h1 className="nav navbar-nav navbar-left">Instructions</h1>
       		<div className="navbar-right" style={{paddingRight:'20px'}}>
@@ -56,7 +52,7 @@ module.exports = React.createClass({
                 <div className="col-xs-7">
                 </div>
                 <div className="col-xs-2">
-                  <button type="button" className="btn btn-primary btn-lg" onClick={this.goToQuestions} >
+                  <button type="button" className="btn btn-primary btn-lg" onClick={this.props.goToQuestions} >
                     Begin experiment <span className="glyphicon glyphicon-arrow-right"></span>
                   </button>
                 </div>
