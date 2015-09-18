@@ -1,7 +1,7 @@
 var React = require('React');
 var Questions = require('./Questions');
 var Loader = require('./Loader');
-var SessionStore = require('../stores/SessionStore');
+var SessionStore = require('../stores/Session');
 
 function getSessionState(){
   return {
@@ -15,8 +15,7 @@ module.exports = React.createClass({
   },
   // Add change listeners to stores
   componentDidMount: function() {
-    console.log(SessionStore.actions.loadSession);
-    SessionStore.actions.loadSession(this.props.assignmentId, this.props.workerId)
+    SessionStore.actions.createSession(this.props.assignmentId, this.props.workerId)
     SessionStore.addChangeListener(this._onChange);
   },
 
