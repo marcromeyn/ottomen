@@ -25,3 +25,4 @@ settings.cfg
 node_modules
 .env
 docker-compose.yml
+homebrew.pth

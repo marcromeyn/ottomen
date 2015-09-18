@@ -1,8 +1,11 @@
-/**
- * @jsx React.DOM
- */
-
 var React = require('React');
-var LoginForm = require('./login');
+var FluxApp = require('./components/FluxApp');
+var Mocks = require('./Mocks');
 
-React.renderComponent(<LoginForm />, document.getElementById('app'));
+// Load Mock Product Data into localStorage
+Mocks.init();
+
+React.render(
+  <FluxApp />,
+  document.getElementById('app')
+);
