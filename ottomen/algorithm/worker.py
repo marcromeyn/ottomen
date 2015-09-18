@@ -15,7 +15,7 @@ def update_worker(experiment_id, session_id, worker_id):
 
     # save worker to postgres and then to Redis
     workers.save(worker)
-    worker_mem.update(worker)
+    workers.update_mem(experiment_id, worker)
 
     return worker
 

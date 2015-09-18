@@ -40,22 +40,17 @@ class ExperimentMem(MemoryBase):
 
         # clear temporary set in Redis
         mem.Set(unique_id).clear()
+        qs = self.get_questions(question_ids)
+
         return self.get_questions(question_ids)
 
     def add_question(self, question, control=False):
         from ..services import questions
         ques_mem = questions.new_mem(self.exp_id, question)
-        if (type(question) is dict and 'control' in question
-                and question['control']) or control:
-            if isinstance(question, dict):
-                self.control_question_ids().add(question['id'])
-            else:
-                self.control_question_ids().add(question.id)
-        elif type(question) is dict:
-            self.question_ids().add(question['id'])
+        if ques_mem.validation() is not None:
+            self.control_question_ids().add(ques_mem.question_id)
         else:
-            self.question_ids().add(question.id)
-
+            self.question_ids().add(ques_mem.question_id)
         return ques_mem
 
     def add_questions(self, question_list, control=False):

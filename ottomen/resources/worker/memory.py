@@ -26,13 +26,19 @@ class WorkerMem(MemoryBase):
             raise ValueError
 
         from ..services import experiments
+        ids = {}
         for question in questions:
             ques_mem = experiments.get_mem(self.exp_id).add_question(question)
             question_id = ques_mem.get()['id']
+            if question_id in ids:
+                question_id  = question_id
+            ids[question_id] = question_id
             self.next_session_question_ids(session_id).add(question_id)
             if ques_mem.is_validated():
                 self.control_question_ids(session_id).add(question_id)
                 ques_mem.exp(10000)
+        length = len(self.next_session_question_ids(session_id).members())
+        length = length
 
     def new_batch(self, session_id, answers, number):
         for answer in answers:
@@ -40,6 +46,7 @@ class WorkerMem(MemoryBase):
                 raise TypeError
 
         from ..services import experiments
+        length = len(self.next_session_question_ids(session_id).members())
         if len(answers) > 0:
             self.add_answers(session_id, *answers)
             question_ids = [answer['question_id'] for answer in answers]

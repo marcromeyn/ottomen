@@ -42,6 +42,7 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
     @classmethod
     def setUpClass(cls):
         super(OttomenAppTestCase, cls).setUpClass()
+        mem.flushdb()
         cls.app = cls._create_app()
         cls.client = cls.app.test_client()
         cls.app_context = cls.app.app_context()

@@ -49,11 +49,16 @@ class QuestionService(ServiceWithMem):
 
         val_q_subquery = validations.query()\
             .filter(Validation.experiment_id == exp_id).subquery()
+
+        # TODO: implement this more efficiently
+        worker_q_id_list = [a.question_id for a in answers.query()\
+                            .filter(db.and_(Answer.worker_id == worker_id, Answer.experiment_id == exp_id)).all()]
+
         questions = self.query() \
             .join(val_q_subquery, Question.validations) \
             .filter(
                 db.not_(
-                    Question.id.in_(answers.filter(Answer.worker_id == worker_id))
+                    Question.id.in_(worker_q_id_list)
                 )
             )\
             .limit(amount).all()

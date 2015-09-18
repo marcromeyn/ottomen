@@ -55,7 +55,7 @@ def start_session(worker_id, task_id=1000):
     (enough_questions, question_set) = assign_questions(worker_mem, task, session.id)
 
     if not enough_questions:
-        return {"session": {'completed': 'False', 'no_questions': 'True'}}
+        return {"session": {'completed': False, 'no_questions': True}}
     else:
         return new_batch(worker_id, [], task_id, session.id)
 
@@ -64,7 +64,7 @@ def assign_questions(worker, task, session_id):
     exp = experiments[task['experiment_id']]
 
     # control questions
-    if worker['class_neg'] == '1' and worker['class_pos'] == '1':
+    if worker['class_neg'] == 1 and worker['class_pos'] == 1:
         question_set = list(exp.get_control_questions(task['initial_consensus']))
         for q in question_set:
             q['validation'] = exp.get_question(q['id']).validation()
@@ -80,8 +80,9 @@ def assign_questions(worker, task, session_id):
     questions_left = int(task['size']) - len(question_set)
     pos_amount = int(questions_left / 2)
     exp_questions = list(exp.get_questions_worker(worker['id'], questions_left))
+
     question_set.extend(exp_questions)
-    if len(question_set) < 20:
+    if len(question_set) < task['size']:
         return False, question_set
     else:
         worker.ask(session_id, *question_set)
@@ -127,7 +128,7 @@ def new_batch(worker_id, answer_list, task_id, session_id):
         if not pg_worker.banned:
             validated_questions = update_questions(exp_id, worker_id, session_id, float(exp['accuracy']))
             update_sets(exp_id, validated_questions)
-            store_validated_questions(exp_id, validated_questions)
+            store_validated_questions(exp_id, worker_id, validated_questions)
         else:
             batch["session"]['banned'] = True
         clear_session(exp_id, worker_id, session_id)
@@ -138,13 +139,12 @@ def new_batch(worker_id, answer_list, task_id, session_id):
 
 def update_sets(exp_id, validated_questions):
     # write all validated questions to Postgres and delete them from Redis
-    val_pos = len([i for i in validated_questions if (i['validated'] and i['belief'])])
+    val_pos = len([i for i in validated_questions if i['belief']])
     val_neg = len(validated_questions) - val_pos
 
     new_questions = []
     new_questions.extend(questions.get_positive(exp_id, val_pos))
     new_questions.extend(questions.get_negative(exp_id, val_neg))
-
 
     questions.set_in_progress(new_questions)
 
@@ -153,7 +153,7 @@ def update_sets(exp_id, validated_questions):
         exp.add_questions(new_questions)
 
 
-def store_validated_questions(worker_id, exp_id, validated_questions):
+def store_validated_questions(exp_id, worker_id, validated_questions):
     pg_questions = questions.filter(Question.id.in_([x['id'] for x in validated_questions]))
     pg_dic = {x.id: x for x in pg_questions}
     pg_worker = workers.filter(Worker.id == worker_id)[0]
@@ -171,17 +171,9 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
         val.timestamp = datetime.datetime.now()
         val.question_id = pg_q.id
         val.experiment_id = exp_id
-        val.labels = labels.save_or_get_labels(question['labels'])
-        val.label = len(val.labels) > 0
+        val.labels = labels.save_or_get_labels(question['validation']['labels'])
+        val.label = question['validation']['label']
         validations.save(val, commit=False)
-
-        for answer in question['answers']:
-            pg_ans = Answer(timestamp=datetime.datetime.now())
-            pg_ans.worker_id = answer['worker_id']
-            pg_ans.labels = labels.save_or_get_labels(answer['labels'])
-            pg_ans.question_id = pg_q.id
-            answers.save(pg_ans)
-
         questions.get_mem(exp_id, question['id']).delete()
 
     # Experiment is complete
@@ -196,6 +188,14 @@ def store_validated_questions(worker_id, exp_id, validated_questions):
 
 # this method clears the answers of this session from Redis
 def clear_session(exp_id, worker_id, session_id):
+    for answer in workers.get_mem(exp_id, worker_id).session_answers(session_id):
+        pg_ans = Answer(timestamp=datetime.datetime.now())
+        pg_ans.worker_id = answer['worker_id']
+        pg_ans.labels = labels.save_or_get_labels(answer['labels'])
+        pg_ans.question_id = answer['question_id']
+        pg_ans.experiment_id = exp_id
+        answers.save(pg_ans)
     workers.get_mem(exp_id, worker_id).end_session(session_id)
+
 
 
