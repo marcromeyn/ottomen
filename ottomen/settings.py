@@ -3,6 +3,7 @@ import os
 PORT = os.getenv('PORT', 5004)
 DEBUG = os.getenv('DEBUG', True)
 SECRET_KEY = 'secret_key'
+JSONSCHEMA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'web/api/schemas')
 
 # Postgres configuration
 if os.environ.get('TRAVIS'):

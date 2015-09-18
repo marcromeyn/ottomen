@@ -59,7 +59,7 @@ export default applicationRouter.extend({
           var answ = answers.map(function(ans){
             return route.store.createRecord('answer',{
               question_id: ans.id,
-              malwares: $.makeArray(ans.answers)
+              lables: $.makeArray(ans.answers)
             });
           });
           model.set('answers', answ);
