@@ -1,5 +1,5 @@
 var React = require('React');
-var Questions = require('./Questions');
+var Question = require('./Question');
 var Loader = require('./Loader');
 var SessionStore = require('../stores/Session');
 var QuestionsStore = require('../stores/Questions');
@@ -56,7 +56,7 @@ module.exports = React.createClass({
       	<div className="instructions well" style={{height:'200px'}}>
           <Loader loaded={this.state.loaded}/>
       		<div id="highlighter-question">
-      			<div id="text">{this.state.loaded ? this.state.questions[this.state.index].text: ""}</div>
+            <Question question={this.state.loaded ? this.state.questions[this.state.index]: {}}/>
       		</div>
       	</div>
       	<hr></hr>

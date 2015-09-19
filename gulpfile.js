@@ -15,7 +15,8 @@ var paths = {
     scripts: './ottomen/web/frontend/static/js/app.js',
     app_paths: './ottomen/web/frontend/static/js/**/*.*',
     vendor_styles: 'ottomen/web/frontend/static/css/*.css',
-    styles: 'ottomen/web/frontend/static/less/*.less',
+    less_styles: 'ottomen/web/frontend/static/less/*.less',
+    css_styles: 'ottomen/web/frontend/static/css/*.css',
     templates: 'ottomen/web/frontend/templates/*.html'
 };
 
@@ -38,7 +39,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('styles', function () {
-    return gulp.src([paths.vendor_styles, paths.styles])
+    return gulp.src([paths.vendor_styles, paths.css_styles, paths.less_styles])
         .pipe(less())
         .pipe(concat('app.min.css'))
         .pipe(minifyCSS())
@@ -56,7 +57,7 @@ gulp.task('runserver', function () {
 
 gulp.task('watch', function () {
     gulp.watch(paths.app_paths, ['scripts']);
-    gulp.watch(paths.styles, ['styles']);
+    gulp.watch(paths.css_styles, ['styles']);
 });
 
 // Default task: Watch Files For Changes & Reload browser
@@ -67,7 +68,7 @@ gulp.task('default', ['runserver'], function () {
     });
 
     gulp.watch(paths.app_paths, ['scripts', reload]);
-    gulp.watch(paths.styles, ['styles', reload]);
+    gulp.watch(paths.css_styles, ['styles', reload]);
     gulp.watch(paths.templates, reload);
 
     //gulp.watch(['templates/*.*'], reload);
