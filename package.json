@@ -24,7 +24,8 @@
     "vinyl-source-stream": "^0.1.1",
     "flux": "^2.1.1",
     "underscore": "^1.8.3",
-    "promise": "7.0.4"
+    "promise": "7.0.4",
+    "jquery": "^2.1.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
