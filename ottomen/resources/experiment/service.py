@@ -27,4 +27,5 @@ class ExperimentService(ServiceWithMem):
     def update_mem(self, experiment):
         if type(experiment) is dict:
             experiment = self.new(**experiment)
+        self._isinstance(experiment)
         return self.new_mem(experiment)

@@ -60,10 +60,10 @@ class ExperimentResourceTestCase(OttomenResourceTestCase):
     def test_update_mem(self):
         exp_db = create_experiment()
         exp_mem = experiments.new_mem(exp_db).get()
-        new_id = 500000
-        exp_mem['id'] = new_id
+        new_acc = .9
+        exp_mem['accuracy'] = new_acc
         experiments.update_mem(exp_mem)
-        experiments.get_mem_obj(new_id).id.should.be.equal(new_id)
+        experiments.get_mem_obj(exp_db.id).accuracy.should.be.equal(new_acc)
 
     def test_update_mem_malformed_model(self):
         exp_db = create_experiment()

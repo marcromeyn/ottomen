@@ -16,7 +16,7 @@ module.exports = function(app) {
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
         task_id: 'test123',
-        questions_type: "string"
+        questions_type: "boolean"
       },
       'questions': [{
         id: "J3Xq5m",
@@ -49,7 +49,7 @@ module.exports = function(app) {
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
         task_id: 'test123',
-        questions_type: "string"
+        questions_type: "boolean"
       },
       'questions': [{
         id: "J3Xq5m",
@@ -87,7 +87,7 @@ module.exports = function(app) {
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
         task_id: 'test123',
-        questions_type: "string"
+        questions_type: "boolean"
       },
       'questions': [{
         id: "J3Xq5m",
