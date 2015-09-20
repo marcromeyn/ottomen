@@ -9,7 +9,7 @@ module.exports = React.createClass({
     }
   },
   componentWillReceiveProps: function(nextProps) {
-    if(nextProps.question.id && !this.state.loaded){
+    if(!this.state.loaded && nextProps.question.id){
       highlighter("#highlighter-question");
       this.setState({loaded: true});
     }
