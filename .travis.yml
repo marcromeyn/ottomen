@@ -35,4 +35,4 @@ notifications:
   email: false
 
 script:
-  - py.test tests/resources
+  - py.test

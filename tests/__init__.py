@@ -38,7 +38,6 @@ class OttomenAppTestCase(FlaskTestCaseMixin, OttomenTestCase):
         db.create_all()
         populate_db(db.session)
 
-
     @classmethod
     def setUpClass(cls):
         super(OttomenAppTestCase, cls).setUpClass()
