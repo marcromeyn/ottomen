@@ -3,12 +3,17 @@ var Question = require('./Question');
 var Loader = require('./Loader');
 var SessionStore = require('../stores/Session');
 var QuestionsStore = require('../stores/Questions');
+var AnswersStore = require('../stores/Answers');
+var $ = require('jquery');
 
 function getSessionState(){
+  var answers = AnswersStore.getAnswers();
+  var index = answers.length;
   return {
     questions: QuestionsStore.getQuestions(),
     loaded: QuestionsStore.getLoaded(),
-    index: 0
+    answers: answers,
+    index: index
   }
 }
 module.exports = React.createClass({
@@ -22,15 +27,20 @@ module.exports = React.createClass({
     }
     SessionStore.addChangeListener(this._onChange);
     QuestionsStore.addChangeListener(this._onChange);
+    AnswersStore.addChangeListener(this._onChange);
   },
 
   // Remove change listers from stores
   componentWillUnmount: function() {
     SessionStore.removeChangeListener(this._onChange);
     QuestionsStore.removeChangeListener(this._onChange);
+    AnswersStore.removeChangeListener(this._onChange);
   },
 
   next: function(){
+    var lables = $('.highlighter').map(function(){return $(this).text();});
+    var question = this.state.questions[this.state.index];
+    AnswersStore.actions.addAnswer(lables, question);
   },
 
   // Method to setState based upon Store changes
@@ -64,7 +74,7 @@ module.exports = React.createClass({
           <div className="row">
             <div className="col-xs-8"></div>
       			<div className="col-xs-2">
-      				<button type="button" id="next" value="next" className="btn btn-primary btn-lg continue" >
+      				<button type="button" id="next" value="next" className="btn btn-primary btn-lg continue" onClick={this.next}>
       						Next <span className="glyphicon glyphicon-arrow-right"></span>
       				</button>
       			</div>

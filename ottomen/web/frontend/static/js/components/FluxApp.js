@@ -15,7 +15,7 @@ module.exports = React.createClass({
     if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE") assignmentId = null;
     var hideWelcome, hideCallParticipants;
     if(assignmentId){
-      hideWelcome = false;
+      hideWelcome = true;
       hideCallParticipants = true;
     }else{
       hideWelcome = true;
@@ -27,7 +27,7 @@ module.exports = React.createClass({
       workerId: getQueryStringValue("workerId"),
       turkSubmitTo: getQueryStringValue("turkSubmitTo"),
       hideInstructions: true,
-      hideQuestions: true,
+      hideQuestions: false,
       hideCallParticipants: hideCallParticipants,
       hideWelcome: hideWelcome
     }
