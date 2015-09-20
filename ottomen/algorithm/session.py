@@ -109,7 +109,8 @@ def new_batch(worker_id, answer_list, task_id, session_id):
     if DEBUG:
         for q in question_set:
             q['validation'] = exp.get_question(q['id']).validation()
-            q['validation']['labels'] = list(q['validation']['labels'])
+            if 'validation' in q and q['validation']:
+                q['validation']['labels'] = list(q['validation']['labels'])
 
     question_ids = [question["id"] for question in question_set]
 
