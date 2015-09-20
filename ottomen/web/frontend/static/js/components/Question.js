@@ -16,6 +16,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (<div id="text">{this.props.question.text}</div>)
+    return (<div id="text">{this.props.question ? this.props.question.text : ""}</div>)
   }
 });

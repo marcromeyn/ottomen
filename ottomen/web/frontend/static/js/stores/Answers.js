@@ -1,22 +1,20 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var SessionConstants = require('../constants/Session');
+var AnswerConstants = require('../constants/Answer');
+var AnswerActions = require('../actions/Answer');
 var _ = require('underscore');
 
 // Define initial data points
-var _questions = [], _loaded = false;
+var _answers = [], _loaded = false;
 
-// Method to load session data from API
-function loadSessionData(data) {
-  _questions = data.questions;
-  _loaded = true;
+var addAnswer = function(answer){
+  _answers.push(answer);
 }
-
-// Extend QuestionsStore with EventEmitter to add eventing capabilities
-var QuestionsStore = _.extend({}, EventEmitter.prototype, {
-  // Return Questions data
-  getQuestions: function() {
-    return _questions;
+// Extend AnswersStore with EventEmitter to add eventing capabilities
+var AnswersStore = _.extend({}, EventEmitter.prototype, {
+  // Return Answers data
+  getAnswers: function() {
+    return _answers;
   },
 
   // Return loaded
@@ -28,6 +26,9 @@ var QuestionsStore = _.extend({}, EventEmitter.prototype, {
   setLoaded: function(loaded) {
     _loaded = loaded;
   },
+
+  // Store actions
+  actions: AnswerActions,
 
   // Add change listener
   addChangeListener: function(callback) {
@@ -51,12 +52,8 @@ AppDispatcher.register(function(payload) {
   var text;
 
   switch(action.actionType) {
-
-    case SessionConstants.LOAD_SESSION_SUCCESS:
-      loadSessionData(action.data);
-      break;
-    case SessionConstants.LOAD_SESSION:
-      QuestionsStore.setLoaded(false);
+    case AnswerConstants.ADD_ANSWER:
+      addAnswer(action.data);
       break;
 
     default:
@@ -64,9 +61,9 @@ AppDispatcher.register(function(payload) {
   }
 
   // If action was responded to, emit change event
-  QuestionsStore.emitChange();
+  AnswersStore.emitChange();
 
   return true;
 
 });
-module.exports = QuestionsStore
+module.exports = AnswersStore
