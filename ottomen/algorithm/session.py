@@ -9,6 +9,7 @@ from ..core import db
 from ..resources.services import *
 from ..resources.models import Answer, Experiment, Session, Question, Validation, Worker
 from .worker import update_worker
+from .globals import TASK_BATCH_SIZE
 from ..core import ApplicationError
 from .question import update_questions
 from ..settings import DEBUG
@@ -177,7 +178,7 @@ def store_validated_questions(exp_id, worker_id, validated_questions):
         questions.get_mem(exp_id, question['id']).delete()
 
     # Experiment is complete
-    if len(exp_mem.question_ids()) == 0:
+    if len(exp_mem.question_ids()) < TASK_BATCH_SIZE:
         exp = experiments.get(exp_id)
         exp.completed = True
         experiments.update_mem(exp)
