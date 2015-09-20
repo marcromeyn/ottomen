@@ -14,11 +14,11 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 
 var paths = {
-    scripts: './ottomen/web/frontend/static/js/app.js',
-    app_paths: './ottomen/web/frontend/static/js/**/*.*',
-    vendor_styles: 'ottomen/web/frontend/static/css/*.css',
-    less_styles: 'ottomen/web/frontend/static/less/*.less',
-    css_styles: 'ottomen/web/frontend/static/css/*.css',
+    scripts: './ottomen/web/frontend/react/js/',
+    app_paths: './ottomen/web/frontend/react/js/**/*.*',
+    vendor_styles: 'ottomen/web/frontend/react/css/*.css',
+    less_styles: 'ottomen/web/frontend/react/less/*.less',
+    css_styles: 'ottomen/web/frontend/react/css/*.css',
     templates: 'ottomen/web/frontend/templates/*.html'
 };
 
