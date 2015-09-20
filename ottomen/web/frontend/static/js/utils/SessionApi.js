@@ -12,6 +12,17 @@ module.exports = {
         reject("Shit went wrong");
       }
     });
+  },
+
+  postAnswers: function(session, answers) {
+    return  new Promise(function (resolve, reject) {
+      var data = JSON.parse(localStorage.getItem('session'));
+      if(data){
+        resolve(data);
+      }else{
+        reject("Shit went wrong");
+      }
+    });
   }
 
 };

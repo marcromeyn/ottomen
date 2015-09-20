@@ -2,13 +2,18 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var AnswerConstants = require('../constants/Answer');
 var AnswerActions = require('../actions/Answer');
+var QuestionsStore = require('../stores/Questions');
 var _ = require('underscore');
 
 // Define initial data points
-var _answers = [], _loaded = false;
+var _answers = [];
 
 var addAnswer = function(answer){
   _answers.push(answer);
+  var questions = QuestionsStore.getQuestions();
+  if(_answers.length >= questions.length){
+    AnswerActions.postAnswers(_answers);
+  }
 }
 // Extend AnswersStore with EventEmitter to add eventing capabilities
 var AnswersStore = _.extend({}, EventEmitter.prototype, {
@@ -17,14 +22,9 @@ var AnswersStore = _.extend({}, EventEmitter.prototype, {
     return _answers;
   },
 
-  // Return loaded
-  getLoaded: function() {
-    return _loaded;
-  },
-
   // Set loaded
-  setLoaded: function(loaded) {
-    _loaded = loaded;
+  restartAnswers: function() {
+    _answers = [];
   },
 
   // Store actions
@@ -55,6 +55,13 @@ AppDispatcher.register(function(payload) {
     case AnswerConstants.ADD_ANSWER:
       addAnswer(action.data);
       break;
+    case AnswerConstants.POST_ANSWERS_SUCCESS:
+      AnswersStore.restartAnswers();
+      break;
+    case AnswerConstants.POST_ANSWERS_FAIL:
+      // HANDLE FAIL
+      break;
+
 
     default:
       return true;

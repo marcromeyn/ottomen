@@ -1,13 +1,14 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var SessionConstants = require('../constants/Session');
+var AnswerConstants = require('../constants/Answer');
 var _ = require('underscore');
 
 // Define initial data points
 var _questions = [], _loaded = false;
 
 // Method to load session data from API
-function loadSessionData(data) {
+function loadData(data) {
   _questions = data.questions;
   _loaded = true;
 }
@@ -53,12 +54,17 @@ AppDispatcher.register(function(payload) {
   switch(action.actionType) {
 
     case SessionConstants.LOAD_SESSION_SUCCESS:
-      loadSessionData(action.data);
+      loadData(action.data);
       break;
     case SessionConstants.LOAD_SESSION:
       QuestionsStore.setLoaded(false);
       break;
-
+    case AnswerConstants.POST_ANSWERS:
+      QuestionsStore.setLoaded(false);
+      break;
+    case AnswerConstants.POST_ANSWERS_SUCCESS:
+      loadData(action.data);
+      break;
     default:
       return true;
   }

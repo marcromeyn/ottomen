@@ -9,6 +9,7 @@ var $ = require('jquery');
 function getSessionState(){
   var answers = AnswersStore.getAnswers();
   var index = answers.length;
+  var questions = QuestionsStore.getQuestions();
   return {
     questions: QuestionsStore.getQuestions(),
     loaded: QuestionsStore.getLoaded(),
