@@ -22,7 +22,7 @@ var AnswersStore = _.extend({}, EventEmitter.prototype, {
     return _answers;
   },
 
-  // Set loaded
+  // Restart Answers data
   restartAnswers: function() {
     _answers = [];
   },

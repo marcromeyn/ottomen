@@ -1,6 +1,10 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var SessionConstants = require('../constants/Session');
-var SessionApi = require('../utils/SessionApi');
+var config = require('../config');
+var d = require('../utils/api/development/SessionApi');
+var p = require('../utils/api/production/SessionApi');
+require('../utils/api/production/SessionApi');
+var SessionApi = require('../utils/api/' + config.env + '/SessionApi');
 // Define actions object
 module.exports = {
   // Request session data

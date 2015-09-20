@@ -1,6 +1,9 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AnswerConstants = require('../constants/Answer');
-var SessionApi = require('../utils/SessionApi');
+var config = require('../config');
+var d = require('../utils/api/development/SessionApi');
+var p = require('../utils/api/production/SessionApi');
+var SessionApi = require('../utils/api/' + config.env + '/SessionApi');
 var SessionStore = require('../stores/Session');
 
 // Define actions object

@@ -1,10 +1,6 @@
 var React = require('React');
 var FluxApp = require('./components/FluxApp');
-var Mocks = require('./Mocks');
-
-// Load Mock Product Data into localStorage
-Mocks.init();
-
+require('./utils/api/production/*.js', { glob: true })
 React.render(
   <FluxApp />,
   document.getElementById('app')
