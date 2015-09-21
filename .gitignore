@@ -26,3 +26,5 @@ node_modules
 .env
 docker-compose.yml
 homebrew.pth
+ottomen/web/frontend/static/dist/js
+ottomen/web/frontend/static/dist/css

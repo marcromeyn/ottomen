@@ -8,7 +8,7 @@ var _ = require('underscore');
 var _session = {}, _loaded = false;
 
 // Method to load session data from API
-function loadSessionData(data) {
+function loadData(data) {
   _session = data.session;
   _loaded = true;
 }
@@ -58,7 +58,7 @@ AppDispatcher.register(function(payload) {
 
     // Respond to SELECT_PRODUCT action
     case SessionConstants.LOAD_SESSION_SUCCESS:
-      loadSessionData(action.data);
+      loadData(action.data);
       break;
     case SessionConstants.LOAD_SESSION_FAIL:
       return true; //Implement FAIL !!!!
@@ -66,7 +66,9 @@ AppDispatcher.register(function(payload) {
     case SessionConstants.LOAD_SESSION:
       SessionStore.setLoaded(false);
       break;
-
+    case AnswerConstants.POST_ANSWERS_SUCCESS:
+      loadData(action.data);
+      break;
     default:
       return true;
   }

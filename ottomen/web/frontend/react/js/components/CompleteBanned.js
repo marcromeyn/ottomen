@@ -14,8 +14,9 @@ module.exports = React.createClass({
       	</div>
       	<hr></hr>
       	<div className="instructions well">
-          <p>You have finished the task click on submit to finilize the experiment.</p>
-      	</div>
+          <p>You have finished the task but sadly you wont be able to try again.</p>
+          <p>Click on submit to finilize the experiment</p>
+          </div>
       	<hr></hr>
         <div className="instructionsnav" id="instructionsnav">
           <div classFor="row">

@@ -69,7 +69,6 @@ gulp.task('styles', function () {
 //Run Flask server
 gulp.task('runserver', function () {
     console.info('Starting flask server');
-    //var virtualenv = '/Users/marcromeyn/.virtualenvs/reactflask/bin/python';
     var pipe = {stdio: 'inherit'};
 
     process.spawn('python', ['manage.py', 'runserver'], pipe);
@@ -81,16 +80,10 @@ gulp.task('watch', function () {
 });
 
 // Default task: Watch Files For Changes & Reload browser
-gulp.task('default', ['runserver'], function () {
+gulp.task('default', ['deploy'], ['runserver'], function () {
     browserSync({
         notify: false,
         proxy: "127.0.0.1:5003"
     });
-
-    gulp.watch(paths.app_paths, ['scripts', reload]);
-    gulp.watch(paths.css_styles, ['styles', reload]);
-    gulp.watch(paths.templates, reload);
-
-    //gulp.watch(['templates/*.*'], reload);
 
 });

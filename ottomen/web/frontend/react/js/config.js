@@ -1,3 +1,3 @@
 module.exports = {
-  env: "production"
+  env: process.env.REACT_ENV || "development"
 }

@@ -3,6 +3,10 @@ var Instructions = require('./Instructions');
 var Questions = require('./Questions');
 var Welcome = require('./Welcome');
 var CallParticipants = require('./CallParticipants');
+var InitBanned = require('./InitBanned');
+var CompleteBanned = require('./CompleteBanned');
+var Completed = require('./Completed');
+var NoQuestions = require('./NoQuestions');
 var SessionStore = require('../stores/Session');
 
 function getQueryStringValue (key) {
@@ -32,7 +36,11 @@ module.exports = React.createClass({
       hideInstructions: true,
       hideQuestions: true,
       hideCallParticipants: hideCallParticipants,
-      hideWelcome: hideWelcome
+      hideWelcome: hideWelcome,
+      hideInitBanned: true,
+      hideCompleteBanned: true,
+      hideCompleted : true,
+      hideNoQuestions : true
     }
   },
   componentDidMount: function() {
@@ -45,12 +53,19 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    var session = SessionStore.getSession()
+    var state = {
+      hideInstructions: true,
+      hideQuestions: true,
+      hideCallParticipants: true,
+      hideWelcome: true};
+    var session = SessionStore.getSession();
     if(session){
-      if(session.banned){
-        console.log("banned")
-      }
+      if(session.banned && !session.completed) state.hideInitBanned = false;
+      if(session.banned && session.completed)  state.hideCompleteBanned = false;
+      if(session.completed && !session.banned) state.hideCompleted = false;
+      if(session.no_questions)                 state.hideNoQuestions = false;
     }
+    this.setState(state);
   },
 
   goToInstructions: function(){
@@ -74,6 +89,10 @@ module.exports = React.createClass({
         <CallParticipants hidden={this.state.hideCallParticipants}/>
         <Instructions hidden={this.state.hideInstructions} goToQuestions={this.goToQuestions}/>
         <Questions hidden={this.state.hideQuestions} assignmentId={this.state.assignmentId} workerId={this.state.workerId} turkSubmitTo={this.state.turkSubmitTo} />
+        <InitBanned hidden={this.state.hideInitBanned} session={this.state.session} assignmentId={this.state.assignmentId} workerId={this.state.workerId} turkSubmitTo={this.state.turkSubmitTo}/>
+        <CompleteBanned hidden={this.state.hideCompleteBanned} session={this.state.session} assignmentId={this.state.assignmentId} workerId={this.state.workerId} turkSubmitTo={this.state.turkSubmitTo}/>
+        <Completed hidden={this.state.hideCompleted} session={this.state.session} assignmentId={this.state.assignmentId} workerId={this.state.workerId} turkSubmitTo={this.state.turkSubmitTo}/>
+        <NoQuestions hidden={this.state.hideNoQuestions} session={this.state.session} assignmentId={this.state.assignmentId} workerId={this.state.workerId} turkSubmitTo={this.state.turkSubmitTo}/>
       </div>
     );
   }
