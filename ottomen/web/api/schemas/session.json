@@ -50,7 +50,11 @@
                 "items": { "type": "string" },
                 "uniqueItems": true
               }
-            }
+            },
+            "required": [
+              "session",
+              "labels"
+            ]
           },
           "uniqueItems": true
         }
