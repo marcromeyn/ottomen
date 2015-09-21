@@ -85,7 +85,7 @@ def initialize_sets(exp, set_limit):
     question_set.extend(questions.get_negative(exp['id'], set_limit))
 
     # get control set from base experiment id
-    control_set = [questions.get_json_with_validation_info(q, exp['id'])
+    control_set = [questions.get_json_with_validation_info(q, base_experiment_id)
                    for q in questions.get_control(base_experiment_id, set_limit)]
 
     questions.set_in_progress(question_set)

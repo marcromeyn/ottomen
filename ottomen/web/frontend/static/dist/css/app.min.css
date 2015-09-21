@@ -1,4 +1,4 @@
-/*!
+body{padding:0;font-weight:300}#adlogo{float:right;width:140px;padding:2px;border:1px solid #ccc}#container-ad{position:absolute;top:0;bottom:0;left:0;right:0;padding:5% 100px 100px;border:18px solid #f3f3f3;background:#fff}.container{border:18px solid #f3f3f3}.highlight,.highlighter{background:#ff0}.highlighter:hover{background:red;cursor:pointer;cursor:hand}.error{font-weight:700}.center-Container{position:relative}.absolute-Center{width:5%;height:30%;overflow:auto;margin:auto;position:absolute;top:0;left:0;bottom:0;right:0}/*!
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)

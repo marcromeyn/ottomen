@@ -21,7 +21,7 @@ class WorkerTestCase(OttomenAlgorithmTestCase):
         cls.exp = new_experiment(1337, 0.98, set_limit=cls.set_limit, set_sizes=cls.set_sizes)
         db_worker = workers.save(Worker(id=cls.worker_id))
         cls.db_worker = db_worker
-        cls.task = new_task('1337',1337)
+        cls.task = new_task('1337',     1337)
         cls.worker = workers.new_mem(1337, db_worker)
         cls.validated_qs_batch = 25
         cls.session_id = 'gaysession'

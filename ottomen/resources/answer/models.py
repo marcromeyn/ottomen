@@ -8,7 +8,7 @@ answer_label = db.Table("answer_label",
 
 
 class AnswerJsonSerializer(JsonSerializer):
-    __json_public__ = ['id', 'timestamp', 'question', 'labels', 'worker']
+    __json_public__ = ['id', 'timestamp', 'question_id', 'labels', 'worker_id']
     __json_other_models__ = ['labels', 'question', 'worker']
 
 
@@ -18,11 +18,13 @@ class Answer(AnswerJsonSerializer, ResourceMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime)
     question_id = db.Column(db.Integer, db.ForeignKey("question.id"))
+    experiment_id = db.Column(db.Integer, db.ForeignKey("experiment.id"))
     worker_id = db.Column(db.String, db.ForeignKey("worker.id"))
 
     labels = db.relationship("Label", secondary=answer_label, backref="answers")
     question = db.relationship("Question", foreign_keys=[question_id], backref="answers")
     worker = db.relationship("Worker", foreign_keys=[worker_id], backref="answers")
+    experiment = db.relationship("Experiment", foreign_keys=[experiment_id], backref="answers")
 
 
 class Label(JsonSerializer, ResourceMixin, db.Model):

@@ -1,6 +1,7 @@
 from functools import wraps
 
 from flask import jsonify
+from flask_jsonschema import ValidationError
 # from flask_jwt import jwt_required
 
 from ...core import ApplicationError, ApplicationFormError
@@ -14,6 +15,7 @@ def create_app(settings_override=None, register_security_blueprint=False):
     app = factory.create_app(__name__, __path__, settings_override,
                              register_security_blueprint=register_security_blueprint)
 
+
     # Set the default JSON encoder
     app.json_encoder = JSONEncoder
 
@@ -21,6 +23,7 @@ def create_app(settings_override=None, register_security_blueprint=False):
     app.errorhandler(ApplicationError)(on_app_error)
     app.errorhandler(ApplicationFormError)(on_app_form_error)
     app.errorhandler(404)(on_404)
+    app.errorhandler(ValidationError)(on_validation_error)
 
     return app
 
@@ -55,3 +58,7 @@ def on_app_form_error(e):
 
 def on_404(e):
     return jsonify(dict(error='Not found')), 404
+
+
+def on_validation_error(e):
+    return jsonify(dict(type='Validation Error', error=e.message)), 400

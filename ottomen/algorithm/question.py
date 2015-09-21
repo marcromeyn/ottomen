@@ -9,11 +9,13 @@ def update_questions(exp_id, worker_id, session_id, accuracy):
 
     validated_questions = []
     for answer in answers:
-        question = exp.get_question_json(answer['question_id'])
-        if question:
-            question = evaluate(question, accuracy, exp_id)
-            if question['validated']:
-                validated_questions.append(question)
+        if not exp.get_question(answer['question_id']).validation():
+            question = exp.get_question_json(answer['question_id'])
+            if question:
+                question = evaluate(question, accuracy, exp_id)
+                if 'validation' in question:
+                    validated_questions.append(question)
+
     return validated_questions
 
 
@@ -28,30 +30,29 @@ def evaluate(question, accuracy, exp_id):
         question['validated'] = False
         return question
 
-    answers_workers = [{'answer': answer, 'worker': workers.get_mem(exp_id, answer['worker_id'])} for answer in answers]
-    malwares_count = {}
+    answers_workers = [{'answer': answer, 'worker': workers.get_mem_json(exp_id, answer['worker_id'])} for answer in answers]
+    labels_count = {}
 
-    all_workers = list(map(lambda y: y['worker'], answers_workers))
-    all_workers = [x for x in all_workers if (x['banned'] == 'False' and x['class_pos'] != '1')]
+    all_workers = [x['worker'] for x in answers_workers]
+    all_workers = [x for x in all_workers if (not x['banned'] and x['class_pos'] != 1)]
 
     for at_tuple in answers_workers:
-        mws = eval(at_tuple['answer']['malwares'])
-        if isinstance(mws, list):
-            for mw in mws:
-                if mw != '[' and mw != ']':
-                    if mw not in malwares_count:
-                        malwares_count[mw] = 1
-                    else:
-                        malwares_count[mw] += 1
+        labels = at_tuple['answer']['labels']
+
+        for label in labels.members():
+            if label not in labels_count:
+                labels_count[label] = 1
+            else:
+                labels_count[label] += 1
 
     x = len(answers)
-    p_pos_min = min([float(worker['tw_pos']) for worker in all_workers])
-    p_neg_min = min([float(worker['tw_neg']) for worker in all_workers])
+    p_pos_min = min([worker['tw_pos'] for worker in all_workers])
+    p_neg_min = min([worker['tw_neg'] for worker in all_workers])
 
-    malwares_class = {}
-    malwares = []
-    for mw in malwares_count:
-        n = malwares_count[mw]
+    labels_class = {}
+    labels = []
+    for label in labels_count:
+        n = labels_count[label]
         pos_likeliness = binom.cdf(n, x, p_pos_min)
 
         # then calc for !malware
@@ -60,30 +61,28 @@ def evaluate(question, accuracy, exp_id):
         # positive confirmation
 
         if pos_likeliness > error > neg_likeliness:
-            malwares_class[mw] = 1
-            malwares.append(mw)
+            labels_class[label] = 1
+            labels.append(label)
         # negative confirmation
         elif pos_likeliness < error < neg_likeliness:
-            malwares_class[mw] = 0
+            labels_class[label] = 0
         else:
-            malwares_class[mw] = -1
+            labels_class[label] = -1
 
     # all workers say there is not a single instance of malware
     neg_validation = False
-    if len(malwares_count) == 0:
+    if len(labels_count) == 0:
         pos_likeliness = binom.cdf(0, x, p_pos_min)
         neg_likeliness = binom.cdf(x, x, p_neg_min)
 
         if pos_likeliness < error < neg_likeliness:
             neg_validation = True
 
-    # only true if 1 or more malwares are evaluated, or there are no malwares and there is negative validation
-    if all(malwares_class[mw] != -1 for mw in malwares_class) and (len(malwares_class) > 0 or neg_validation):
-        question['validated'] = True
-        question['malware'] = len(malwares) > 0
-        if len(malwares) > 0:
-            question['malwares'] = malwares
-    else:
-        question['validated'] = False
+    # only true if 1 or more labels are evaluated, or there are no labels and there is negative validation
+    if (all(labels_class[label] != -1 for label in labels_class) and (len(labels_class) > 0)) or neg_validation:
+        question['validation'] = {
+            'label': len(labels) > 0,
+            'labels': labels
+        }
 
     return question
