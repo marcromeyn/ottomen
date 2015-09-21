@@ -54,6 +54,8 @@ class WorkerMem(MemoryBase):
             self.past_question_ids().add(*question_ids)
 
         new_questions_ids = self.next_session_question_ids(session_id).random(number)
+        if not new_questions_ids:
+            return []
         batch = experiments.get_mem(self.exp_id).get_questions(new_questions_ids)
         shuffle(batch)
 

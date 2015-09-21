@@ -43,7 +43,7 @@
             "type": "object",
             "properties": {
               "question_id": {
-                "type": "string"
+                "type": "integer"
               },
               "labels": {
                 "type": "array",
