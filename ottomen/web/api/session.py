@@ -15,7 +15,7 @@ def start():
     if worker_id != json["session"]['worker_id'].encode('ascii', 'replace'):
         raise ValueError
 
-    response = start_session(worker_id, '1337')
+    response = start_session(worker_id, '1000')
     if response is None:
         return {'error': 'task is closed'}
 
