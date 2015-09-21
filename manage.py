@@ -6,7 +6,7 @@ from ottomen.manage.database import database
 from ottomen.manage.accounts import accounts
 
 from ottomen.web.api import create_app
-from ottomen.core import db
+from ottomen.core import db, mem
 from ottomen.algorithm.experiment import *
 from ottomen.algorithm import globals
 from ottomen.algorithm.worker import *
@@ -35,6 +35,7 @@ def runserver():
 def seed():
     db.drop_all()
     db.create_all()
+    mem.flushdb()
     populate_db(db.session)
     set_sizes = 500
     set_limit = 200
