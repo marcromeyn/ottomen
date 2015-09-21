@@ -22,7 +22,7 @@ def start():
 
     response = start_session(worker_id, '1337')
     if response is None:
-        return jsonify({'error': 'task is closed'})
+        return {'error': 'task is closed'}
 
     return response
 
