@@ -10,11 +10,6 @@ bp = Blueprint('session', __name__, url_prefix='/session')
 @json_schema.validate('session', 'start')
 def start():
     json = request.get_json(force=True)
-    # Validation of the input data
-    # if 'turk_id' not in json['session']:
-    #     return jsonify({'error': 'requires turk_id'})
-    # if 'task_id' not in json["session"]:
-    # return jsonify({'error': 'requires task_id'})
     print json
     worker_id = json["session"]['worker_id'].encode('ascii', 'ignore')
     if worker_id != json["session"]['worker_id'].encode('ascii', 'replace'):
@@ -33,7 +28,7 @@ def get_questions(session_id):
     json = request.get_json()
     print json
     batch = new_batch(json["session"]['worker_id'],
-                      json["session"]["answers"],
+                      json["answers"],
                       json["session"]["task_id"],
                       session_id)
 
