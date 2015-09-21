@@ -31,7 +31,6 @@ function del(url) {
 module.exports = {
 
   createSession: function(assignmentId, workerId) {
-    console.log("prod")
     return post('api/session',{session: {worker_id: workerId, task_id: assignmentId}})
   },
 
