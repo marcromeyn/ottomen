@@ -75,7 +75,7 @@ module.exports = React.createClass({
           <div className="row">
             <div className="col-xs-8"></div>
       			<div className="col-xs-2">
-      				<button type="button" id="next" value="next" className="btn btn-primary btn-lg continue" onClick={this.next}>
+      				<button type="button" className="btn btn-primary btn-lg continue" disabled={!this.state.loaded} onClick={this.next}>
       						Next <span className="glyphicon glyphicon-arrow-right"></span>
       				</button>
       			</div>

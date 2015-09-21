@@ -15,7 +15,7 @@ def start():
     #     return jsonify({'error': 'requires turk_id'})
     # if 'task_id' not in json["session"]:
     # return jsonify({'error': 'requires task_id'})
-
+    print json
     worker_id = json["session"]['worker_id'].encode('ascii', 'ignore')
     if worker_id != json["session"]['worker_id'].encode('ascii', 'replace'):
         raise ValueError
@@ -31,7 +31,7 @@ def start():
 @json_schema.validate('session', 'get_questions')
 def get_questions(session_id):
     json = request.get_json()
-
+    print json
     batch = new_batch(json["session"]['worker_id'],
                       json["session"]["answers"],
                       json["session"]["task_id"],

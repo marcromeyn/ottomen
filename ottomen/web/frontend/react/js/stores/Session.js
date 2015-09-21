@@ -2,6 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
 var SessionConstants = require('../constants/Session');
 var SessionActions = require('../actions/Session');
+var AnswerConstants = require('../constants/Answer');
 var _ = require('underscore');
 
 // Define initial data points

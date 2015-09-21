@@ -53,17 +53,46 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    var state = {
-      hideInstructions: true,
-      hideQuestions: true,
-      hideCallParticipants: true,
-      hideWelcome: true};
+    var state = this.state;
     var session = SessionStore.getSession();
     if(session){
-      if(session.banned && !session.completed) state.hideInitBanned = false;
-      if(session.banned && session.completed)  state.hideCompleteBanned = false;
-      if(session.completed && !session.banned) state.hideCompleted = false;
-      if(session.no_questions)                 state.hideNoQuestions = false;
+      if(session.banned && !session.completed){
+        state = {
+          hideInstructions: true,
+          hideQuestions: true,
+          hideCallParticipants: true,
+          hideWelcome: true,
+          hideInitBanned: false
+        }
+
+       };
+      if(session.banned && session.completed){
+        state = {
+          hideInstructions: true,
+          hideQuestions: true,
+          hideCallParticipants: true,
+          hideWelcome: true,
+          hideCompleteBanned: false
+        }
+      }
+      if(session.completed && !session.banned){
+        state = {
+          hideInstructions: true,
+          hideQuestions: true,
+          hideCallParticipants: true,
+          hideWelcome: true,
+          hideCompleted: false
+        }
+      }
+      if(session.no_questions){
+        state = {
+          hideInstructions: true,
+          hideQuestions: true,
+          hideCallParticipants: true,
+          hideWelcome: true,
+          hideNoQuestions: false
+        }
+      }
     }
     this.setState(state);
   },

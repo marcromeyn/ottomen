@@ -18,7 +18,7 @@ module.exports = {
       AppDispatcher.handleAction({actionType: AnswerConstants.POST_ANSWERS });
       var session = SessionStore.getSession();
       SessionApi.postAnswers(session, answers).then(function(data){
-        AppDispatcher.handleAction({actionType: AnswerConstants.POST_ANSWERS_SUCCESS, data: data });
+        AppDispatcher.handleAction({actionType: AnswerConstants.POST_ANSWERS_SUCCESS, data: data.data });
       }, function(err){
         AppDispatcher.handleAction({actionType: AnswerConstants.POST_ANSWERS_FAIL, data: err });
       });

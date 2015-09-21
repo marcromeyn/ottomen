@@ -3,7 +3,7 @@ module.exports = {
   init: function() {
     localStorage.clear();
     localStorage.setItem('session', JSON.stringify(
-      {'session': {
+      {'data': {'session': {
         id: 'XXXX',
         completed: true,
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
@@ -31,7 +31,7 @@ module.exports = {
         id: "LlfA_6",
         text: "Instead of redirecting to innocent pages with Google adware or porn affiliate site, it takes you to a site which pushes malware (the malware is Zlob related, and detected by Sophos as Troj/Zlobar-Fam ).",
         answers: ["Zlob"]
-      }]}
+      }]}}
     ));
   }
 

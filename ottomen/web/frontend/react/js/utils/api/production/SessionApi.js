@@ -31,19 +31,21 @@ function del(url) {
 module.exports = {
 
   createSession: function(assignmentId, workerId) {
-    return post('api/session',{session: {worker_id: workerId, task_id: assignmentId}})
+    return post('api/session',{session: {worker_id: workerId.toString(), task_id: assignmentId.toString()}})
   },
 
   postAnswers: function(session, answers) {
     var data = {
       session:{
-        worker_id: session.worker_id,
-        task_id: session.task_id
+        worker_id: session.worker_id.toString(),
+        task_id: session.task_id.toString(),
+        question_type: "string"
       },
-
-      answers: answers
+      answers: answers.map(function(a){
+        return {lables: a.lables.get(), question_id: a.questionId.toString()};
+      })
     }
-    return post('api/session/' + session.id, data)
+    return put('api/session/' + session.id, data)
   }
 
 };
