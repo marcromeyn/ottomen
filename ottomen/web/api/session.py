@@ -20,11 +20,11 @@ def start():
     if worker_id != json["session"]['worker_id'].encode('ascii', 'replace'):
         raise ValueError
 
-    response = start_session(worker_id, '1000')
+    response = start_session(worker_id, '1337')
     if response is None:
         return jsonify({'error': 'task is closed'})
 
-    return jsonify(response)
+    return response
 
 
 @route(bp, '/<session_id>', methods=['PUT'])
@@ -32,17 +32,9 @@ def start():
 def get_questions(session_id):
     json = request.get_json()
 
-    # Validation of the input data
-    # if 'turk_id' not in json['session']:
-    #     return jsonify({'error': 'requires turk_id'})
-    # if 'task_id' not in json["session"]:
-    #     return jsonify({'error': 'requires task_id'})
-    # if 'answers' not in json["session"]:
-    #     return jsonify({'error': 'requires answers'})
-
     batch = new_batch(json["session"]['worker_id'],
                       json["session"]["answers"],
                       json["session"]["task_id"],
                       session_id)
 
-    return jsonify(batch)
+    return batch

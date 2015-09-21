@@ -24,6 +24,7 @@ def create_app(settings_override=None, register_security_blueprint=False):
     app.errorhandler(ApplicationFormError)(on_app_form_error)
     app.errorhandler(404)(on_404)
     app.errorhandler(ValidationError)(on_validation_error)
+    app.errorhandler(KeyError)(on_key_error)
 
     return app
 
@@ -62,3 +63,7 @@ def on_404(e):
 
 def on_validation_error(e):
     return jsonify(dict(type='Validation Error', error=e.message)), 400
+
+
+def on_key_error(e):
+    return jsonify(dict(type='Key Error', error='Key was not found')), 400
