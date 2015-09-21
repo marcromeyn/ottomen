@@ -39,9 +39,9 @@ module.exports = React.createClass({
   },
 
   next: function(){
-    var lables = $('.highlighter').map(function(){return $(this).text();});
+    var labels = $('.highlighter').map(function(){return $(this).text();});
     var question = this.state.questions[this.state.index];
-    AnswersStore.actions.addAnswer(lables, question);
+    AnswersStore.actions.addAnswer(labels, question);
   },
 
   // Method to setState based upon Store changes

@@ -42,7 +42,7 @@ module.exports = {
         question_type: "string"
       },
       answers: answers.map(function(a){
-        return {lables: a.lables.get(), question_id: a.questionId.toString()};
+        return {labels: a.labels.get(), question_id: a.questionId.toString()};
       })
     }
     return put('api/session/' + session.id, data)

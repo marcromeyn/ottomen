@@ -9,8 +9,8 @@ var SessionStore = require('../stores/Session');
 // Define actions object
 module.exports = {
   // Request session data
-  addAnswer: function(lables, question) {
-    var answer = {lables: lables, questionId: question.id}
+  addAnswer: function(labels, question) {
+    var answer = {labels: labels, questionId: question.id}
     AppDispatcher.handleAction({actionType: AnswerConstants.ADD_ANSWER, data: answer });
   },
   postAnswers: function(answers){
