@@ -3,6 +3,7 @@ var Instructions = require('./Instructions');
 var Questions = require('./Questions');
 var Welcome = require('./Welcome');
 var CallParticipants = require('./CallParticipants');
+var SessionStore = require('../stores/Session');
 
 function getQueryStringValue (key) {
   return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
@@ -12,10 +13,12 @@ module.exports = React.createClass({
   // Get initial state from stores
   getInitialState: function() {
     var assignmentId = getQueryStringValue("assignmentId");
-    if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE") assignmentId = null;
+    var workerId = getQueryStringValue("workerId");
+    var turkSubmitTo = getQueryStringValue("turkSubmitTo");
+    if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE" || !workerId || !turkSubmitTo) assignmentId = null;
     var hideWelcome, hideCallParticipants;
     if(assignmentId){
-      hideWelcome = true;
+      hideWelcome = false;
       hideCallParticipants = true;
     }else{
       hideWelcome = true;
@@ -24,14 +27,32 @@ module.exports = React.createClass({
 
     return {
       assignmentId: assignmentId,
-      workerId: getQueryStringValue("workerId"),
-      turkSubmitTo: getQueryStringValue("turkSubmitTo"),
+      workerId: workerId,
+      turkSubmitTo: turkSubmitTo,
       hideInstructions: true,
-      hideQuestions: false,
+      hideQuestions: true,
       hideCallParticipants: hideCallParticipants,
       hideWelcome: hideWelcome
     }
   },
+  componentDidMount: function() {
+    SessionStore.addChangeListener(this._onChange);
+  },
+
+  // Remove change listers from stores
+  componentWillUnmount: function() {
+    SessionStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    var session = SessionStore.getSession()
+    if(session){
+      if(session.banned){
+        console.log("banned")
+      }
+    }
+  },
+
   goToInstructions: function(){
     this.setState({
       hideInstructions: false,
