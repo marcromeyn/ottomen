@@ -52,7 +52,7 @@
               }
             },
             "required": [
-              "session",
+              "question_id",
               "labels"
             ]
           },
