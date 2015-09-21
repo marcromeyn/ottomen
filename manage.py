@@ -36,6 +36,7 @@ def seed():
     db.drop_all()
     db.create_all()
     mem.flushdb()
+    mem.flushall()
     populate_db(db.session)
     set_sizes = 500
     set_limit = 200
