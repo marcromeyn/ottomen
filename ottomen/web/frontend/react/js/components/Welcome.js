@@ -20,7 +20,10 @@ module.exports = React.createClass({
               <div className="alert alert-danger">
                 <strong>We are still in Beta so some errors could occur, if they do, please email us at ottomen.cleaning@gmail.com. We will do our best to accept all submissions made to our system.</strong>
               </div>
-              <button type="button" className="btn btn-primary btn-lg" onClick={this.props.goToInstructions} >Instructions </button>
+              <button type="button" className="btn btn-primary btn-lg" onClick={this.props.goToInstructions} > Instructions </button>
+              <button type="button" className="btn btn-success btn-lg" onClick={this.props.goToQuestions} >
+                Skip Instructions <span className="glyphicon glyphicon-arrow-right"></span> 
+              </button>
             </div>
           </div>
         </div>

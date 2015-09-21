@@ -5,6 +5,7 @@ module.exports = {
     localStorage.setItem('session', JSON.stringify(
       {'session': {
         id: 'XXXX',
+        banned: true,
         questions: ["J3Xq5m", "JNFAmM", "Jwhfvg", "K7AQ0b", "LlfA_6"],
         worker_id: 'w123',
         task_id: 'test123',
