@@ -4,7 +4,7 @@ server {
 
     ssl    on;
     ssl_certificate   /code/ottomen/docker/ssl/1_ottomenn.com_bundle.crt; (or bundle.crt)
-    ssl_certificate_key    /etc/ssl/your_domain_name.key;
+    ssl_certificate_key     /code/ottomen/docker/ssl/ottomenn.com.key;
 
     server_name ottomenn.com;
     charset utf-8;
