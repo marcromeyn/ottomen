@@ -88,4 +88,4 @@ gulp.task('watch', function () {
 //
 //});
 
-gulp.task('default', ['deploy', 'runserver']);
+gulp.task('default', ['runserver']);
