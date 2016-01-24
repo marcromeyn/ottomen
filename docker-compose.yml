@@ -1,32 +1,32 @@
-#web:
-#  build: .
-#  command: gulp
-#  ports:
-#   - "5000:5004"
-#   - "3000:3000"
-#   - "3001:3001"
-#  expose:
-#    - "5000"
-#    - "3000"
-#    - "3001"
-#  volumes:
-#   - .:/code
-#  links:
-#   - redis
-#   - db:db
-#   - dbtest:dbtest
+web:
+  build: .
+  command: gulp
+  ports:
+   - "5000:5004"
+   - "3000:3000"
+   - "3001:3001"
+  expose:
+    - "5000"
+    - "3000"
+    - "3001"
+  volumes:
+   - .:/code
+  links:
+   - redis
+   - db:db
+   - dbtest:dbtest
 
-#nginx:
-#  restart: always
-#  build: ./docker/nginx/
-#  ports:
-#    - "80:80"
-#  volumes:
-#    - /www/static
-#  volumes_from:
-#    - web
-#  links:
-#    - web:web
+nginx:
+  restart: always
+  build: ./docker/nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /www/static
+  volumes_from:
+    - web
+  links:
+    - web:web
 
 redis:
   image: redis

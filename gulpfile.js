@@ -80,10 +80,12 @@ gulp.task('watch', function () {
 });
 
 // Default task: Watch Files For Changes & Reload browser
-gulp.task('default', ['deploy runserver'], function () {
-    browserSync({
-        notify: false,
-        proxy: "127.0.0.1:5003"
-    });
+//gulp.task('default', ['deploy', 'runserver'], function () {
+//    browserSync({
+//        notify: false,
+//        proxy: "127.0.0.1:5003"
+//    });
+//
+//});
 
-});
+gulp.task('default', ['deploy', 'runserver']);
