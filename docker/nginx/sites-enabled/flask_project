@@ -3,8 +3,8 @@ server {
     listen   443;
 
     ssl    on;
-    ssl_certificate   /code/ottomen/docker/nginx/ssl/1_ottomenn.com_bundle.crt;
-    ssl_certificate_key     /code/ottomen/docker/nginx/ssl/ottomenn.com.key;
+    ssl_certificate   /code/docker/nginx/ssl/1_ottomenn.com_bundle.crt;
+    ssl_certificate_key     /code/docker/nginx/ssl/ottomenn.com.key;
 
     server_name ottomenn.com;
     charset utf-8;
