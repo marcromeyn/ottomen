@@ -1,7 +1,12 @@
 server {
 
-    listen 80;
-    server_name example.org;
+    listen   443;
+
+    ssl    on;
+    ssl_certificate   /code/ottomen/docker/ssl/1_ottomenn.com_bundle.crt; (or bundle.crt)
+    ssl_certificate_key    /etc/ssl/your_domain_name.key;
+
+    server_name ottomenn.com;
     charset utf-8;
 
     location /static {
