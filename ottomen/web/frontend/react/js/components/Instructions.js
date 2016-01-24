@@ -1,23 +1,20 @@
 var React = require('React');
+var Contact = require('./Contact');
 
 module.exports = React.createClass({
 
   render: function() {
     return (
-      <div id="container-instructions" className={this.props.hidden? "hidden": ""}>
+      <div id="container" className={this.props.hidden? "hidden": ""}>
       	<div className="nav">
       		<h1 className="nav navbar-nav navbar-left">Instructions</h1>
-      		<div className="navbar-right" style={{paddingRight:'20px'}}>
-            <button type="button" className="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<p>Running into trouble?</p> <p>Please contact: <strong>ottomen.cleaning@gmail.com</strong></p>" data-html="true">
-              Help
-            </button>
-      		</div>
+      		<Contact />
       	</div>
       	<hr></hr>
       	<div className="instructions well">
       	    <p>
       		    You will be supplied with a set a phrases, in them there could be a word or a combination of words that describe a
-      				<a href="https://en.wikipedia.org/wiki/Malware" target="_blank" >Malware</a> like(Spyware, Adware, etc)
+      				<a href="https://en.wikipedia.org/wiki/Malware" target="_blank" > Malware</a> like(Spyware, Adware, etc)
       				<blockquote>
       					<p>Malware, short for malicious software, is any software used to disrupt computer operation, gather sensitive information, or gain access to private computer systems. Malware is defined by its malicious intent, acting against the requirements of the computer user, and does not include software that causes unintentional harm due to some deficiency.</p>
       				</blockquote>

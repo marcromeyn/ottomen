@@ -28,7 +28,8 @@ body {
     background: white;
 }
 .container{
-  border: 18px solid #f3f3f3
+  border: 18px solid #f3f3f3;
+  padding: 10px;
 }
 .highlighter, .highlight{
     background:yellow;
@@ -40,17 +41,4 @@ body {
 .error{
   color: red;
   font-weight: bold;
-}
-
-.center-Container {
-  position: relative;
-}
-
-.absolute-Center {
-  width: 5%;
-  height: 30%;
-  overflow: auto;
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
 }

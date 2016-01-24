@@ -1,6 +1,7 @@
 var React = require('React');
 var Question = require('./Question');
 var Loader = require('./Loader');
+var Contact = require('./Contact');
 var SessionStore = require('../stores/Session');
 var QuestionsStore = require('../stores/Questions');
 var AnswersStore = require('../stores/Answers');
@@ -51,17 +52,13 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div id="container-instructions" className={this.props.hidden ? "hidden": ""}>
+      <div id="container" className={this.props.hidden ? "hidden": ""}>
       	<div className="nav">
       		<div className="nav navbar-nav navbar-left">
       			<h1 >Classify the Malwares</h1>
       			<h4>This questions are highlight questions, please highlight any malware you find on the text.</h4>
       		</div>
-      		<div className="navbar-right" style={{paddingRight:'20px'}} >
-      			<button type="button" className="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="<p>Running into trouble?</p> <p>Please contact: <strong>ottomen.cleaning@gmail.com</strong></p>" data-html="true">
-        			Help
-      			</button>
-      		</div>
+      		<Contact />
       	</div>
       	<hr></hr>
       	<div className="instructions well" style={{height:'200px'}}>

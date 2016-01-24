@@ -3,7 +3,7 @@ var React = require('react');
 module.exports = React.createClass({
   render: function(){
     return (
-      <div className={this.props.hidden? "hidden": ""} id="container-instructions">
+      <div className={this.props.hidden? "hidden": ""} id="container">
       	<h1>You are done</h1>
       	<hr></hr>
       	<div className="instructions well">
