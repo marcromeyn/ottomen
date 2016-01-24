@@ -17,5 +17,5 @@ RUN pip install -U pytest
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash - && sudo apt-get install --yes nodejs
 RUN npm install -g gulp
 RUN npm install -g browser-sync
-ADD package.json /src/package.json
-RUN cd /src && npm install
+#ADD package.json /src/package.json
+#RUN cd /src && npm install
