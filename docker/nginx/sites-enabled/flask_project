@@ -1,12 +1,12 @@
 server {
 
-    listen   443;
+    listen 80 default_server;
 
-    ssl    on;
-    ssl_certificate   /code/docker/nginx/ssl/1_ottomenn.com_bundle.crt;
-    ssl_certificate_key     /code/docker/nginx/ssl/ottomenn.com.key;
+    listen 443 ssl;
 
     server_name ottomenn.com;
+    ssl_certificate /code/docker/nginx/ssl/1_ottomenn.com_bundle.crt;
+    ssl_certificate_key /code/docker/nginx/ssl/ottomenn.com.key;
     charset utf-8;
 
     location /static {
